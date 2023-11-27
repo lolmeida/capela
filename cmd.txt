@@ -1,0 +1,12 @@
+
+quarkus create app capela \
+   -DprojectGroupId=com.lolmeida \
+   -DprojectArtifactId=quarkus-mysql-service \
+   -DclassName="com.lolmeida.MySqlService" \
+   -Dpath="/mysql"
+
+./mvnw quarkus:add-extension -Dextensions="jdbc-mysql,agroal,resteasy"
+./mvnw quarkus:add-extension -Dextensions="io.quarkus:quarkus-hibernate-orm-panache"
+./mvnw quarkus:add-extension -Dextensions="io.quarkus:quarkus-smallrye-openapi"
+
+
