@@ -1,15 +1,14 @@
 package com.lolmeida.resource;
 
-import com.lolmeida.service.AgenteService;
+import com.lolmeida.dto.request.AnuncioRequest;
+import com.lolmeida.entity.database.Anuncio;
 import com.lolmeida.service.AnuncioService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import java.util.List;
@@ -44,5 +43,22 @@ public class AnuncioResource {
     public Response findByCustomer(@PathParam("customerId") final String customerId){
         List data = service.findBy(customerId);
         return Response.ok(data).build();
+    }
+
+    @POST
+    @Path("/")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response save(@RequestBody AnuncioRequest request) {
+        service.save(requestToObj(request));
+        return Response.ok(request).build();
+    }
+
+    private Anuncio requestToObj(AnuncioRequest request) {
+        return Anuncio.builder()
+                .Tipo(request.Tipo())
+                .Título(request.Título())
+                .Url(request.Url())
+                .idUrl(request.idUrl())
+                .build();
     }
 }

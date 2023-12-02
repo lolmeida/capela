@@ -1,6 +1,7 @@
 package com.lolmeida.entity.database;
 
 
+import com.lolmeida.Utils;
 import com.lolmeida.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -23,19 +24,14 @@ import java.util.UUID;
 public class Dimensao extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID IdDimensoes;
-    //@ManyToOne
-    //@JoinColumn(name = "Guia")
-    private String Guia;
+    private String IdDimensoes;
 
-    //@NotEmpty(message = "this is a field is mandatory.")
-    //@Column(unique = false, nullable = false, length = 255)
+    @ManyToOne
+    @JoinColumn(name = "Guia")
+    private Carga Guia;
+
     private int Vol;
     private double Comprimento;
     private double Altura;
     private double Largura;
-    //private String Nota;
-    //private String Foto;
-    //private String UserMail;
 }

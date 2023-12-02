@@ -1,6 +1,7 @@
 package com.lolmeida.entity.database;
 
 
+import com.lolmeida.Utils;
 import com.lolmeida.entity.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
@@ -23,16 +24,13 @@ import java.util.UUID;
 @Table(name = "tAnuncios") //, schema = "sql7509759")
 public class Anuncio extends BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    private String id;
 
     @NotEmpty(message = "this is a field is mandatory.")
     @Column(unique = true, nullable = true, length = 255)
     private String Tipo;
+
     private String Título;
     private String Url;
     private String idUrl;
-    //private String Descrição;
-    //private String Activo;
-    //private String UserEmail;
 }

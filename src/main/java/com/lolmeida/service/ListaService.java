@@ -1,19 +1,17 @@
 package com.lolmeida.service;
 
-import com.lolmeida.Repository;
-import com.lolmeida.entity.database.Dimensao;
+import com.lolmeida.PeahRepository;
 import com.lolmeida.entity.database.Lista;
-import com.lolmeida.repository.DimensaoRepository;
-import com.lolmeida.repository.ListaRepository;
+import com.lolmeida.repository.ListaPeahRepository;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
 import java.util.List;
 
 @RequestScoped
-public class ListaService implements Repository<Lista> {
+public class ListaService implements PeahRepository<Lista> {
     @Inject
-    ListaRepository repository;
+    ListaPeahRepository repository;
 
     @Override
     public List<Lista> findAll(String... orderByColumns){
@@ -28,5 +26,10 @@ public class ListaService implements Repository<Lista> {
     @Override
     public List<Lista> findBy(String id) {
         return repository.findBy(id);
+    }
+
+    @Override
+    public void save(Lista entity) {
+        repository.save(entity);
     }
 }

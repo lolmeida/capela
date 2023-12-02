@@ -1,19 +1,17 @@
 package com.lolmeida.service;
 
-import com.lolmeida.Repository;
-import com.lolmeida.entity.database.App;
+import com.lolmeida.PeahRepository;
 import com.lolmeida.entity.database.Armazem;
-import com.lolmeida.repository.AppRepository;
-import com.lolmeida.repository.ArmazemRepository;
+import com.lolmeida.repository.ArmazemPeahRepository;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
 import java.util.List;
 
 @RequestScoped
-public class ArmazemService implements Repository<Armazem> {
+public class ArmazemService implements PeahRepository<Armazem> {
     @Inject
-    ArmazemRepository repository;
+    ArmazemPeahRepository repository;
 
     @Override
     public List<Armazem> findAll(String... orderByColumns){
@@ -28,5 +26,10 @@ public class ArmazemService implements Repository<Armazem> {
     @Override
     public List<Armazem> findBy(String customerId) {
         return repository.findBy(customerId);
+    }
+
+    @Override
+    public void save(Armazem entity) {
+        repository.save(entity);
     }
 }

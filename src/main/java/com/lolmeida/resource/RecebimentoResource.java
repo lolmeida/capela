@@ -1,15 +1,14 @@
 package com.lolmeida.resource;
 
-import com.lolmeida.service.CargaService;
+import com.lolmeida.dto.request.RecebimentoRequest;
+import com.lolmeida.entity.database.Recebimento;
 import com.lolmeida.service.RecebimentoService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import java.util.List;
@@ -44,5 +43,22 @@ public class RecebimentoResource {
     public Response findByCustomer(@PathParam("customerId") final String customerId){
         List data = service.findBy(customerId);
         return Response.ok(data).build();
+    }
+
+    @POST
+    @Path("/")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response save(@RequestBody RecebimentoRequest request) {
+        service.save(requestToObj(request));
+        return Response.ok(request).build();
+    }
+
+    private Recebimento requestToObj (RecebimentoRequest request){
+        return Recebimento.builder()
+                .Guia(request.Guia())
+                .ValorPago(request.ValorPago())
+                .Outros(request.Outros())
+                .Cliente(request.Cliente())
+                .build();
     }
 }

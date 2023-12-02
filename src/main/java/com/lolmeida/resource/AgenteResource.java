@@ -1,15 +1,15 @@
 package com.lolmeida.resource;
 
+import com.lolmeida.Utils;
+import com.lolmeida.dto.request.AgenteRequest;
+import com.lolmeida.entity.database.Agente;
 import com.lolmeida.service.AgenteService;
-import com.lolmeida.service.CargaService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import java.util.List;
@@ -18,7 +18,7 @@ import java.util.List;
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class AgenteResource {
+public class AgenteResource  {
     @Inject
     AgenteService service;
 
@@ -41,8 +41,26 @@ public class AgenteResource {
 
     @GET
     @Path("/customer/{customerId}")
+
     public Response findByCustomer(@PathParam("customerId") final String customerId){
         List data = service.findBy(customerId);
         return Response.ok(data).build();
+    }
+
+    @POST
+    @Path("/")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response save(@RequestBody AgenteRequest request) {
+        service.save(requestToObj(request));
+        return Response.ok(request).build();
+    }
+
+    private Agente requestToObj(AgenteRequest request) {
+        return Agente.builder()
+                .Id(Utils.generateRandomString())
+                .Nome(request.Nome())
+                .Email(request.Email())
+                .Contacto(request.Contacto())
+                .build();
     }
 }

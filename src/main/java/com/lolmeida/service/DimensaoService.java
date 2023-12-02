@@ -1,17 +1,17 @@
 package com.lolmeida.service;
 
 import com.lolmeida.entity.database.Dimensao;
-import com.lolmeida.repository.DimensaoRepository;
-import com.lolmeida.Repository;
+import com.lolmeida.repository.DimensaoPeahRepository;
+import com.lolmeida.PeahRepository;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
 import java.util.List;
 
 @RequestScoped
-public class DimensaoService  implements Repository<Dimensao> {
+public class DimensaoService  implements PeahRepository<Dimensao> {
     @Inject
-    DimensaoRepository repository;
+    DimensaoPeahRepository repository;
 
     @Override
     public List<Dimensao> findAll(String... orderByColumns){
@@ -27,4 +27,6 @@ public class DimensaoService  implements Repository<Dimensao> {
     public List<Dimensao> findBy(String id) {
         return repository.findBy(id);
     }
+
+    public void save(Dimensao entity){repository.save(entity);}
 }

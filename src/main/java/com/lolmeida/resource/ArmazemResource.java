@@ -1,15 +1,15 @@
 package com.lolmeida.resource;
 
-import com.lolmeida.service.AnuncioService;
+import com.lolmeida.Utils;
+import com.lolmeida.dto.request.ArmazemRequest;
+import com.lolmeida.entity.database.Armazem;
 import com.lolmeida.service.ArmazemService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import java.util.List;
@@ -44,5 +44,23 @@ public class ArmazemResource {
     public Response findByCustomer(@PathParam("customerId") final String customerId){
         List data = service.findBy(customerId);
         return Response.ok(data).build();
+    }
+
+    @POST
+    @Path("/")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response save(@RequestBody ArmazemRequest request) {
+        service.save(requestToObj(request));
+        return Response.ok(request).build();
+    }
+
+    private Armazem requestToObj(ArmazemRequest request) {
+        return Armazem.builder()
+                .id(Utils.generateRandomString())
+                .Armazem(request.Armazem())
+                .Morada(request.Morada())
+                .Teletofe(request.Teletofe())
+                .YN(request.YN())
+                .build();
     }
 }

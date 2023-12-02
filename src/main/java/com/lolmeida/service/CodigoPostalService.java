@@ -1,19 +1,17 @@
 package com.lolmeida.service;
 
-import com.lolmeida.Repository;
-import com.lolmeida.entity.database.Cliente;
+import com.lolmeida.PeahRepository;
 import com.lolmeida.entity.database.CodigoPostal;
-import com.lolmeida.repository.ClienteRepository;
-import com.lolmeida.repository.CodigoPostalRepository;
+import com.lolmeida.repository.CodigoPostalPeahRepository;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
 import java.util.List;
 
 @RequestScoped
-public class CodigoPostalService implements Repository<CodigoPostal> {
+public class CodigoPostalService implements PeahRepository<CodigoPostal> {
     @Inject
-    CodigoPostalRepository repository;
+    CodigoPostalPeahRepository repository;
 
     @Override
     public List<CodigoPostal> findAll(String... orderByColumns){
@@ -28,5 +26,10 @@ public class CodigoPostalService implements Repository<CodigoPostal> {
     @Override
     public List<CodigoPostal> findBy(String customerId) {
         return repository.findBy(customerId);
+    }
+
+    @Override
+    public void save(CodigoPostal entity) {
+        repository.save(entity);
     }
 }

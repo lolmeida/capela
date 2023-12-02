@@ -1,6 +1,6 @@
 package com.lolmeida.repository;
 
-import com.lolmeida.Repository;
+import com.lolmeida.PeahRepository;
 import com.lolmeida.entity.database.Dimensao;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import io.quarkus.panache.common.Sort;
@@ -10,11 +10,12 @@ import java.util.List;
 import java.util.UUID;
 
 @ApplicationScoped
-public class DimensaoRepository implements PanacheRepositoryBase<Dimensao, UUID> , Repository<Dimensao> {
+public class DimensaoPeahRepository implements PanacheRepositoryBase<Dimensao, UUID> , PeahRepository<Dimensao> {
+    @Override
     public List<Dimensao> findAll(String... orderByColumns){
         return listAll(Sort.descending(orderByColumns)).stream().toList();
     }
-
+    @Override
     public List<Dimensao> search(final String field, final String value){
         final String searchInput = "%" + value.toLowerCase() + "%";
         return list("LOWER(" + field + ") like ?1", searchInput.toLowerCase());
@@ -25,9 +26,18 @@ public class DimensaoRepository implements PanacheRepositoryBase<Dimensao, UUID>
         return null;
     }
 
+    @Override
+    public void save(Dimensao entity){
+        persistAndFlush(entity);
+    }
+
+
     public List<Dimensao> findByCargo(final String cargoId){
         return list("Carga like ?1", cargoId);
     }
+
+
+
 
 
 }

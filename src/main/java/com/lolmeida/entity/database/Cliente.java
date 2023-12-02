@@ -1,6 +1,7 @@
 package com.lolmeida.entity.database;
 
 
+import com.lolmeida.Utils;
 import com.lolmeida.entity.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
@@ -23,18 +24,16 @@ import java.util.UUID;
 @Entity
 @Table(name = "tClientes") //, schema = "sql7509759")
 public class Cliente extends BaseEntity {
-    //@NotEmpty(message = "this is a field is mandatory.")
-    //@Column(unique = true, nullable = false, length = 255)
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID IdCliente;
+    private String IdCliente;
+    @Column(nullable = false)
     private String Cliente;
     private String Telefone;
     private String Morada;
+
+    @Column(nullable = false) //, columnDefinition = "varchar(255) DEFAULT 'CLI'")
     private String Tipo;
     private String Email;
-    private String Nota;
-    private String Data;
 
     @OneToMany(fetch = FetchType.EAGER) //, mappedBy = "Cliente")
     private List<Carga> cargas;

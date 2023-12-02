@@ -1,19 +1,16 @@
 package com.lolmeida.entity.database;
 
 
+import com.lolmeida.Utils;
 import com.lolmeida.entity.BaseEntity;
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import java.time.LocalDateTime;
-import java.util.UUID;
+import java.util.List;
 
 
 @Data
@@ -25,40 +22,26 @@ import java.util.UUID;
 @Entity
 @Table(name = "tCargas") //, schema = "sql7509759")
 public class Carga extends BaseEntity {
-    
-    private String IdRegisto;
-    //@NotEmpty(message = "this is a field is mandatory.")
-    //@Column(unique = true, nullable = true, length = 255)
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID Guia;
 
-    @ManyToOne
+    private String IdRegisto;
+    @Id
+    private String Guia;
+
+    @ManyToOne//(fetch = FetchType.LAZY)
     @JoinColumn(name = "Cliente")
     private Cliente Cliente;
 
-    @ManyToOne
+    @ManyToOne//(fetch = FetchType.LAZY)
     @JoinColumn(name = "Destinatario")
     private Cliente Destinatario;
-
-    @ManyToOne
-    @JoinColumn(name = "IdDimensoes")
-    private Dimensao IdDimensoes;
-
-    @ManyToOne
-    @JoinColumn(name = "Utilizador")
-    private Utilizador Utilizador;
-
+    private String IdDimensoes;
+    private String Utilizador;
     private String ListaArnaud;
     private String CodigoDespacho;
     private String ListaEnvio;
     private String Status;
     private String Tipo;
     private String BL;
-    private String Foto;
-    private String Nota;
-    private String Descricao;
-    private LocalDateTime Data;
     private double vReceber;
     private double M3Arnaud;
     private double EURM3;
@@ -68,4 +51,5 @@ public class Carga extends BaseEntity {
     private int Quantidade;
     private int Counter;
     private boolean Confiavel;
+
 }

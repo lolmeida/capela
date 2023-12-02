@@ -1,17 +1,17 @@
 package com.lolmeida.service;
 
 import com.lolmeida.entity.database.Recebimento;
-import com.lolmeida.repository.RecebimentoRepository;
-import com.lolmeida.Repository;
+import com.lolmeida.repository.RecebimentoPeahRepository;
+import com.lolmeida.PeahRepository;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
 import java.util.List;
 
 @RequestScoped
-public class RecebimentoService implements Repository<Recebimento> {
+public class RecebimentoService implements PeahRepository<Recebimento> {
     @Inject
-    RecebimentoRepository repository;
+    RecebimentoPeahRepository repository;
 
     public List<Recebimento> findAll(String... orderByColumns){
         return  repository.findAll(orderByColumns);
@@ -23,5 +23,10 @@ public class RecebimentoService implements Repository<Recebimento> {
 
     public List<Recebimento> findBy(String customerId) {
         return repository.findBy(customerId);
+    }
+
+    @Override
+    public void save(Recebimento entity) {
+        repository.save(entity);
     }
 }

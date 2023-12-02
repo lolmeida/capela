@@ -1,6 +1,7 @@
 package com.lolmeida.entity.database;
 
 
+import com.lolmeida.Utils;
 import com.lolmeida.entity.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
@@ -9,8 +10,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.UUID;
 
 
 @Data
@@ -24,14 +23,12 @@ import java.util.UUID;
 public class Agente extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID Id;
+    private String Id;
 
     @NotEmpty(message = "this is a field is mandatory.")
     @Column(unique = true, nullable = true, length = 255)
     private String Nome;
-
     private String Email;
     private String Contacto;
-    //private String Descriçao;
+
 }

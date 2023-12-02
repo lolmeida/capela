@@ -1,6 +1,6 @@
 package com.lolmeida.repository;
 
-import com.lolmeida.Repository;
+import com.lolmeida.PeahRepository;
 import com.lolmeida.entity.database.Utilizador;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import io.quarkus.panache.common.Sort;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 @ApplicationScoped
-public class UtilizadorRepository implements PanacheRepositoryBase<Utilizador, UUID>, Repository<Utilizador> {
+public class UtilizadorPeahRepository implements PanacheRepositoryBase<Utilizador, UUID>, PeahRepository<Utilizador> {
     public List<Utilizador> findAll(String... orderByColumns){
         return listAll(Sort.descending(orderByColumns)).stream().toList();
     }
@@ -26,6 +26,11 @@ public class UtilizadorRepository implements PanacheRepositoryBase<Utilizador, U
 
     public List<Utilizador> findBy(final String id){
         return list("Mail like ?1", id);
+    }
+
+    @Override
+    public void save(Utilizador entity) {
+        persistAndFlush(entity);
     }
 
 }

@@ -1,0 +1,41 @@
+{
+  "Cliente":{
+    "activo": true,
+    "counter": 0,
+    "createdAt": "2023-12-02T11:55:57",
+    "createdTime": 1701518157313,
+    "data": "2023-12-02T11:55:57",
+    "userEmail": "lolmeida@gmail.com",
+    "utilizador": "lolmeida@gmail.com",
+    "version": 0,
+    "cargas": [],
+    "cliente": "Cliente 1",
+    "email": "cliente1@email.com",
+    "idCliente": "nszfzvdunq",
+    "morada": "Teste",
+    "recebimentos": [],
+    "telefone": "95227533",
+    "tipo": "CLI"
+  },
+  "Destinatario": 	{
+    "activo": true,
+    "counter": 0,
+    "createdAt": "2023-12-02T11:55:57",
+    "createdTime": 1701518157313,
+    "data": "2023-12-02T11:55:57",
+    "userEmail": "lolmeida@gmail.com",
+    "utilizador": "lolmeida@gmail.com",
+    "version": 0,
+    "cargas": [],
+    "cliente": "Destinatario",
+    "email": "Destinatario@email.com",
+    "idCliente": "snmrhjapsw",
+    "morada": "Teste",
+    "recebimentos": [],
+    "telefone": "95466633",
+    "tipo": "DES"
+  },
+  "IdDimensoes": "shdomxdxaa",
+  "vReceber": 123,
+  "Status": "OK"
+}

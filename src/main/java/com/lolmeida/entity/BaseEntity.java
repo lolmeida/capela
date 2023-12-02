@@ -1,8 +1,6 @@
 package com.lolmeida.entity;
 
-import io.quarkus.hibernate.orm.panache.Panache;
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import com.lolmeida.Utils;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,8 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.UUID;
 
 @Data
 @Slf4j
@@ -19,40 +15,46 @@ import java.util.UUID;
 @AllArgsConstructor
 @MappedSuperclass
 public abstract class BaseEntity {
+    protected String UserEmail;
+    protected String ModificadoPor;
+    protected boolean Activo;
+    protected String Nota;
+    protected String Anexo;
+    protected String Utilizador;
+    protected String Foto;
+    protected String Descricao;
+    protected String Observacoes;
 
-    @Column(name = "DateTime")
-    protected LocalDateTime createdAt;
-    protected LocalDateTime updatedAt;
-    //@Column(name = "UserEmail")
-    protected String createdBy;
-    //@Column(name = "ModificadoPor")
-    protected String updatedBy;
-    //@Column(name = "Activo")
-    protected boolean deleted;
-    //@Column(name = "Data")
-    protected LocalDateTime date;
-    //@Column(name = "Nota")
-    protected String note;
-    //@Column(name = "Anexo")
-    protected String attachment;
-    //@Column(name = "Utilizador")
-    protected String user;
-    //@Column(name = "Foto")
-    protected String picture;
-    //@Column(name = "Descriçao")
-    protected String description;
-    //@Column(name = "Observações")
-    protected String comment;
+    @Column(columnDefinition = "INT DEFAULT 0")
     protected int Counter;
+    protected Long createdTime;
+    protected Long updatedTime;
+
+    @Version
+    protected Integer version;
+
+    @Column(name = "Data", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    protected LocalDateTime Data;
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    protected LocalDateTime createdAt;
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    protected LocalDateTime updatedAt;
 
 
     @PrePersist
-    void prePersist(){
-        this.createdAt=LocalDateTime.now(ZoneId.of("UTC"));
-        this.date=LocalDateTime.now(ZoneId.of("UTC"));
+    protected void onCreate() {
+        this.createdTime = Utils.currentTime;
+        this.createdAt = Utils.currentDateTime;
+        this.Data = Utils.currentDateTime;
+        this.Utilizador = Utils.activeUser();
+        this.UserEmail = Utils.activeUser();
+        this.Activo = true;
     }
+
     @PreUpdate
-    void preUpdate(){
-        this.updatedAt=LocalDateTime.now(ZoneId.of("UTC"));
+    protected void onUpdate() {
+        this.updatedAt = Utils.currentDateTime;
+        this.updatedTime = Utils.currentTime;
+        this.ModificadoPor = Utils.activeUser();
     }
 }

@@ -1,19 +1,17 @@
 package com.lolmeida.service;
 
-import com.lolmeida.Repository;
-import com.lolmeida.entity.database.Anuncio;
+import com.lolmeida.PeahRepository;
 import com.lolmeida.entity.database.App;
-import com.lolmeida.repository.AnuncioRepository;
-import com.lolmeida.repository.AppRepository;
+import com.lolmeida.repository.AppPeahRepository;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
 import java.util.List;
 
 @RequestScoped
-public class AppService implements Repository<App> {
+public class AppService implements PeahRepository<App> {
     @Inject
-    AppRepository repository;
+    AppPeahRepository repository;
 
     @Override
     public List<App> findAll(String... orderByColumns){
@@ -28,5 +26,10 @@ public class AppService implements Repository<App> {
     @Override
     public List<App> findBy(String customerId) {
         return repository.findBy(customerId);
+    }
+
+    @Override
+    public void save(App entity) {
+        repository.save(entity);
     }
 }
