@@ -1,10 +1,12 @@
 package com.lolmeida.repository;
 
 import com.lolmeida.PeahRepository;
+import com.lolmeida.entity.database.Dimensao;
 import com.lolmeida.entity.database.Utilizador;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import io.quarkus.panache.common.Sort;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -20,17 +22,17 @@ public class UtilizadorPeahRepository implements PanacheRepositoryBase<Utilizado
         return list("LOWER(" + field + ") like ?1", searchInput.toLowerCase());
     }
 
-    public List<Utilizador> findByCustomer(String customerId) {
-        return null;
-    }
 
+    @Override
     public List<Utilizador> findBy(final String id){
         return list("Mail like ?1", id);
     }
 
     @Override
-    public void save(Utilizador entity) {
+    @Transactional
+    public String save(Utilizador entity) {
         persistAndFlush(entity);
+        return entity.getIdUtilizador();
     }
 
 }

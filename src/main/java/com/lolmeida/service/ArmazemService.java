@@ -29,7 +29,7 @@ public class ArmazemService implements PeahRepository<Armazem> {
     }
 
     @Override
-    public void save(Armazem entity) {
-        repository.save(entity);
+    public String save(Armazem entity) {
+        return repository.save(entity);
     }
 }

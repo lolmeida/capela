@@ -29,8 +29,8 @@ public class ClienteService implements PeahRepository<Cliente> {
     }
 
     @Override
-    public void save(Cliente entity) {
-        repository.save(entity);
+    public String save(Cliente entity) {
+       return repository.save(entity);
     }
 
 

@@ -5,6 +5,7 @@ import com.lolmeida.entity.database.Status;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import io.quarkus.panache.common.Sort;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -29,7 +30,9 @@ public class StatusPeahRepository implements PanacheRepositoryBase<Status, UUID>
     }
 
     @Override
-    public void save(Status entity) {
+    @Transactional
+    public String save(Status entity) {
         persistAndFlush(entity);
+        return entity.getId();
     }
 }

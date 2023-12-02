@@ -29,7 +29,7 @@ public class AppService implements PeahRepository<App> {
     }
 
     @Override
-    public void save(App entity) {
-        repository.save(entity);
+    public String save(App entity) {
+        return repository.save(entity);
     }
 }

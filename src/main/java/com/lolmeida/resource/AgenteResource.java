@@ -2,7 +2,10 @@ package com.lolmeida.resource;
 
 import com.lolmeida.Utils;
 import com.lolmeida.dto.request.AgenteRequest;
+import com.lolmeida.dto.response.AgenteResponse;
+import com.lolmeida.dto.response.ClienteResponse;
 import com.lolmeida.entity.database.Agente;
+import com.lolmeida.entity.database.Cliente;
 import com.lolmeida.service.AgenteService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -26,7 +29,9 @@ public class AgenteResource  {
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
-        List data = service.findAll().stream().toList();
+        List data = service.findAll().stream()
+                .map(e ->objToResponse(e))
+                .toList();
         return Response.ok(data).build();
     }
 
@@ -35,7 +40,9 @@ public class AgenteResource  {
     public Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value) {
-        List data = service.search( field, value);
+        List data = service.search( field, value).stream()
+                .map(e ->objToResponse(e))
+                .toList();
         return Response.ok(data).build();
     }
 
@@ -43,7 +50,9 @@ public class AgenteResource  {
     @Path("/customer/{customerId}")
 
     public Response findByCustomer(@PathParam("customerId") final String customerId){
-        List data = service.findBy(customerId);
+        List data = service.findBy(customerId).stream()
+                .map(e ->objToResponse(e))
+                .toList();
         return Response.ok(data).build();
     }
 
@@ -52,7 +61,10 @@ public class AgenteResource  {
     @Produces(MediaType.APPLICATION_JSON)
     public Response save(@RequestBody AgenteRequest request) {
         service.save(requestToObj(request));
-        return Response.ok(request).build();
+
+        return Response
+                .ok(service.search("Id", service.save(requestToObj(request))))
+                .build();
     }
 
     private Agente requestToObj(AgenteRequest request) {
@@ -61,6 +73,28 @@ public class AgenteResource  {
                 .Nome(request.Nome())
                 .Email(request.Email())
                 .Contacto(request.Contacto())
+                .build();
+    }
+
+    private AgenteResponse objToResponse (Agente entity){
+        return AgenteResponse.builder()
+                .Nome(entity.getNome())
+                .Email(entity.getEmail())
+                .Contacto(entity.getContacto())
+
+                // BaseEntity
+                .Id(entity.getId())
+                .Activo(entity.isActivo())
+                .Nota(entity.getNota())
+                .Anexo(entity.getAnexo())
+                .Utilizador(entity.getUtilizador())
+                .Foto(entity.getFoto())
+                .Descricao(entity.getDescricao())
+                .createdTime(entity.getCreatedTime())
+                .updatedTime(entity.getUpdatedTime())
+                .Data(entity.getData())
+                .createdAt(entity.getCreatedAt())
+                .updatedAt(entity.getUpdatedAt())
                 .build();
     }
 }

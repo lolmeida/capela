@@ -29,7 +29,7 @@ public class ListaService implements PeahRepository<Lista> {
     }
 
     @Override
-    public void save(Lista entity) {
-        repository.save(entity);
+    public String save(Lista entity) {
+        return repository.save(entity);
     }
 }

@@ -5,6 +5,7 @@ import com.lolmeida.entity.database.Lista;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import io.quarkus.panache.common.Sort;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -29,7 +30,9 @@ public class ListaPeahRepository implements PanacheRepositoryBase<Lista, UUID>, 
     }
 
     @Override
-    public void save(Lista entity) {
+    @Transactional
+    public String save(Lista entity) {
         persistAndFlush(entity);
+        return entity.getIdLista();
     }
 }

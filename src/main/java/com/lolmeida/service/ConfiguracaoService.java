@@ -29,7 +29,7 @@ public class ConfiguracaoService implements PeahRepository<Configuracao> {
     }
 
     @Override
-    public void save(Configuracao entity) {
-        repository.save(entity);
+    public String save(Configuracao entity) {
+        return repository.save(entity);
     }
 }

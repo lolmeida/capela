@@ -29,7 +29,7 @@ public class AgenteService implements PeahRepository<Agente> {
     }
 
     @Override
-    public void save(Agente entity) {
-        repository.save(entity);
+    public String save(Agente entity) {
+        return repository.save(entity);
     }
 }

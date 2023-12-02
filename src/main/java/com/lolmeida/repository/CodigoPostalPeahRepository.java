@@ -5,6 +5,7 @@ import com.lolmeida.entity.database.CodigoPostal;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import io.quarkus.panache.common.Sort;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -29,7 +30,9 @@ public class CodigoPostalPeahRepository implements PanacheRepositoryBase<CodigoP
     }
 
     @Override
-    public void save(CodigoPostal entity) {
+    @Transactional
+    public String save(CodigoPostal entity) {
         persistAndFlush(entity);
+        return entity.getId();
     }
 }

@@ -5,6 +5,7 @@ import com.lolmeida.entity.database.Agente;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import io.quarkus.panache.common.Sort;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -29,8 +30,10 @@ public class AgentePeahRepository implements PanacheRepositoryBase<Agente, UUID>
     }
 
     @Override
-    public void save(Agente entity) {
+    @Transactional
+    public String save(Agente entity) {
         persistAndFlush(entity);
+        return entity.getId();
     }
 
 

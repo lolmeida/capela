@@ -5,6 +5,7 @@ import com.lolmeida.entity.database.App;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import io.quarkus.panache.common.Sort;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -29,7 +30,9 @@ public class AppPeahRepository implements PanacheRepositoryBase<App, UUID>, Peah
     }
 
     @Override
-    public void save(App entity) {
+    @Transactional
+    public String  save(App entity) {
         persistAndFlush(entity);
+        return entity.getAppName();
     }
 }

@@ -5,6 +5,7 @@ import com.lolmeida.entity.database.Cliente;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import io.quarkus.panache.common.Sort;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -26,8 +27,10 @@ public class ClientePeahRepository implements PanacheRepositoryBase<Cliente, UUI
     }
 
     @Override
-    public void save(Cliente entity) {
+    @Transactional
+    public String save(Cliente entity) {
         persistAndFlush(entity);
+        return entity.getIdCliente();
     }
 
 

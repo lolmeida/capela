@@ -1,6 +1,10 @@
 package com.lolmeida.resource;
 
+import com.lolmeida.Utils;
 import com.lolmeida.dto.request.UtilizadorRequest;
+import com.lolmeida.dto.response.StatusResponse;
+import com.lolmeida.dto.response.UtilizadorResponse;
+import com.lolmeida.entity.database.Status;
 import com.lolmeida.entity.database.Utilizador;
 import com.lolmeida.service.UtilizadorService;
 import jakarta.enterprise.context.RequestScoped;
@@ -25,7 +29,10 @@ public class UtilizadorResource {
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
-        List data = service.findAll().stream().toList();
+        List data = service.findAll()
+                .stream()
+                .map(e ->objToResponse(e))
+                .toList();
         return Response.ok(data).build();
     }
 
@@ -34,14 +41,20 @@ public class UtilizadorResource {
     public Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value) {
-        List data = service.search( field, value);
+        List data = service.search( field, value)
+                .stream()
+                .map(e ->objToResponse(e))
+                .toList();
         return Response.ok(data).build();
     }
 
     @GET
     @Path("/customer/{customerId}")
     public Response findByCustomer(@PathParam("customerId") final String id){
-        List data = service.findBy(id);
+        List data = service.findBy(id)
+                .stream()
+                .map(e ->objToResponse(e))
+                .toList();
         return Response.ok(data).build();
     }
 
@@ -50,11 +63,16 @@ public class UtilizadorResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response save(@RequestBody UtilizadorRequest request) {
         service.save(requestToObj(request));
-        return Response.ok(request).build();
+        //return Response.ok(request).build();
+
+        return Response
+                .ok(service.search("Mail", service.save(requestToObj(request))))
+                .build();
     }
 
     private Utilizador requestToObj (UtilizadorRequest request){
         return Utilizador.builder()
+                .IdUtilizador(Utils.generateRandomString())
                 .Mail(request.Mail())
                 .Nome(request.Nome())
                 .Telefone(request.Telefone())
@@ -71,6 +89,42 @@ public class UtilizadorResource {
                 .QtdMaxFactDivida(request.QtdMaxFactDivida())
                 .DiasMaxFactDivida(request.DiasMaxFactDivida())
                 .HojeMenosData(request.HojeMenosData())
+                .build();
+    }
+
+    private UtilizadorResponse objToResponse (Utilizador entity) {
+        return UtilizadorResponse.builder()
+                .Mail(entity.getMail())
+                .Nome(entity.getNome())
+                .Telefone(entity.getTelefone())
+                .Morada(entity.getMorada())
+                .Assinatura(entity.getAssinatura())
+                .Previlegio(entity.getPrevilegio())
+                .Perfil(entity.getPerfil())
+                .Clientes(entity.getClientes())
+                .Recebimentos(entity.getRecebimentos())
+                .Cargas(entity.getCargas())
+                .DiasEdicaoDocumento(entity.getDiasEdicaoDocumento())
+                .PrazoAnularEstadoDias(entity.getPrazoAnularEstadoDias())
+                .DiasEliminarDocumento(entity.getDiasEliminarDocumento())
+                .QtdMaxFactDivida(entity.getQtdMaxFactDivida())
+                .DiasMaxFactDivida(entity.getDiasMaxFactDivida())
+                .HojeMenosData(entity.getHojeMenosData())
+
+                // BaseEntity
+                .Id(entity.getIdUtilizador())
+                .Activo(entity.isActivo())
+                .Nota(entity.getNota())
+                .Anexo(entity.getAnexo())
+                .Utilizador(entity.getUtilizador())
+                .Foto(entity.getFoto())
+                .Descricao(entity.getDescricao())
+                .createdTime(entity.getCreatedTime())
+                .updatedTime(entity.getUpdatedTime())
+                .Data(entity.getData())
+                .createdAt(entity.getCreatedAt())
+                .updatedAt(entity.getUpdatedAt())
+
                 .build();
     }
 }

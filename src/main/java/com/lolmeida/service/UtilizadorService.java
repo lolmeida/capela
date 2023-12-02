@@ -29,7 +29,7 @@ public class UtilizadorService implements PeahRepository<Utilizador> {
     }
 
     @Override
-    public void save(Utilizador entity) {
-        repository.save(entity);
+    public String save(Utilizador entity) {
+        return repository.save(entity);
     }
 }

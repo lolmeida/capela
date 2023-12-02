@@ -35,7 +35,12 @@
     "telefone": "95466633",
     "tipo": "DES"
   },
-  "IdDimensoes": "shdomxdxaa",
+  "IdDimensoes": [{
+    "Vol":1,
+    "Comprimento": 1.2,
+    "Altura": 1,
+    "Largura": 2
+  }],
   "vReceber": 123,
   "Status": "OK"
 }

@@ -28,5 +28,5 @@ public class DimensaoService  implements PeahRepository<Dimensao> {
         return repository.findBy(id);
     }
 
-    public void save(Dimensao entity){repository.save(entity);}
+    public String save(Dimensao entity){return repository.save(entity);}
 }

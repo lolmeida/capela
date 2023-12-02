@@ -29,8 +29,8 @@ public class CargaService implements PeahRepository<Carga> {
     }
 
     @Override
-    public void save(Carga entity) {
-        repository.save(entity);
+    public String save(Carga entity) {
+        return repository.save(entity);
     }
 
 

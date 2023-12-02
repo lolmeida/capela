@@ -2,9 +2,7 @@ package com.lolmeida.entity.database;
 
 
 import com.lolmeida.entity.BaseEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -42,5 +40,10 @@ public class Utilizador extends BaseEntity {
     private String QtdMaxFactDivida;
     private String DiasMaxFactDivida;
     private String HojeMenosData;
+
+    @OneToMany(fetch = FetchType.LAZY) //, mappedBy = "Cliente")
+    private List<Carga> cargaList;
+    @OneToMany(fetch = FetchType.LAZY) //, mappedBy = "Cliente")
+    private List<Recebimento> recebimentoList;
 
 }

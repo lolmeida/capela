@@ -5,6 +5,7 @@ import com.lolmeida.entity.database.Dimensao;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import io.quarkus.panache.common.Sort;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -21,18 +22,17 @@ public class DimensaoPeahRepository implements PanacheRepositoryBase<Dimensao, U
         return list("LOWER(" + field + ") like ?1", searchInput.toLowerCase());
     }
 
-    @Override
-    public List<Dimensao> findBy(String customerId) {
-        return null;
-    }
+
 
     @Override
-    public void save(Dimensao entity){
+    @Transactional
+    public String  save(Dimensao entity){
         persistAndFlush(entity);
+        return entity.getIdDimensoes();
     }
 
-
-    public List<Dimensao> findByCargo(final String cargoId){
+    @Override
+    public List<Dimensao> findBy(final String cargoId){
         return list("Carga like ?1", cargoId);
     }
 

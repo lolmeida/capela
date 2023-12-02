@@ -5,6 +5,7 @@ import com.lolmeida.entity.database.Armazem;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import io.quarkus.panache.common.Sort;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -29,7 +30,9 @@ public class ArmazemPeahRepository implements PanacheRepositoryBase<Armazem, UUI
     }
 
     @Override
-    public void save(Armazem entity) {
+    @Transactional
+    public String save(Armazem entity) {
         persistAndFlush(entity);
+        return entity.getId();
     }
 }

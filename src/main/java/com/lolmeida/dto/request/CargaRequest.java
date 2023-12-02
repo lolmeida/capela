@@ -1,15 +1,17 @@
 package com.lolmeida.dto.request;
 
 import com.lolmeida.entity.database.Cliente;
+import com.lolmeida.entity.database.Dimensao;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 public record CargaRequest(
         Cliente Cliente,
         Cliente Destinatario,
         double vReceber,
-        String IdDimensoes,
+        List<Dimensao> IdDimensoes,
         String Status
 
         //String Foto,

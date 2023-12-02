@@ -26,7 +26,7 @@ public class RecebimentoService implements PeahRepository<Recebimento> {
     }
 
     @Override
-    public void save(Recebimento entity) {
-        repository.save(entity);
+    public String save(Recebimento entity) {
+        return repository.save(entity);
     }
 }

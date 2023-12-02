@@ -29,7 +29,7 @@ public class AnuncioService implements PeahRepository<Anuncio> {
     }
 
     @Override
-    public void save(Anuncio entity) {
-        repository.save(entity);
+    public String save(Anuncio entity) {
+        return repository.save(entity);
     }
 }

@@ -34,7 +34,9 @@ public class Carga extends BaseEntity {
     @ManyToOne//(fetch = FetchType.LAZY)
     @JoinColumn(name = "Destinatario")
     private Cliente Destinatario;
-    private String IdDimensoes;
+
+    @OneToMany(fetch = FetchType.EAGER) //, mappedBy = "Cliente")
+    private List<Dimensao> IdDimensoes;
     private String Utilizador;
     private String ListaArnaud;
     private String CodigoDespacho;

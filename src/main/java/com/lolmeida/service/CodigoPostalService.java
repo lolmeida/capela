@@ -29,7 +29,7 @@ public class CodigoPostalService implements PeahRepository<CodigoPostal> {
     }
 
     @Override
-    public void save(CodigoPostal entity) {
-        repository.save(entity);
+    public String save(CodigoPostal entity) {
+        return repository.save(entity);
     }
 }

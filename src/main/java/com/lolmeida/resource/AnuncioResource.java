@@ -1,6 +1,9 @@
 package com.lolmeida.resource;
 
+import com.lolmeida.Utils;
 import com.lolmeida.dto.request.AnuncioRequest;
+import com.lolmeida.dto.response.AnuncioResponse;
+import com.lolmeida.entity.database.Agente;
 import com.lolmeida.entity.database.Anuncio;
 import com.lolmeida.service.AnuncioService;
 import jakarta.enterprise.context.RequestScoped;
@@ -25,7 +28,9 @@ public class AnuncioResource {
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
-        List data = service.findAll().stream().toList();
+        List data = service.findAll().stream()
+                .map(e ->objToResponse(e))
+                .toList();
         return Response.ok(data).build();
     }
 
@@ -34,14 +39,18 @@ public class AnuncioResource {
     public Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value) {
-        List data = service.search( field, value);
+        List data = service.search( field, value).stream()
+                .map(e ->objToResponse(e))
+                .toList();
         return Response.ok(data).build();
     }
 
     @GET
     @Path("/customer/{customerId}")
     public Response findByCustomer(@PathParam("customerId") final String customerId){
-        List data = service.findBy(customerId);
+        List data = service.findBy(customerId).stream()
+                .map(e ->objToResponse(e))
+                .toList();
         return Response.ok(data).build();
     }
 
@@ -50,15 +59,44 @@ public class AnuncioResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response save(@RequestBody AnuncioRequest request) {
         service.save(requestToObj(request));
-        return Response.ok(request).build();
+        //return Response.ok(request).build();
+
+        return Response
+                .ok(service.search("Id", service.save(requestToObj(request))))
+                .build();
     }
 
     private Anuncio requestToObj(AnuncioRequest request) {
         return Anuncio.builder()
+                .id(Utils.generateRandomString())
                 .Tipo(request.Tipo())
                 .Título(request.Título())
                 .Url(request.Url())
                 .idUrl(request.idUrl())
+                .build();
+    }
+
+    private AnuncioResponse objToResponse (Anuncio entity) {
+        return AnuncioResponse.builder()
+                .Tipo(entity.getTipo())
+                .Título(entity.getTítulo())
+                .Url(entity.getIdUrl())
+                .idUrl(entity.getIdUrl())
+
+                // BaseEntity
+                .Id(entity.getId())
+                .Activo(entity.isActivo())
+                .Nota(entity.getNota())
+                .Anexo(entity.getAnexo())
+                .Utilizador(entity.getUtilizador())
+                .Foto(entity.getFoto())
+                .Descricao(entity.getDescricao())
+                .createdTime(entity.getCreatedTime())
+                .updatedTime(entity.getUpdatedTime())
+                .Data(entity.getData())
+                .createdAt(entity.getCreatedAt())
+                .updatedAt(entity.getUpdatedAt())
+
                 .build();
     }
 }

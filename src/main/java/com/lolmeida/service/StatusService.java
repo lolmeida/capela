@@ -29,7 +29,7 @@ public class StatusService implements PeahRepository<Status> {
     }
 
     @Override
-    public void save(Status entity) {
-        repository.save(entity);
+    public String save(Status entity) {
+        return repository.save(entity);
     }
 }
