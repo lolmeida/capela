@@ -1,12 +1,10 @@
 package com.lolmeida.resource;
 
 import com.lolmeida.Utils;
-import com.lolmeida.dto.request.AppRequest;
-import com.lolmeida.dto.response.AnuncioResponse;
-import com.lolmeida.dto.response.AppResponse;
-import com.lolmeida.entity.database.Anuncio;
-import com.lolmeida.entity.database.App;
-import com.lolmeida.service.AppService;
+import com.lolmeida.dto.request.ConfigurationRequest;
+import com.lolmeida.dto.response.ConfigurationResponse;
+import com.lolmeida.entity.database.Configuration;
+import com.lolmeida.service.ConfigurationService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -17,13 +15,13 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import java.util.List;
 
-@Path("/app")
+@Path("/configuracao")
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class AppResource {
+public class ConfigurationResource {
     @Inject
-    AppService service;
+    ConfigurationService service;
 
     @GET
     @Path("/")
@@ -31,7 +29,7 @@ public class AppResource {
     public Response getAll() {
         List data = service.findAll()
                 .stream()
-                .map(e ->objToResponse(e))
+                .map(e -> objToResponse(e))
                 .toList();
         return Response.ok(data).build();
     }
@@ -41,48 +39,48 @@ public class AppResource {
     public Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value) {
-        List data = service.search( field, value)
+        List data = service.search(field, value)
                 .stream()
-                .map(e ->objToResponse(e))
+                .map(e -> objToResponse(e))
                 .toList();
         return Response.ok(data).build();
     }
 
     @GET
     @Path("/{id}")
-    public Response findByCustomer(@PathParam("id") final String id){
+    public Response findByCustomer(@PathParam("id") final String id) {
         List data = service.findBy(id)
                 .stream()
-                .map(e ->objToResponse(e))
+                .map(e -> objToResponse(e))
                 .toList();
-
         return Response.ok(data).build();
     }
 
     @POST
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response save(@RequestBody AppRequest request) {
+    public Response save(@RequestBody ConfigurationRequest request) {
         service.save(requestToObj(request));
-        //return Response.ok(request).build();
 
         return Response
-                .ok(service.search("appName", service.save(requestToObj(request))))
+                .ok(service.search("IdCliente", service.save(requestToObj(request))))
                 .build();
     }
 
-    private App requestToObj(AppRequest request) {
-        return App.builder()
+    private Configuration requestToObj(ConfigurationRequest request) {
+        return Configuration.builder()
                 .id(Utils.generateRandomString())
-                .appLogo(request.appLogo())
-                .appName(request.appName())
+                .key(request.key())
+                .value(request.value())
+                .description(request.description())
                 .build();
     }
 
-    private AppResponse objToResponse (App entity) {
-        return AppResponse.builder()
-                .appLogo(entity.getAppLogo())
-                .appName(entity.getAppName())
+    private ConfigurationResponse objToResponse(Configuration entity) {
+        return ConfigurationResponse.builder()
+                .key(entity.getKey())
+                .value(entity.getValue())
+                .description(entity.getDescription())
 
                 // BaseEntity
                 .active(entity.isActive())

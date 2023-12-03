@@ -1,12 +1,10 @@
 package com.lolmeida.resource;
 
 import com.lolmeida.Utils;
-import com.lolmeida.dto.request.CodigoPostalRequest;
-import com.lolmeida.dto.response.ArmazemResponse;
-import com.lolmeida.dto.response.CodigoPostalResponse;
-import com.lolmeida.entity.database.Armazem;
-import com.lolmeida.entity.database.CodigoPostal;
-import com.lolmeida.service.CodigoPostalService;
+import com.lolmeida.dto.request.ArmazemRequest;
+import com.lolmeida.dto.response.WarehouseResponse;
+import com.lolmeida.entity.database.Warehouse;
+import com.lolmeida.service.ArmazemService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -17,13 +15,13 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import java.util.List;
 
-@Path("/codigo-postal")
+@Path("/armazem")
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class CodigoPostalResource {
+public class WarehouseResource {
     @Inject
-    CodigoPostalService service;
+    ArmazemService service;
 
     @GET
     @Path("/")
@@ -49,9 +47,9 @@ public class CodigoPostalResource {
     }
 
     @GET
-    @Path("/customer/{customerId}")
-    public Response findByCustomer(@PathParam("customerId") final String customerId){
-        List data = service.findBy(customerId)
+    @Path("/{id}")
+    public Response findByCustomer(@PathParam("id") final String id){
+        List data = service.findBy(id)
                 .stream()
                 .map(e ->objToResponse(e))
                 .toList();
@@ -61,41 +59,44 @@ public class CodigoPostalResource {
     @POST
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response save(@RequestBody CodigoPostalRequest request) {
+    public Response save(@RequestBody ArmazemRequest request) {
         service.save(requestToObj(request));
         //return Response.ok(request).build();
 
         return Response
-                .ok(service.search("IdCliente", service.save(requestToObj(request))))
+                .ok(service.search("Id", service.save(requestToObj(request))))
                 .build();
     }
 
-    private CodigoPostal requestToObj(CodigoPostalRequest request) {
-        return CodigoPostal.builder()
+    private Warehouse requestToObj(ArmazemRequest request) {
+        return Warehouse.builder()
                 .id(Utils.generateRandomString())
-                .codigo(request.codigo())
-                .Localidade(request.Localidade())
+                .name(request.name())
+                .address(request.address())
+                .phoneNumber(request.phoneNumber())
                 .build();
     }
 
-    private CodigoPostalResponse objToResponse (CodigoPostal entity) {
-        return CodigoPostalResponse.builder()
-                .Localidade(entity.getLocalidade())
-                .Codigo(entity.getCodigo())
+    private WarehouseResponse objToResponse (Warehouse entity) {
+        return WarehouseResponse.builder()
+                .name(entity.getName())
+                .address(entity.getAddress())
+                .phoneNumber(entity.getPhoneNumber())
+                .id(entity.getId())
 
                 // BaseEntity
-                .Id(entity.getId())
-                .Activo(entity.isActivo())
-                .Nota(entity.getNota())
-                .Anexo(entity.getAnexo())
-                .Utilizador(entity.getUtilizador())
-                .Foto(entity.getFoto())
-                .Descricao(entity.getDescricao())
-                .createdTime(entity.getCreatedTime())
-                .updatedTime(entity.getUpdatedTime())
-                .Data(entity.getData())
+                .active(entity.isActive())
+                .note(entity.getNote())
+                .description(entity.getDescription())
+                .attachment(entity.getAttachment())
+                .image(entity.getImage())
+                .createdBy(entity.getCreatedBy())
                 .createdAt(entity.getCreatedAt())
+                .createdTime(entity.getCreatedTime())
+                .updatedBy(entity.getUpdatedBy())
+                .updatedTime(entity.getUpdatedTime())
                 .updatedAt(entity.getUpdatedAt())
+                .date(entity.getDate())
 
                 .build();
     }

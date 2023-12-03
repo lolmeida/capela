@@ -1,7 +1,6 @@
 package com.lolmeida.entity.database;
 
 
-import com.lolmeida.Utils;
 import com.lolmeida.entity.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
@@ -10,9 +9,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.annotations.GenericGenerator;
-
-import java.util.UUID;
 
 
 @Data
@@ -22,15 +18,19 @@ import java.util.UUID;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "tCodigoPostal") //, schema = "sql7509759")
-public class CodigoPostal extends BaseEntity {
+@Table(name = "tConfiguracoes") //, schema = "sql7509759")
+public class Configuration extends BaseEntity {
     @Id
     private String id;
 
     @NotEmpty(message = "this is a field is mandatory.")
-    @Column(unique = true, nullable = false, length = 255)
-    private String codigo;
-    private String Localidade;
+    @Column(name = "Parametro", unique = true, nullable = false, length = 255)
+    private String key;
 
+    @Column(name = "Valor", unique = false, nullable = false, length = 255)
+    private String value;
+
+    @Column(name = "Texto")
+    private String description;
 
 }

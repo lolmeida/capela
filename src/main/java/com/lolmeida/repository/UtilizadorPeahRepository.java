@@ -1,7 +1,6 @@
 package com.lolmeida.repository;
 
 import com.lolmeida.PeahRepository;
-import com.lolmeida.entity.database.Dimensao;
 import com.lolmeida.entity.database.Utilizador;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import io.quarkus.panache.common.Sort;
@@ -32,7 +31,7 @@ public class UtilizadorPeahRepository implements PanacheRepositoryBase<Utilizado
     @Transactional
     public String save(Utilizador entity) {
         persistAndFlush(entity);
-        return entity.getIdUtilizador();
+        return entity.getId();
     }
 
 }

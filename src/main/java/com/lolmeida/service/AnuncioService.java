@@ -24,8 +24,8 @@ public class AnuncioService implements PeahRepository<Anuncio> {
     }
 
     @Override
-    public List<Anuncio> findBy(String customerId) {
-        return repository.findBy(customerId);
+    public List<Anuncio> findBy(String id) {
+        return repository.findBy(id);
     }
 
     @Override

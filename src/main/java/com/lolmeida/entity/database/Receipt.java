@@ -1,17 +1,13 @@
 package com.lolmeida.entity.database;
 
 
-import com.lolmeida.Utils;
 import com.lolmeida.entity.BaseEntity;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
-import java.time.LocalDateTime;
 
 
 @Data
@@ -22,21 +18,25 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tRecebimentos") //, schema = "sql7509759")
-public class Recebimento extends BaseEntity {
+public class Receipt extends BaseEntity {
     @Id
-    private String Chave;
+    @Column(name = "Chave")
+    private String id;
 
-    private String Outros;
-    private String ValorPago;
+    @Column(name = "Outros")
+    private double otherAmount;
+
+    @Column(name = "ValorPago")
+    private double amount;
 
 
     @ManyToOne
     @JoinColumn(name = "Guia")
-    private Carga Guia;
+    private Cargo cargo;
 
     @OneToOne
-    @JoinColumn(name = "Cliente")
-    private Cliente Cliente;
+    @JoinColumn(name = "Client")
+    private Client client;
 
 
 }

@@ -1,12 +1,10 @@
 package com.lolmeida.resource;
 
 import com.lolmeida.Utils;
-import com.lolmeida.dto.request.ArmazemRequest;
-import com.lolmeida.dto.response.AppResponse;
-import com.lolmeida.dto.response.ArmazemResponse;
-import com.lolmeida.entity.database.App;
-import com.lolmeida.entity.database.Armazem;
-import com.lolmeida.service.ArmazemService;
+import com.lolmeida.dto.request.SizeRequest;
+import com.lolmeida.dto.response.SizeResponse;
+import com.lolmeida.entity.database.Size;
+import com.lolmeida.service.DimensaoService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -17,19 +15,19 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import java.util.List;
 
-@Path("/armazem")
+@Path("/dimensao")
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class ArmazemResource {
+public class SizeResource {
     @Inject
-    ArmazemService service;
+    DimensaoService service;
 
     @GET
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
-        List data = service.findAll()
+        List data = service.findAll("Comprimento")
                 .stream()
                 .map(e ->objToResponse(e))
                 .toList();
@@ -49,58 +47,61 @@ public class ArmazemResource {
     }
 
     @GET
-    @Path("/customer/{customerId}")
-    public Response findByCustomer(@PathParam("customerId") final String customerId){
-        List data = service.findBy(customerId)
+    @Path("/{id}")
+    public Response findByCustomer(@PathParam("id") final String id){
+        List data = service.findBy(id)
                 .stream()
                 .map(e ->objToResponse(e))
                 .toList();
         return Response.ok(data).build();
     }
 
+    //--------
+
     @POST
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response save(@RequestBody ArmazemRequest request) {
+    public Response save(@RequestBody SizeRequest request) {
         service.save(requestToObj(request));
         //return Response.ok(request).build();
 
         return Response
-                .ok(service.search("Id", service.save(requestToObj(request))))
+                .ok(service.search("IdDimensoes", service.save(requestToObj(request))))
                 .build();
     }
 
-    private Armazem requestToObj(ArmazemRequest request) {
-        return Armazem.builder()
+    private Size requestToObj (SizeRequest request){
+        return Size.builder()
                 .id(Utils.generateRandomString())
-                .Armazem(request.Armazem())
-                .Morada(request.Morada())
-                .Teletofe(request.Teletofe())
-                .YN(request.YN())
+                .height(request.height())
+                .length(request.length())
+                .width(request.width())
+                .volume(request.volume())
                 .build();
     }
 
-    private ArmazemResponse objToResponse (Armazem entity) {
-        return ArmazemResponse.builder()
-                .Armazem(entity.getArmazem())
-                .Morada(entity.getMorada())
-                .Teletofe(entity.getTeletofe())
-                .YN(entity.isYN())
+    private SizeResponse objToResponse (Size entity) {
+        return SizeResponse.builder()
+                .height(entity.getHeight())
+                .length(entity.getLength())
+                .width(entity.getWidth())
+                .volume(entity.getVolume())
 
                 // BaseEntity
-                .Id(entity.getId())
-                .Activo(entity.isActivo())
-                .Nota(entity.getNota())
-                .Anexo(entity.getAnexo())
-                .Utilizador(entity.getUtilizador())
-                .Foto(entity.getFoto())
-                .Descricao(entity.getDescricao())
-                .createdTime(entity.getCreatedTime())
-                .updatedTime(entity.getUpdatedTime())
-                .Data(entity.getData())
+                .active(entity.isActive())
+                .note(entity.getNote())
+                .description(entity.getDescription())
+                .attachment(entity.getAttachment())
+                .image(entity.getImage())
+                .createdBy(entity.getCreatedBy())
                 .createdAt(entity.getCreatedAt())
+                .createdTime(entity.getCreatedTime())
+                .updatedBy(entity.getUpdatedBy())
+                .updatedTime(entity.getUpdatedTime())
                 .updatedAt(entity.getUpdatedAt())
+                .date(entity.getDate())
 
                 .build();
     }
+
 }

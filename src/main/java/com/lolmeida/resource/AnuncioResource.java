@@ -46,9 +46,9 @@ public class AnuncioResource {
     }
 
     @GET
-    @Path("/customer/{customerId}")
-    public Response findByCustomer(@PathParam("customerId") final String customerId){
-        List data = service.findBy(customerId).stream()
+    @Path("/{id}")
+    public Response findByCustomer(@PathParam("id") final String id){
+        List data = service.findBy(id).stream()
                 .map(e ->objToResponse(e))
                 .toList();
         return Response.ok(data).build();
@@ -69,33 +69,32 @@ public class AnuncioResource {
     private Anuncio requestToObj(AnuncioRequest request) {
         return Anuncio.builder()
                 .id(Utils.generateRandomString())
-                .Tipo(request.Tipo())
-                .Título(request.Título())
-                .Url(request.Url())
-                .idUrl(request.idUrl())
+                .type(request.type())
+                .tittle(request.tittle())
+                .url(request.url())
+
                 .build();
     }
 
     private AnuncioResponse objToResponse (Anuncio entity) {
         return AnuncioResponse.builder()
-                .Tipo(entity.getTipo())
-                .Título(entity.getTítulo())
-                .Url(entity.getIdUrl())
-                .idUrl(entity.getIdUrl())
+                .type(entity.getType())
+                .tittle(entity.getTittle())
+                .url(entity.getUrl())
 
                 // BaseEntity
-                .Id(entity.getId())
-                .Activo(entity.isActivo())
-                .Nota(entity.getNota())
-                .Anexo(entity.getAnexo())
-                .Utilizador(entity.getUtilizador())
-                .Foto(entity.getFoto())
-                .Descricao(entity.getDescricao())
-                .createdTime(entity.getCreatedTime())
-                .updatedTime(entity.getUpdatedTime())
-                .Data(entity.getData())
+                .active(entity.isActive())
+                .note(entity.getNote())
+                .description(entity.getDescription())
+                .attachment(entity.getAttachment())
+                .image(entity.getImage())
+                .createdBy(entity.getCreatedBy())
                 .createdAt(entity.getCreatedAt())
+                .createdTime(entity.getCreatedTime())
+                .updatedBy(entity.getUpdatedBy())
+                .updatedTime(entity.getUpdatedTime())
                 .updatedAt(entity.getUpdatedAt())
+                .date(entity.getDate())
 
                 .build();
     }

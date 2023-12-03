@@ -1,9 +1,11 @@
 package com.lolmeida.entity.database;
 
 
-import com.lolmeida.Utils;
 import com.lolmeida.entity.BaseEntity;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,9 +28,13 @@ public class Agente extends BaseEntity {
     private String Id;
 
     @NotEmpty(message = "this is a field is mandatory.")
-    @Column(unique = true, nullable = true, length = 255)
-    private String Nome;
-    private String Email;
-    private String Contacto;
+    @Column(name = "Nome", unique = true, nullable = false, length = 255)
+    private String name;
+
+    @Column(name = "Email", unique = false, nullable = true, length = 255)
+    private String email;
+
+    @Column(name = "Contacto")
+    private String contact;
 
 }

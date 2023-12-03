@@ -3,9 +3,7 @@ package com.lolmeida.resource;
 import com.lolmeida.Utils;
 import com.lolmeida.dto.request.AgenteRequest;
 import com.lolmeida.dto.response.AgenteResponse;
-import com.lolmeida.dto.response.ClienteResponse;
 import com.lolmeida.entity.database.Agente;
-import com.lolmeida.entity.database.Cliente;
 import com.lolmeida.service.AgenteService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -47,10 +45,10 @@ public class AgenteResource  {
     }
 
     @GET
-    @Path("/customer/{customerId}")
+    @Path("/{id}")
 
-    public Response findByCustomer(@PathParam("customerId") final String customerId){
-        List data = service.findBy(customerId).stream()
+    public Response findByCustomer(@PathParam("id") final String id){
+        List data = service.findBy(id).stream()
                 .map(e ->objToResponse(e))
                 .toList();
         return Response.ok(data).build();
@@ -70,31 +68,32 @@ public class AgenteResource  {
     private Agente requestToObj(AgenteRequest request) {
         return Agente.builder()
                 .Id(Utils.generateRandomString())
-                .Nome(request.Nome())
-                .Email(request.Email())
-                .Contacto(request.Contacto())
+                .name(request.name())
+                .email(request.email())
+                .contact(request.contact())
                 .build();
     }
 
     private AgenteResponse objToResponse (Agente entity){
         return AgenteResponse.builder()
-                .Nome(entity.getNome())
-                .Email(entity.getEmail())
-                .Contacto(entity.getContacto())
+                .name(entity.getName())
+                .email(entity.getEmail())
+                .contact(entity.getContact())
 
                 // BaseEntity
-                .Id(entity.getId())
-                .Activo(entity.isActivo())
-                .Nota(entity.getNota())
-                .Anexo(entity.getAnexo())
-                .Utilizador(entity.getUtilizador())
-                .Foto(entity.getFoto())
-                .Descricao(entity.getDescricao())
-                .createdTime(entity.getCreatedTime())
-                .updatedTime(entity.getUpdatedTime())
-                .Data(entity.getData())
+                .active(entity.isActive())
+                .note(entity.getNote())
+                .description(entity.getDescription())
+                .attachment(entity.getAttachment())
+                .image(entity.getImage())
+                .createdBy(entity.getCreatedBy())
                 .createdAt(entity.getCreatedAt())
+                .createdTime(entity.getCreatedTime())
+                .updatedBy(entity.getUpdatedBy())
+                .updatedTime(entity.getUpdatedTime())
                 .updatedAt(entity.getUpdatedAt())
+                .date(entity.getDate())
+
                 .build();
     }
 }

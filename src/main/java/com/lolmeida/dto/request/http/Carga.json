@@ -1,46 +1,49 @@
 {
   "Cliente":{
-    "activo": true,
-    "counter": 0,
-    "createdAt": "2023-12-02T11:55:57",
-    "createdTime": 1701518157313,
-    "data": "2023-12-02T11:55:57",
-    "userEmail": "lolmeida@gmail.com",
-    "utilizador": "lolmeida@gmail.com",
-    "version": 0,
+    "Activo": true,
+    "Cliente": "Odete Vaz",
+    "Data": "2023-12-03T10:27:03",
+    "Id": "00314ade",
+    "Morada": "almada",
+    "Nota": "",
+    "Telefone": "926544868",
+    "Tipo": "CLI",
     "cargas": [],
-    "cliente": "Cliente 1",
-    "email": "cliente1@email.com",
-    "idCliente": "nszfzvdunq",
-    "morada": "Teste",
+    "createdAt": "2023-12-03T10:27:03",
     "recebimentos": [],
-    "telefone": "95227533",
-    "tipo": "CLI"
+    "updatedAt": "2023-12-03T10:27:03"
   },
-  "Destinatario": 	{
-    "activo": true,
-    "counter": 0,
-    "createdAt": "2023-12-02T11:55:57",
-    "createdTime": 1701518157313,
-    "data": "2023-12-02T11:55:57",
-    "userEmail": "lolmeida@gmail.com",
-    "utilizador": "lolmeida@gmail.com",
-    "version": 0,
+  "Destinatario":{
+    "Activo": true,
+    "Cliente": "Odete Vaz",
+    "Data": "2023-12-03T10:27:03",
+    "Id": "00314ade",
+    "Morada": "almada",
+    "Nota": "",
+    "Telefone": "926544868",
+    "Tipo": "CLI",
     "cargas": [],
-    "cliente": "Destinatario",
-    "email": "Destinatario@email.com",
-    "idCliente": "snmrhjapsw",
-    "morada": "Teste",
+    "createdAt": "2023-12-03T10:27:03",
     "recebimentos": [],
-    "telefone": "95466633",
-    "tipo": "DES"
+    "updatedAt": "2023-12-03T10:27:03"
   },
-  "IdDimensoes": [{
-    "Vol":1,
-    "Comprimento": 1.2,
-    "Altura": 1,
-    "Largura": 2
-  }],
+  "IdDimensoes": [
+    {
+      "activo": true,
+      "counter": 0,
+      "createdAt": "2023-12-02T22:51:03",
+      "createdTime": 1701557463206,
+      "data": "2023-12-02T22:51:03",
+      "userEmail": "lolmeida@gmail.com",
+      "utilizador": "lolmeida@gmail.com",
+      "version": 0,
+      "altura": 0.0,
+      "comprimento": 0.0,
+      "idDimensoes": "0vdzkP2xAmiP",
+      "largura": 0.0,
+      "vol": 0
+    }
+  ],
   "vReceber": 123,
   "Status": "OK"
 }

@@ -1,7 +1,7 @@
 package com.lolmeida.service;
 
 import com.lolmeida.PeahRepository;
-import com.lolmeida.entity.database.Lista;
+import com.lolmeida.entity.database.CargoSenderList;
 import com.lolmeida.repository.ListaPeahRepository;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -9,27 +9,27 @@ import jakarta.inject.Inject;
 import java.util.List;
 
 @RequestScoped
-public class ListaService implements PeahRepository<Lista> {
+public class ListaService implements PeahRepository<CargoSenderList> {
     @Inject
     ListaPeahRepository repository;
 
     @Override
-    public List<Lista> findAll(String... orderByColumns){
+    public List<CargoSenderList> findAll(String... orderByColumns){
         return  repository.findAll(orderByColumns);
     }
 
     @Override
-    public List<Lista> search(String field, String value) {
+    public List<CargoSenderList> search(String field, String value) {
         return repository.search(field, value);
     }
 
     @Override
-    public List<Lista> findBy(String id) {
+    public List<CargoSenderList> findBy(String id) {
         return repository.findBy(id);
     }
 
     @Override
-    public String save(Lista entity) {
+    public String save(CargoSenderList entity) {
         return repository.save(entity);
     }
 }

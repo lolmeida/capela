@@ -4,9 +4,9 @@ import lombok.Builder;
 
 @Builder
 public record StatusRequest(
-        String Status,
-        int Qtd,
-        String Formula,
-        String Tipo
+        String status,
+        int quantity,
+        String formula,
+        String type
 ) {
 }

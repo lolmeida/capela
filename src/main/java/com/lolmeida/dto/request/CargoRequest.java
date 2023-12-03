@@ -1,18 +1,17 @@
 package com.lolmeida.dto.request;
 
-import com.lolmeida.entity.database.Cliente;
-import com.lolmeida.entity.database.Dimensao;
+import com.lolmeida.entity.database.Client;
+import com.lolmeida.entity.database.Size;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
 
-public record CargaRequest(
-        Cliente Cliente,
-        Cliente Destinatario,
-        double vReceber,
-        List<Dimensao> IdDimensoes,
-        String Status
+public record CargoRequest(
+        String cargoNumber,
+        Client client,
+        Client recipient,
+        double total,
+        List<Size> sizeList,
+        String status
 
         //String Foto,
         //String Nota,

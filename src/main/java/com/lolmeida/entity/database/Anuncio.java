@@ -1,17 +1,17 @@
 package com.lolmeida.entity.database;
 
 
-import com.lolmeida.Utils;
 import com.lolmeida.entity.BaseEntity;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.UUID;
 
 
 @Data
@@ -27,10 +27,13 @@ public class Anuncio extends BaseEntity {
     private String id;
 
     @NotEmpty(message = "this is a field is mandatory.")
-    @Column(unique = true, nullable = true, length = 255)
-    private String Tipo;
+    @Column(name = "Tipo", unique = true, nullable = false, length = 255)
+    private String type;
 
-    private String Título;
-    private String Url;
-    private String idUrl;
+    @Column(name = "Título", unique = true, nullable = false, length = 255)
+    private String tittle;
+
+    @Column(name = "Url")
+    private String url;
+
 }

@@ -6,9 +6,8 @@ import lombok.Builder;
 
 @Builder
 public record ArmazemRequest(
-        String Armazem,
-        String Morada,
-        String Teletofe,
-        boolean YN
+        String name,
+        String address,
+        String phoneNumber
 ) {
 }

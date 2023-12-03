@@ -24,8 +24,8 @@ public class AppService implements PeahRepository<App> {
     }
 
     @Override
-    public List<App> findBy(String customerId) {
-        return repository.findBy(customerId);
+    public List<App> findBy(String id) {
+        return repository.findBy(id);
     }
 
     @Override

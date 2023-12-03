@@ -24,19 +24,18 @@ public record UtilizadorResponse(
         String HojeMenosData,
 
         // BaseEntity
-        String Id,
-        String UserEmail,
-        String ModificadoPor,
-        boolean Activo,
-        String Nota,
-        String Anexo,
-        String Utilizador,
-        String Foto,
-        String Descricao,
-        Long createdTime,
-        Long updatedTime,
-        LocalDateTime Data,
+        String id,
+        boolean active,
+        String note,
+        String description,
+        String attachment,
+        String image,
+        String createdBy,
         LocalDateTime createdAt,
-        LocalDateTime updatedAt
+        Long createdTime,
+        String updatedBy,
+        LocalDateTime updatedAt,
+        Long updatedTime,
+        LocalDateTime date
 ) {
 }

@@ -27,11 +27,16 @@ public class Status extends BaseEntity {
     private String id;
 
     @NotEmpty(message = "this is a field is mandatory.")
-    @Column(unique = true, nullable = false, length = 255)
-    private String Status;
+    @Column(name = "Status",unique = true, nullable = false, length = 255)
+    private String status;
 
-    private int Qtd;
-    private String Formula;
-    private String Tipo;
+@Column(name = "Qtd")
+    private int quantity;
+
+    @Column(name = "Formula")
+    private String formula;
+
+    @Column(name = "Tipo")
+    private String type;
 
 }

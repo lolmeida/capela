@@ -24,7 +24,8 @@ public class Utilizador extends BaseEntity {
     @Id
     private String Mail;
 
-    private String IdUtilizador;
+    @Column(name = "IdUtilizador")
+    private String id;
     private String Nome;
     private String Telefone;
     private String Morada;
@@ -41,9 +42,9 @@ public class Utilizador extends BaseEntity {
     private String DiasMaxFactDivida;
     private String HojeMenosData;
 
-    @OneToMany(fetch = FetchType.LAZY) //, mappedBy = "Cliente")
-    private List<Carga> cargaList;
-    @OneToMany(fetch = FetchType.LAZY) //, mappedBy = "Cliente")
-    private List<Recebimento> recebimentoList;
+    @OneToMany(fetch = FetchType.LAZY) //, mappedBy = "Client")
+    private List<Cargo> cargoList;
+    @OneToMany(fetch = FetchType.LAZY) //, mappedBy = "Client")
+    private List<Receipt> receiptList;
 
 }

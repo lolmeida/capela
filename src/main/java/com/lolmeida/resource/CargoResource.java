@@ -1,11 +1,9 @@
 package com.lolmeida.resource;
 
 import com.lolmeida.Utils;
-import com.lolmeida.dto.request.CargaRequest;
-import com.lolmeida.dto.response.ArmazemResponse;
-import com.lolmeida.dto.response.CargaResponse;
-import com.lolmeida.entity.database.Armazem;
-import com.lolmeida.entity.database.Carga;
+import com.lolmeida.dto.request.CargoRequest;
+import com.lolmeida.dto.response.CargoResponse;
+import com.lolmeida.entity.database.Cargo;
 import com.lolmeida.service.CargaService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -21,7 +19,7 @@ import java.util.List;
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class CargaResource {
+public class CargoResource {
     @Inject
     CargaService service;
 
@@ -49,9 +47,9 @@ public class CargaResource {
     }
 
     @GET
-    @Path("/customer/{customerId}")
-    public Response findByCustomer(@PathParam("customerId") final String customerId) {
-        List data = service.findBy(customerId)
+    @Path("/{id}")
+    public Response findByCustomer(@PathParam("id") final String id) {
+        List data = service.findBy(id)
                 .stream()
                 .map(e ->objToResponse(e))
                 .toList();
@@ -63,7 +61,9 @@ public class CargaResource {
     @POST
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response save(@RequestBody CargaRequest request) {
+    public Response save(@RequestBody CargoRequest request) {
+
+
         service.save(requestToObj(request));
         //return Response.ok(request).build();
 
@@ -73,40 +73,41 @@ public class CargaResource {
     }
 
 
-    private Carga requestToObj(CargaRequest request) {
-        return Carga.builder()
-                .IdRegisto(Utils.generateRandomString())
-                .Cliente(request.Cliente())
-                .Destinatario(request.Destinatario())
-                .vReceber(request.vReceber())
-                .IdDimensoes(request.IdDimensoes())
-                .Status(request.Status())
-                .Guia(Utils.generateRandomString())
+    private Cargo requestToObj(CargoRequest request) {
+
+        return Cargo.builder()
+                .id(Utils.generateRandomString())
+                .cargoNumber(request.cargoNumber())
+                .client(request.client())
+                .recipient(request.recipient())
+                .total(request.total())
+                .sizeList(request.sizeList())
+                .status(request.status())
                 .build();
     }
 
-    private CargaResponse objToResponse (Carga entity) {
-        return CargaResponse.builder()
-                .Cliente(entity.getCliente())
-                .Destinatario(entity.getDestinatario())
-                .vReceber(entity.getVReceber())
-                //.Dimensoes(entity.getIdDimensoes())
-                .Status(entity.getStatus())
-                .Guia(entity.getGuia())
+    private CargoResponse objToResponse (Cargo entity) {
+        return CargoResponse.builder()
+                .client(entity.getClient())
+                .recipient(entity.getRecipient())
+                .total(entity.getTotal())
+                .sizeList(entity.getSizeList())
+                .status(entity.getStatus())
+                .cargoNumber(entity.getCargoNumber())
 
                 // BaseEntity
-                .Id(entity.getIdRegisto())
-                .Activo(entity.isActivo())
-                .Nota(entity.getNota())
-                .Anexo(entity.getAnexo())
-                .Utilizador(entity.getUtilizador())
-                .Foto(entity.getFoto())
-                .Descricao(entity.getDescricao())
-                .createdTime(entity.getCreatedTime())
-                .updatedTime(entity.getUpdatedTime())
-                .Data(entity.getData())
+                .active(entity.isActive())
+                .note(entity.getNote())
+                .description(entity.getDescription())
+                .attachment(entity.getAttachment())
+                .image(entity.getImage())
+                .createdBy(entity.getCreatedBy())
                 .createdAt(entity.getCreatedAt())
+                .createdTime(entity.getCreatedTime())
+                .updatedBy(entity.getUpdatedBy())
+                .updatedTime(entity.getUpdatedTime())
                 .updatedAt(entity.getUpdatedAt())
+                .date(entity.getDate())
 
                 .build();
     }

@@ -3,7 +3,7 @@ package com.lolmeida.resource;
 import com.lolmeida.Utils;
 import com.lolmeida.dto.request.ClienteRequest;
 import com.lolmeida.dto.response.ClienteResponse;
-import com.lolmeida.entity.database.Cliente;
+import com.lolmeida.entity.database.Client;
 import com.lolmeida.service.ClienteService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -13,14 +13,13 @@ import jakarta.ws.rs.core.Response;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Path("/cliente")
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class ClienteResource {
+public class ClientResource {
     @Inject
     ClienteService service;
 
@@ -48,9 +47,9 @@ public class ClienteResource {
     }
 
     @GET
-    @Path("/customer/{customerId}")
-    public Response findByCustomer(@PathParam("customerId") final String customerId){
-        List data = service.findBy(customerId)
+    @Path("/{id}")
+    public Response findByCustomer(@PathParam("id") final String id){
+        List data = service.findBy(id)
                 .stream()
                 .map(e -> objToResponse(e))
                 .toList();
@@ -68,42 +67,38 @@ public class ClienteResource {
                 .build();
     }
 
-    private Cliente requestToObj (ClienteRequest request){
-        return Cliente.builder()
-                .IdCliente(Utils.generateRandomString())
-                .Cliente(request.Cliente())
-                .Telefone(request.Telefone())
-                .Morada(request.Morada())
-                .Tipo(request.Tipo())
-                .Email(request.Email())
+    private Client requestToObj (ClienteRequest request){
+        return Client.builder()
+                .id(Utils.generateRandomString())
+                .name(request.name())
+                .phoneNumber(request.phoneNumber())
+                .address(request.address())
+                .type(request.type())
+                .email(request.email())
                 .build();
     }
 
-    private ClienteResponse objToResponse (Cliente entity){
+    private ClienteResponse objToResponse (Client entity){
         return ClienteResponse.builder()
-                .Cliente(entity.getCliente())
-                .Telefone(entity.getTelefone())
-                .Morada(entity.getMorada())
-                .Tipo(entity.getTipo())
-                .Email(entity.getEmail())
+                .name(entity.getName())
+                .phoneNumber(entity.getPhoneNumber())
+                .address(entity.getAddress())
+                .type(entity.getType())
+                .email(entity.getEmail())
 
-
-                .Id(entity.getIdCliente())
-                .UserEmail(entity.getUserEmail())
-                .ModificadoPor(entity.getModificadoPor())
-                .Activo(entity.isActivo())
-                .Nota(entity.getNota())
-                .Anexo(entity.getAnexo())
-                .Utilizador(entity.getUtilizador())
-                .Foto(entity.getFoto())
-                .Descricao(entity.getDescricao())
-                .createdTime(entity.getCreatedTime())
-                .updatedTime(entity.getUpdatedTime())
-                .Data(entity.getData())
+                .active(entity.isActive())
+                .note(entity.getNote())
+                .description(entity.getDescription())
+                .attachment(entity.getAttachment())
+                .image(entity.getImage())
+                .createdBy(entity.getCreatedBy())
                 .createdAt(entity.getCreatedAt())
+                .createdTime(entity.getCreatedTime())
+                .updatedBy(entity.getUpdatedBy())
+                .updatedTime(entity.getUpdatedTime())
                 .updatedAt(entity.getUpdatedAt())
-                .cargas(entity.getCargas())
-                .recebimentos(entity.getRecebimentos())
+                .date(entity.getDate())
+
                 .build();
     }
 }

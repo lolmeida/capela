@@ -1,7 +1,5 @@
 package com.lolmeida;
 
-import com.lolmeida.dto.request.AgenteRequest;
-import com.lolmeida.dto.request.CargaRequest;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
@@ -25,9 +23,9 @@ public interface PeahResource <T> {
             @PathParam("value") final String value);
 
     @GET
-    @Path("/customer/{customerId}")
+    @Path("/{id}")
     public Response findByCustomer(
-            @PathParam("customerId") final String customerId);
+            @PathParam("id") final String id);
 
     @POST
     @Path("/")

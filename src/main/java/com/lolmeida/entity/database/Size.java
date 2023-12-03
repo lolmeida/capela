@@ -1,7 +1,6 @@
 package com.lolmeida.entity.database;
 
 
-import com.lolmeida.Utils;
 import com.lolmeida.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,8 +8,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.UUID;
 
 
 @Data
@@ -21,17 +18,26 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "tDimensoes") //, schema = "sql7509759")
-public class Dimensao extends BaseEntity {
+public class Size extends BaseEntity {
 
     @Id
-    private String IdDimensoes;
+    @Column(name = "IdDimensoes")
+    private String id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "Guia")
-    private Carga Guia;
+    //@Column(name = "Guia")
+    private Cargo cargo;
 
-    private int Vol;
-    private double Comprimento;
-    private double Altura;
-    private double Largura;
+    @Column(name = "Vol")
+    private int volume;
+
+    @Column(name = "Comprimento")
+    private double length;
+
+    @Column(name = "Altura")
+    private double height;
+
+    @Column(name = "Largura")
+    private double width;
 }

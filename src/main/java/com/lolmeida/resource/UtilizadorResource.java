@@ -49,8 +49,8 @@ public class UtilizadorResource {
     }
 
     @GET
-    @Path("/customer/{customerId}")
-    public Response findByCustomer(@PathParam("customerId") final String id){
+    @Path("/{id}")
+    public Response findByCustomer(@PathParam("id") final String id){
         List data = service.findBy(id)
                 .stream()
                 .map(e ->objToResponse(e))
@@ -72,7 +72,7 @@ public class UtilizadorResource {
 
     private Utilizador requestToObj (UtilizadorRequest request){
         return Utilizador.builder()
-                .IdUtilizador(Utils.generateRandomString())
+                .id(Utils.generateRandomString())
                 .Mail(request.Mail())
                 .Nome(request.Nome())
                 .Telefone(request.Telefone())
@@ -112,18 +112,19 @@ public class UtilizadorResource {
                 .HojeMenosData(entity.getHojeMenosData())
 
                 // BaseEntity
-                .Id(entity.getIdUtilizador())
-                .Activo(entity.isActivo())
-                .Nota(entity.getNota())
-                .Anexo(entity.getAnexo())
-                .Utilizador(entity.getUtilizador())
-                .Foto(entity.getFoto())
-                .Descricao(entity.getDescricao())
-                .createdTime(entity.getCreatedTime())
-                .updatedTime(entity.getUpdatedTime())
-                .Data(entity.getData())
+                .id(entity.getId())
+                .active(entity.isActive())
+                .note(entity.getNote())
+                .description(entity.getDescription())
+                .attachment(entity.getAttachment())
+                .image(entity.getImage())
+                .createdBy(entity.getCreatedBy())
                 .createdAt(entity.getCreatedAt())
+                .createdTime(entity.getCreatedTime())
+                .updatedBy(entity.getUpdatedBy())
+                .updatedTime(entity.getUpdatedTime())
                 .updatedAt(entity.getUpdatedAt())
+                .date(entity.getDate())
 
                 .build();
     }

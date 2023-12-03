@@ -1,12 +1,10 @@
 package com.lolmeida.resource;
 
 import com.lolmeida.Utils;
-import com.lolmeida.dto.request.ConfiguracaoRequest;
-import com.lolmeida.dto.response.CodigoPostalResponse;
-import com.lolmeida.dto.response.ConfiguracaoResponse;
-import com.lolmeida.entity.database.CodigoPostal;
-import com.lolmeida.entity.database.Configuracao;
-import com.lolmeida.service.ConfiguracaoService;
+import com.lolmeida.dto.request.CodigoPostalRequest;
+import com.lolmeida.dto.response.PostalCodeResponse;
+import com.lolmeida.entity.database.PostalCode;
+import com.lolmeida.service.CodigoPostalService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -17,13 +15,13 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import java.util.List;
 
-@Path("/configuracao")
+@Path("/codigo-postal")
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class ConfiguracaoResource {
+public class PostalCodeResource {
     @Inject
-    ConfiguracaoService service;
+    CodigoPostalService service;
 
     @GET
     @Path("/")
@@ -49,9 +47,9 @@ public class ConfiguracaoResource {
     }
 
     @GET
-    @Path("/customer/{customerId}")
-    public Response findByCustomer(@PathParam("customerId") final String customerId){
-        List data = service.findBy(customerId)
+    @Path("/{id}")
+    public Response findByCustomer(@PathParam("id") final String id){
+        List data = service.findBy(id)
                 .stream()
                 .map(e ->objToResponse(e))
                 .toList();
@@ -61,7 +59,7 @@ public class ConfiguracaoResource {
     @POST
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response save(@RequestBody ConfiguracaoRequest request) {
+    public Response save(@RequestBody CodigoPostalRequest request) {
         service.save(requestToObj(request));
         //return Response.ok(request).build();
 
@@ -70,34 +68,32 @@ public class ConfiguracaoResource {
                 .build();
     }
 
-    private Configuracao requestToObj(ConfiguracaoRequest request) {
-        return Configuracao.builder()
+    private PostalCode requestToObj(CodigoPostalRequest request) {
+        return PostalCode.builder()
                 .id(Utils.generateRandomString())
-                .Parametro(request.Parametro())
-                .Valor(request.Valor())
-                .Texto(request.Texto())
+                .code(request.code())
+                .address(request.address())
                 .build();
     }
 
-    private ConfiguracaoResponse objToResponse (Configuracao entity) {
-        return ConfiguracaoResponse.builder()
-                .Parametro(entity.getParametro())
-                .Valor(entity.getValor())
-                .Texto(entity.getTexto())
+    private PostalCodeResponse objToResponse (PostalCode entity) {
+        return PostalCodeResponse.builder()
+                .address(entity.getAddress())
+                .code(entity.getCode())
 
                 // BaseEntity
-                .Id(entity.getId())
-                .Activo(entity.isActivo())
-                .Nota(entity.getNota())
-                .Anexo(entity.getAnexo())
-                .Utilizador(entity.getUtilizador())
-                .Foto(entity.getFoto())
-                .Descricao(entity.getDescricao())
-                .createdTime(entity.getCreatedTime())
-                .updatedTime(entity.getUpdatedTime())
-                .Data(entity.getData())
+                .active(entity.isActive())
+                .note(entity.getNote())
+                .description(entity.getDescription())
+                .attachment(entity.getAttachment())
+                .image(entity.getImage())
+                .createdBy(entity.getCreatedBy())
                 .createdAt(entity.getCreatedAt())
+                .createdTime(entity.getCreatedTime())
+                .updatedBy(entity.getUpdatedBy())
+                .updatedTime(entity.getUpdatedTime())
                 .updatedAt(entity.getUpdatedAt())
+                .date(entity.getDate())
 
                 .build();
     }

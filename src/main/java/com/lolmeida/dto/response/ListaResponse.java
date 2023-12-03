@@ -6,28 +6,27 @@ import java.time.LocalDateTime;
 
 @Builder
 public record ListaResponse(
-        int Qtd,
-        String NumfaturaArnaud,
-        LocalDateTime DtFacturaArnaud,
-        double ValorFaturaArnaud,
-        String Agente,
-        LocalDateTime DataChegada,
-        String Para,
+        int quantity,
+        String numInvoiceArnaud,
+        LocalDateTime dateInvoiceArnaud,
+        double valueInvoiceArnaud,
+        String agent,
+        LocalDateTime arrivedDate,
+        String to,
 
         // BaseEntity
-        String Id,
-        String UserEmail,
-        String ModificadoPor,
-        boolean Activo,
-        String Nota,
-        String Anexo,
-        String Utilizador,
-        String Foto,
-        String Descricao,
-        Long createdTime,
-        Long updatedTime,
-        LocalDateTime Data,
+        String id,
+        boolean active,
+        String note,
+        String description,
+        String attachment,
+        String image,
+        String createdBy,
         LocalDateTime createdAt,
-        LocalDateTime updatedAt
+        Long createdTime,
+        String updatedBy,
+        LocalDateTime updatedAt,
+        Long updatedTime,
+        LocalDateTime date
 ) {
 }

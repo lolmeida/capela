@@ -4,10 +4,10 @@ import lombok.Builder;
 
 @Builder
 public record ClienteRequest (
-         String Cliente,
-         String Telefone,
-         String Morada,
-         String Tipo,
-         String Email
+         String name,
+         String phoneNumber,
+         String address,
+         String type,
+         String email
 ){
 }

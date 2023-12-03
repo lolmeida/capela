@@ -15,29 +15,50 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @MappedSuperclass
 public abstract class BaseEntity {
-    protected String UserEmail;
-    protected String ModificadoPor;
-    protected boolean Activo;
-    protected String Nota;
-    protected String Anexo;
-    protected String Utilizador;
-    protected String Foto;
-    protected String Descricao;
-    protected String Observacoes;
 
-    @Column(columnDefinition = "INT DEFAULT 0")
+    @Column(name = "ModificadoPor")
+    protected String updatedBy;
+
+    @Column(name = "Activo")
+    protected boolean active;
+
+    @Column(name = "Nota")
+    protected String note;
+
+    @Column(name = "Anexo")
+    protected String attachment;
+
+    @Column(name = "Utilizador")
+    protected String createdBy;
+
+    @Column(name = "Foto")
+    protected String image;
+
+    @Column(name = "Descricao")
+    protected String description;
+
+    @Column(name = "Observacoes")
+    protected String comments;
+
+    @Column(name = "Contador", columnDefinition = "INT DEFAULT 0")
     protected int Counter;
+    @Column(name = "TempoCriacao")
     protected Long createdTime;
+
+    @Column(name = "TempoModificacao")
     protected Long updatedTime;
 
     @Version
-    protected Integer version;
+    @Column(name = "Versao", columnDefinition = "INT DEFAULT 0")
+    protected int version;
 
     @Column(name = "Data", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    protected LocalDateTime Data;
-    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    protected LocalDateTime date;
+
+    @Column(name = "DataCriacao", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     protected LocalDateTime createdAt;
-    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+
+    @Column(name = "DataModificacao", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     protected LocalDateTime updatedAt;
 
 
@@ -45,16 +66,16 @@ public abstract class BaseEntity {
     protected void onCreate() {
         this.createdTime = Utils.currentTime;
         this.createdAt = Utils.currentDateTime;
-        this.Data = Utils.currentDateTime;
-        this.Utilizador = Utils.activeUser();
-        this.UserEmail = Utils.activeUser();
-        this.Activo = true;
+        this.createdBy = Utils.activeUser();
+
+        this.date = Utils.currentDateTime;
+        this.active = true;
     }
 
     @PreUpdate
     protected void onUpdate() {
         this.updatedAt = Utils.currentDateTime;
         this.updatedTime = Utils.currentTime;
-        this.ModificadoPor = Utils.activeUser();
+        this.updatedBy = Utils.activeUser();
     }
 }

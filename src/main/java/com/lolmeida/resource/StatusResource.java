@@ -2,9 +2,7 @@ package com.lolmeida.resource;
 
 import com.lolmeida.Utils;
 import com.lolmeida.dto.request.StatusRequest;
-import com.lolmeida.dto.response.ConfiguracaoResponse;
 import com.lolmeida.dto.response.StatusResponse;
-import com.lolmeida.entity.database.Configuracao;
 import com.lolmeida.entity.database.Status;
 import com.lolmeida.service.StatusService;
 import jakarta.enterprise.context.RequestScoped;
@@ -49,9 +47,9 @@ public class StatusResource {
     }
 
     @GET
-    @Path("/customer/{customerId}")
-    public Response findByCustomer(@PathParam("customerId") final String customerId){
-        List data = service.findBy(customerId)
+    @Path("/{id}")
+    public Response findByCustomer(@PathParam("id") final String id){
+        List data = service.findBy(id)
                 .stream()
                 .map(e ->objToResponse(e))
                 .toList();
@@ -73,33 +71,33 @@ public class StatusResource {
     private Status requestToObj (StatusRequest request){
         return Status.builder()
                 .id(Utils.generateRandomString())
-                .Status(request.Status())
-                .Qtd(request.Qtd())
-                .Formula(request.Formula())
-                .Tipo(request.Tipo())
+                .status(request.status())
+                .quantity(request.quantity())
+                .formula(request.formula())
+                .type(request.type())
                 .build();
     }
 
     private StatusResponse objToResponse (Status entity) {
         return StatusResponse.builder()
-                .Status(entity.getStatus())
-                .Qtd(entity.getQtd())
-                .Formula(entity.getFormula())
-                .Tipo(entity.getTipo())
+                .status(entity.getStatus())
+                .quantity(entity.getQuantity())
+                .formula(entity.getFormula())
+                .type(entity.getType())
 
                 // BaseEntity
-                .Id(entity.getId())
-                .Activo(entity.isActivo())
-                .Nota(entity.getNota())
-                .Anexo(entity.getAnexo())
-                .Utilizador(entity.getUtilizador())
-                .Foto(entity.getFoto())
-                .Descricao(entity.getDescricao())
-                .createdTime(entity.getCreatedTime())
-                .updatedTime(entity.getUpdatedTime())
-                .Data(entity.getData())
+                .active(entity.isActive())
+                .note(entity.getNote())
+                .description(entity.getDescription())
+                .attachment(entity.getAttachment())
+                .image(entity.getImage())
+                .createdBy(entity.getCreatedBy())
                 .createdAt(entity.getCreatedAt())
+                .createdTime(entity.getCreatedTime())
+                .updatedBy(entity.getUpdatedBy())
+                .updatedTime(entity.getUpdatedTime())
                 .updatedAt(entity.getUpdatedAt())
+                .date(entity.getDate())
 
                 .build();
     }

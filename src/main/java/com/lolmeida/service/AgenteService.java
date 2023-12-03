@@ -24,8 +24,8 @@ public class AgenteService implements PeahRepository<Agente> {
     }
 
     @Override
-    public List<Agente> findBy(String customerId) {
-        return repository.findBy(customerId);
+    public List<Agente> findBy(String id) {
+        return repository.findBy(id);
     }
 
     @Override

@@ -3,10 +3,11 @@ package com.lolmeida.dto.response;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
+
 @Builder
-public record AppResponse(
-         String appName,
-         String appLogo,
+public record PostalCodeResponse(
+        String code,
+        String address,
 
          // BaseEntity
          String id,

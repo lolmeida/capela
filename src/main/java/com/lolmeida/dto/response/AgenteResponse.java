@@ -6,24 +6,23 @@ import java.time.LocalDateTime;
 
 @Builder
 public record AgenteResponse(
-        String Nome,
-        String Email,
-        String Contacto,
+        String name,
+        String email,
+        String contact,
 
         // BaseEntity
-        String Id,
-        String UserEmail,
-        String ModificadoPor,
-        boolean Activo,
-        String Nota,
-        String Anexo,
-        String Utilizador,
-        String Foto,
-        String Descricao,
-        Long createdTime,
-        Long updatedTime,
-        LocalDateTime Data,
+        String id,
+        boolean active,
+        String note,
+        String description,
+        String attachment,
+        String image,
+        String createdBy,
         LocalDateTime createdAt,
-        LocalDateTime updatedAt
+        Long createdTime,
+        String updatedBy,
+        LocalDateTime updatedAt,
+        Long updatedTime,
+        LocalDateTime date
 ) {
 }

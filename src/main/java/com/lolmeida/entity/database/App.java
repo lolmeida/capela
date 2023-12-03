@@ -21,7 +21,12 @@ import lombok.extern.slf4j.Slf4j;
 @Entity
 @Table(name = "tApps") //, schema = "sql7509759")
 public class App extends BaseEntity {
+
     @Id
+    private String id;
+
+    @NotEmpty(message = "this is a field is mandatory.")
+    @Column(unique = true, nullable = true, length = 255)
     private String appName;
     private String appLogo;
 

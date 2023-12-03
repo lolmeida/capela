@@ -1,21 +1,14 @@
 package com.lolmeida.dto.response;
 
-import com.lolmeida.entity.database.Cargo;
-import com.lolmeida.entity.database.Receipt;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Builder
-public record ClienteResponse(
-        String name,
-        String phoneNumber,
-        String address,
-        String type,
-        String email,
-        List<Cargo> cargoList,
-        List<Receipt> receiptList,
+public record ConfigurationResponse(
+        String key,
+        String value,
+
 
         // BaseEntity
         String id,
