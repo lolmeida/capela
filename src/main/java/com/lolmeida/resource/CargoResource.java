@@ -78,22 +78,24 @@ public class CargoResource {
         return Cargo.builder()
                 .id(Utils.generateRandomString())
                 .cargoNumber(request.cargoNumber())
-                .clientId(request.clientId())
-                .recipientId(request.recipientId())
+                .client(request.client())
+                .recipient(request.recipient())
                 .total(request.total())
                 .sizeList(request.sizeList())
                 .status(request.status())
+                .sizeList(request.sizeList())
                 .build();
     }
 
     private CargoResponse objToResponse (Cargo entity) {
         return CargoResponse.builder()
-                .clientId(entity.getClientId())
-                .recipientId(entity.getRecipientId())
+                .client(entity.getClient())
+                .recipient(entity.getRecipient())
                 .total(entity.getTotal())
                 .sizeList(entity.getSizeList())
                 .status(entity.getStatus())
                 .cargoNumber(entity.getCargoNumber())
+                .sizeList(entity.getSizeList())
 
                 // BaseEntity
                 .active(entity.isActive())

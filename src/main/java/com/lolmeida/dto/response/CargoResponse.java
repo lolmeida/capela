@@ -12,10 +12,10 @@ import java.util.Set;
 @Builder
 public record CargoResponse(
         String cargoNumber,
-        String clientId,
-        String recipientId,
+        Client client,
+        Client recipient,
         double total,
-        List<String> sizeList,
+        List<Size> sizeList,
         String status,
 
 

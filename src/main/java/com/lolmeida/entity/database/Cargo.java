@@ -69,18 +69,21 @@ public class Cargo extends BaseEntity {
     private int quantity;
 
 
+    @ManyToOne(fetch = FetchType.LAZY) //cascade = CascadeType.MERGE)
+    @JoinColumn(name = "clientId")
+    private Client client;
 
-    @Column(name = "Cliente")
-    private String clientId;
-
-
-    @Column(name = "Destinatario")
-    private String recipientId;
-
-
+    @ManyToOne(fetch = FetchType.LAZY) //cascade = CascadeType.MERGE)
+    @JoinColumn(name = "recipientId")
+    private Client recipient;
 
 
-    private List<String> sizeList;
+
+    @OneToMany(fetch = FetchType.LAZY,
+            //mappedBy = "id",
+            cascade = CascadeType.MERGE)
+    //@Column(name = "IdDimensoes")
+    private List<Size> sizeList;
 
 
 }
