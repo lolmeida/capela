@@ -109,6 +109,7 @@ public class CargoResource {
                 .updatedAt(entity.getUpdatedAt())
                 .date(entity.getDate())
                 .receipt(entity.getReceipt())
+                .recipient(entity.getRecipient())
 
                 .build();
     }

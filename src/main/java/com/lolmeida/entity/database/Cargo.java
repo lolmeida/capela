@@ -66,12 +66,11 @@ public class Cargo extends BaseEntity {
     @Column(name = "Quantidade",  columnDefinition = "INT DEFAULT 1")
     private int quantity;
 
-
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "clientId")
     private Client client;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "recipientId")
     private Client recipient;
 
@@ -79,8 +78,6 @@ public class Cargo extends BaseEntity {
     @JoinColumn(name = "receiptCargo")
     private Receipt receipt;
 
-    @OneToMany(mappedBy = "cargo", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "cargo",cascade = CascadeType.ALL)
     private List<Size> sizeList;
-
-
 }

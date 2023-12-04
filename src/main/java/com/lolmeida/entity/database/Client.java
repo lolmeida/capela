@@ -22,6 +22,7 @@ import java.util.Set;
 public class Client extends BaseEntity {
     @Id
     private String id;
+
     @Column(name = "Client",nullable = false)
     private String name;
 
@@ -37,10 +38,10 @@ public class Client extends BaseEntity {
     @Column(name = "Email",nullable = false)
     private String email;
 
-    @OneToMany(mappedBy = "cargoNumber", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     private List<Cargo> cargoList;
 
-    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     private List<Receipt> receiptList;
 
 }
