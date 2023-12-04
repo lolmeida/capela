@@ -2,6 +2,7 @@ package com.lolmeida.dto.response;
 
 
 import com.lolmeida.entity.database.Client;
+import com.lolmeida.entity.database.Receipt;
 import com.lolmeida.entity.database.Size;
 import lombok.Builder;
 
@@ -12,11 +13,12 @@ import java.util.Set;
 @Builder
 public record CargoResponse(
         String cargoNumber,
-        String clientId,
-        String recipientId,
+        Client client,
+        Client recipient,
         double total,
-        List<String> sizeList,
+        List<Size> sizeList,
         String status,
+        Receipt receipt,
 
 
         // BaseEntity

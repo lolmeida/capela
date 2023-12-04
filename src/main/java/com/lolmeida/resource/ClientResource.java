@@ -27,9 +27,9 @@ public class ClientResource {
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
-        List data = service.findAll()
+        List<ClienteResponse> data = service.findAll()
                 .stream()
-                .map(e ->objToResponse(e))
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }
@@ -39,9 +39,9 @@ public class ClientResource {
     public Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value) {
-        List data = service.search( field, value)
+        List<ClienteResponse> data = service.search( field, value)
                 .stream()
-                .map(e -> objToResponse(e))
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }
@@ -49,9 +49,9 @@ public class ClientResource {
     @GET
     @Path("/{id}")
     public Response findByCustomer(@PathParam("id") final String id){
-        List data = service.findBy(id)
+        List<ClienteResponse> data = service.findBy(id)
                 .stream()
-                .map(e -> objToResponse(e))
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }
@@ -85,6 +85,8 @@ public class ClientResource {
                 .address(entity.getAddress())
                 .type(entity.getType())
                 .email(entity.getEmail())
+                .cargoList(entity.getCargoList())
+                .receiptList(entity.getReceiptList())
 
                 .active(entity.isActive())
                 .note(entity.getNote())
@@ -98,6 +100,8 @@ public class ClientResource {
                 .updatedTime(entity.getUpdatedTime())
                 .updatedAt(entity.getUpdatedAt())
                 .date(entity.getDate())
+                .cargoList(entity.getCargoList())
+                .receiptList(entity.getReceiptList())
 
                 .build();
     }

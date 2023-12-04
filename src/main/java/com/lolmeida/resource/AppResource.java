@@ -2,9 +2,7 @@ package com.lolmeida.resource;
 
 import com.lolmeida.Utils;
 import com.lolmeida.dto.request.AppRequest;
-import com.lolmeida.dto.response.AnuncioResponse;
 import com.lolmeida.dto.response.AppResponse;
-import com.lolmeida.entity.database.Anuncio;
 import com.lolmeida.entity.database.App;
 import com.lolmeida.service.AppService;
 import jakarta.enterprise.context.RequestScoped;
@@ -29,9 +27,9 @@ public class AppResource {
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
-        List data = service.findAll()
+        List<AppResponse> data = service.findAll()
                 .stream()
-                .map(e ->objToResponse(e))
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }
@@ -41,9 +39,9 @@ public class AppResource {
     public Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value) {
-        List data = service.search( field, value)
+        List<AppResponse> data = service.search( field, value)
                 .stream()
-                .map(e ->objToResponse(e))
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }
@@ -51,9 +49,9 @@ public class AppResource {
     @GET
     @Path("/{id}")
     public Response findByCustomer(@PathParam("id") final String id){
-        List data = service.findBy(id)
+        List<AppResponse> data = service.findBy(id)
                 .stream()
-                .map(e ->objToResponse(e))
+                .map(this::objToResponse)
                 .toList();
 
         return Response.ok(data).build();

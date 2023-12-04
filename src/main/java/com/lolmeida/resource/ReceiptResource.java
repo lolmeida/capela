@@ -27,9 +27,9 @@ public class ReceiptResource {
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
-        List data = service.findAll("date, cargo")
+        List<ReceiptResponse> data = service.findAll("date, cargo")
                 .stream()
-                .map(e ->objToResponse(e))
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }
@@ -39,9 +39,9 @@ public class ReceiptResource {
     public Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value) {
-        List data = service.search( field, value)
+        List<ReceiptResponse> data = service.search( field, value)
                 .stream()
-                .map(e ->objToResponse(e))
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }
@@ -49,9 +49,9 @@ public class ReceiptResource {
     @GET
     @Path("/{id}")
     public Response findByCustomer(@PathParam("id") final String id){
-        List data = service.findBy(id)
+        List<ReceiptResponse> data = service.findBy(id)
                 .stream()
-                .map(e ->objToResponse(e))
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }
@@ -71,20 +71,20 @@ public class ReceiptResource {
     private Receipt requestToObj (RecebimentoRequest request){
         return Receipt.builder()
                 .id(Utils.generateRandomString())
-                .cargoNumber(request.cargoNumber())
+                .cargo(request.cargo())
                 .amount(request.amount())
                 .otherAmount(request.otherAmount())
-                .clientId(request.clientId())
+                .client(request.client())
 
                 .build();
     }
 
     private ReceiptResponse objToResponse (Receipt entity) {
         return ReceiptResponse.builder()
-                .cargoNumber(entity.getCargoNumber())
+                .cargo(entity.getCargo())
                 .amount(entity.getAmount())
                 .otherAmount(entity.getOtherAmount())
-                .clientId(entity.getClientId())
+                .client(entity.getClient())
 
                 // BaseEntity
                 .active(entity.isActive())

@@ -27,9 +27,9 @@ public class ConfigurationResource {
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
-        List data = service.findAll()
+        List<ConfigurationResponse> data = service.findAll()
                 .stream()
-                .map(e -> objToResponse(e))
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }
@@ -39,9 +39,9 @@ public class ConfigurationResource {
     public Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value) {
-        List data = service.search(field, value)
+        List<ConfigurationResponse> data = service.search(field, value)
                 .stream()
-                .map(e -> objToResponse(e))
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }
@@ -49,9 +49,9 @@ public class ConfigurationResource {
     @GET
     @Path("/{id}")
     public Response findByCustomer(@PathParam("id") final String id) {
-        List data = service.findBy(id)
+        List<ConfigurationResponse> data = service.findBy(id)
                 .stream()
-                .map(e -> objToResponse(e))
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }

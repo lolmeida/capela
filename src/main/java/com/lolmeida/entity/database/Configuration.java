@@ -4,14 +4,12 @@ package com.lolmeida.entity.database;
 import com.lolmeida.entity.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 
-@Data
+@Getter
+@Setter
 @Slf4j
 @Builder
 @NoArgsConstructor
@@ -27,7 +25,7 @@ public class Configuration extends BaseEntity {
     @Column(name = "Parametro", unique = true, nullable = false, length = 255)
     private String key;
 
-    @Column(name = "Valor", unique = false, nullable = false, length = 255)
+    @Column(name = "Valor", nullable = false, length = 255)
     private String value;
 
     @Column(name = "Texto")

@@ -3,17 +3,15 @@ package com.lolmeida.entity.database;
 
 import com.lolmeida.entity.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 import java.util.Set;
 
 
-@Data
+@Getter
+@Setter
 @Slf4j
 @Builder
 @NoArgsConstructor
@@ -69,18 +67,20 @@ public class Cargo extends BaseEntity {
     private int quantity;
 
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "clientId")
+    private Client client;
 
-    @Column(name = "Cliente")
-    private String clientId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "recipientId")
+    private Client recipient;
 
+    @ManyToOne
+    @JoinColumn(name = "receiptCargo")
+    private Receipt receipt;
 
-    @Column(name = "Destinatario")
-    private String recipientId;
-
-
-
-
-    private List<String> sizeList;
+    @OneToMany(mappedBy = "cargo", fetch = FetchType.LAZY)
+    private List<Size> sizeList;
 
 
 }

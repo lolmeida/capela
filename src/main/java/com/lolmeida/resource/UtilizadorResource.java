@@ -2,9 +2,7 @@ package com.lolmeida.resource;
 
 import com.lolmeida.Utils;
 import com.lolmeida.dto.request.UtilizadorRequest;
-import com.lolmeida.dto.response.StatusResponse;
 import com.lolmeida.dto.response.UtilizadorResponse;
-import com.lolmeida.entity.database.Status;
 import com.lolmeida.entity.database.Utilizador;
 import com.lolmeida.service.UtilizadorService;
 import jakarta.enterprise.context.RequestScoped;
@@ -29,9 +27,9 @@ public class UtilizadorResource {
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
-        List data = service.findAll()
+        List<UtilizadorResponse> data = service.findAll()
                 .stream()
-                .map(e ->objToResponse(e))
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }
@@ -41,9 +39,9 @@ public class UtilizadorResource {
     public Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value) {
-        List data = service.search( field, value)
+        List<UtilizadorResponse> data = service.search( field, value)
                 .stream()
-                .map(e ->objToResponse(e))
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }
@@ -51,9 +49,9 @@ public class UtilizadorResource {
     @GET
     @Path("/{id}")
     public Response findByCustomer(@PathParam("id") final String id){
-        List data = service.findBy(id)
+        List<UtilizadorResponse> data = service.findBy(id)
                 .stream()
-                .map(e ->objToResponse(e))
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }

@@ -3,14 +3,12 @@ package com.lolmeida.entity.database;
 
 import com.lolmeida.entity.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 
-@Data
+@Getter
+@Setter
 @Slf4j
 @Builder
 @NoArgsConstructor
@@ -23,8 +21,6 @@ public class Size extends BaseEntity {
     @Id
     @Column(name = "IdDimensoes")
     private String id;
-
-
 
     @Column(name = "Vol")
     private int volume;
@@ -39,6 +35,7 @@ public class Size extends BaseEntity {
     private double width;
 
 
-    @Column(name = "Guia")
-    private String cargoNumber;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cargoNumber")
+    private Cargo cargo;
 }

@@ -27,9 +27,9 @@ public class CargoResource {
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
-        List data = service.findAll("date, cargoNumber")
+        List<CargoResponse> data = service.findAll("date, cargoNumber")
                 .stream()
-                .map(e ->objToResponse(e))
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }
@@ -39,9 +39,9 @@ public class CargoResource {
     public Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value) {
-        List data = service.search(field, value)
+        List<CargoResponse> data = service.search(field, value)
                 .stream()
-                .map(e ->objToResponse(e))
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }
@@ -49,9 +49,9 @@ public class CargoResource {
     @GET
     @Path("/{id}")
     public Response findByCustomer(@PathParam("id") final String id) {
-        List data = service.findBy(id)
+        List<CargoResponse> data = service.findBy(id)
                 .stream()
-                .map(e ->objToResponse(e))
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }
@@ -78,8 +78,8 @@ public class CargoResource {
         return Cargo.builder()
                 .id(Utils.generateRandomString())
                 .cargoNumber(request.cargoNumber())
-                .clientId(request.clientId())
-                .recipientId(request.recipientId())
+                .client(request.client())
+                .recipient(request.recipient())
                 .total(request.total())
                 .sizeList(request.sizeList())
                 .status(request.status())
@@ -88,8 +88,8 @@ public class CargoResource {
 
     private CargoResponse objToResponse (Cargo entity) {
         return CargoResponse.builder()
-                .clientId(entity.getClientId())
-                .recipientId(entity.getRecipientId())
+                .client(entity.getClient())
+                .recipient(entity.getRecipient())
                 .total(entity.getTotal())
                 .sizeList(entity.getSizeList())
                 .status(entity.getStatus())
@@ -108,6 +108,7 @@ public class CargoResource {
                 .updatedTime(entity.getUpdatedTime())
                 .updatedAt(entity.getUpdatedAt())
                 .date(entity.getDate())
+                .receipt(entity.getReceipt())
 
                 .build();
     }

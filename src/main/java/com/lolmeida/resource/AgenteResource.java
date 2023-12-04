@@ -27,8 +27,8 @@ public class AgenteResource  {
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
-        List data = service.findAll().stream()
-                .map(e ->objToResponse(e))
+        List<AgenteResponse> data = service.findAll().stream()
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }
@@ -38,8 +38,8 @@ public class AgenteResource  {
     public Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value) {
-        List data = service.search( field, value).stream()
-                .map(e ->objToResponse(e))
+        List<AgenteResponse> data = service.search( field, value).stream()
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }
@@ -48,8 +48,8 @@ public class AgenteResource  {
     @Path("/{id}")
 
     public Response findByCustomer(@PathParam("id") final String id){
-        List data = service.findBy(id).stream()
-                .map(e ->objToResponse(e))
+        List<AgenteResponse> data = service.findBy(id).stream()
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }

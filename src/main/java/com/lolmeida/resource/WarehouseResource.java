@@ -27,9 +27,9 @@ public class WarehouseResource {
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
-        List data = service.findAll()
+        List<WarehouseResponse> data = service.findAll()
                 .stream()
-                .map(e ->objToResponse(e))
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }
@@ -39,9 +39,9 @@ public class WarehouseResource {
     public Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value) {
-        List data = service.search( field, value)
+        List<WarehouseResponse> data = service.search( field, value)
                 .stream()
-                .map(e ->objToResponse(e))
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }
@@ -49,9 +49,9 @@ public class WarehouseResource {
     @GET
     @Path("/{id}")
     public Response findByCustomer(@PathParam("id") final String id){
-        List data = service.findBy(id)
+        List<WarehouseResponse> data = service.findBy(id)
                 .stream()
-                .map(e ->objToResponse(e))
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }

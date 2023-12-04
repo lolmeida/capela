@@ -3,7 +3,6 @@ package com.lolmeida.resource;
 import com.lolmeida.Utils;
 import com.lolmeida.dto.request.AnuncioRequest;
 import com.lolmeida.dto.response.AnuncioResponse;
-import com.lolmeida.entity.database.Agente;
 import com.lolmeida.entity.database.Anuncio;
 import com.lolmeida.service.AnuncioService;
 import jakarta.enterprise.context.RequestScoped;
@@ -28,8 +27,8 @@ public class AnuncioResource {
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
-        List data = service.findAll().stream()
-                .map(e ->objToResponse(e))
+        List<AnuncioResponse> data = service.findAll().stream()
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }
@@ -39,8 +38,8 @@ public class AnuncioResource {
     public Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value) {
-        List data = service.search( field, value).stream()
-                .map(e ->objToResponse(e))
+        List<AnuncioResponse> data = service.search( field, value).stream()
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }
@@ -48,8 +47,8 @@ public class AnuncioResource {
     @GET
     @Path("/{id}")
     public Response findByCustomer(@PathParam("id") final String id){
-        List data = service.findBy(id).stream()
-                .map(e ->objToResponse(e))
+        List<AnuncioResponse> data = service.findBy(id).stream()
+                .map(this::objToResponse)
                 .toList();
         return Response.ok(data).build();
     }
