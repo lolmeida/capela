@@ -27,7 +27,7 @@ public class ReceiptResource {
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
-        List data = service.findAll("Data, Guia")
+        List data = service.findAll("date, cargo")
                 .stream()
                 .map(e ->objToResponse(e))
                 .toList();
@@ -64,27 +64,27 @@ public class ReceiptResource {
         //return Response.ok(request).build();
 
         return Response
-                .ok(service.search("Chave", service.save(requestToObj(request))))
+                .ok(service.search("id", service.save(requestToObj(request))))
                 .build();
     }
 
     private Receipt requestToObj (RecebimentoRequest request){
         return Receipt.builder()
                 .id(Utils.generateRandomString())
-                .cargo(request.cargo())
+                .cargoNumber(request.cargoNumber())
                 .amount(request.amount())
                 .otherAmount(request.otherAmount())
-                .client(request.client())
+                .clientId(request.clientId())
 
                 .build();
     }
 
     private ReceiptResponse objToResponse (Receipt entity) {
         return ReceiptResponse.builder()
-                .cargo(entity.getCargo())
+                .cargoNumber(entity.getCargoNumber())
                 .amount(entity.getAmount())
                 .otherAmount(entity.getOtherAmount())
-                .client(entity.getClient())
+                .clientId(entity.getClientId())
 
                 // BaseEntity
                 .active(entity.isActive())

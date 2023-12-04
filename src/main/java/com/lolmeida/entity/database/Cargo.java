@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
+import java.util.Set;
 
 
 @Data
@@ -21,23 +22,12 @@ import java.util.List;
 @Entity
 @Table(name = "tCargas") //, schema = "sql7509759")
 public class Cargo extends BaseEntity {
+
     @Column(name = "IdRegisto")
     private String id;
     @Id
     @Column(name = "Guia")
     private String cargoNumber;
-
-    @ManyToOne() //cascade = CascadeType.MERGE)
-    @JoinColumn(name = "Client")
-    private Client client;
-
-    @ManyToOne() //cascade = CascadeType.MERGE)
-    @JoinColumn(name = "Destinatario")
-    private Client recipient;
-
-    @OneToMany() //fetch = FetchType.LAZY, cascade = CascadeType.MERGE) //, mappedBy = "Client")
-    @Column(name = "IdDimensoes")
-    private List<Size> sizeList;
 
     @Column(name = "ListaArnaud")
     private String arnaudListId;
@@ -77,6 +67,20 @@ public class Cargo extends BaseEntity {
 
     @Column(name = "Quantidade",  columnDefinition = "INT DEFAULT 1")
     private int quantity;
+
+
+
+    @Column(name = "Cliente")
+    private String clientId;
+
+
+    @Column(name = "Destinatario")
+    private String recipientId;
+
+
+
+
+    private List<String> sizeList;
 
 
 }

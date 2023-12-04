@@ -62,7 +62,7 @@ public class AnuncioResource {
         //return Response.ok(request).build();
 
         return Response
-                .ok(service.search("Id", service.save(requestToObj(request))))
+                .ok(service.search("id", service.save(requestToObj(request))))
                 .build();
     }
 

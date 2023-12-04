@@ -27,7 +27,7 @@ public class SizeResource {
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
-        List data = service.findAll("Comprimento")
+        List data = service.findAll("cargo")
                 .stream()
                 .map(e ->objToResponse(e))
                 .toList();
@@ -66,7 +66,7 @@ public class SizeResource {
         //return Response.ok(request).build();
 
         return Response
-                .ok(service.search("IdDimensoes", service.save(requestToObj(request))))
+                .ok(service.search("id", service.save(requestToObj(request))))
                 .build();
     }
 

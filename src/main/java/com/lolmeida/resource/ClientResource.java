@@ -63,7 +63,7 @@ public class ClientResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response save(@RequestBody ClienteRequest request) {
         return Response
-                .ok(service.search("IdCliente", service.save(requestToObj(request))))
+                .ok(service.search("id", service.save(requestToObj(request))))
                 .build();
     }
 

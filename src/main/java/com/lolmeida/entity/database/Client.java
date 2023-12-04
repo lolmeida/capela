@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
+import java.util.Set;
 
 
 @Data
@@ -38,9 +39,11 @@ public class Client extends BaseEntity {
     @Column(name = "Email",nullable = false)
     private String email;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    private List<Cargo> cargoList;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    private List<Receipt> receiptList;
+
+
+
+    private List<String> cargoList;
+
+    private List<String> receiptList;
 
 }

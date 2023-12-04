@@ -24,10 +24,7 @@ public class Size extends BaseEntity {
     @Column(name = "IdDimensoes")
     private String id;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "Guia")
-    //@Column(name = "Guia")
-    private Cargo cargo;
+
 
     @Column(name = "Vol")
     private int volume;
@@ -40,4 +37,8 @@ public class Size extends BaseEntity {
 
     @Column(name = "Largura")
     private double width;
+
+
+    @Column(name = "Guia")
+    private String cargoNumber;
 }

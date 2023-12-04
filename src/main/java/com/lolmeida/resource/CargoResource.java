@@ -27,7 +27,7 @@ public class CargoResource {
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
-        List data = service.findAll("Data, Guia")
+        List data = service.findAll("date, cargoNumber")
                 .stream()
                 .map(e ->objToResponse(e))
                 .toList();
@@ -68,7 +68,7 @@ public class CargoResource {
         //return Response.ok(request).build();
 
         return Response
-                .ok(service.search("Guia", service.save(requestToObj(request))))
+                .ok(service.search("cargoNumber", service.save(requestToObj(request))))
                 .build();
     }
 
@@ -78,8 +78,8 @@ public class CargoResource {
         return Cargo.builder()
                 .id(Utils.generateRandomString())
                 .cargoNumber(request.cargoNumber())
-                .client(request.client())
-                .recipient(request.recipient())
+                .clientId(request.clientId())
+                .recipientId(request.recipientId())
                 .total(request.total())
                 .sizeList(request.sizeList())
                 .status(request.status())
@@ -88,8 +88,8 @@ public class CargoResource {
 
     private CargoResponse objToResponse (Cargo entity) {
         return CargoResponse.builder()
-                .client(entity.getClient())
-                .recipient(entity.getRecipient())
+                .clientId(entity.getClientId())
+                .recipientId(entity.getRecipientId())
                 .total(entity.getTotal())
                 .sizeList(entity.getSizeList())
                 .status(entity.getStatus())

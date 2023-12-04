@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
+import java.util.Set;
 
 
 @Data
@@ -22,7 +23,8 @@ import java.util.List;
 @Table(name = "tUtilizadores") //, schema = "sql7509759")
 public class Utilizador extends BaseEntity {
     @Id
-    private String Mail;
+    @Column(name = "Mail")
+    private String mail;
 
     @Column(name = "IdUtilizador")
     private String id;
@@ -42,9 +44,10 @@ public class Utilizador extends BaseEntity {
     private String DiasMaxFactDivida;
     private String HojeMenosData;
 
-    @OneToMany(fetch = FetchType.LAZY) //, mappedBy = "Client")
-    private List<Cargo> cargoList;
-    @OneToMany(fetch = FetchType.LAZY) //, mappedBy = "Client")
-    private List<Receipt> receiptList;
+
+    private List<String> cargoList;
+
+
+    private List<String> receiptList;
 
 }

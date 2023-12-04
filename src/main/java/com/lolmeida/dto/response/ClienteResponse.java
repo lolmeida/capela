@@ -6,6 +6,7 @@ import lombok.Builder;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Builder
 public record ClienteResponse(
@@ -14,8 +15,10 @@ public record ClienteResponse(
         String address,
         String type,
         String email,
-        List<Cargo> cargoList,
-        List<Receipt> receiptList,
+        List<String> cargoList,
+        List<String> receiptList,
+
+
 
         // BaseEntity
         String id,

@@ -33,11 +33,7 @@ public class DimensaoPeahRepository implements PanacheRepositoryBase<Size, UUID>
 
     @Override
     public List<Size> findBy(final String cargoId){
-        return list("Cargo like ?1", cargoId);
+        return list("cargo like ?1", cargoId);
     }
-
-
-
-
 
 }

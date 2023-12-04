@@ -63,7 +63,7 @@ public class ConfigurationResource {
         service.save(requestToObj(request));
 
         return Response
-                .ok(service.search("IdCliente", service.save(requestToObj(request))))
+                .ok(service.search("id", service.save(requestToObj(request))))
                 .build();
     }
 

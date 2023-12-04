@@ -61,7 +61,7 @@ public class AgenteResource  {
         service.save(requestToObj(request));
 
         return Response
-                .ok(service.search("Id", service.save(requestToObj(request))))
+                .ok(service.search("id", service.save(requestToObj(request))))
                 .build();
     }
 

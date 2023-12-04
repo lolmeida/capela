@@ -30,13 +30,11 @@ public class Receipt extends BaseEntity {
     private double amount;
 
 
-    @ManyToOne
-    @JoinColumn(name = "Guia")
-    private Cargo cargo;
 
-    @OneToOne
-    @JoinColumn(name = "Client")
-    private Client client;
+    @Column(name = "Carga")
+    private String cargoNumber;
 
+    @Column(name = "Client")
+    private String clientId;
 
 }

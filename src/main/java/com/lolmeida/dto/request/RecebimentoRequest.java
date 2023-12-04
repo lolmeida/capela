@@ -6,9 +6,9 @@ import lombok.Builder;
 
 @Builder
 public record RecebimentoRequest(
-        Cargo cargo,
+        String cargoNumber,
         double amount,
         double otherAmount,
-        Client client
+        String clientId
 ) {
 }

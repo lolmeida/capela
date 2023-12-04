@@ -4,13 +4,14 @@ import com.lolmeida.entity.database.Client;
 import com.lolmeida.entity.database.Size;
 
 import java.util.List;
+import java.util.Set;
 
 public record CargoRequest(
         String cargoNumber,
-        Client client,
-        Client recipient,
+        String clientId,
+        String recipientId,
         double total,
-        List<Size> sizeList,
+        List<String> sizeList,
         String status
 
         //String Foto,

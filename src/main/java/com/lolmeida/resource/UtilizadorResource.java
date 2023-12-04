@@ -66,14 +66,14 @@ public class UtilizadorResource {
         //return Response.ok(request).build();
 
         return Response
-                .ok(service.search("Mail", service.save(requestToObj(request))))
+                .ok(service.search("mail", service.save(requestToObj(request))))
                 .build();
     }
 
     private Utilizador requestToObj (UtilizadorRequest request){
         return Utilizador.builder()
                 .id(Utils.generateRandomString())
-                .Mail(request.Mail())
+                .mail(request.Mail())
                 .Nome(request.Nome())
                 .Telefone(request.Telefone())
                 .Morada(request.Morada())

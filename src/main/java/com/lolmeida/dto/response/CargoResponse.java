@@ -7,14 +7,15 @@ import lombok.Builder;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Builder
 public record CargoResponse(
         String cargoNumber,
-        Client client,
-        Client recipient,
+        String clientId,
+        String recipientId,
         double total,
-        List<Size> sizeList,
+        List<String> sizeList,
         String status,
 
 

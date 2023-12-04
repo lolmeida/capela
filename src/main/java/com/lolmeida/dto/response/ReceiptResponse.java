@@ -8,10 +8,10 @@ import java.time.LocalDateTime;
 
 @Builder
 public record ReceiptResponse(
-        Cargo cargo,
+        String cargoNumber,
         double amount,
         double otherAmount,
-        Client client,
+        String clientId,
 
         // BaseEntity
         String id,

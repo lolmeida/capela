@@ -28,7 +28,7 @@ public abstract class BaseEntity {
     @Column(name = "Anexo")
     protected String attachment;
 
-    @Column(name = "Utilizador")
+    @Column(name = "Utilizador",nullable = false)
     protected String createdBy;
 
     @Column(name = "Foto")
@@ -42,20 +42,20 @@ public abstract class BaseEntity {
 
     @Column(name = "Contador", columnDefinition = "INT DEFAULT 0")
     protected int Counter;
-    @Column(name = "TempoCriacao")
+    @Column(name = "TempoCriacao",nullable = false)
     protected Long createdTime;
 
     @Column(name = "TempoModificacao")
     protected Long updatedTime;
 
     @Version
-    @Column(name = "Versao", columnDefinition = "INT DEFAULT 0")
+    @Column(name = "Versao", columnDefinition = "INT DEFAULT 0",nullable = false)
     protected int version;
 
-    @Column(name = "Data", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "Data", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP",nullable = false)
     protected LocalDateTime date;
 
-    @Column(name = "DataCriacao", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "DataCriacao", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP",nullable = false)
     protected LocalDateTime createdAt;
 
     @Column(name = "DataModificacao", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")

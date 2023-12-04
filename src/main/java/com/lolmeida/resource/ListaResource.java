@@ -64,7 +64,7 @@ public class ListaResource {
         //return Response.ok(request).build();
 
         return Response
-                .ok(service.search("IdLista", service.save(requestToObj(request))))
+                .ok(service.search("id", service.save(requestToObj(request))))
                 .build();
     }
 
