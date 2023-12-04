@@ -77,6 +77,7 @@ public class SizeResource {
                 .length(request.length())
                 .width(request.width())
                 .volume(request.volume())
+                .cargo(request.cargo())
                 .build();
     }
 
@@ -86,6 +87,7 @@ public class SizeResource {
                 .length(entity.getLength())
                 .width(entity.getWidth())
                 .volume(entity.getVolume())
+                .cargo(entity.getCargo())
 
                 // BaseEntity
                 .active(entity.isActive())

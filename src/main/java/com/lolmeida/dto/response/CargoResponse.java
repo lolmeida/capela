@@ -1,6 +1,7 @@
 package com.lolmeida.dto.response;
 
 
+import com.lolmeida.entity.database.Cargo;
 import com.lolmeida.entity.database.Client;
 import com.lolmeida.entity.database.Size;
 import lombok.Builder;
@@ -17,6 +18,7 @@ public record CargoResponse(
         double total,
         List<Size> sizeList,
         String status,
+        Cargo cargo,
 
 
         // BaseEntity

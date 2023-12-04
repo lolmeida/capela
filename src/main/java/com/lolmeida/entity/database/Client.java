@@ -40,9 +40,8 @@ public class Client extends BaseEntity {
     private String email;
 
 
-
-
-    private List<String> cargoList;
+    @OneToMany(mappedBy = "client",cascade = CascadeType.ALL)
+    private List<Cargo> cargoList;
 
     private List<String> receiptList;
 
