@@ -19,4 +19,7 @@ public class TwilioConfiguration {
     @ConfigProperty(name = "twilio.phone.number")
     private String phoneNumber;
 
+    @ConfigProperty(name = "twilio.messaging.service.sid")
+    private String messagingServiceSid;
+
 }

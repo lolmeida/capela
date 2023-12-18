@@ -13,6 +13,8 @@ public class ClientService implements PeahRepository<Client> {
     @Inject
     ClientRepository repository;
 
+    @Inject NotificationService notification;
+
     @Override
     public List<Client> findAll(String... orderByColumns){
         return  repository.findAll(orderByColumns);
@@ -30,7 +32,11 @@ public class ClientService implements PeahRepository<Client> {
 
     @Override
     public String save(Client entity) {
-        return repository.save(entity);
+        String entityId = repository.save(entity);
+        notification.sendTwilioMessage(
+                entity.getPhoneNumber(),
+                String.format("Olá %s, Seja bem vindo. Temos muito gosto em ter voçê connosco!", entity.getName()));
+        return entityId;
     }
 
 

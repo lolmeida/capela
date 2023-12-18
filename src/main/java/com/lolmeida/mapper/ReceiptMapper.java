@@ -41,9 +41,9 @@ public class ReceiptMapper {
                 .createdAt(entity.getCreatedAt())
                 .createdTime(entity.getCreatedTime())
                 .updatedBy(entity.getUpdatedBy())
-                .updatedTime(entity.getUpdatedTime())
+                //.updatedTime(entity.getUpdatedTime())
                 .updatedAt(entity.getUpdatedAt())
-                .date(entity.getDate())
+                //.date(entity.getDate())
 
                 .build();
     }
