@@ -5,14 +5,18 @@ import com.lolmeida.entity.database.User;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Builder
-public record SizeResponse(
-        int volume,
-        double length,
-        double height,
-        double width,
-        String cargo,
+public record RecipientResponse(
+        String name,
+        String phoneNumber,
+        String address,
+        String type,
+        String email,
+        List<String> cargoList,
+
+
         String user,
 
 

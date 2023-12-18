@@ -1,20 +1,20 @@
 package com.lolmeida.dto.response;
 
-import com.lolmeida.entity.database.Cargo;
-import com.lolmeida.entity.database.User;
+
 import lombok.Builder;
 
 import java.time.LocalDateTime;
 
 @Builder
-public record SizeResponse(
-        int volume,
-        double length,
-        double height,
-        double width,
-        String cargo,
-        String user,
+public record UserResponse(
 
+        String email,
+        String name,
+        String phoneNumber,
+        String address,
+        String signature,
+        String privilege,
+        String permission,
 
 
         // BaseEntity
@@ -31,5 +31,7 @@ public record SizeResponse(
         LocalDateTime updatedAt,
         Long updatedTime,
         LocalDateTime date
-) {
+
+
+){
 }

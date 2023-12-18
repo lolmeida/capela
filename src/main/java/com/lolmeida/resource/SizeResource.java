@@ -1,10 +1,9 @@
 package com.lolmeida.resource;
 
-import com.lolmeida.Utils;
 import com.lolmeida.dto.request.SizeRequest;
 import com.lolmeida.dto.response.SizeResponse;
-import com.lolmeida.entity.database.Size;
-import com.lolmeida.service.DimensaoService;
+import com.lolmeida.mapper.SizeMapper;
+import com.lolmeida.service.SizeService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -15,21 +14,23 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import java.util.List;
 
-@Path("/dimensao")
+@Path("/size")
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class SizeResource {
     @Inject
-    DimensaoService service;
+    SizeService service;
+    @Inject
+    SizeMapper mapper;
 
     @GET
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
-        List data = service.findAll("cargo")
+        List<SizeResponse> data = service.findAll("date, id")
                 .stream()
-                .map(e ->objToResponse(e))
+                .map(e ->mapper.objToResponse(e))
                 .toList();
         return Response.ok(data).build();
     }
@@ -39,19 +40,19 @@ public class SizeResource {
     public Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value) {
-        List data = service.search( field, value)
+        List<SizeResponse> data = service.search(field, value)
                 .stream()
-                .map(e ->objToResponse(e))
+                .map(e ->mapper.objToResponse(e))
                 .toList();
         return Response.ok(data).build();
     }
 
     @GET
     @Path("/{id}")
-    public Response findByCustomer(@PathParam("id") final String id){
-        List data = service.findBy(id)
+    public Response findByCustomer(@PathParam("id") final String id) {
+        List<SizeResponse> data = service.findBy(id)
                 .stream()
-                .map(e ->objToResponse(e))
+                .map(e ->mapper.objToResponse(e))
                 .toList();
         return Response.ok(data).build();
     }
@@ -62,48 +63,13 @@ public class SizeResource {
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response save(@RequestBody SizeRequest request) {
-        service.save(requestToObj(request));
-        //return Response.ok(request).build();
+
+
+        service.save(mapper.requestToObj(request));
 
         return Response
-                .ok(service.search("id", service.save(requestToObj(request))))
+                .ok(service.search("id", service.save(mapper.requestToObj(request))))
                 .build();
     }
-
-    private Size requestToObj (SizeRequest request){
-        return Size.builder()
-                .id(Utils.generateRandomString())
-                .height(request.height())
-                .length(request.length())
-                .width(request.width())
-                .volume(request.volume())
-                .cargo(request.cargo())
-                .build();
-    }
-
-    private SizeResponse objToResponse (Size entity) {
-        return SizeResponse.builder()
-                .height(entity.getHeight())
-                .length(entity.getLength())
-                .width(entity.getWidth())
-                .volume(entity.getVolume())
-                .cargo(entity.getCargo())
-
-                // BaseEntity
-                .active(entity.isActive())
-                .note(entity.getNote())
-                .description(entity.getDescription())
-                .attachment(entity.getAttachment())
-                .image(entity.getImage())
-                .createdBy(entity.getCreatedBy())
-                .createdAt(entity.getCreatedAt())
-                .createdTime(entity.getCreatedTime())
-                .updatedBy(entity.getUpdatedBy())
-                .updatedTime(entity.getUpdatedTime())
-                .updatedAt(entity.getUpdatedAt())
-                .date(entity.getDate())
-
-                .build();
-    }
-
+    
 }

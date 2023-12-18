@@ -14,22 +14,22 @@ public interface PeahResource <T> {
     @GET
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAll();
+    Response getAll();
 
     @GET
     @Path("/search/{field}/{value}")
-    public Response search(
+    Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value);
 
     @GET
     @Path("/{id}")
-    public Response findByCustomer(
+    Response findByCustomer(
             @PathParam("id") final String id);
 
     @POST
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response save(@RequestBody T request);
+    Response save(@RequestBody T request);
 
 }

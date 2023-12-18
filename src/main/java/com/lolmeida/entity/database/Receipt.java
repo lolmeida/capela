@@ -20,27 +20,20 @@ import java.util.List;
 @Table(name = "tRecebimentos") //, schema = "sql7509759")
 public class Receipt extends BaseEntity {
     @Id
-    @Column(name = "Chave")
     private String id;
 
-    @Column(name = "Outros")
     private double otherAmount;
 
-    @Column(name = "ValorPago")
     private double amount;
 
 
+    private String client;
 
-    @ManyToOne
-    @JoinColumn(name = "cargoNumber")
-    private Cargo cargo;
 
-    @ManyToOne
-    @JoinColumn(name = "clientId")
-    private Client client;
+    private String user;
 
-    @OneToMany(mappedBy = "cargoNumber", fetch = FetchType.LAZY)
-    private List<Cargo> sizeList;
+
+    private List<String> cargoList;
 
 }
 

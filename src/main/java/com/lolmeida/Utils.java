@@ -1,14 +1,13 @@
 package com.lolmeida;
 
 
+import com.lolmeida.entity.database.User;
+
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Random;
 
 public  class Utils {
-    public static long currentTime = System.currentTimeMillis(); //Instant.now().toEpochMilli();
-    public static LocalDateTime currentDateTime = LocalDateTime.now(ZoneId.of("UTC"));
-
 
     public  static String generateRandomString(){
         int leftLimit = 48; // letter 'a'
@@ -23,6 +22,18 @@ public  class Utils {
     }
 
     public static String activeUser() {
+        return "lolmeida@gmail.com";
+    }
+
+    public static Long getEpochTime() {
+        return System.currentTimeMillis();
+    }
+
+    public static LocalDateTime getLocalDateTime() {
+        return LocalDateTime.now(ZoneId.of("UTC"));
+    }
+
+    public static String getCurrentUser() {
         return "lolmeida@gmail.com";
     }
 }

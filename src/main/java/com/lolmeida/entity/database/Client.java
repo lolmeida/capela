@@ -3,17 +3,14 @@ package com.lolmeida.entity.database;
 
 import com.lolmeida.entity.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
-import java.util.Set;
 
 
-@Data
+@Getter
+@Setter
 @Slf4j
 @Builder
 @NoArgsConstructor
@@ -24,24 +21,28 @@ import java.util.Set;
 public class Client extends BaseEntity {
     @Id
     private String id;
-    @Column(name = "Client",nullable = false)
+
+
     private String name;
 
-    @Column(name = "Telefone",nullable = true)
+
     private String phoneNumber;
 
-    @Column(name = "Morada",nullable = true)
+
     private String address;
 
-    @Column(name = "Tipo",nullable = false) 
+
     private String type;
 
-    @Column(name = "Email",nullable = false)
+
     private String email;
 
 
-    @OneToMany(mappedBy = "client",cascade = CascadeType.ALL)
-    private List<Cargo> cargoList;
+    private String user;
+
+
+    private List<String> cargoList;
+
 
     private List<String> receiptList;
 

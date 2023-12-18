@@ -1,9 +1,9 @@
 package com.lolmeida.resource;
 
-import com.lolmeida.dto.request.CargoRequest;
-import com.lolmeida.dto.response.CargoResponse;
-import com.lolmeida.mapper.CargoMapper;
-import com.lolmeida.service.CargoService;
+import com.lolmeida.dto.request.RecipientRequest;
+import com.lolmeida.dto.response.RecipientResponse;
+import com.lolmeida.mapper.RecipientMapper;
+import com.lolmeida.service.RecipientService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -14,21 +14,21 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import java.util.List;
 
-@Path("/cargo")
+@Path("/recipient")
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class CargoResource {
+public class RecipientResource {
     @Inject
-    CargoService service;
+    RecipientService service;
     @Inject
-    CargoMapper mapper;
+    RecipientMapper mapper;
 
     @GET
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
-        List<CargoResponse> data = service.findAll("date, cargoNumber")
+        List<RecipientResponse> data = service.findAll("date, id")
                 .stream()
                 .map(e ->mapper.objToResponse(e))
                 .toList();
@@ -40,7 +40,7 @@ public class CargoResource {
     public Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value) {
-        List<CargoResponse> data = service.search(field, value)
+        List<RecipientResponse> data = service.search(field, value)
                 .stream()
                 .map(e ->mapper.objToResponse(e))
                 .toList();
@@ -50,7 +50,7 @@ public class CargoResource {
     @GET
     @Path("/{id}")
     public Response findByCustomer(@PathParam("id") final String id) {
-        List<CargoResponse> data = service.findBy(id)
+        List<RecipientResponse> data = service.findBy(id)
                 .stream()
                 .map(e ->mapper.objToResponse(e))
                 .toList();
@@ -62,7 +62,8 @@ public class CargoResource {
     @POST
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response save(@RequestBody CargoRequest request) {
+    public Response save(@RequestBody RecipientRequest request) {
+
 
         service.save(mapper.requestToObj(request));
 
@@ -70,5 +71,5 @@ public class CargoResource {
                 .ok(service.search("id", service.save(mapper.requestToObj(request))))
                 .build();
     }
-
+    
 }

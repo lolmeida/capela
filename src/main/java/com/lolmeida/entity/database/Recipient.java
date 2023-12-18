@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -15,24 +17,31 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "tDimensoes") //, schema = "sql7509759")
-public class Size extends BaseEntity {
-
+@Table(name = "tDestinatario") //, schema = "sql7509759")
+public class Recipient extends BaseEntity {
     @Id
     private String id;
 
 
-    private int volume;
-
-    private double length;
+    private String name;
 
 
-    private double height;
+    private String phoneNumber;
 
 
-    private double width;
+    private String address;
 
+
+    private String type;
+
+
+    private String email;
 
 
     private String user;
+
+
+    private List<String> cargoList;
+
+
 }

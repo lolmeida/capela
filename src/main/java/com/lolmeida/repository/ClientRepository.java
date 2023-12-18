@@ -1,7 +1,7 @@
 package com.lolmeida.repository;
 
 import com.lolmeida.PeahRepository;
-import com.lolmeida.entity.database.Cargo;
+import com.lolmeida.entity.database.Client;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import io.quarkus.panache.common.Sort;
 import io.smallrye.common.constraint.NotNull;
@@ -12,25 +12,25 @@ import java.util.List;
 import java.util.UUID;
 
 @ApplicationScoped
-public class CargaPeahRepository implements PanacheRepositoryBase<Cargo, UUID>, PeahRepository<Cargo> {
+public class ClientRepository implements PanacheRepositoryBase<Client, UUID>, PeahRepository<Client> {
 
     @Override
-    public List<Cargo> findAll(String... orderByColumns) {
+    public List<Client> findAll(String... orderByColumns) {
         return listAll(Sort.descending(orderByColumns)).stream().toList();
     }
     @Override
-    public List<Cargo> search(@NotNull final String field, @NotNull final String value) {
+    public List<Client> search(@NotNull final String field, @NotNull final String value) {
         final String searchInput = "%" + value.toLowerCase() + "%";
         return list("LOWER(" + field + ") like ?1", searchInput.toLowerCase());
     }
     @Override
-    public List<Cargo> findBy(final String id) {
+    public List<Client> findBy(final String id) {
         return list("Client like ?1", id);
     }
 
     @Override
     @Transactional
-    public String save(Cargo entity) {
+    public String save(Client entity) {
         persistAndFlush(entity);
         return entity.getId();
     }
