@@ -5,6 +5,8 @@ import com.lolmeida.entity.database.Cargo;
 import com.lolmeida.repository.CargaPeahRepository;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
+import org.eclipse.microprofile.reactive.messaging.Channel;
+import org.eclipse.microprofile.reactive.messaging.Emitter;
 
 import java.util.List;
 
@@ -12,6 +14,10 @@ import java.util.List;
 public class CargoService implements PeahRepository<Cargo> {
     @Inject
     CargaPeahRepository repository;
+
+    @Inject
+    @Channel("sms-notifications")
+    Emitter<String> smsEmitter;
 
     @Override
     public List<Cargo> findAll(String... orderByColumns){
@@ -30,7 +36,9 @@ public class CargoService implements PeahRepository<Cargo> {
 
     @Override
     public String save(Cargo entity) {
-        return repository.save(entity);
+        String entityId = repository.save(entity);
+        smsEmitter.send(entityId);
+        return entityId;
     }
 
 

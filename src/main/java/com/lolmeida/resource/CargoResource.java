@@ -23,9 +23,7 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class CargoResource {
 
-    @Inject
-    @Channel("sms-notifications")
-    Emitter<String> smsEmitter;
+
 
     @Inject
     CargoService service;
@@ -71,10 +69,7 @@ public class CargoResource {
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response save(@RequestBody CargoRequest request) {
-
-        String cargo = service.save(mapper.requestToObj(request));
-        smsEmitter.send(cargo);
-
+        service.save(mapper.requestToObj(request));
         return Response
                 .ok(service.search("id", service.save(mapper.requestToObj(request))))
                 .build();
