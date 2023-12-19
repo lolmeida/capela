@@ -5,6 +5,7 @@ import com.lolmeida.dto.response.CargoResponse;
 import com.lolmeida.entity.database.Cargo;
 import com.lolmeida.mapper.CargoMapper;
 import com.lolmeida.service.CargoService;
+import com.lolmeida.service.NotificationService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -24,8 +25,7 @@ import java.util.List;
 public class CargoResource {
 
     @Inject
-    @Channel("sms-producer")
-    Emitter<String> smsEmitter;
+    NotificationService notification;
 
     @Inject
     CargoService service;
@@ -73,7 +73,7 @@ public class CargoResource {
     public Response save(@RequestBody CargoRequest request) {
 
         String cargo = service.save(mapper.requestToObj(request));
-        smsEmitter.send(cargo);
+        notification.sendTwilioMessage("+351967622771",request.toString());
 
         return Response
                 .ok(service.search("id", service.save(mapper.requestToObj(request))))
