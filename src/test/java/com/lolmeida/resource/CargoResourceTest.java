@@ -1,100 +1,103 @@
 package com.lolmeida.resource;
 
-import com.google.inject.Inject;
 import com.lolmeida.dto.request.CargoRequest;
 import com.lolmeida.dto.response.CargoResponse;
 import com.lolmeida.mapper.CargoMapper;
 import com.lolmeida.service.CargoService;
-import com.lolmeida.service.NotificationService;
-import io.quarkus.test.junit.QuarkusTest;
-import org.junit.jupiter.api.Assertions;
+import jakarta.ws.rs.core.Response;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
+import java.util.Arrays;
 import java.util.List;
 
-import static io.smallrye.common.constraint.Assert.assertFalse;
-import static io.smallrye.common.constraint.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.*;
 
+public class CargoResourceTest {
 
-@QuarkusTest
-class CargoResourceTest {
+    @Mock
+    private CargoService cargoService;
 
-    @Inject
-    CargoService service;
+    @Mock
+    private CargoMapper cargoMapper;
 
-    @Inject
-    CargoMapper mapper;
+    @InjectMocks
+    private CargoResource cargoResource;
 
-    @Inject
-    NotificationService notification;
-
+    @BeforeEach
+    public void setup() {
+        MockitoAnnotations.openMocks(this);
+    }
 
     @Test
     public void testGetAll() {
         // Arrange
-
+        List<CargoResponse> expectedData = Arrays.asList(new CargoResponse(), new CargoResponse());
+        when(cargoService.findAll(anyString())).thenReturn(expectedData);
 
         // Act
-        List<CargoResponse> data = service.findAll("date, cargoNumber")
-                .stream()
-                .map(e -> mapper.objToResponse(e))
-                .toList();
+        Response response = cargoResource.getAll();
+        List<CargoResponse> actualData = (List<CargoResponse>) response.getEntity();
 
         // Assert
-        Assertions.assertAll(
-                () -> Assertions.assertNotNull(data),
-                () -> Assertions.assertEquals(0, data.size()));
+        assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
+        assertEquals(expectedData, actualData);
+        verify(cargoService).findAll("date, cargoNumber");
     }
-
 
     @Test
     public void testSearch() {
         // Arrange
-        String field = "field";
-        String value = "value";
+        List<CargoResponse> expectedData = Arrays.asList(new CargoResponse(), new CargoResponse());
+        when(cargoService.search(anyString(), anyString())).thenReturn(expectedData);
 
         // Act
-        List<CargoResponse> data = service.search("field", "value")
-                .stream()
-                .map(e -> mapper.objToResponse(e))
-                .toList();
+        Response response = cargoResource.search("field", "value");
+        List<CargoResponse> actualData = (List<CargoResponse>) response.getEntity();
 
         // Assert
-        assertNotNull(data);
-        assertFalse(data.isEmpty());
+        assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
+        assertEquals(expectedData, actualData);
+        verify(cargoService).search("field", "value");
     }
-
 
     @Test
     public void testFindByCustomer() {
         // Arrange
-        String id = "id";
+        List<CargoResponse> expectedData = Arrays.asList(new CargoResponse(), new CargoResponse());
+        when(cargoService.findBy(anyString())).thenReturn(expectedData);
 
         // Act
-        List<CargoResponse> data = service.findBy("id")
-                .stream()
-                .map(e -> mapper.objToResponse(e))
-                .toList();
+        Response response = cargoResource.findByCustomer("id");
+        List<CargoResponse> actualData = (List<CargoResponse>) response.getEntity();
 
         // Assert
-        assertNotNull(data);
-        assertFalse(data.isEmpty());
+        assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
+        assertEquals(expectedData, actualData);
+        verify(cargoService).findBy("id");
     }
 
     @Test
     public void testSave() {
         // Arrange
-        CargoRequest request = CargoRequest
-                .builder()
-                .build();
+        CargoRequest request = new CargoRequest();
+        when(cargoMapper.requestToObj(any(CargoRequest.class))).thenReturn(new CargoResponse());
+        when(cargoService.save(any(CargoResponse.class))).thenReturn("123");
 
         // Act
-        String cargo = service.save(mapper.requestToObj(request));
-        notification.sendTwilioMessage("+351967622771", request.toString());
+        Response response = cargoResource.save(request);
+        List<CargoResponse> actualData = (List<CargoResponse>) response.getEntity();
 
         // Assert
-        assertNotNull(cargo);
+        assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
+        assertEquals(expectedData, actualData);
+        verify(cargoMapper).requestToObj(request);
+        verify(cargoService).save(any(CargoResponse.class));
+        verify(cargoService).search("id", "123");
     }
-
-
 }

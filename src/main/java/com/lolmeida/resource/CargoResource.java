@@ -2,18 +2,14 @@ package com.lolmeida.resource;
 
 import com.lolmeida.dto.request.CargoRequest;
 import com.lolmeida.dto.response.CargoResponse;
-import com.lolmeida.entity.database.Cargo;
 import com.lolmeida.mapper.CargoMapper;
 import com.lolmeida.service.CargoService;
-import com.lolmeida.service.NotificationService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
-import org.eclipse.microprofile.reactive.messaging.Channel;
-import org.eclipse.microprofile.reactive.messaging.Emitter;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import java.util.List;
@@ -23,10 +19,6 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class CargoResource {
-
-    @Inject
-    NotificationService notification;
-
     @Inject
     CargoService service;
     @Inject
@@ -72,8 +64,7 @@ public class CargoResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response save(@RequestBody CargoRequest request) {
 
-        String cargo = service.save(mapper.requestToObj(request));
-        notification.sendTwilioMessage("+351967622771",request.toString());
+        service.save(mapper.requestToObj(request));
 
         return Response
                 .ok(service.search("id", service.save(mapper.requestToObj(request))))

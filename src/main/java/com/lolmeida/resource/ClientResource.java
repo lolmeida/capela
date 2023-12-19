@@ -68,7 +68,7 @@ public class ClientResource {
         service.save(mapper.requestToObj(request));
 
         return Response
-                .ok(service.search("id", service.save(mapper.requestToObj(request))))
+                .ok(service.search("name", service.save(mapper.requestToObj(request))))
                 .build();
     }
 
