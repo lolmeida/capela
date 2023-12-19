@@ -9,6 +9,10 @@ import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.ws.rs.core.Response;
+import org.eclipse.microprofile.reactive.messaging.Channel;
+import org.eclipse.microprofile.reactive.messaging.Emitter;
+import org.eclipse.microprofile.reactive.messaging.Incoming;
 
 import java.io.IOException;
 
@@ -20,18 +24,17 @@ public class NotificationService {
     @Inject
     SlackConfiguration slackConfiguration;
 
-    public void sendTwilioMessage(String toPhoneNumber, String message) {
+    @Inject
+    @Channel("sms-consumer")
+    Emitter<String> emitter;
+
+    public Response sendTwilioMessage(String toPhoneNumber, String message) {
         Twilio.init(twilioConfiguration.getAccountSid(), twilioConfiguration.getAuthToken());
 
         Message.
                 creator(new PhoneNumber(toPhoneNumber), new PhoneNumber(twilioConfiguration.getPhoneNumber()), message)
                 .create();
-
-        /*Message message1 = Message
-                .creator(new PhoneNumber(String.format("whatsapp:%s", toPhoneNumber)), new PhoneNumber(String.format("whatsapp:%s",twilioConfiguration.getPhoneNumber())), message)
-                .setMessagingServiceSid(twilioConfiguration.getMessagingServiceSid())
-                .create();
-        System.out.println(message1.getMessagingServiceSid());*/
+        return Response.ok(String.format("Message %s sent to %s", message, toPhoneNumber)).build();
     }
 
     public void sendSlackMessage(String channel, String messageText) {
@@ -42,5 +45,11 @@ public class NotificationService {
         } catch (IOException | SlackApiException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Incoming("kafka")
+    public Response sendKafkaMessage(String message) {
+        emitter.send(message);
+        return Response.ok(String.format("Message %s sent.",message)).build();
     }
 }

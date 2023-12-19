@@ -24,7 +24,7 @@ import java.util.List;
 public class CargoResource {
 
     @Inject
-    @Channel("sms-notifications")
+    @Channel("sms-producer")
     Emitter<String> smsEmitter;
 
     @Inject
