@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @ApplicationScoped
-public class CargaPeahRepository implements PanacheRepositoryBase<Cargo, UUID>, PeahRepository<Cargo> {
+public class CargoRepository implements PanacheRepositoryBase<Cargo, UUID>, PeahRepository<Cargo> {
 
     @Override
     public List<Cargo> findAll(String... orderByColumns) {

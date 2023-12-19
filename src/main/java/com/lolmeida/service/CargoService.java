@@ -2,7 +2,7 @@ package com.lolmeida.service;
 
 import com.lolmeida.PeahRepository;
 import com.lolmeida.entity.database.Cargo;
-import com.lolmeida.repository.CargaPeahRepository;
+import com.lolmeida.repository.CargoRepository;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
@@ -11,7 +11,7 @@ import java.util.List;
 @RequestScoped
 public class CargoService implements PeahRepository<Cargo> {
     @Inject
-    CargaPeahRepository repository;
+    CargoRepository repository;
 
     @Override
     public List<Cargo> findAll(String... orderByColumns){
