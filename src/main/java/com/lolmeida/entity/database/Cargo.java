@@ -2,6 +2,7 @@ package com.lolmeida.entity.database;
 
 
 import com.lolmeida.entity.BaseEntity;
+import com.lolmeida.entity.CargoStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
@@ -35,7 +36,7 @@ public class Cargo extends BaseEntity {
     private String sendListId;
 
 
-    private String status;
+    private CargoStatus status;
 
 
     private String type;

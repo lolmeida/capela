@@ -1,4 +1,4 @@
-package com.lolmeida;
+package com.lolmeida.utils;
 
 
 import com.lolmeida.entity.database.User;

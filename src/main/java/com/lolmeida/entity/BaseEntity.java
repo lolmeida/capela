@@ -1,6 +1,6 @@
 package com.lolmeida.entity;
 
-import com.lolmeida.Utils;
+import com.lolmeida.utils.Utils;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;

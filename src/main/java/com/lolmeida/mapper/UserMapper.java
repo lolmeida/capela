@@ -1,6 +1,6 @@
 package com.lolmeida.mapper;
 
-import com.lolmeida.Utils;
+import com.lolmeida.utils.Utils;
 import com.lolmeida.dto.request.UserRequest;
 import com.lolmeida.dto.response.UserResponse;
 import com.lolmeida.entity.database.User;
