@@ -1,12 +1,9 @@
 package com.lolmeida.dto.response;
 
-import com.lolmeida.entity.database.Cargo;
-import com.lolmeida.entity.database.Client;
-import com.lolmeida.entity.database.User;
-import lombok.Builder;
-
 import java.time.LocalDateTime;
 import java.util.List;
+
+import lombok.Builder;
 
 @Builder
 public record ReceiptResponse(

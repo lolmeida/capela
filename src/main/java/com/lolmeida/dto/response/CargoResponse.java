@@ -1,18 +1,16 @@
 package com.lolmeida.dto.response;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.lolmeida.entity.CargoStatus;
-import com.lolmeida.entity.database.Client;
-import com.lolmeida.entity.database.Recipient;
-import com.lolmeida.entity.database.Size;
-import com.lolmeida.entity.database.User;
-import com.lolmeida.openapi.Examples;
-import lombok.Builder;
-import org.eclipse.microprofile.openapi.annotations.media.Schema;
-
 import java.time.LocalDateTime;
 import java.util.List;
+
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+
+import lombok.Builder;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.lolmeida.entity.CargoStatus;
+import com.lolmeida.openapi.Examples;
 
 @Builder
 public record CargoResponse(

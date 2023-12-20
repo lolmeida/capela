@@ -1,20 +1,25 @@
 package com.lolmeida.resource;
 
-import com.lolmeida.dto.request.UserRequest;
-import com.lolmeida.dto.response.UserResponse;
-import com.lolmeida.mapper.UserMapper;
-import com.lolmeida.service.UserService;
+import java.util.Arrays;
+import java.util.List;
+
 import jakarta.ws.rs.core.Response;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.Arrays;
-import java.util.List;
+import com.lolmeida.dto.request.UserRequest;
+import com.lolmeida.dto.response.UserResponse;
+import com.lolmeida.mapper.UserMapper;
+import com.lolmeida.service.UserService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class UserResourceTest {
 

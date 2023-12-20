@@ -1,11 +1,19 @@
 package com.lolmeida.entity;
 
-import com.lolmeida.utils.Utils;
-import jakarta.persistence.*;
-import lombok.*;
+import java.time.LocalDateTime;
+
+import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
+import jakarta.persistence.Version;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
-import java.time.LocalDateTime;
+import com.lolmeida.utils.Utils;
 
 @Getter
 @Setter

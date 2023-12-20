@@ -1,10 +1,8 @@
 package com.lolmeida.dto.request;
 
-import com.lolmeida.entity.database.Cargo;
-import com.lolmeida.entity.database.Client;
-import lombok.Builder;
-
 import java.util.List;
+
+import lombok.Builder;
 
 @Builder
 public record ReceiptRequest(

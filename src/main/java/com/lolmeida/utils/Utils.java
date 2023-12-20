@@ -1,8 +1,6 @@
 package com.lolmeida.utils;
 
 
-import com.lolmeida.entity.database.User;
-
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Random;

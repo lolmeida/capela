@@ -2,8 +2,10 @@ package com.lolmeida.config;
 
 
 import jakarta.enterprise.context.ApplicationScoped;
-import lombok.Data;
+
 import org.eclipse.microprofile.config.inject.ConfigProperty;
+
+import lombok.Data;
 
 @Data
 @ApplicationScoped

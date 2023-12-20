@@ -1,12 +1,13 @@
 package com.lolmeida.service;
 
-import com.lolmeida.PeahRepository;
-import com.lolmeida.entity.database.Receipt;
-import com.lolmeida.repository.ReceiptRepository;
+import java.util.List;
+
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
-import java.util.List;
+import com.lolmeida.PeahRepository;
+import com.lolmeida.entity.database.Receipt;
+import com.lolmeida.repository.ReceiptRepository;
 
 @RequestScoped
 public class ReceiptService implements PeahRepository<Receipt> {

@@ -1,10 +1,11 @@
 package com.lolmeida.mapper;
 
-import com.lolmeida.utils.Utils;
+import jakarta.enterprise.context.Dependent;
+
 import com.lolmeida.dto.request.ReceiptRequest;
 import com.lolmeida.dto.response.ReceiptResponse;
 import com.lolmeida.entity.database.Receipt;
-import jakarta.enterprise.context.Dependent;
+import com.lolmeida.utils.Utils;
 
 @Dependent
 public class ReceiptMapper {

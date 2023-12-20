@@ -1,7 +1,7 @@
 package com.lolmeida.dto.request;
 
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.Pattern;
+
 import lombok.Builder;
 
 @Builder

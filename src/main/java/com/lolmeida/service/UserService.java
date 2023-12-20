@@ -1,12 +1,13 @@
 package com.lolmeida.service;
 
-import com.lolmeida.PeahRepository;
-import com.lolmeida.entity.database.User;
-import com.lolmeida.repository.UserRepository;
+import java.util.List;
+
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
-import java.util.List;
+import com.lolmeida.PeahRepository;
+import com.lolmeida.entity.database.User;
+import com.lolmeida.repository.UserRepository;
 
 @RequestScoped
 public class UserService implements PeahRepository<User> {

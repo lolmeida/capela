@@ -1,11 +1,13 @@
 package com.lolmeida.dto.request;
 
-import com.lolmeida.entity.CargoStatus;
-import com.lolmeida.openapi.Examples;
-import lombok.Builder;
+import java.util.List;
+
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
-import java.util.List;
+import lombok.Builder;
+
+import com.lolmeida.entity.CargoStatus;
+import com.lolmeida.openapi.Examples;
 
 @Builder
 public record CargoRequest(

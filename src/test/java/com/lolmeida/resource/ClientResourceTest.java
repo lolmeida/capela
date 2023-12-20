@@ -1,30 +1,35 @@
 package com.lolmeida.resource;
 
+import java.util.Arrays;
+import java.util.List;
+
+import jakarta.ws.rs.core.Response;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.MockitoAnnotations;
+
+import com.google.inject.Inject;
 import com.lolmeida.dto.request.ClientRequest;
 import com.lolmeida.dto.response.ClientResponse;
 import com.lolmeida.mapper.ClientMapper;
 import com.lolmeida.service.ClientService;
-import jakarta.ws.rs.core.Response;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-
-import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class ClientResourceTest {
 
-    @Mock
+    @Inject
     private ClientService clientService;
 
-    @Mock
+    @Inject
     private ClientMapper clientMapper;
 
+    
     private ClientResource clientResource;
 
     @BeforeEach

@@ -1,22 +1,25 @@
 package com.lolmeida.repository;
 
-import com.lolmeida.entity.database.Client;
-import io.quarkus.panache.common.Sort;
-import io.smallrye.common.constraint.NotNull;
+import java.util.Arrays;
+import java.util.List;
+import java.util.UUID;
+
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
+import io.quarkus.panache.common.Sort;
+
+import com.lolmeida.entity.database.Client;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ApplicationScoped
 public class ClientRepositoryTest {

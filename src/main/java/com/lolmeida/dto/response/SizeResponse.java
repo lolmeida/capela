@@ -1,10 +1,8 @@
 package com.lolmeida.dto.response;
 
-import com.lolmeida.entity.database.Cargo;
-import com.lolmeida.entity.database.User;
-import lombok.Builder;
-
 import java.time.LocalDateTime;
+
+import lombok.Builder;
 
 @Builder
 public record SizeResponse(

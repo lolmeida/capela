@@ -1,12 +1,13 @@
 package com.lolmeida.service;
 
-import com.lolmeida.PeahRepository;
-import com.lolmeida.entity.database.Size;
-import com.lolmeida.repository.SizeRepository;
+import java.util.List;
+
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
-import java.util.List;
+import com.lolmeida.PeahRepository;
+import com.lolmeida.entity.database.Size;
+import com.lolmeida.repository.SizeRepository;
 
 @RequestScoped
 public class SizeService implements PeahRepository<Size> {

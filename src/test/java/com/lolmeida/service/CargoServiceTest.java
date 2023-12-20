@@ -1,23 +1,28 @@
 package com.lolmeida.service;
 
-import com.lolmeida.entity.database.Cargo;
-import com.lolmeida.repository.CargaPeahRepository;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.Arrays;
-import java.util.List;
+import com.lolmeida.entity.database.Cargo;
+import com.lolmeida.repository.CargaPeahRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.anyString;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class CargoServiceTest {
 
     @Mock
     private CargaPeahRepository repository;
 
+    @Mock
     private CargoService cargoService;
 
     @BeforeEach

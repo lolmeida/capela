@@ -1,10 +1,18 @@
 package com.lolmeida.entity.database;
 
 
-import com.lolmeida.entity.BaseEntity;
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+
+import com.lolmeida.entity.BaseEntity;
 
 
 @Getter

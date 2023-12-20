@@ -1,5 +1,15 @@
 package com.lolmeida.service;
 
+import java.io.IOException;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.core.Response;
+
+import org.eclipse.microprofile.reactive.messaging.Channel;
+import org.eclipse.microprofile.reactive.messaging.Emitter;
+import org.eclipse.microprofile.reactive.messaging.Incoming;
+
 import com.lolmeida.config.SlackConfiguration;
 import com.lolmeida.config.TwilioConfiguration;
 import com.slack.api.Slack;
@@ -7,14 +17,6 @@ import com.slack.api.methods.SlackApiException;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
-import jakarta.ws.rs.core.Response;
-import org.eclipse.microprofile.reactive.messaging.Channel;
-import org.eclipse.microprofile.reactive.messaging.Emitter;
-import org.eclipse.microprofile.reactive.messaging.Incoming;
-
-import java.io.IOException;
 
 @ApplicationScoped
 public class NotificationService {

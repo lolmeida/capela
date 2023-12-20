@@ -1,18 +1,24 @@
 package com.lolmeida.resource;
 
+import java.util.List;
+
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+
+import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
+import org.jboss.resteasy.annotations.jaxrs.PathParam;
+
 import com.lolmeida.dto.request.ReceiptRequest;
 import com.lolmeida.dto.response.ReceiptResponse;
 import com.lolmeida.mapper.ReceiptMapper;
 import com.lolmeida.service.ReceiptService;
-import jakarta.enterprise.context.RequestScoped;
-import jakarta.inject.Inject;
-import jakarta.ws.rs.*;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
-import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
-import org.jboss.resteasy.annotations.jaxrs.PathParam;
-
-import java.util.List;
 
 @Path("/receipt")
 @RequestScoped

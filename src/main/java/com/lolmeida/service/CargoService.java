@@ -1,12 +1,13 @@
 package com.lolmeida.service;
 
-import com.lolmeida.PeahRepository;
-import com.lolmeida.entity.database.Cargo;
-import com.lolmeida.repository.CargaPeahRepository;
+import java.util.List;
+
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
-import java.util.List;
+import com.lolmeida.PeahRepository;
+import com.lolmeida.entity.database.Cargo;
+import com.lolmeida.repository.CargaPeahRepository;
 
 @RequestScoped
 public class CargoService implements PeahRepository<Cargo> {

@@ -1,10 +1,11 @@
 package com.lolmeida.mapper;
 
-import com.lolmeida.utils.Utils;
+import jakarta.enterprise.context.Dependent;
+
 import com.lolmeida.dto.request.UserRequest;
 import com.lolmeida.dto.response.UserResponse;
 import com.lolmeida.entity.database.User;
-import jakarta.enterprise.context.Dependent;
+import com.lolmeida.utils.Utils;
 
 @Dependent
 public class UserMapper {

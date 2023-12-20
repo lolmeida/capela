@@ -1,15 +1,17 @@
 package com.lolmeida.repository;
 
-import com.lolmeida.PeahRepository;
-import com.lolmeida.entity.database.Receipt;
-import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
-import io.quarkus.panache.common.Sort;
-import io.smallrye.common.constraint.NotNull;
+import java.util.List;
+import java.util.UUID;
+
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 
-import java.util.List;
-import java.util.UUID;
+import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
+import io.quarkus.panache.common.Sort;
+import io.smallrye.common.constraint.NotNull;
+
+import com.lolmeida.PeahRepository;
+import com.lolmeida.entity.database.Receipt;
 
 @ApplicationScoped
 public class ReceiptRepository implements PanacheRepositoryBase<Receipt, UUID>, PeahRepository<Receipt> {
