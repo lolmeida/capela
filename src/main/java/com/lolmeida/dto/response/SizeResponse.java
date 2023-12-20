@@ -1,3 +1,6 @@
+/**
+ * Represents a response object containing size information.
+ */
 package com.lolmeida.dto.response;
 
 import java.time.LocalDateTime;

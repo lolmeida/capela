@@ -1,3 +1,6 @@
+/**
+ * Represents a request object for a recipient.
+ */
 package com.lolmeida.dto.request;
 
 import lombok.Builder;

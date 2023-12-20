@@ -1,3 +1,8 @@
+/**
+ * Represents a response object for a cargo.
+ * This class contains information about the cargo, such as cargo number, client name, recipient name, total amount, cargo status, and cargo size list.
+ * It also inherits properties from the BaseEntity class, such as user, id, active, note, description, comments, attachment, image, createdBy, createdAt, createdTime, updatedBy, updatedAt, updatedTime, and date.
+ */
 package com.lolmeida.dto.response;
 
 

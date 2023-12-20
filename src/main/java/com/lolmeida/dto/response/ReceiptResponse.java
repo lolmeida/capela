@@ -1,3 +1,6 @@
+/**
+ * Represents a response object for a receipt.
+ */
 package com.lolmeida.dto.response;
 
 import java.time.LocalDateTime;

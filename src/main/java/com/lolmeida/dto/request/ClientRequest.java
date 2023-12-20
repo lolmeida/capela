@@ -1,3 +1,7 @@
+/**
+ * Represents a client request.
+ * This class is used to transfer client data from the client to the server.
+ */
 package com.lolmeida.dto.request;
 
 import jakarta.validation.constraints.Pattern;
