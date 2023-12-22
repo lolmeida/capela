@@ -43,6 +43,45 @@ Or, if you don't have GraalVM installed, you can run the native executable build
 ./mvnw package -Dnative -Dquarkus.native.container-build=true
 ```
 
+
+## Run tests
+** Checkstyle **
+``` shell script
+mvn verify -DskipTests -DskipUTs -DskipFTs -DskipPTs -DskipDcs
+```
+
+** Unit tests **
+```shell script
+mvn test -Dcheckstyle.skip=true -DskipUTs -DskipFTs -DskipPTs -DskipDcs
+```
+
+** Functional tests **
+```shell script
+mvn verify -Dcheckstyle.skip=true - Dquarkus.profile=test -DskipUTs  -DskipPTs -DskipDcs
+```
+
+
+### Installing 
+## Dependencies updating
+Use the versions-maven-plugin to update the dependencies versions
+```shell script
+mvn versions:display-plugin-updates
+```
+
+Display the dependencies tree
+```shell script
+mvn dependency:tree
+```
+
+## OWASP vulnerability check
+run as OWASP scan to check POM for vulnerabilities
+```shell script
+mvn verify -Dcheckstyle.skip=true -DskipUTs  -DskipPTs -DskipDcs
+```
+
+
+
+
 You can then execute your native executable with: `./target/capela-1.0.0-SNAPSHOT-runner`
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.

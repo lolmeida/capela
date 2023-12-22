@@ -78,7 +78,7 @@
 |---------|---------------------------------------------------------------------------------------------------------------------------------|
 | gaa     | git add --all                                                                                                                   |
 | gau     | git add --update                                                                                                                |
-| gacp    | git add --all && git commit -m                                                                                                  |
+| gacm    | git add --all && git commit -m                                                                                                  |
 | gb      | git branch                                                                                                                      |
 | gbr     | git branch --remote                                                                                                             |
 | ggsup   | git branch --set-upstream-to=origin/$(git_current_branch)                                                                       |
