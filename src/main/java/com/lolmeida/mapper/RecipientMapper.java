@@ -9,7 +9,7 @@ import com.lolmeida.utils.Utils;
 
 @Dependent
 public class RecipientMapper {
-    public Recipient requestToObj(RecipientRequest request) {
+    public Recipient requestToObj(final RecipientRequest request) {
         return Recipient.builder()
                 .id(Utils.generateRandomString())
                 .name(request.name())
@@ -21,7 +21,7 @@ public class RecipientMapper {
                 .build();
     }
 
-    public RecipientResponse objToResponse(Recipient entity) {
+    public RecipientResponse objToResponse(final Recipient entity) {
         return RecipientResponse.builder()
                 .id(entity.getId())
                 .name(entity.getName())

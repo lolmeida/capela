@@ -15,22 +15,22 @@ public class SizeService implements PeahRepository<Size> {
     SizeRepository repository;
 
     @Override
-    public List<Size> findAll(String... orderByColumns){
+    public List<Size> findAll(final String... orderByColumns) {
         return  repository.findAll(orderByColumns);
     }
 
     @Override
-    public List<Size> search(String field, String value) {
+    public List<Size> search(final String field, final String value) {
         return repository.search(field, value);
     }
 
     @Override
-    public List<Size> findBy(String id) {
+    public List<Size> findBy(final String id) {
         return repository.findBy(id);
     }
 
     @Override
-    public String save(Size entity) {
+    public String save(final Size entity) {
         return repository.save(entity);
     }
 

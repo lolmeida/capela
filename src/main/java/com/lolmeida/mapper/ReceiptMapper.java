@@ -9,7 +9,7 @@ import com.lolmeida.utils.Utils;
 
 @Dependent
 public class ReceiptMapper {
-    public Receipt requestToObj(ReceiptRequest request) {
+    public Receipt requestToObj(final ReceiptRequest request) {
         return Receipt.builder()
                 .id(Utils.generateRandomString())
                 .otherAmount(request.otherAmount())
@@ -21,7 +21,7 @@ public class ReceiptMapper {
                 .build();
     }
 
-    public ReceiptResponse objToResponse(Receipt entity) {
+    public ReceiptResponse objToResponse(final Receipt entity) {
         return ReceiptResponse.builder()
                 .id(entity.getId())
                 .otherAmount(entity.getOtherAmount())

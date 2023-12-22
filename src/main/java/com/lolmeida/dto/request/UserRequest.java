@@ -12,5 +12,5 @@ public record UserRequest(
         String name,
         String phoneNumber,
         String address,
-        String signature){
+        String signature) {
 }

@@ -17,7 +17,7 @@ import com.lolmeida.entity.database.User;
 public class UserRepository implements PanacheRepositoryBase<User, UUID>, PeahRepository<User> {
 
     @Override
-    public List<User> findAll(String... orderByColumns) {
+    public List<User> findAll(final String... orderByColumns) {
         return listAll(Sort.descending(orderByColumns)).stream().toList();
     }
     @Override
@@ -32,7 +32,7 @@ public class UserRepository implements PanacheRepositoryBase<User, UUID>, PeahRe
 
     @Override
     @Transactional
-    public String save(User entity) {
+    public String save(final User entity) {
         persistAndFlush(entity);
         return entity.getId();
     }

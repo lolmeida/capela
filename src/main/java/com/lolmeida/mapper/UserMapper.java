@@ -9,7 +9,7 @@ import com.lolmeida.utils.Utils;
 
 @Dependent
 public class UserMapper {
-    public User requestToObj(UserRequest request) {
+    public User requestToObj(final UserRequest request) {
         return User.builder()
                 .id(Utils.generateRandomString())
                 .name(request.name())
@@ -21,7 +21,7 @@ public class UserMapper {
                 .build();
     }
 
-    public UserResponse objToResponse(User entity) {
+    public UserResponse objToResponse(final User entity) {
         return UserResponse.builder()
 
                 .email(entity.getEmail())

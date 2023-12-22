@@ -17,7 +17,7 @@ import com.lolmeida.entity.database.Client;
 public class ClientRepository implements PanacheRepositoryBase<Client, UUID>, PeahRepository<Client> {
 
     @Override
-    public List<Client> findAll(String... orderByColumns) {
+    public List<Client> findAll(final String... orderByColumns) {
         return listAll(Sort.descending(orderByColumns)).stream().toList();
     }
     @Override
@@ -32,7 +32,7 @@ public class ClientRepository implements PanacheRepositoryBase<Client, UUID>, Pe
 
     @Override
     @Transactional
-    public String save(Client entity) {
+    public String save(final Client entity) {
         persistAndFlush(entity);
         return entity.getId();
     }

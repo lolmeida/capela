@@ -9,7 +9,7 @@ import com.lolmeida.utils.Utils;
 
 @Dependent
 public class SizeMapper {
-    public Size requestToObj(SizeRequest request) {
+    public Size requestToObj(final SizeRequest request) {
         return Size.builder()
                 .id(Utils.generateRandomString())
                 .volume(request.volume())
@@ -20,7 +20,7 @@ public class SizeMapper {
                 .build();
     }
 
-    public SizeResponse objToResponse(Size entity) {
+    public SizeResponse objToResponse(final Size entity) {
         return SizeResponse.builder()
                 .id(entity.getId())
                 .volume(entity.getVolume())

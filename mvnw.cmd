@@ -161,7 +161,7 @@ FOR /F "usebackq tokens=1,2 delims==" %%A IN ("%MAVEN_PROJECTBASEDIR%\.mvn\wrapp
 IF NOT %WRAPPER_SHA_256_SUM%=="" (
     powershell -Command "&{"^
        "$hash = (Get-FileHash \"%WRAPPER_JAR%\" -Algorithm SHA256).Hash.ToLower();"^
-       "If('%WRAPPER_SHA_256_SUM%' -ne $hash){"^
+       "If('%WRAPPER_SHA_256_SUM%' -ne $hash) {"^
        "  Write-Output 'Error: Failed to validate Maven wrapper SHA-256, your Maven wrapper might be compromised.';"^
        "  Write-Output 'Investigate or delete %WRAPPER_JAR% to attempt a clean download.';"^
        "  Write-Output 'If you updated your Maven version, you need to update the specified wrapperSha256Sum property.';"^

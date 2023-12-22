@@ -17,22 +17,22 @@ public class ClientService implements PeahRepository<Client> {
     @Inject NotificationService notification;
 
     @Override
-    public List<Client> findAll(String... orderByColumns){
+    public List<Client> findAll(final String... orderByColumns) {
         return  repository.findAll(orderByColumns);
     }
 
     @Override
-    public List<Client> search(String field, String value) {
+    public List<Client> search(final String field, final String value) {
         return repository.search(field, value);
     }
 
     @Override
-    public List<Client> findBy(String id) {
+    public List<Client> findBy(final String id) {
         return repository.findBy(id);
     }
 
     @Override
-    public String save(Client entity) {
+    public String save(final Client entity) {
         String entityId = repository.save(entity);
         notification.sendTwilioMessage(
                 entity.getPhoneNumber(),

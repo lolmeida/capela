@@ -36,7 +36,7 @@ public class CargoResource {
     public Response getAll() {
         List<CargoResponse> data = service.findAll("date, cargoNumber")
                 .stream()
-                .map(e ->mapper.objToResponse(e))
+                .map(e -> mapper.objToResponse(e))
                 .toList();
         return Response.ok(data).build();
     }
@@ -48,7 +48,7 @@ public class CargoResource {
             @PathParam("value") final String value) {
         List<CargoResponse> data = service.search(field, value)
                 .stream()
-                .map(e ->mapper.objToResponse(e))
+                .map(e -> mapper.objToResponse(e))
                 .toList();
         return Response.ok(data).build();
     }
@@ -58,7 +58,7 @@ public class CargoResource {
     public Response findByCustomer(@PathParam("id") final String id) {
         List<CargoResponse> data = service.findBy(id)
                 .stream()
-                .map(e ->mapper.objToResponse(e))
+                .map(e -> mapper.objToResponse(e))
                 .toList();
         return Response.ok(data).build();
     }
@@ -68,12 +68,12 @@ public class CargoResource {
     @POST
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response save(@RequestBody CargoRequest request) {
+    public Response save(@RequestBody final CargoRequest request) {
 
-        service.save(mapper.requestToObj(request));
+        service.save(mapper.requestToObj( request));
 
         return Response
-                .ok(service.search("id", service.save(mapper.requestToObj(request))))
+                .ok(service.search("id", service.save(mapper.requestToObj( request))))
                 .build();
     }
 

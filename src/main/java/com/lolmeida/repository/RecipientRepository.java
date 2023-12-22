@@ -17,7 +17,7 @@ import com.lolmeida.entity.database.Recipient;
 public class RecipientRepository implements PanacheRepositoryBase<Recipient, UUID>, PeahRepository<Recipient> {
 
     @Override
-    public List<Recipient> findAll(String... orderByColumns) {
+    public List<Recipient> findAll(final String... orderByColumns) {
         return listAll(Sort.descending(orderByColumns)).stream().toList();
     }
     @Override
@@ -32,7 +32,7 @@ public class RecipientRepository implements PanacheRepositoryBase<Recipient, UUI
 
     @Override
     @Transactional
-    public String save(Recipient entity) {
+    public String save(final Recipient entity) {
         persistAndFlush(entity);
         return entity.getId();
     }

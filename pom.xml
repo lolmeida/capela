@@ -19,6 +19,7 @@
 
     <maven-checkstyle.version>3.1.2</maven-checkstyle.version>
     <puppycrawl.version>8.41.1</puppycrawl.version>
+    <owasp-dependency-check-plugin.version>6.2.0</owasp-dependency-check-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -75,6 +76,7 @@
       <artifactId>quarkus-junit5-mockito</artifactId>
       <scope>test</scope>
     </dependency>
+
 
     <dependency>
       <groupId>io.quarkus</groupId>
@@ -192,6 +194,20 @@
           </execution>
         </executions>
       </plugin>
+
+      <plugin>
+        <groupId>org.owasp</groupId>
+        <artifactId>dependency-check-maven</artifactId>
+        <version>${owasp-dependency-check-plugin.version}</version>
+        <configuration>
+          <!-- Fail only when detecting High Vulnerability issues -->
+          <failBuildOnCVSS>7</failBuildOnCVSS>
+          <suppressionFiles>
+            <suppressionFile>${project.basedir}/dependency-cpe-suppression.xml</suppressionFile>
+          </suppressionFiles>
+        </configuration>
+      </plugin>
+
 
 
 

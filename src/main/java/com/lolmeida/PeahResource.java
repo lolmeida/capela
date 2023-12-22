@@ -31,6 +31,6 @@ public interface PeahResource <T> {
     @POST
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
-    Response save(@RequestBody T request);
+    Response save(@RequestBody final T request);
 
 }

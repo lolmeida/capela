@@ -9,7 +9,7 @@ import com.lolmeida.utils.Utils;
 
 @Dependent
 public class CargoMapper {
-    public Cargo requestToObj(CargoRequest request) {
+    public Cargo requestToObj(final CargoRequest request) {
         return Cargo.builder()
                 .id(Utils.generateRandomString())
                 .cargoNumber(request.cargoNumber())
@@ -24,7 +24,7 @@ public class CargoMapper {
                 .build();
     }
 
-    public CargoResponse objToResponse(Cargo entity) {
+    public CargoResponse objToResponse(final Cargo entity) {
         return CargoResponse.builder()
                 .id(entity.getId())
                 .client(entity.getClient())

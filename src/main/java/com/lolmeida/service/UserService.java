@@ -15,22 +15,22 @@ public class UserService implements PeahRepository<User> {
     UserRepository repository;
 
     @Override
-    public List<User> findAll(String... orderByColumns){
+    public List<User> findAll(final String... orderByColumns) {
         return  repository.findAll(orderByColumns);
     }
 
     @Override
-    public List<User> search(String field, String value) {
+    public List<User> search(final String field, final String value) {
         return repository.search(field, value);
     }
 
     @Override
-    public List<User> findBy(String id) {
+    public List<User> findBy(final String id) {
         return repository.findBy(id);
     }
 
     @Override
-    public String save(User entity) {
+    public String save(final User entity) {
         return repository.save(entity);
     }
 

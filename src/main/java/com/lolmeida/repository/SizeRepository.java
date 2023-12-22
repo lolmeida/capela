@@ -17,7 +17,7 @@ import com.lolmeida.entity.database.Size;
 public class SizeRepository implements PanacheRepositoryBase<Size, UUID>, PeahRepository<Size> {
 
     @Override
-    public List<Size> findAll(String... orderByColumns) {
+    public List<Size> findAll(final String... orderByColumns) {
         return listAll(Sort.descending(orderByColumns)).stream().toList();
     }
     @Override
@@ -32,7 +32,7 @@ public class SizeRepository implements PanacheRepositoryBase<Size, UUID>, PeahRe
 
     @Override
     @Transactional
-    public String save(Size entity) {
+    public String save(final Size entity) {
         persistAndFlush(entity);
         return entity.getId();
     }

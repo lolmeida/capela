@@ -5,7 +5,7 @@ import java.util.List;
 import io.smallrye.common.constraint.NotNull;
 
 public interface PeahRepository<T> {
-    List<T> findAll(String... orderByColumns);
+    List<T> findAll(final String... orderByColumns);
 
      List<T> search(@NotNull final String field, @NotNull final String value);
 

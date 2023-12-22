@@ -20,11 +20,11 @@ public class SlackConfiguration {
     @ConfigProperty(name = "slack.client.secret")
     private String clientSecret;
 
-    @ConfigProperty(name="slack.signing.secret")
+    @ConfigProperty(name = "slack.signing.secret")
     private String signingSecret;
 
-    @ConfigProperty(name="slack.verification.token")
-    private String VerificationToken;
+    @ConfigProperty(name = "slack.verification.token")
+    private String verificationToken;
 
     @ConfigProperty(name = "slack.sms.token")
     private String smsToken;

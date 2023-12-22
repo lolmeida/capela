@@ -21,23 +21,23 @@ public class NotificationResource {
 
     @POST
     @Path("/slack")
-    public Response sendSlackMessage(@QueryParam("channel") String channel, @QueryParam("message") String message) {
+    public Response sendSlackMessage(@QueryParam("channel") final String channel, @QueryParam("message") final String message) {
         notification.sendSlackMessage(channel, message);
-        return Response.ok(String.format("Message %s was sent to channel %s.",message, channel)).build();
+        return Response.ok(String.format("Message %s was sent to channel %s.", message, channel)).build();
     }
 
     @POST
     @Path("/twilio")
     public Response sendTwilioMessage(
-            @QueryParam("toPhoneNumber") String toPhoneNumber,
-            @QueryParam("message") String message) {
+            @QueryParam("toPhoneNumber") final String toPhoneNumber,
+            @QueryParam("message") final String message) {
         return notification.sendTwilioMessage(toPhoneNumber, message);
 
     }
 
     @POST
     @Path("/kafka")
-    public Response sendFifoMessage(@RequestBody String message) {
+    public Response sendFifoMessage(@RequestBody final String message) {
         return notification.sendKafkaMessage(message);
 
     }

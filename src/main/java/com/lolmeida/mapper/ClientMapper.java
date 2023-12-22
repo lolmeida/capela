@@ -9,7 +9,7 @@ import com.lolmeida.utils.Utils;
 
 @Dependent
 public class ClientMapper {
-    public Client requestToObj(ClientRequest request) {
+    public Client requestToObj(final ClientRequest request) {
         return Client.builder()
                 .id(Utils.generateRandomString())
                 .name(request.name())
@@ -21,7 +21,7 @@ public class ClientMapper {
                 .build();
     }
 
-    public ClientResponse objToResponse(Client entity) {
+    public ClientResponse objToResponse(final Client entity) {
         return ClientResponse.builder()
                 .id(entity.getId())
                 .name(entity.getName())

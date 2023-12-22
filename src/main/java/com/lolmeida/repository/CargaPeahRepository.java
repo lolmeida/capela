@@ -17,7 +17,7 @@ import com.lolmeida.entity.database.Cargo;
 public class CargaPeahRepository implements PanacheRepositoryBase<Cargo, UUID>, PeahRepository<Cargo> {
 
     @Override
-    public List<Cargo> findAll(String... orderByColumns) {
+    public List<Cargo> findAll(final String... orderByColumns) {
         return listAll(Sort.descending(orderByColumns)).stream().toList();
     }
     @Override
@@ -32,7 +32,7 @@ public class CargaPeahRepository implements PanacheRepositoryBase<Cargo, UUID>, 
 
     @Override
     @Transactional
-    public String save(Cargo entity) {
+    public String save(final Cargo entity) {
         persistAndFlush(entity);
         return entity.getId();
     }

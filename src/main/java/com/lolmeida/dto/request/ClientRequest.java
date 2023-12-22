@@ -19,5 +19,5 @@ public record ClientRequest(
 
          @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$", message = "Invalid email address")
          String email
-){
+) {
 }

@@ -15,22 +15,22 @@ public class CargoService implements PeahRepository<Cargo> {
     CargaPeahRepository repository;
 
     @Override
-    public List<Cargo> findAll(String... orderByColumns){
+    public List<Cargo> findAll(final String... orderByColumns) {
         return  repository.findAll(orderByColumns);
     }
 
     @Override
-    public List<Cargo> search(String field, String value) {
+    public List<Cargo> search(final String field, final String value) {
         return repository.search(field, value);
     }
 
     @Override
-    public List<Cargo> findBy(String id) {
+    public List<Cargo> findBy(final String id) {
         return repository.findBy(id);
     }
 
     @Override
-    public String save(Cargo entity) {
+    public String save(final Cargo entity) {
         return repository.save(entity);
     }
 

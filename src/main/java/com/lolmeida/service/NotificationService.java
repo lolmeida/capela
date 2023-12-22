@@ -30,7 +30,7 @@ public class NotificationService {
     @Channel("sms-consumer")
     Emitter<String> emitter;
 
-    public Response sendTwilioMessage(String toPhoneNumber, String message) {
+    public Response sendTwilioMessage(final String toPhoneNumber, final String message) {
         Twilio.init(twilioConfiguration.getAccountSid(), twilioConfiguration.getAuthToken());
 
         Message.
@@ -39,7 +39,7 @@ public class NotificationService {
         return Response.ok(String.format("Message %s sent to %s", message, toPhoneNumber)).build();
     }
 
-    public void sendSlackMessage(String channel, String messageText) {
+    public void sendSlackMessage(final String channel, final String messageText) {
         try {
             Slack.getInstance().methods(slackConfiguration.getSmsToken()).chatPostMessage(req -> req
                     .channel(channel)
@@ -50,8 +50,8 @@ public class NotificationService {
     }
 
     @Incoming("kafka")
-    public Response sendKafkaMessage(String message) {
+    public Response sendKafkaMessage(final String message) {
         emitter.send(message);
-        return Response.ok(String.format("Message %s sent.",message)).build();
+        return Response.ok(String.format("Message %s sent.", message)).build();
     }
 }

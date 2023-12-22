@@ -36,5 +36,5 @@ public record UserResponse(
         LocalDateTime date
 
 
-){
-}
+)
+{ }

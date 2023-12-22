@@ -36,7 +36,7 @@ public class SizeResource {
     public Response getAll() {
         List<SizeResponse> data = service.findAll("date, id")
                 .stream()
-                .map(e ->mapper.objToResponse(e))
+                .map(e -> mapper.objToResponse(e))
                 .toList();
         return Response.ok(data).build();
     }
@@ -48,7 +48,7 @@ public class SizeResource {
             @PathParam("value") final String value) {
         List<SizeResponse> data = service.search(field, value)
                 .stream()
-                .map(e ->mapper.objToResponse(e))
+                .map(e -> mapper.objToResponse(e))
                 .toList();
         return Response.ok(data).build();
     }
@@ -58,7 +58,7 @@ public class SizeResource {
     public Response findByCustomer(@PathParam("id") final String id) {
         List<SizeResponse> data = service.findBy(id)
                 .stream()
-                .map(e ->mapper.objToResponse(e))
+                .map(e -> mapper.objToResponse(e))
                 .toList();
         return Response.ok(data).build();
     }
@@ -68,7 +68,7 @@ public class SizeResource {
     @POST
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response save(@RequestBody SizeRequest request) {
+    public Response save(@RequestBody final SizeRequest request) {
 
 
         service.save(mapper.requestToObj(request));

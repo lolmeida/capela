@@ -12,5 +12,5 @@ public record RecipientRequest(
          String address,
          String type,
          String email
-){
+) {
 }

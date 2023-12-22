@@ -15,22 +15,22 @@ public class RecipientService implements PeahRepository<Recipient> {
     RecipientRepository repository;
 
     @Override
-    public List<Recipient> findAll(String... orderByColumns){
+    public List<Recipient> findAll(final String... orderByColumns) {
         return  repository.findAll(orderByColumns);
     }
 
     @Override
-    public List<Recipient> search(String field, String value) {
+    public List<Recipient> search(final String field, final String value) {
         return repository.search(field, value);
     }
 
     @Override
-    public List<Recipient> findBy(String id) {
+    public List<Recipient> findBy(final String id) {
         return repository.findBy(id);
     }
 
     @Override
-    public String save(Recipient entity) {
+    public String save(final Recipient entity) {
         return repository.save(entity);
     }
 

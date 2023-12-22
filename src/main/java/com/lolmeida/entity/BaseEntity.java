@@ -39,7 +39,7 @@ public abstract class BaseEntity {
 
     protected String comments;
 
-    protected int Counter;
+    protected int counter;
 
     protected Long createdTime;
 
@@ -69,6 +69,6 @@ public abstract class BaseEntity {
     public void preUpdate() {
         this.updatedAt = Utils.getLocalDateTime();
         this.updatedTime = Utils.getEpochTime();
-        this.comments = String.format("%s \nupdated by %s at %s",this.comments, Utils.getCurrentUser(), this.updatedAt);
+        this.comments = String.format("%s \nupdated by %s at %s", this.comments, Utils.getCurrentUser(), this.updatedAt);
     }
 }

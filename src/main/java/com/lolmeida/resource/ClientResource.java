@@ -36,7 +36,7 @@ public class ClientResource {
     public Response getAll() {
         List<ClientResponse> data = service.findAll("date, name")
                 .stream()
-                .map(e ->mapper.objToResponse(e))
+                .map(e -> mapper.objToResponse(e))
                 .toList();
         return Response.ok(data).build();
     }
@@ -48,7 +48,7 @@ public class ClientResource {
             @PathParam("value") final String value) {
         List<ClientResponse> data = service.search(field, value)
                 .stream()
-                .map(e ->mapper.objToResponse(e))
+                .map(e -> mapper.objToResponse(e))
                 .toList();
         return Response.ok(data).build();
     }
@@ -58,7 +58,7 @@ public class ClientResource {
     public Response findByCustomer(@PathParam("id") final String id) {
         List<ClientResponse> data = service.findBy(id)
                 .stream()
-                .map(e ->mapper.objToResponse(e))
+                .map(e -> mapper.objToResponse(e))
                 .toList();
         return Response.ok(data).build();
     }
@@ -68,7 +68,7 @@ public class ClientResource {
     @POST
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response save(@RequestBody ClientRequest request) {
+    public Response save(@RequestBody final ClientRequest request) {
 
 
         service.save(mapper.requestToObj(request));
