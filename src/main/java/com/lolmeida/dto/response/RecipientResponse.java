@@ -8,6 +8,7 @@ import java.util.List;
 
 import lombok.Builder;
 
+
 @Builder
 public record RecipientResponse(
         String name,
@@ -16,13 +17,7 @@ public record RecipientResponse(
         String type,
         String email,
         List<String> cargoList,
-
-
         String user,
-
-
-
-        // BaseEntity
         String id,
         boolean active,
         String note,

@@ -6,7 +6,7 @@
     This configuration file was written by the eclipse-cs plugin configuration editor
 -->
 <!--
-    Checkstyle-Configuration: BMW Checkstyle
+    Checkstyle-Configuration: PEAH Checkstyle
     Description: none
 -->
 <module name="Checker">
@@ -40,6 +40,8 @@
             <property name="scope" value="public"/>
             <property name="checkEmptyJavadoc" value="true"/>
         </module>
+
+
         <module name="ConstantName">
             <property name="severity" value="error"/>
         </module>

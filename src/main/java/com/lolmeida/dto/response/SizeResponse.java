@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 
 import lombok.Builder;
 
+
 @Builder
 public record SizeResponse(
         int volume,
@@ -15,10 +16,6 @@ public record SizeResponse(
         double width,
         String cargo,
         String user,
-
-
-
-        // BaseEntity
         String id,
         boolean active,
         String note,
