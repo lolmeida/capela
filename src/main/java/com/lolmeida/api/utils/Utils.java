@@ -3,9 +3,37 @@ package com.lolmeida.api.utils;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
+import lombok.extern.java.Log;
+
+@Log
 public class Utils {
+
+    public static StringBuilder queries = new StringBuilder();
+    public static List<String> params = new ArrayList<>();
+
+    @SafeVarargs
+    public static void createCriteria(final Map<String, String>... fieldsAndValues) {
+        List<Map<String, String>> list = Arrays.stream(fieldsAndValues).toList();
+        //log.info(String.format("fieldsAndValues: %s", list));
+
+        list.forEach(map -> {
+            map.forEach((key, value) -> {
+                queries.append("LOWER(").append(key).append(") like ?").append(params.size() +1).append(" and ");
+                params.add( "%" + value.toLowerCase() + "%");
+            });
+        });
+
+
+        queries = new StringBuilder(queries.toString().substring(0, queries.toString().length() - 4));
+        //log.info(String.format("queries: %s %s", queries, params.toString()));
+
+    }
 
     public static String generateRandomString() {
         int leftLimit = 48; // letter 'a'
