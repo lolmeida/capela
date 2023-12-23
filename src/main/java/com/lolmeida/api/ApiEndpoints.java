@@ -22,9 +22,9 @@ import com.lolmeida.ApplicationPaths;
 import com.lolmeida.ApplicationPaths.Parameters;
 import com.lolmeida.ApplicationPaths.Parameters.Refs;
 import com.lolmeida.ApplicationValues;
-import com.lolmeida.openapi.Values;
-import com.lolmeida.openapi.Values.Responses.Descriptions;
-import com.lolmeida.openapi.Values.Responses.Summary;
+import com.lolmeida.api.openapi.Values;
+import com.lolmeida.api.openapi.Values.Responses.Descriptions;
+import com.lolmeida.api.openapi.Values.Responses.Summary;
 
 @Path(ApplicationPaths.API_PATH)
 @Produces(MediaType.APPLICATION_JSON)

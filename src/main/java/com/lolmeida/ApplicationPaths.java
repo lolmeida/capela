@@ -13,6 +13,11 @@ public final class ApplicationPaths {
     public static final String API_TWILIO = "/twilio";
     public static final class RequestBodies {
         public static final String REQUEST_BODY = "requestBody";
+        public static final String CLIENT = "Client";
+        public static final String RECEIPT = "Receipt";
+        public static final String RECIPTENT = "Recipient";
+        public static final String SIZE = "Size";
+        public static final String USER = "User";
 
         private RequestBodies() {
         }
