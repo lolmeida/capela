@@ -3,12 +3,8 @@ package com.lolmeida.resource;
 import java.util.List;
 import java.util.Optional;
 
-import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 import com.lolmeida.api.ApiEndpoints;
@@ -18,9 +14,6 @@ import com.lolmeida.mapper.CargoMapper;
 import com.lolmeida.service.CargoService;
 
 @Path("/cargo")
-@RequestScoped
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
 public class CargoResource implements ApiEndpoints {
 
     @Inject
@@ -41,9 +34,7 @@ public class CargoResource implements ApiEndpoints {
                                           .stream()
                                           .map(e -> mapper.objToResponse(e))
                                           .toList();
-        return Response.ok(
-                Optional.of(data).orElseThrow(() -> new RuntimeException("No data found"))
-        ).build();
+        return Response.ok(data).build();
     }
 
     @Override
@@ -70,11 +61,11 @@ public class CargoResource implements ApiEndpoints {
 
 
     @Override
-    public Response save(final CargoRequest request) {
-        service.save(mapper.requestToObj(request));
+    public Response save(final Object request) {
+        service.save(mapper.requestToObj((CargoRequest) request));
 
         return Response
-                .ok(service.search("id", service.save(mapper.requestToObj(request))))
+                .ok(service.search("id", service.save(mapper.requestToObj((CargoRequest) request))))
                 .build();
     }
 

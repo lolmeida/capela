@@ -10,7 +10,7 @@ import org.eclipse.microprofile.openapi.annotations.info.Info;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 
-import com.lolmeida.ApplicationPaths.Parameters;
+import com.lolmeida.ApplicationPaths.Parameters.Refs;
 import com.lolmeida.openapi.Values;
 
 
@@ -42,21 +42,21 @@ import com.lolmeida.openapi.Values;
                         schemas = {},
                         parameters = {
                                 @Parameter(
-                                        name = Parameters.FIELD,
+                                        name = Refs.FIELD,
                                         description = "Field to search",
                                         required = true,
                                         in = ParameterIn.PATH,
                                         schema = @Schema(ref = Values.Schemas.FIELD )
                                 ),
                                 @Parameter(
-                                        name = Parameters.VALUE,
+                                        name = Refs.VALUE,
                                         description = "Value to search",
                                         required = true,
                                         in = ParameterIn.PATH,
                                         schema = @Schema(ref = Values.Schemas.VALUE )
                                 ),
                                 @Parameter(
-                                        name = Parameters.ID,
+                                        name = Refs.ID,
                                         description = "Id to search",
                                         required = true,
                                         in = ParameterIn.PATH,

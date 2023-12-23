@@ -1,6 +1,7 @@
 package com.lolmeida.api;
 
 
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
@@ -19,15 +20,17 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import com.lolmeida.ApplicationPaths;
 import com.lolmeida.ApplicationPaths.Parameters;
+import com.lolmeida.ApplicationPaths.Parameters.Refs;
 import com.lolmeida.ApplicationValues;
-import com.lolmeida.dto.request.CargoRequest;
 import com.lolmeida.openapi.Values;
+import com.lolmeida.openapi.Values.Responses.Descriptions;
+import com.lolmeida.openapi.Values.Responses.Summary;
 
 @Path(ApplicationPaths.API_PATH)
 @Produces(MediaType.APPLICATION_JSON)
-@Tag(name = "Api",
-     description = ApplicationValues.API_DESCRIPTION)
-public interface ApiEndpoints {
+@Tag(name = ApplicationValues.API_NAME, description = ApplicationValues.API_DESCRIPTION)
+@RequestScoped
+public interface  ApiEndpoints<R> {
 
     @GET
     @Path(ApplicationPaths.API_HELLO_PATH)
@@ -42,20 +45,19 @@ public interface ApiEndpoints {
             MediaType.APPLICATION_JSON,
             MediaType.APPLICATION_XML
     })
-    @Produces(MediaType.TEXT_PLAIN)
     @Operation(summary = "Hello World")
-    @APIResponse(responseCode = "200",
+    @APIResponse(responseCode = Values.Codes.OK,
                  description = "It works")
     @APIResponse(ref = Values.Responses.Error.UNAUTHORIZED)
     @APIResponse(ref = Values.Responses.Error.FORBIDDEN)
     @APIResponse(ref = Values.Responses.Error.NOT_FOUND)
     @APIResponse(ref = Values.Responses.Error.INTERNAL_SERVER_ERROR)
     @APIResponse(ref = Values.Responses.Error.BAD_GATEWAY)
-    public Response hello();
+    Response hello();
 
 
     @GET
-    @Path("/")
+    @Path(ApplicationPaths.API_ROOT)
     @Consumes({
             ApplicationPaths.MediaTypeExtension.TAR,
             ApplicationPaths.MediaTypeExtension.PNG,
@@ -67,19 +69,19 @@ public interface ApiEndpoints {
             MediaType.APPLICATION_JSON,
             MediaType.APPLICATION_XML
     })
-    @Produces(MediaType.TEXT_PLAIN)
-    @Operation(summary = "Get All Records")
+
+    @Operation(summary = Summary.LIST)
     @APIResponse(responseCode = Values.Codes.OK,
-                 description = "Get All Records sorted descending by date and ...")
+                 description = Values.Responses.Descriptions.LIST)
     @APIResponse(ref = Values.Responses.Error.UNAUTHORIZED)
     @APIResponse(ref = Values.Responses.Error.FORBIDDEN)
     @APIResponse(ref = Values.Responses.Error.NOT_FOUND)
     @APIResponse(ref = Values.Responses.Error.INTERNAL_SERVER_ERROR)
     @APIResponse(ref = Values.Responses.Error.BAD_GATEWAY)
-    public Response getAll();
+    Response getAll();
 
     @GET
-    @Path("/search/{field}/{value}")
+    @Path(ApplicationPaths.API_SEARCH)
     @Consumes({
             ApplicationPaths.MediaTypeExtension.TAR,
             ApplicationPaths.MediaTypeExtension.PNG,
@@ -91,29 +93,29 @@ public interface ApiEndpoints {
             MediaType.APPLICATION_JSON,
             MediaType.APPLICATION_XML
     })
-    @Produces(MediaType.TEXT_PLAIN)
-    @Operation(summary = "Search records")
-    @APIResponse(responseCode = "200",
-                 description = "Search records by field and value")
+
+    @Operation(summary = Summary.SEARCH)
+    @APIResponse(responseCode = Values.Codes.OK,
+                 description = Descriptions.SEARCH)
     @APIResponse(ref = Values.Responses.Error.UNAUTHORIZED)
     @APIResponse(ref = Values.Responses.Error.FORBIDDEN)
     @APIResponse(ref = Values.Responses.Error.NOT_FOUND)
     @APIResponse(ref = Values.Responses.Error.INTERNAL_SERVER_ERROR)
     @APIResponse(ref = Values.Responses.Error.BAD_GATEWAY)
-    public Response search(
+    Response search(
             @HeaderParam(ApplicationPaths.Headers.FIELD)
-            @Parameter(ref = Parameters.FIELD,
-                       description = "Field to search")
+            @Parameter(ref = Refs.FIELD,
+                       description = Parameters.Descriptions.FIELD)
             final String field,
 
             @HeaderParam(ApplicationPaths.Headers.VALUE)
-            @Parameter(ref = ApplicationPaths.Parameters.VALUE,
-                       description = "Value to search")
+            @Parameter(ref = Refs.VALUE,
+                       description = Parameters.Descriptions.VALUE)
             final String value);
 
 
     @GET
-    @Path("/{id}")
+    @Path(ApplicationPaths.API_ID)
     @Consumes({
             ApplicationPaths.MediaTypeExtension.TAR,
             ApplicationPaths.MediaTypeExtension.PNG,
@@ -125,25 +127,25 @@ public interface ApiEndpoints {
             MediaType.APPLICATION_JSON,
             MediaType.APPLICATION_XML
     })
-    @Produces(MediaType.TEXT_PLAIN)
-    @Operation(summary = "Find by ID")
+
+    @Operation(summary = Summary.FIND)
     @APIResponse(responseCode = Values.Codes.OK,
-                 description = "Find record by ID")
+                 description = Descriptions.FIND)
     @APIResponse(ref = Values.Responses.Error.UNAUTHORIZED)
     @APIResponse(ref = Values.Responses.Error.FORBIDDEN)
     @APIResponse(ref = Values.Responses.Error.NOT_FOUND)
     @APIResponse(ref = Values.Responses.Error.INTERNAL_SERVER_ERROR)
     @APIResponse(ref = Values.Responses.Error.BAD_GATEWAY)
-    public Response findBy(
+    Response findBy(
             @HeaderParam(ApplicationPaths.Headers.ID)
-            @Parameter(ref = Parameters.ID,
-                       description = "Cargo ID")
+            @Parameter(ref = Refs.ID,
+                       description = Parameters.Descriptions.ID)
             final String id
     );
 
 
     @POST
-    @Path("/")
+    @Path(ApplicationPaths.API_ROOT)
     @Consumes({
             ApplicationPaths.MediaTypeExtension.TAR,
             ApplicationPaths.MediaTypeExtension.PNG,
@@ -155,19 +157,19 @@ public interface ApiEndpoints {
             MediaType.APPLICATION_JSON,
             MediaType.APPLICATION_XML
     })
-    @Produces(MediaType.TEXT_PLAIN)
-    @Operation(summary = "New record")
+
+    @Operation(summary = Summary.ADD)
     @APIResponse(responseCode = Values.Codes.CREATED,
-                 description = "Add new record to database")
+                 description = Descriptions.ADD)
     @APIResponse(ref = Values.Responses.Error.UNAUTHORIZED)
     @APIResponse(ref = Values.Responses.Error.FORBIDDEN)
     @APIResponse(ref = Values.Responses.Error.NOT_FOUND)
     @APIResponse(ref = Values.Responses.Error.INTERNAL_SERVER_ERROR)
     @APIResponse(ref = Values.Responses.Error.BAD_GATEWAY)
-    public Response save(
+    Response save(
             @Valid
-            @RequestBody(ref = ApplicationPaths.RequestBodies.REQUEST_BODY, description = "Cargo Request")
-            final CargoRequest requestBody
+            @RequestBody(ref = ApplicationPaths.RequestBodies.REQUEST_BODY, description = "Request body")
+            final R requestBody
     );
 
 

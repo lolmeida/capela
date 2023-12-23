@@ -11,6 +11,28 @@ public final class Values {
 
     public static final class Responses {
 
+        public static final class Descriptions {
+
+            public static final String LIST = "Get All Records sorted descending by date and ...";
+            public static final String ADD = "Add new record to database";
+            public static final String SEARCH = "Search records by field and value";
+            public static final String FIND = "Find record by ID";
+
+            private Descriptions() {
+            }
+        }
+
+        public static final class Summary {
+
+            public static final String LIST = "Get All Records";
+            public static final String ADD = "Add new record";
+            public static final String SEARCH = "Search records";
+            public static final String FIND = "Find by ID";
+
+            private Summary() {
+            }
+        }
+
         public static final class Error {
 
             public static final String UNAUTHORIZED = "Unauthorized";

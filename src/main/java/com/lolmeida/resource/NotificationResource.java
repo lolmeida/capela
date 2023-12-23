@@ -10,9 +10,10 @@ import jakarta.ws.rs.core.Response;
 
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 
+import com.lolmeida.ApplicationPaths;
 import com.lolmeida.service.NotificationService;
 
-@Path("/sms")
+@Path(ApplicationPaths.API_NOTIFICATION)
 @Produces(MediaType.APPLICATION_JSON)
 public class NotificationResource {
 
@@ -20,14 +21,14 @@ public class NotificationResource {
     NotificationService notification;
 
     @POST
-    @Path("/slack")
+    @Path(ApplicationPaths.API_SLACK)
     public Response sendSlackMessage(@QueryParam("channel") final String channel, @QueryParam("message") final String message) {
         notification.sendSlackMessage(channel, message);
         return Response.ok(String.format("Message %s was sent to channel %s.", message, channel)).build();
     }
 
     @POST
-    @Path("/twilio")
+    @Path(ApplicationPaths.API_TWILIO)
     public Response sendTwilioMessage(
             @QueryParam("toPhoneNumber") final String toPhoneNumber,
             @QueryParam("message") final String message) {
@@ -36,7 +37,7 @@ public class NotificationResource {
     }
 
     @POST
-    @Path("/kafka")
+    @Path(ApplicationPaths.API_KAFKA)
     public Response sendFifoMessage(@RequestBody final String message) {
         return notification.sendKafkaMessage(message);
 

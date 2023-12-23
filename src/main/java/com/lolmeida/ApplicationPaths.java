@@ -2,8 +2,15 @@ package com.lolmeida;
 
 public final class ApplicationPaths {
 
-    public static final String API_PATH = "/api";
+    public static final String API_ROOT = "/";
     public static final String API_HELLO_PATH = "/hello";
+    public static final String API_PATH = "/api";
+    public static final String API_ID = "/{id}";
+    public static final String API_SEARCH = "/search/{field}/{value}";
+    public static final String API_KAFKA = "/kafka";
+    public static final String API_NOTIFICATION = "/sms";
+    public static final String API_SLACK = "/slack";
+    public static final String API_TWILIO = "/twilio";
     public static final class RequestBodies {
         public static final String REQUEST_BODY = "requestBody";
 
@@ -13,9 +20,17 @@ public final class ApplicationPaths {
 
     public static final class Parameters {
 
-        public static final String FIELD = "field";
-        public static final String VALUE = "value";
-        public static final String ID = "id";
+        public static final class Refs {
+            public static final String FIELD = "field";
+            public static final String VALUE = "value";
+            public static final String ID = "id";
+        }
+
+        public static final class Descriptions {
+            public static final String FIELD = "Field to search";
+            public static final String VALUE = "Value to search";
+            public static final String ID = "Record ID";
+        }
 
         private Parameters() {
         }
