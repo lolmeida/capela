@@ -17,12 +17,12 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
 import com.lolmeida.ApplicationPaths.Parameters.Refs;
 import com.lolmeida.ApplicationPaths.RequestBodies;
-import com.lolmeida.api.dto.response.CargoResponse;
-import com.lolmeida.api.dto.response.ClientResponse;
-import com.lolmeida.api.dto.response.ReceiptResponse;
-import com.lolmeida.api.dto.response.RecipientResponse;
-import com.lolmeida.api.dto.response.SizeResponse;
-import com.lolmeida.api.dto.response.UserResponse;
+import com.lolmeida.api.dto.request.CargoRequest;
+import com.lolmeida.api.dto.request.ClientRequest;
+import com.lolmeida.api.dto.request.ReceiptRequest;
+import com.lolmeida.api.dto.request.RecipientRequest;
+import com.lolmeida.api.dto.request.SizeRequest;
+import com.lolmeida.api.dto.request.UserRequest;
 import com.lolmeida.api.openapi.Values;
 
 @OpenAPIDefinition(
@@ -69,7 +69,7 @@ import com.lolmeida.api.openapi.Values;
                                 description = "Cargo request body",
                                 content = @Content(
                                         mediaType = MediaType.APPLICATION_JSON,
-                                        schema = @Schema(implementation = CargoResponse.class)
+                                        schema = @Schema(implementation = CargoRequest.class)
                                 )),
                         @RequestBody(
                                 name = RequestBodies.CLIENT,
@@ -77,7 +77,7 @@ import com.lolmeida.api.openapi.Values;
                                 description = "Client request body",
                                 content = @Content(
                                         mediaType = MediaType.APPLICATION_JSON,
-                                        schema = @Schema(implementation = ClientResponse.class)
+                                        schema = @Schema(implementation = ClientRequest.class)
                                 )),
                         @RequestBody(
                                 name = RequestBodies.RECEIPT,
@@ -85,7 +85,7 @@ import com.lolmeida.api.openapi.Values;
                                 description = "Receipt request body",
                                 content = @Content(
                                         mediaType = MediaType.APPLICATION_JSON,
-                                        schema = @Schema(implementation = ReceiptResponse.class)
+                                        schema = @Schema(implementation = ReceiptRequest.class)
                                 )),
                         @RequestBody(
                                 name = RequestBodies.RECIPTENT,
@@ -93,7 +93,7 @@ import com.lolmeida.api.openapi.Values;
                                 description = "Recipient request body",
                                 content = @Content(
                                         mediaType = MediaType.APPLICATION_JSON,
-                                        schema = @Schema(implementation = RecipientResponse.class)
+                                        schema = @Schema(implementation = RecipientRequest.class)
                                 )),
                         @RequestBody(
                                 name = RequestBodies.SIZE,
@@ -101,7 +101,7 @@ import com.lolmeida.api.openapi.Values;
                                 description = "Size request body",
                                 content = @Content(
                                         mediaType = MediaType.APPLICATION_JSON,
-                                        schema = @Schema(implementation = SizeResponse.class)
+                                        schema = @Schema(implementation = SizeRequest.class)
                                 )),
                         @RequestBody(
                                 name = RequestBodies.USER,
@@ -109,7 +109,7 @@ import com.lolmeida.api.openapi.Values;
                                 description = "User request body",
                                 content = @Content(
                                         mediaType = MediaType.APPLICATION_JSON,
-                                        schema = @Schema(implementation = UserResponse.class)
+                                        schema = @Schema(implementation = UserRequest.class)
                                 ))
                 },
                 responses = {
