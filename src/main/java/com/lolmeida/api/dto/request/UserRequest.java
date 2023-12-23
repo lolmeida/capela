@@ -7,32 +7,33 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
 import lombok.Builder;
 
-import com.lolmeida.ApplicationValues;
+import com.lolmeida.ApplicationValues.Descriptions;
+import com.lolmeida.ApplicationValues.Examples;
 
 @Builder
 public record UserRequest(
         @Schema(
-                description = ApplicationValues.Descriptions.EMAIL,
+                description = Descriptions.EMAIL,
                 required = true,
-                example = ApplicationValues.Examples.EMAIL)
+                example = Examples.EMAIL)
         String email,
 
         @Schema(
-                description = ApplicationValues.Descriptions.NAME,
+                description = Descriptions.NAME,
                 required = true,
-                example = ApplicationValues.Examples.NAME)
+                example = Examples.NAME)
         String name,
 
         @Schema(
-                description = ApplicationValues.Descriptions.PHONE_NUMBER,
+                description = Descriptions.PHONE_NUMBER,
                 required = true,
-                example = ApplicationValues.Examples.PHONE_NUMBER)
+                example = Examples.PHONE_NUMBER)
         String phoneNumber,
 
         @Schema(
-                description = ApplicationValues.Descriptions.ADDRESS,
+                description = Descriptions.ADDRESS,
                 required = true,
-                example = ApplicationValues.Examples.ADDRESS)
+                example = Examples.ADDRESS)
         String address,
 
         @Schema(description = "The user's signature")

@@ -9,35 +9,37 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
 import lombok.Builder;
 
-import com.lolmeida.ApplicationValues;
+import com.lolmeida.ApplicationValues.Descriptions;
+import com.lolmeida.ApplicationValues.Examples;
+import com.lolmeida.ApplicationValues.Regex;
 
 @Builder
 public record ClientRequest(
-        @Schema(description = ApplicationValues.Descriptions.NAME,
+        @Schema(description = Descriptions.NAME,
                 required = true,
-                example = ApplicationValues.Examples.NAME)
+                example = Examples.NAME)
         String name,
 
-        @Schema(description = ApplicationValues.Descriptions.PHONE_NUMBER,
+        @Schema(description = Descriptions.PHONE_NUMBER,
                 required = true,
-                example = ApplicationValues.Examples.PHONE_NUMBER)
-        @Pattern(regexp = ApplicationValues.Regex.PHONE_NUMBER,
-                 message = ApplicationValues.Regex.PHONE_NUMBER_ERROR_MSG)
+                example = Examples.PHONE_NUMBER)
+        @Pattern(regexp = Regex.PHONE_NUMBER,
+                 message = Regex.PHONE_NUMBER_ERROR_MSG)
         String phoneNumber,
 
-        @Schema(description = ApplicationValues.Descriptions.ADDRESS,
+        @Schema(description = Descriptions.ADDRESS,
                 required = true,
-                example = ApplicationValues.Examples.ADDRESS)
+                example = Examples.ADDRESS)
         String address,
 
         String type,
 
-        @Schema(description = ApplicationValues.Descriptions.EMAIL,
+        @Schema(description = Descriptions.EMAIL,
                 required = true,
-                example = ApplicationValues.Examples.EMAIL)
+                example = Examples.EMAIL)
 
-        @Pattern(regexp = ApplicationValues.Regex.EMAIL,
-                 message = ApplicationValues.Regex.EMAIL_ERROR_MSG)
+        @Pattern(regexp = Regex.EMAIL,
+                 message = Regex.EMAIL_ERROR_MSG)
         String email
 ) {
 
