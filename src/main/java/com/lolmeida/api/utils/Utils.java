@@ -20,19 +20,15 @@ public class Utils {
     @SafeVarargs
     public static void createCriteria(final Map<String, String>... fieldsAndValues) {
         List<Map<String, String>> list = Arrays.stream(fieldsAndValues).toList();
-        //log.info(String.format("fieldsAndValues: %s", list));
 
         list.forEach(map -> {
             map.forEach((key, value) -> {
-                queries.append("LOWER(").append(key).append(") like ?").append(params.size() +1).append(" and ");
-                params.add( "%" + value.toLowerCase() + "%");
+                queries.append("LOWER(").append(key).append(") like ?").append(params.size() + 1).append(" and ");
+                params.add("%" + value.toLowerCase() + "%");
             });
         });
 
-
         queries = new StringBuilder(queries.toString().substring(0, queries.toString().length() - 4));
-        //log.info(String.format("queries: %s %s", queries, params.toString()));
-
     }
 
     public static String generateRandomString() {
