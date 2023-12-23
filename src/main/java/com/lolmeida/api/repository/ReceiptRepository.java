@@ -10,6 +10,8 @@ import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import io.quarkus.panache.common.Sort;
 import io.smallrye.common.constraint.NotNull;
 
+import com.lolmeida.ApplicationValues.Repositories;
+import com.lolmeida.ApplicationValues.Repositories.Queries;
 import com.lolmeida.PeahRepository;
 import com.lolmeida.api.entity.database.Receipt;
 
@@ -20,14 +22,20 @@ public class ReceiptRepository implements PanacheRepositoryBase<Receipt, UUID>, 
     public List<Receipt> findAll(final String... orderByColumns) {
         return listAll(Sort.descending(orderByColumns)).stream().toList();
     }
+
     @Override
-    public List<Receipt> search(@NotNull final String field, @NotNull final String value) {
-        final String searchInput = "%" + value.toLowerCase() + "%";
-        return list("LOWER(" + field + ") like ?1", searchInput.toLowerCase());
+    public List<Receipt> search(
+            @NotNull
+            final String field,
+            @NotNull
+            final String value) {
+        final String searchInput = Repositories.Queries.QUERY_INPUT.formatted(value);
+        return list(Repositories.Queries.QUERY.formatted(field), searchInput.toLowerCase());
     }
+
     @Override
     public List<Receipt> findBy(final String id) {
-        return list("id like ?1", id);
+        return list(Queries.FIND_BY_ID, id);
     }
 
     @Override

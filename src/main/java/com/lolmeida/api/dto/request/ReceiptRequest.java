@@ -14,4 +14,5 @@ public record ReceiptRequest(
         String client,
         List<String> cargoList
 ) {
+
 }

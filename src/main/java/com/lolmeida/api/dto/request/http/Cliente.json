@@ -1,24 +1,24 @@
 [
-  {
-    "Cliente":"Cliente 1",
-    "Telefone": "95227533",
-    "Morada": "Teste",
-    "Tipo": "CLI",
-    "Email": "cliente1@email.com"
-  },
-  {
-    "Cliente":"Cliente 2",
-    "Telefone": "95466633",
-    "Morada": "Teste",
-    "Tipo": "CLI",
-    "Email": "cliente2@email.com"
-  },
-  {
-    "Cliente":"Destinatario",
-    "Telefone": "95466633",
-    "Morada": "Teste",
-    "Tipo": "DES",
-    "Email": "Destinatario@email.com"
-  }
+    {
+        "Cliente": "Cliente 1",
+        "Telefone": "95227533",
+        "Morada": "Teste",
+        "Tipo": "CLI",
+        "Email": "cliente1@email.com"
+    },
+    {
+        "Cliente": "Cliente 2",
+        "Telefone": "95466633",
+        "Morada": "Teste",
+        "Tipo": "CLI",
+        "Email": "cliente2@email.com"
+    },
+    {
+        "Cliente": "Destinatario",
+        "Telefone": "95466633",
+        "Morada": "Teste",
+        "Tipo": "DES",
+        "Email": "Destinatario@email.com"
+    }
 ]
 

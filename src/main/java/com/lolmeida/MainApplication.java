@@ -37,94 +37,94 @@ import com.lolmeida.api.openapi.Values;
 
         ),
         components = @Components(
-                        //securitySchemes = {},
+                //securitySchemes = {},
 
-                        parameters = {
-                                @Parameter(
-                                        name = Refs.FIELD,
-                                        description = "Field to search",
-                                        required = true,
-                                        in = ParameterIn.PATH,
-                                        schema = @Schema(ref = Values.Schemas.FIELD )
-                                ),
-                                @Parameter(
-                                        name = Refs.VALUE,
-                                        description = "Value to search",
-                                        required = true,
-                                        in = ParameterIn.PATH,
-                                        schema = @Schema(ref = Values.Schemas.VALUE )
-                                ),
-                                @Parameter(
-                                        name = Refs.ID,
-                                        description = "Id to search",
-                                        required = true,
-                                        in = ParameterIn.PATH,
-                                        schema = @Schema(ref = Values.Schemas.ID )
+                parameters = {
+                        @Parameter(
+                                name = Refs.FIELD,
+                                description = "Field to search",
+                                required = true,
+                                in = ParameterIn.PATH,
+                                schema = @Schema(ref = Values.Schemas.FIELD)
+                        ),
+                        @Parameter(
+                                name = Refs.VALUE,
+                                description = "Value to search",
+                                required = true,
+                                in = ParameterIn.PATH,
+                                schema = @Schema(ref = Values.Schemas.VALUE)
+                        ),
+                        @Parameter(
+                                name = Refs.ID,
+                                description = "Id to search",
+                                required = true,
+                                in = ParameterIn.PATH,
+                                schema = @Schema(ref = Values.Schemas.ID)
+                        )
+                },
+                requestBodies = {
+                        @RequestBody(
+                                name = RequestBodies.REQUEST_BODY,
+                                required = true,
+                                description = "Cargo request body",
+                                content = @Content(
+                                        mediaType = MediaType.APPLICATION_JSON,
+                                        schema = @Schema(implementation = CargoResponse.class)
+                                )),
+                        @RequestBody(
+                                name = RequestBodies.CLIENT,
+                                required = true,
+                                description = "Client request body",
+                                content = @Content(
+                                        mediaType = MediaType.APPLICATION_JSON,
+                                        schema = @Schema(implementation = ClientResponse.class)
+                                )),
+                        @RequestBody(
+                                name = RequestBodies.RECEIPT,
+                                required = true,
+                                description = "Receipt request body",
+                                content = @Content(
+                                        mediaType = MediaType.APPLICATION_JSON,
+                                        schema = @Schema(implementation = ReceiptResponse.class)
+                                )),
+                        @RequestBody(
+                                name = RequestBodies.RECIPTENT,
+                                required = true,
+                                description = "Recipient request body",
+                                content = @Content(
+                                        mediaType = MediaType.APPLICATION_JSON,
+                                        schema = @Schema(implementation = RecipientResponse.class)
+                                )),
+                        @RequestBody(
+                                name = RequestBodies.SIZE,
+                                required = true,
+                                description = "Size request body",
+                                content = @Content(
+                                        mediaType = MediaType.APPLICATION_JSON,
+                                        schema = @Schema(implementation = SizeResponse.class)
+                                )),
+                        @RequestBody(
+                                name = RequestBodies.USER,
+                                required = true,
+                                description = "User request body",
+                                content = @Content(
+                                        mediaType = MediaType.APPLICATION_JSON,
+                                        schema = @Schema(implementation = UserResponse.class)
+                                ))
+                },
+                responses = {
+                        @APIResponse(
+                                name = Values.Responses.CARGO,
+                                description = Values.Responses.Descriptions.CARGO,
+                                content = @Content(
+                                        mediaType = MediaType.APPLICATION_JSON,
+                                        schema = @Schema(type = SchemaType.STRING)
                                 )
-                        },
-                        requestBodies = {
-                                @RequestBody(
-                                        name = RequestBodies.REQUEST_BODY,
-                                        required = true,
-                                        description = "Cargo request body",
-                                        content = @Content(
-                                                mediaType = MediaType.APPLICATION_JSON,
-                                                schema = @Schema(implementation = CargoResponse.class)
-                                        )),
-                                @RequestBody(
-                                        name = RequestBodies.CLIENT,
-                                        required = true,
-                                        description = "Client request body",
-                                        content = @Content(
-                                                mediaType = MediaType.APPLICATION_JSON,
-                                                schema = @Schema(implementation = ClientResponse.class)
-                                        )),
-                                @RequestBody(
-                                        name = RequestBodies.RECEIPT,
-                                        required = true,
-                                        description = "Receipt request body",
-                                        content = @Content(
-                                                mediaType = MediaType.APPLICATION_JSON,
-                                                schema = @Schema(implementation = ReceiptResponse.class)
-                                        )),
-                                @RequestBody(
-                                        name = RequestBodies.RECIPTENT,
-                                        required = true,
-                                        description = "Recipient request body",
-                                        content = @Content(
-                                                mediaType = MediaType.APPLICATION_JSON,
-                                                schema = @Schema(implementation = RecipientResponse.class)
-                                        )),
-                                @RequestBody(
-                                        name = RequestBodies.SIZE,
-                                        required = true,
-                                        description = "Size request body",
-                                        content = @Content(
-                                                mediaType = MediaType.APPLICATION_JSON,
-                                                schema = @Schema(implementation = SizeResponse.class)
-                                        )),
-                                @RequestBody(
-                                        name = RequestBodies.USER,
-                                        required = true,
-                                        description = "User request body",
-                                        content = @Content(
-                                                mediaType = MediaType.APPLICATION_JSON,
-                                                schema = @Schema(implementation = UserResponse.class)
-                                        ))
-                        },
-                        responses = {
-                                @APIResponse(
-                                        name = Values.Responses.CARGO,
-                                        description = Values.Responses.Descriptions.CARGO,
-                                        content = @Content(
-                                                mediaType = MediaType.APPLICATION_JSON,
-                                                schema = @Schema(type = SchemaType.STRING)
-                                        )
-                                )
-                        }
+                        )
+                }
 
-                )
-        
+        )
+
 )
 
 public class MainApplication extends Application {

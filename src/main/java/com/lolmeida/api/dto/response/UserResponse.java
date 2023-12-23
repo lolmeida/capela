@@ -6,7 +6,6 @@ import lombok.Builder;
 
 /**
  * Represents a response object for a user.
- * 
  */
 @Builder
 public record UserResponse(
@@ -17,7 +16,6 @@ public record UserResponse(
         String signature,
         String privilege,
         String permission,
-
 
         // BaseEntity
 
@@ -35,6 +33,6 @@ public record UserResponse(
         Long updatedTime,
         LocalDateTime date
 
+) {
 
-)
-{ }
+}

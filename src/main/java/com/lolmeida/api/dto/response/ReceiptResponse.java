@@ -16,8 +16,6 @@ public record ReceiptResponse(
         List<String> cargoList,
         String user,
 
-
-
         // BaseEntity
         String id,
         boolean active,
@@ -33,4 +31,5 @@ public record ReceiptResponse(
         LocalDateTime updatedAt,
         Long updated
 ) {
+
 }

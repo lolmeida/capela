@@ -30,4 +30,5 @@ public record SizeResponse(
         Long updatedTime,
         LocalDateTime date
 ) {
+
 }

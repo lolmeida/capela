@@ -9,6 +9,9 @@ import com.lolmeida.api.dto.response.UserResponse;
 
 public final class Values {
 
+    private Values() {
+    }
+
     public static final class Schemas {
 
         public static final String ID = "ID";
@@ -16,7 +19,7 @@ public final class Values {
         public static final String VALUE = "VALUE";
         public static final String CARGO = CargoResponse.class.getSimpleName();
         public static final String CLIENT = ClientResponse.class.getSimpleName();
-        private static final String RECEIPT  = ReceiptResponse.class.getSimpleName();
+        private static final String RECEIPT = ReceiptResponse.class.getSimpleName();
         private static final String RECIPIENT = RecipientResponse.class.getSimpleName();
         private static final String SIZE = SizeResponse.class.getSimpleName();
         private static final String USER = UserResponse.class.getSimpleName();
@@ -30,6 +33,9 @@ public final class Values {
         public static final String RECEIPT = "ReceiptResponse";
         public static final String SIZE = "SizeResponse";
         public static final String USER = "UserResponse";
+
+        private Responses() {
+        }
 
         public static final class Descriptions {
 
@@ -65,9 +71,6 @@ public final class Values {
             private Error() {
             }
         }
-
-        private Responses() {
-        }
     }
 
     public static final class Codes {
@@ -87,9 +90,6 @@ public final class Values {
             throw new IllegalStateException("Codes is a utility class and should not be instantiated");
         }
 
-    }
-
-    private Values() {
     }
 
 }

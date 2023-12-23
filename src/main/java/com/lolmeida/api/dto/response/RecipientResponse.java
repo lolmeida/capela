@@ -32,4 +32,5 @@ public record RecipientResponse(
         Long updatedTime,
         LocalDateTime date
 ) {
+
 }

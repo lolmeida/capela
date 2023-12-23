@@ -1,6 +1,7 @@
 package com.lolmeida.api.resource;
 
 import java.util.List;
+import java.util.Optional;
 
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Path;
@@ -8,13 +9,15 @@ import jakarta.ws.rs.core.Response;
 
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
+import com.lolmeida.ApplicationPaths;
+import com.lolmeida.ApplicationValues;
 import com.lolmeida.api.ApiEndpoints;
 import com.lolmeida.api.dto.request.UserRequest;
 import com.lolmeida.api.dto.response.UserResponse;
 import com.lolmeida.api.mapper.UserMapper;
 import com.lolmeida.api.service.UserService;
 
-@Path("/user")
+@Path(ApplicationPaths.API_USER)
 public class UserResource implements ApiEndpoints {
 
     @Inject
@@ -38,15 +41,16 @@ public class UserResource implements ApiEndpoints {
 
     @Override
     public Response search(
-            @PathParam("field")
             final String field,
-            @PathParam("value")
             final String value) {
-        List<UserResponse> data = service.search(field, value)
-                                         .stream()
-                                         .map(e -> mapper.objToResponse(e))
-                                         .toList();
-        return Response.ok(data).build();
+        return Response.ok(
+                Optional.of(
+                        service.search(field, value)
+                               .stream()
+                               .map(e -> mapper.objToResponse(e))
+                               .toList()
+                ).orElseThrow(() -> new RuntimeException(ApplicationValues.Resources.NOT_FOUND_ERROR))
+        ).build();
     }
 
     @Override

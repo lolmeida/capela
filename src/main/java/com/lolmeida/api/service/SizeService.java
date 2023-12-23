@@ -11,12 +11,13 @@ import com.lolmeida.api.repository.SizeRepository;
 
 @RequestScoped
 public class SizeService implements PeahRepository<Size> {
+
     @Inject
     SizeRepository repository;
 
     @Override
     public List<Size> findAll(final String... orderByColumns) {
-        return  repository.findAll(orderByColumns);
+        return repository.findAll(orderByColumns);
     }
 
     @Override

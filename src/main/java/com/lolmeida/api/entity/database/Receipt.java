@@ -27,6 +27,7 @@ import com.lolmeida.api.entity.BaseEntity;
 @Entity
 @Table(name = "tRecebimentos") //, schema = "sql7509759")
 public class Receipt extends BaseEntity {
+
     @Id
     private String id;
 

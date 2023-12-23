@@ -10,7 +10,7 @@ import jakarta.ws.rs.core.Response;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
-public interface PeahResource <T> {
+public interface PeahResource<T> {
 
     @GET
     @Path("/")
@@ -20,17 +20,22 @@ public interface PeahResource <T> {
     @GET
     @Path("/search/{field}/{value}")
     Response search(
-            @PathParam("field") final String field,
-            @PathParam("value") final String value);
+            @PathParam("field")
+            final String field,
+            @PathParam("value")
+            final String value);
 
     @GET
     @Path("/{id}")
     Response findByCustomer(
-            @PathParam("id") final String id);
+            @PathParam("id")
+            final String id);
 
     @POST
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
-    Response save(@RequestBody final T request);
+    Response save(
+            @RequestBody
+            final T request);
 
 }

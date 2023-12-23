@@ -7,13 +7,15 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.Response;
 
+import com.lolmeida.ApplicationPaths;
+import com.lolmeida.ApplicationValues;
 import com.lolmeida.api.ApiEndpoints;
 import com.lolmeida.api.dto.request.CargoRequest;
 import com.lolmeida.api.dto.response.CargoResponse;
 import com.lolmeida.api.mapper.CargoMapper;
 import com.lolmeida.api.service.CargoService;
 
-@Path("/cargo")
+@Path(ApplicationPaths.API_CARGO)
 public class CargoResource implements ApiEndpoints {
 
     @Inject
@@ -39,12 +41,13 @@ public class CargoResource implements ApiEndpoints {
 
     @Override
     public Response search(final String field, final String value) {
-        List<CargoResponse> data = service.search(field, value)
-                                          .stream()
-                                          .map(e -> mapper.objToResponse(e))
-                                          .toList();
         return Response.ok(
-                Optional.of(data).orElseThrow(() -> new RuntimeException("No data found"))
+                Optional.of(
+                        service.search(field, value)
+                               .stream()
+                               .map(e -> mapper.objToResponse(e))
+                               .toList()
+                ).orElseThrow(() -> new RuntimeException(ApplicationValues.Resources.NOT_FOUND_ERROR))
         ).build();
     }
 

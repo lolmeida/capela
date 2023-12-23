@@ -20,8 +20,6 @@ public record ClientResponse(
 
         String user,
 
-
-
         // BaseEntity
         String id,
         boolean active,
@@ -37,4 +35,5 @@ public record ClientResponse(
         Long updatedTime,
         LocalDateTime date
 ) {
+
 }

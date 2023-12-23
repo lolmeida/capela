@@ -11,12 +11,13 @@ import com.lolmeida.api.repository.UserRepository;
 
 @RequestScoped
 public class UserService implements PeahRepository<User> {
+
     @Inject
     UserRepository repository;
 
     @Override
     public List<User> findAll(final String... orderByColumns) {
-        return  repository.findAll(orderByColumns);
+        return repository.findAll(orderByColumns);
     }
 
     @Override

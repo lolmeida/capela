@@ -1,5 +1,5 @@
-
 # Example aliases
+
 | aliases     | command                                                              |
 |-------------|----------------------------------------------------------------------|
 | zshconfig   | code ~/.zshrc                                                        |
@@ -7,9 +7,8 @@
 | peah_ls     | ls -lart                                                             |
 | mvnskiptest | /mvnw test -Dcheckstyle.skip -Dformat.skip -Dvulnerabilitycheck.skip |
 
-
-
 # Kubectl
+
 | aliases | command                        |
 |---------|--------------------------------|
 | k       | kubectl                        |
@@ -20,12 +19,8 @@
 | kgd     | kubectl get deployment -o wide |
 | kgr     | kubectl get replicaset -o wide |
 
-
-
-
-
-
 # Aws aliases
+
 | aliases   | command                                                                |
 |-----------|------------------------------------------------------------------------|
 | aws       | docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli |
@@ -33,8 +28,8 @@
 | awsls3    | awslocal s3                                                            |
 | awslambda | awslocal lambda                                                        |
 
-
 # ssh aliases
+
 | aliases | command                                                         |
 |---------|-----------------------------------------------------------------|
 | ssh     | ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null |
@@ -43,9 +38,8 @@
 | sshstg  | ssh -i ~/.ssh/id_rsa_stg                                        |
 | sshqa   | ssh -i ~/.ssh/id_rsa_qa                                         |
 
-
-
 # Some aliases
+
 | aliases | command                |
 |---------|------------------------|
 | ll      | ls -l                  |
@@ -72,8 +66,8 @@
 | myip    | curl ip.appspot.com    |
 | wget    | wget -c                |
 
-
 # Git aliases
+
 | aliases | command                                                                                                                         |
 |---------|---------------------------------------------------------------------------------------------------------------------------------|
 | gaa     | git add --all                                                                                                                   |
@@ -136,8 +130,8 @@
 | gss     | git submodule status                                                                                                            |
 | gitsub  | git submodule deinit -f --all && git submodule init && git submodule update --remote                                            |
 
-
 # Kubernetes aliases
+
 | kctx     | config use-context   |
 |----------|----------------------|
 | kcreate  | kubectl create       |
@@ -157,9 +151,8 @@
 | kset     | kubectl set          |
 | ktop     | kubectl top          |
 
-
-
 # Docker aliases
+
 | aliases   | command                                                                                                                  |
 |-----------|--------------------------------------------------------------------------------------------------------------------------|
 | dc        | docker-compose                                                                                                           |

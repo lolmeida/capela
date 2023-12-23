@@ -28,9 +28,10 @@ import com.lolmeida.api.openapi.Values.Responses.Summary;
 
 @Path(ApplicationPaths.API_PATH)
 @Produces(MediaType.APPLICATION_JSON)
-@Tag(name = ApplicationValues.API_NAME, description = ApplicationValues.API_DESCRIPTION)
+@Tag(name = ApplicationValues.API_NAME,
+     description = ApplicationValues.API_DESCRIPTION)
 @RequestScoped
-public interface  ApiEndpoints<R> {
+public interface ApiEndpoints<R> {
 
     @GET
     @Path(ApplicationPaths.API_HELLO_PATH)
@@ -168,7 +169,8 @@ public interface  ApiEndpoints<R> {
     @APIResponse(ref = Values.Responses.Error.BAD_GATEWAY)
     Response save(
             @Valid
-            @RequestBody(ref = ApplicationPaths.RequestBodies.REQUEST_BODY, description = "Request body")
+            @RequestBody(ref = ApplicationPaths.RequestBodies.REQUEST_BODY,
+                         description = "Request body")
             final R requestBody
     );
 

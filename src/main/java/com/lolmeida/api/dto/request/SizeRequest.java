@@ -12,4 +12,5 @@ public record SizeRequest(
         double height,
         double width
 ) {
+
 }

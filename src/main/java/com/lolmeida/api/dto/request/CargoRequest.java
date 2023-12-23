@@ -14,17 +14,28 @@ import com.lolmeida.api.openapi.Examples;
  */
 @Builder
 public record CargoRequest(
-        @Schema(description = "Cargo number", required = true, example = Examples.NUMBERS)
+        @Schema(description = "Cargo number",
+                required = true,
+                example = Examples.NUMBERS)
         String cargoNumber,
-        @Schema(description = "Client name", required = true, example = Examples.ENTITY_ID)
+        @Schema(description = "Client name",
+                required = true,
+                example = Examples.ENTITY_ID)
         String client,
-        @Schema(description = "Recipient name", required = true, example = Examples.ENTITY_ID)
+        @Schema(description = "Recipient name",
+                required = true,
+                example = Examples.ENTITY_ID)
         String recipient,
-        @Schema(description = "Total amount", required = true, example = Examples.DOUBLE_VALUES)
+        @Schema(description = "Total amount",
+                required = true,
+                example = Examples.DOUBLE_VALUES)
         double total,
-        @Schema(description = "Cargo status", required = true)
+        @Schema(description = "Cargo status",
+                required = true)
         CargoStatus status,
-        @Schema(description = "Cargo size list", example = Examples.ID_LIST)
+        @Schema(description = "Cargo size list",
+                example = Examples.ID_LIST)
         List<String> sizeList
 ) {
+
 }

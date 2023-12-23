@@ -41,6 +41,5 @@ public class Size extends BaseEntity {
     private double width;
 
 
-
     private String user;
 }

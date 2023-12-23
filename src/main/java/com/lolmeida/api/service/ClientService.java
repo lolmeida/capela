@@ -11,14 +11,16 @@ import com.lolmeida.api.repository.ClientRepository;
 
 @RequestScoped
 public class ClientService implements PeahRepository<Client> {
+
     @Inject
     ClientRepository repository;
 
-    @Inject NotificationService notification;
+    @Inject
+    NotificationService notification;
 
     @Override
     public List<Client> findAll(final String... orderByColumns) {
-        return  repository.findAll(orderByColumns);
+        return repository.findAll(orderByColumns);
     }
 
     @Override

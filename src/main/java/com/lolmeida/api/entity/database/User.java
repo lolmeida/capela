@@ -27,6 +27,7 @@ import com.lolmeida.api.entity.BaseEntity;
 @Entity
 @Table(name = "tUtilizadores") //, schema = "sql7509759")
 public class User extends BaseEntity {
+
     @Id
     private String id;
 
@@ -43,7 +44,6 @@ public class User extends BaseEntity {
     private String privilege;
 
     private String permission;
-
 
 
     private List<String> cargoList;

@@ -11,12 +11,13 @@ import com.lolmeida.api.repository.RecipientRepository;
 
 @RequestScoped
 public class RecipientService implements PeahRepository<Recipient> {
+
     @Inject
     RecipientRepository repository;
 
     @Override
     public List<Recipient> findAll(final String... orderByColumns) {
-        return  repository.findAll(orderByColumns);
+        return repository.findAll(orderByColumns);
     }
 
     @Override

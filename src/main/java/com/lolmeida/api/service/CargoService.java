@@ -7,16 +7,17 @@ import jakarta.inject.Inject;
 
 import com.lolmeida.PeahRepository;
 import com.lolmeida.api.entity.database.Cargo;
-import com.lolmeida.api.repository.CargaPeahRepository;
+import com.lolmeida.api.repository.CargoRepository;
 
 @RequestScoped
 public class CargoService implements PeahRepository<Cargo> {
+
     @Inject
-    CargaPeahRepository repository;
+    CargoRepository repository;
 
     @Override
     public List<Cargo> findAll(final String... orderByColumns) {
-        return  repository.findAll(orderByColumns);
+        return repository.findAll(orderByColumns);
     }
 
     @Override

@@ -1,20 +1,21 @@
 package com.lolmeida.api.resource;
 
 import java.util.List;
+import java.util.Optional;
 
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.Response;
 
-import org.jboss.resteasy.annotations.jaxrs.PathParam;
-
+import com.lolmeida.ApplicationPaths;
+import com.lolmeida.ApplicationValues;
 import com.lolmeida.api.ApiEndpoints;
 import com.lolmeida.api.dto.request.ReceiptRequest;
 import com.lolmeida.api.dto.response.ReceiptResponse;
 import com.lolmeida.api.mapper.ReceiptMapper;
 import com.lolmeida.api.service.ReceiptService;
 
-@Path("/receipt")
+@Path(ApplicationPaths.API_RECEIPT)
 public class ReceiptResource implements ApiEndpoints {
 
     @Inject
@@ -37,16 +38,15 @@ public class ReceiptResource implements ApiEndpoints {
     }
 
     @Override
-    public Response search(
-            @PathParam("field")
-            final String field,
-            @PathParam("value")
-            final String value) {
-        List<ReceiptResponse> data = service.search(field, value)
-                                            .stream()
-                                            .map(e -> mapper.objToResponse(e))
-                                            .toList();
-        return Response.ok(data).build();
+    public Response search(final String field, final String value) {
+        return Response.ok(
+                Optional.of(
+                        service.search(field, value)
+                               .stream()
+                               .map(e -> mapper.objToResponse(e))
+                               .toList()
+                ).orElseThrow(() -> new RuntimeException(ApplicationValues.Resources.NOT_FOUND_ERROR))
+        ).build();
     }
 
     @Override

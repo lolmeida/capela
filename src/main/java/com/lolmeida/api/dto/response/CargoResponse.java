@@ -1,7 +1,8 @@
 /**
- * Represents a response object for a cargo.
- * This class contains information about the cargo, such as cargo number, client name, recipient name, total amount, cargo status, and cargo size list.
- * It also inherits properties from the BaseEntity class, such as user, id, active, note, description, comments, attachment, image, createdBy, createdAt, createdTime, updatedBy, updatedAt, updatedTime, and date.
+ * Represents a response object for a cargo. This class contains information about the cargo, such as cargo number, client name,
+ * recipient name, total amount, cargo status, and cargo size list. It also inherits properties from the BaseEntity class, such as
+ * user, id, active, note, description, comments, attachment, image, createdBy, createdAt, createdTime, updatedBy, updatedAt,
+ * updatedTime, and date.
  */
 package com.lolmeida.api.dto.response;
 
@@ -20,21 +21,30 @@ import com.lolmeida.api.openapi.Examples;
 @Builder
 public record CargoResponse(
 
-        @Schema(description = "Cargo number", required = true, example = Examples.NUMBERS)
+        @Schema(description = "Cargo number",
+                required = true,
+                example = Examples.NUMBERS)
         String cargoNumber,
-        @Schema(description = "Client name", required = true, example = Examples.ENTITY_ID)
+        @Schema(description = "Client name",
+                required = true,
+                example = Examples.ENTITY_ID)
         String client,
-        @Schema(description = "Recipient name", required = true, example = Examples.ENTITY_ID)
+        @Schema(description = "Recipient name",
+                required = true,
+                example = Examples.ENTITY_ID)
         String recipient,
-        @Schema(description = "Total amount", required = true, example = Examples.DOUBLE_VALUES)
+        @Schema(description = "Total amount",
+                required = true,
+                example = Examples.DOUBLE_VALUES)
         double total,
 
-        @Schema(description = "Cargo status", required = true)
+        @Schema(description = "Cargo status",
+                required = true)
         CargoStatus status,
 
-        @Schema(description = "Cargo size list", example = Examples.ID_LIST)
+        @Schema(description = "Cargo size list",
+                example = Examples.ID_LIST)
         List<String> sizeList,
-
 
         // BaseEntity
 
@@ -56,4 +66,5 @@ public record CargoResponse(
         Long updatedTime,
         LocalDateTime date
 ) {
+
 }

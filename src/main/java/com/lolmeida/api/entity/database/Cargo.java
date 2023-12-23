@@ -74,12 +74,9 @@ public class Cargo extends BaseEntity {
     private int quantity;
 
 
-
-
     private String client;
     private String recipient;
     private String user;
-
 
 
     private List<String> sizeList;
