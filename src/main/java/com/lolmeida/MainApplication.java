@@ -23,6 +23,12 @@ import com.lolmeida.api.dto.request.ReceiptRequest;
 import com.lolmeida.api.dto.request.RecipientRequest;
 import com.lolmeida.api.dto.request.SizeRequest;
 import com.lolmeida.api.dto.request.UserRequest;
+import com.lolmeida.api.dto.response.CargoResponse;
+import com.lolmeida.api.dto.response.ClientResponse;
+import com.lolmeida.api.dto.response.ReceiptResponse;
+import com.lolmeida.api.dto.response.RecipientResponse;
+import com.lolmeida.api.dto.response.SizeResponse;
+import com.lolmeida.api.dto.response.UserResponse;
 import com.lolmeida.api.openapi.Values;
 
 @OpenAPIDefinition(
@@ -110,6 +116,59 @@ import com.lolmeida.api.openapi.Values;
                                 content = @Content(
                                         mediaType = MediaType.APPLICATION_JSON,
                                         schema = @Schema(implementation = UserRequest.class)
+                                )),
+
+
+
+
+
+                        @RequestBody(
+                                name = RequestBodies.REQUEST_BODY,
+                                required = true,
+                                description = "Cargo request body",
+                                content = @Content(
+                                        mediaType = MediaType.APPLICATION_JSON,
+                                        schema = @Schema(implementation = CargoResponse.class)
+                                )),
+                        @RequestBody(
+                                name = RequestBodies.CLIENT,
+                                required = true,
+                                description = "Client request body",
+                                content = @Content(
+                                        mediaType = MediaType.APPLICATION_JSON,
+                                        schema = @Schema(implementation = ClientResponse.class)
+                                )),
+                        @RequestBody(
+                                name = RequestBodies.RECEIPT,
+                                required = true,
+                                description = "Receipt request body",
+                                content = @Content(
+                                        mediaType = MediaType.APPLICATION_JSON,
+                                        schema = @Schema(implementation = ReceiptResponse.class)
+                                )),
+                        @RequestBody(
+                                name = RequestBodies.RECIPTENT,
+                                required = true,
+                                description = "Recipient request body",
+                                content = @Content(
+                                        mediaType = MediaType.APPLICATION_JSON,
+                                        schema = @Schema(implementation = RecipientResponse.class)
+                                )),
+                        @RequestBody(
+                                name = RequestBodies.SIZE,
+                                required = true,
+                                description = "Size request body",
+                                content = @Content(
+                                        mediaType = MediaType.APPLICATION_JSON,
+                                        schema = @Schema(implementation = SizeResponse.class)
+                                )),
+                        @RequestBody(
+                                name = RequestBodies.USER,
+                                required = true,
+                                description = "User request body",
+                                content = @Content(
+                                        mediaType = MediaType.APPLICATION_JSON,
+                                        schema = @Schema(implementation = UserResponse.class)
                                 ))
                 },
                 responses = {

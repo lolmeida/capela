@@ -46,14 +46,14 @@ You can create a native executable using:
 Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
 
 ```shell script
-./mvnw package -Dnative -Dquarkus.native.container-build=true
+./mvnw package -Dnative -Dquarkus.native.container-build=true 
 ```
 
 ## Run tests
 
 ** Checkstyle **
 
-``` shell script
+```shell script
 mvn verify -DskipTests -DskipUTs -DskipFTs -DskipPTs -DskipDcs
 ```
 
