@@ -6,35 +6,35 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
 import lombok.Builder;
 
+import com.lolmeida.ApplicationValues;
 import com.lolmeida.api.entity.CargoStatus;
-import com.lolmeida.api.openapi.Examples;
 
 /**
  * Represents a cargo request.
  */
 @Builder
 public record CargoRequest(
-        @Schema(description = "Cargo number",
+        @Schema(description = ApplicationValues.Descriptions.NUMBERS,
                 required = true,
-                example = Examples.NUMBERS)
+                example = ApplicationValues.Examples.NUMBERS)
         String cargoNumber,
-        @Schema(description = "Client name",
+        @Schema(description = ApplicationValues.Descriptions.ENTITY_ID,
                 required = true,
-                example = Examples.ENTITY_ID)
+                example = ApplicationValues.Examples.ENTITY_ID)
         String client,
-        @Schema(description = "Recipient name",
+        @Schema(description = ApplicationValues.Descriptions.ENTITY_ID,
                 required = true,
-                example = Examples.ENTITY_ID)
+                example = ApplicationValues.Examples.ENTITY_ID)
         String recipient,
-        @Schema(description = "Total amount",
+        @Schema(description = ApplicationValues.Descriptions.DOUBLE_VALUES,
                 required = true,
-                example = Examples.DOUBLE_VALUES)
+                example = ApplicationValues.Examples.DOUBLE_VALUES)
         double total,
-        @Schema(description = "Cargo status",
+        @Schema(description = ApplicationValues.Descriptions.CARGO_STATUS,
                 required = true)
         CargoStatus status,
-        @Schema(description = "Cargo size list",
-                example = Examples.ID_LIST)
+        @Schema(description = ApplicationValues.Descriptions.ID_LIST,
+                example = ApplicationValues.Examples.ID_LIST)
         List<String> sizeList
 ) {
 
