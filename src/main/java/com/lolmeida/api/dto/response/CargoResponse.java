@@ -16,8 +16,8 @@ import lombok.Builder;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.lolmeida.ApplicationValues.Descriptions;
-import com.lolmeida.api.entity.CargoStatus;
 import com.lolmeida.ApplicationValues.Examples;
+import com.lolmeida.api.entity.CargoStatus;
 
 @Builder
 public record CargoResponse(

@@ -56,6 +56,7 @@ public class ApplicationValues {
         public static final String ID_LIST = "A valid list of size_ids";
 
 
+        public static final String SINGATURE = "The user's signature";
     }
 
     public static final class Regex {

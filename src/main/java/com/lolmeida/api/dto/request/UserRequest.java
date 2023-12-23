@@ -36,7 +36,7 @@ public record UserRequest(
                 example = Examples.ADDRESS)
         String address,
 
-        @Schema(description = "The user's signature")
+        @Schema(description = Descriptions.SINGATURE)
         String signature) {
 
 }
