@@ -21,10 +21,10 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import com.lolmeida.ApplicationPaths;
 import com.lolmeida.ApplicationPaths.Parameters;
 import com.lolmeida.ApplicationPaths.Parameters.Refs;
+import com.lolmeida.ApplicationPaths.Values;
+import com.lolmeida.ApplicationPaths.Values.Responses.Descriptions;
 import com.lolmeida.ApplicationValues;
-import com.lolmeida.api.openapi.Values;
-import com.lolmeida.api.openapi.Values.Responses.Descriptions;
-import com.lolmeida.api.openapi.Values.Responses.Summary;
+
 
 @Path(ApplicationPaths.API_PATH)
 @Produces(MediaType.APPLICATION_JSON)
@@ -47,8 +47,8 @@ public interface ApiEndpoints<R> {
             MediaType.APPLICATION_XML
     })
     @Operation(summary = "Hello World")
-    @APIResponse(responseCode = Values.Codes.OK,
-                 description = "It works")
+    @APIResponse(responseCode = Values.Responses.Codes.OK,
+                 description = "It works!")
     @APIResponse(ref = Values.Responses.Error.UNAUTHORIZED)
     @APIResponse(ref = Values.Responses.Error.FORBIDDEN)
     @APIResponse(ref = Values.Responses.Error.NOT_FOUND)
@@ -71,8 +71,8 @@ public interface ApiEndpoints<R> {
             MediaType.APPLICATION_XML
     })
 
-    @Operation(summary = Summary.LIST)
-    @APIResponse(responseCode = Values.Codes.OK,
+    @Operation(summary = Values.Responses.Summary.LIST)
+    @APIResponse(responseCode = Values.Responses.Codes.OK,
                  description = Values.Responses.Descriptions.LIST)
     @APIResponse(ref = Values.Responses.Error.UNAUTHORIZED)
     @APIResponse(ref = Values.Responses.Error.FORBIDDEN)
@@ -95,8 +95,8 @@ public interface ApiEndpoints<R> {
             MediaType.APPLICATION_XML
     })
 
-    @Operation(summary = Summary.SEARCH)
-    @APIResponse(responseCode = Values.Codes.OK,
+    @Operation(summary = Values.Responses.Summary.SEARCH)
+    @APIResponse(responseCode = Values.Responses.Codes.OK,
                  description = Descriptions.SEARCH)
     @APIResponse(ref = Values.Responses.Error.UNAUTHORIZED)
     @APIResponse(ref = Values.Responses.Error.FORBIDDEN)
@@ -129,8 +129,8 @@ public interface ApiEndpoints<R> {
             MediaType.APPLICATION_XML
     })
 
-    @Operation(summary = Summary.FIND)
-    @APIResponse(responseCode = Values.Codes.OK,
+    @Operation(summary = Values.Responses.Summary.FIND)
+    @APIResponse(responseCode = Values.Responses.Codes.OK,
                  description = Descriptions.FIND)
     @APIResponse(ref = Values.Responses.Error.UNAUTHORIZED)
     @APIResponse(ref = Values.Responses.Error.FORBIDDEN)
@@ -159,8 +159,8 @@ public interface ApiEndpoints<R> {
             MediaType.APPLICATION_XML
     })
 
-    @Operation(summary = Summary.ADD)
-    @APIResponse(responseCode = Values.Codes.CREATED,
+    @Operation(summary = Values.Responses.Summary.ADD)
+    @APIResponse(responseCode = Values.Responses.Codes.CREATED,
                  description = Descriptions.ADD)
     @APIResponse(ref = Values.Responses.Error.UNAUTHORIZED)
     @APIResponse(ref = Values.Responses.Error.FORBIDDEN)
