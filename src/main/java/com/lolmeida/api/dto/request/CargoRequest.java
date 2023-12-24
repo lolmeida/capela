@@ -6,7 +6,8 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
 import lombok.Builder;
 
-import com.lolmeida.ApplicationValues;
+import com.lolmeida.ApplicationValues.Examples.Descriptions;
+import com.lolmeida.ApplicationValues.Examples.Values;
 import com.lolmeida.api.entity.CargoStatus;
 
 /**
@@ -14,27 +15,27 @@ import com.lolmeida.api.entity.CargoStatus;
  */
 @Builder
 public record CargoRequest(
-        @Schema(description = ApplicationValues.Descriptions.NUMBERS,
+        @Schema(description = Descriptions.NUMBERS,
                 required = true,
-                example = ApplicationValues.Examples.NUMBERS)
+                example = Values.NUMBERS)
         String cargoNumber,
-        @Schema(description = ApplicationValues.Descriptions.ENTITY_ID,
+        @Schema(description = Descriptions.ENTITY_ID,
                 required = true,
-                example = ApplicationValues.Examples.ENTITY_ID)
+                example = Values.ENTITY_ID)
         String client,
-        @Schema(description = ApplicationValues.Descriptions.ENTITY_ID,
+        @Schema(description = Descriptions.ENTITY_ID,
                 required = true,
-                example = ApplicationValues.Examples.ENTITY_ID)
+                example = Values.ENTITY_ID)
         String recipient,
-        @Schema(description = ApplicationValues.Descriptions.DOUBLE_VALUES,
+        @Schema(description = Descriptions.DOUBLE_VALUES,
                 required = true,
-                example = ApplicationValues.Examples.DOUBLE_VALUES)
+                example = Values.DOUBLE_VALUES)
         double total,
-        @Schema(description = ApplicationValues.Descriptions.CARGO_STATUS,
+        @Schema(description = Descriptions.CARGO_STATUS,
                 required = true)
         CargoStatus status,
-        @Schema(description = ApplicationValues.Descriptions.ID_LIST,
-                example = ApplicationValues.Examples.ID_LIST)
+        @Schema(description = Descriptions.ID_LIST,
+                example = Values.ID_LIST)
         List<String> sizeList
 ) {
 

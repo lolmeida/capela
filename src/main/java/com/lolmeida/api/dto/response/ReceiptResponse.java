@@ -10,29 +10,29 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
 import lombok.Builder;
 
-import com.lolmeida.ApplicationValues.Descriptions;
-import com.lolmeida.ApplicationValues.Examples;
+import com.lolmeida.ApplicationValues.Examples.Descriptions;
+import com.lolmeida.ApplicationValues.Examples.Values;
 
 @Builder
 public record ReceiptResponse(
         @Schema(description = Descriptions.DOUBLE_VALUES,
                 required = true,
-                example = Examples.DOUBLE_VALUES)
+                example = Values.DOUBLE_VALUES)
         double amount,
 
         @Schema(description = Descriptions.DOUBLE_VALUES,
                 required = true,
-                example = Examples.DOUBLE_VALUES)
+                example = Values.DOUBLE_VALUES)
         double otherAmount,
 
         @Schema(description = Descriptions.ENTITY_ID,
                 required = true,
-                example = Examples.ENTITY_ID)
+                example = Values.ENTITY_ID)
         String client,
 
         @Schema(description = Descriptions.ENTITY_ID,
                 required = false,
-                example = Examples.ID_LIST)
+                example = Values.ID_LIST)
         List<String> cargoList,
         String user,
 

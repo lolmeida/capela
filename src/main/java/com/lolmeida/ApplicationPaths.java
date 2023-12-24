@@ -32,6 +32,7 @@ public final class ApplicationPaths {
     }
 
     public static final class Values {
+
         private Values() {
         }
 
@@ -112,7 +113,6 @@ public final class ApplicationPaths {
                 }
             }
         }
-
 
 
     }

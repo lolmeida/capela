@@ -15,8 +15,8 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import lombok.Builder;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.lolmeida.ApplicationValues.Descriptions;
-import com.lolmeida.ApplicationValues.Examples;
+import com.lolmeida.ApplicationValues.Examples.Descriptions;
+import com.lolmeida.ApplicationValues.Examples.Values;
 import com.lolmeida.api.entity.CargoStatus;
 
 @Builder
@@ -24,28 +24,28 @@ public record CargoResponse(
 
         @Schema(description = Descriptions.NUMBERS,
                 required = true,
-                example = Examples.NUMBERS)
+                example = Values.NUMBERS)
         String cargoNumber,
         @Schema(description = Descriptions.ENTITY_ID,
                 required = true,
-                example = Examples.ENTITY_ID)
+                example = Values.ENTITY_ID)
         String client,
         @Schema(description = Descriptions.ENTITY_ID,
                 required = true,
-                example = Examples.ENTITY_ID)
+                example = Values.ENTITY_ID)
         String recipient,
         @Schema(description = Descriptions.DOUBLE_VALUES,
                 required = true,
-                example = Examples.DOUBLE_VALUES)
+                example = Values.DOUBLE_VALUES)
         double total,
 
         @Schema(description = Descriptions.CARGO_STATUS,
-                example = Examples.CARGO_STATUS,
+                example = Values.CARGO_STATUS,
                 required = true)
         CargoStatus status,
 
         @Schema(description = Descriptions.ID_LIST,
-                example = Examples.ID_LIST)
+                example = Values.ID_LIST)
         List<String> sizeList,
 
         // BaseEntity

@@ -7,33 +7,33 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
 import lombok.Builder;
 
-import com.lolmeida.ApplicationValues.Descriptions;
-import com.lolmeida.ApplicationValues.Examples;
+import com.lolmeida.ApplicationValues.Examples.Descriptions;
+import com.lolmeida.ApplicationValues.Examples.Values;
 
 @Builder
 public record SizeRequest(
         @Schema(
                 description = Descriptions.NUMBERS,
                 required = true,
-                example = Examples.NUMBERS)
+                example = Values.NUMBERS)
         int volume,
 
         @Schema(
                 description = Descriptions.DOUBLE_VALUES,
                 required = true,
-                example = Examples.DOUBLE_VALUES)
+                example = Values.DOUBLE_VALUES)
         double length,
 
         @Schema(
                 description = Descriptions.DOUBLE_VALUES,
                 required = true,
-                example = Examples.DOUBLE_VALUES)
+                example = Values.DOUBLE_VALUES)
         double height,
 
         @Schema(
                 description = Descriptions.DOUBLE_VALUES,
                 required = true,
-                example = Examples.DOUBLE_VALUES)
+                example = Values.DOUBLE_VALUES)
         double width
 ) {
 
