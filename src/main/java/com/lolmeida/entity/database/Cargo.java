@@ -70,15 +70,21 @@ public class Cargo extends BaseEntity {
     @JoinColumn(name = "client_id")
     private Client client;
 
-
     @OneToOne
     @JoinColumn(name = "recipient_id")
     private Client recipient;
 
+    @OneToOne
+    @JoinColumn(name = "warehouse_id")
+    private Warehouse warehouse;
 
     @ManyToOne
     @JoinColumn(name = "receipt_chave")
     private Receipt receipt;
+
+    @OneToOne
+    @JoinColumn(name = "status_id")
+    private Status statusId;
 
     @OneToMany
     private List<Size> sizeList;

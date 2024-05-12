@@ -1,6 +1,8 @@
 package com.lolmeida.entity.database;
 
 
+import java.util.List;
+
 import com.lolmeida.entity.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
@@ -31,4 +33,7 @@ public class Warehouse extends BaseEntity {
 
     @Column(name = "Teletofe",unique = false, length = 25)
     private String phoneNumber;
+
+    @OneToMany
+    private List<Cargo> cargoList;
 }
