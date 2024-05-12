@@ -9,7 +9,7 @@ import java.util.Set;
 public record CargoRequest(
         String cargoNumber,
         Client client,
-        String recipient,
+        Client recipient,
         double total,
         List<Size> sizeList,
         String status

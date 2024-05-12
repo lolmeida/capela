@@ -70,9 +70,10 @@ public class Cargo extends BaseEntity {
     @JoinColumn(name = "client_id")
     private Client client;
 
-    //@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    //@JoinColumn(name = "recipientId")
-    private String recipient;
+
+    @OneToOne
+    @JoinColumn(name = "recipient_id")
+    private Client recipient;
 
 
     @ManyToOne
