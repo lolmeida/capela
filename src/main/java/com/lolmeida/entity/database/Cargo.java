@@ -79,5 +79,6 @@ public class Cargo extends BaseEntity {
     private String receipt;
 
     //@OneToMany(mappedBy = "cargo",cascade = CascadeType.ALL)
-    private List<String> sizeList;
+    @OneToMany
+    private List<Size> sizeList;
 }

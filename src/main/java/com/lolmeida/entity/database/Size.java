@@ -37,5 +37,7 @@ public class Size extends BaseEntity {
 
     //@ManyToOne(fetch = FetchType.LAZY)
     //@JoinColumn(name = "cargoNumber")
-    private String cargo;
+    @ManyToOne
+    @JoinColumn(name = "cargo_guia")
+    private Cargo cargo;
 }

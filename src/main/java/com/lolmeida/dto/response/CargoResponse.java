@@ -16,7 +16,7 @@ public record CargoResponse(
         String client,
         String recipient,
         double total,
-        List<String> sizeList,
+        List<Size> sizeList,
         String status,
         String receipt,
 

@@ -11,7 +11,7 @@ public record SizeResponse(
         double length,
         double height,
         double width,
-        String cargo,
+        Cargo cargo,
 
 
 

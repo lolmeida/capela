@@ -11,7 +11,7 @@ public record CargoRequest(
         String client,
         String recipient,
         double total,
-        List<String> sizeList,
+        List<Size> sizeList,
         String status
 
         //String Foto,

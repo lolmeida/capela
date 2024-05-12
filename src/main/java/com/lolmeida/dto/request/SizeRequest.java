@@ -9,6 +9,6 @@ public record SizeRequest(
         double length,
         double height,
         double width,
-        String cargo
+        Cargo cargo
 ) {
 }
