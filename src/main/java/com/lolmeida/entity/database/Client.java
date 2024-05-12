@@ -38,10 +38,10 @@ public class Client extends BaseEntity {
     @Column(name = "Email",nullable = false)
     private String email;
 
-    //@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
-    private List<String> cargoList;
+    @OneToMany
+    private List<Cargo> cargoList;
 
-    //@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
-    private List<String> receiptList;
+    @OneToMany
+    private List<Receipt> receiptList;
 
 }

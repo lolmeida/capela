@@ -80,7 +80,6 @@ public class Cargo extends BaseEntity {
     @JoinColumn(name = "receipt_chave")
     private Receipt receipt;
 
-    //@OneToMany(mappedBy = "cargo",cascade = CascadeType.ALL)
     @OneToMany
     private List<Size> sizeList;
 }
