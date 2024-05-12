@@ -28,7 +28,7 @@ public class Status extends BaseEntity {
     @Column(name = "Status",unique = true, nullable = false, length = 255)
     private String status;
 
-@Column(name = "Qtd")
+    @Column(name = "Qtd")
     private int quantity;
 
     @Column(name = "Formula")

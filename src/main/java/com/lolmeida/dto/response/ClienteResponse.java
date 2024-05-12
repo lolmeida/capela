@@ -15,8 +15,8 @@ public record ClienteResponse(
         String address,
         String type,
         String email,
-        List<Cargo> cargoList,
-        List<Receipt> receiptList,
+        List<String> cargoList,
+        List<String> receiptList,
 
 
 

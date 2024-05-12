@@ -47,6 +47,6 @@ public class CargoSenderList extends BaseEntity {
     private String to;
 
 
-    @OneToMany(fetch = FetchType.LAZY) //, mappedBy = "Client")
-    List<Cargo> cargoList;
+    //@OneToMany(fetch = FetchType.LAZY) //, mappedBy = "Client")
+    List<String> cargoList;
 }

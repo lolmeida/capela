@@ -31,15 +31,15 @@ public class Receipt extends BaseEntity {
 
 
 
-    @ManyToOne
-    @JoinColumn(name = "cargoNumber")
-    private Cargo cargo;
+    //@ManyToOne
+    //@JoinColumn(name = "cargoNumber")
+    private String cargo;
 
-    @ManyToOne
-    @JoinColumn(name = "clientId")
-    private Client client;
+    //@ManyToOne
+    //@JoinColumn(name = "clientId")
+    private String client;
 
-    @OneToMany(mappedBy = "cargoNumber", fetch = FetchType.LAZY)
-    private List<Cargo> sizeList;
+    //@OneToMany(mappedBy = "cargoNumber", fetch = FetchType.LAZY)
+    private List<String> sizeList;
 
 }

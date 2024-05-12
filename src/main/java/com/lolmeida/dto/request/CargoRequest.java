@@ -8,10 +8,10 @@ import java.util.Set;
 
 public record CargoRequest(
         String cargoNumber,
-        Client client,
-        Client recipient,
+        String client,
+        String recipient,
         double total,
-        List<Size> sizeList,
+        List<String> sizeList,
         String status
 
         //String Foto,

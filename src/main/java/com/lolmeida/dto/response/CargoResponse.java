@@ -13,12 +13,12 @@ import java.util.Set;
 @Builder
 public record CargoResponse(
         String cargoNumber,
-        Client client,
-        Client recipient,
+        String client,
+        String recipient,
         double total,
-        List<Size> sizeList,
+        List<String> sizeList,
         String status,
-        Receipt receipt,
+        String receipt,
 
 
         // BaseEntity
