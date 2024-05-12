@@ -8,7 +8,7 @@ import java.util.Set;
 
 public record CargoRequest(
         String cargoNumber,
-        String client,
+        Client client,
         String recipient,
         double total,
         List<Size> sizeList,

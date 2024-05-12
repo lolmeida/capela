@@ -13,7 +13,7 @@ import java.util.Set;
 @Builder
 public record CargoResponse(
         String cargoNumber,
-        String client,
+        Client client,
         String recipient,
         double total,
         List<Size> sizeList,
