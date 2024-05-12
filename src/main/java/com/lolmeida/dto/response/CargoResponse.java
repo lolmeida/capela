@@ -18,7 +18,7 @@ public record CargoResponse(
         double total,
         List<Size> sizeList,
         String status,
-        String receipt,
+        Receipt receipt,
 
 
         // BaseEntity

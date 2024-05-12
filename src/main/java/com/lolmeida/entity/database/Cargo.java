@@ -74,9 +74,10 @@ public class Cargo extends BaseEntity {
     //@JoinColumn(name = "recipientId")
     private String recipient;
 
-    //@ManyToOne
-    //@JoinColumn(name = "receiptCargo")
-    private String receipt;
+
+    @ManyToOne
+    @JoinColumn(name = "receipt_chave")
+    private Receipt receipt;
 
     //@OneToMany(mappedBy = "cargo",cascade = CascadeType.ALL)
     @OneToMany
