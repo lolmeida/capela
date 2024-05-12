@@ -27,6 +27,4 @@ public class PostalCode extends BaseEntity {
 
     @Column(name = "Localidade", unique = true, nullable = false, length = 255)
     private String address;
-
-
 }
