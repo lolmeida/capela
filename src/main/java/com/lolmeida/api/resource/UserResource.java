@@ -1,32 +1,34 @@
 package com.lolmeida.api.resource;
 
+import java.util.List;
+
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+
+import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
+import org.jboss.resteasy.annotations.jaxrs.PathParam;
+
 import com.lolmeida.api.ApplicationPaths;
+import com.lolmeida.api.ResourceApi;
 import com.lolmeida.api.dto.request.UserRequest;
 import com.lolmeida.api.dto.response.UserResponse;
 import com.lolmeida.api.entity.database.Utilizador;
 import com.lolmeida.api.openapi.Values;
 import com.lolmeida.api.service.UserService;
-import jakarta.enterprise.context.RequestScoped;
-import jakarta.inject.Inject;
-import jakarta.ws.rs.*;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
-import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
-import org.jboss.resteasy.annotations.jaxrs.PathParam;
-
-import java.util.List;
 
 @Path(Values.Paths.USER)
-@RequestScoped
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
-public class UserResource {
+public class UserResource implements ResourceApi<UserRequest> {
+
     @Inject
     UserService service;
 
-    @GET
-    @Path(ApplicationPaths.ROOT)
-    @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
         List<UserResponse> data = service.findAll()
                                          .stream()
@@ -35,11 +37,11 @@ public class UserResource {
         return Response.ok(data).build();
     }
 
-    @GET
-    @Path(ApplicationPaths.SEARCH)
     public Response search(
-            @PathParam("field") final String field,
-            @PathParam("value") final String value) {
+            @PathParam("field")
+            final String field,
+            @PathParam("value")
+            final String value) {
         List<UserResponse> data = service.search(field, value)
                                          .stream()
                                          .map(this::objToResponse)
@@ -47,9 +49,9 @@ public class UserResource {
         return Response.ok(data).build();
     }
 
-    @GET
-    @Path(ApplicationPaths.FIND_BY)
-    public Response findByCustomer(@PathParam("id") final String id){
+    public Response findByCustomer(
+            @PathParam("id")
+            final String id) {
         List<UserResponse> data = service.findBy(id)
                                          .stream()
                                          .map(this::objToResponse)
@@ -57,10 +59,8 @@ public class UserResource {
         return Response.ok(data).build();
     }
 
-    @POST
-    @Path(ApplicationPaths.ROOT)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response save(@RequestBody UserRequest request) {
+    public Response save(
+            @RequestBody UserRequest request) {
         service.save(requestToObj(request));
         //return Response.ok(request).build();
 
@@ -69,29 +69,29 @@ public class UserResource {
                 .build();
     }
 
-    private Utilizador requestToObj (UserRequest request){
+    private Utilizador requestToObj(UserRequest request) {
         return Utilizador.builder()
-                //.id(Utils.generateRandomString())
-                .mail(request.Mail())
-                .Nome(request.Nome())
-                .Telefone(request.Telefone())
-                .Morada(request.Morada())
-                .Assinatura(request.Assinatura())
-                .Previlegio(request.Previlegio())
-                .Perfil(request.Perfil())
-                .Clientes(request.Clientes())
-                .Recebimentos(request.Recebimentos())
-                .Cargas(request.Cargas())
-                .DiasEdicaoDocumento(request.DiasEdicaoDocumento())
-                .PrazoAnularEstadoDias(request.PrazoAnularEstadoDias())
-                .DiasEliminarDocumento(request.DiasEliminarDocumento())
-                .QtdMaxFactDivida(request.QtdMaxFactDivida())
-                .DiasMaxFactDivida(request.DiasMaxFactDivida())
-                .HojeMenosData(request.HojeMenosData())
-                .build();
+                         //.id(Utils.generateRandomString())
+                         .mail(request.Mail())
+                         .Nome(request.Nome())
+                         .Telefone(request.Telefone())
+                         .Morada(request.Morada())
+                         .Assinatura(request.Assinatura())
+                         .Previlegio(request.Previlegio())
+                         .Perfil(request.Perfil())
+                         .Clientes(request.Clientes())
+                         .Recebimentos(request.Recebimentos())
+                         .Cargas(request.Cargas())
+                         .DiasEdicaoDocumento(request.DiasEdicaoDocumento())
+                         .PrazoAnularEstadoDias(request.PrazoAnularEstadoDias())
+                         .DiasEliminarDocumento(request.DiasEliminarDocumento())
+                         .QtdMaxFactDivida(request.QtdMaxFactDivida())
+                         .DiasMaxFactDivida(request.DiasMaxFactDivida())
+                         .HojeMenosData(request.HojeMenosData())
+                         .build();
     }
 
-    private UserResponse objToResponse (Utilizador entity) {
+    private UserResponse objToResponse(Utilizador entity) {
         return UserResponse.builder()
                            .Mail(entity.getMail())
                            .Nome(entity.getNome())

@@ -18,6 +18,7 @@ import com.lolmeida.api.service.AgentService;
 
 @Path(Values.Paths.AGENT)
 public class AgentResource implements ResourceApi<AgentRequest> {
+
     @Inject
     AgentService service;
 
@@ -29,22 +30,27 @@ public class AgentResource implements ResourceApi<AgentRequest> {
     }
 
     public Response search(
-            @PathParam("field") final String field,
-            @PathParam("value") final String value) {
+            @PathParam("field")
+            final String field,
+            @PathParam("value")
+            final String value) {
         List<AgentResponse> data = service.search(field, value).stream()
                                           .map(this::objToResponse)
                                           .toList();
         return Response.ok(data).build();
     }
 
-    public Response findByCustomer(@PathParam("id") final String id){
+    public Response findByCustomer(
+            @PathParam("id")
+            final String id) {
         List<AgentResponse> data = service.findBy(id).stream()
                                           .map(this::objToResponse)
                                           .toList();
         return Response.ok(data).build();
     }
 
-    public Response save(@RequestBody AgentRequest request) {
+    public Response save(
+            @RequestBody AgentRequest request) {
         service.save(requestToObj(request));
 
         return Response
@@ -54,14 +60,14 @@ public class AgentResource implements ResourceApi<AgentRequest> {
 
     private Agent requestToObj(AgentRequest request) {
         return Agent.builder()
-                //id(Utils.generateRandomString())
+                    //id(Utils.generateRandomString())
                     .name(request.name())
                     .email(request.email())
                     .contact(request.contact())
                     .build();
     }
 
-    private AgentResponse objToResponse (Agent entity){
+    private AgentResponse objToResponse(Agent entity) {
         return AgentResponse.builder()
                             .name(entity.getName())
                             .email(entity.getEmail())
