@@ -9,15 +9,15 @@ import jakarta.ws.rs.core.Response;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
+import com.lolmeida.api.AppConfig.Schema.Table;
 import com.lolmeida.api.ResourceApi;
 import com.lolmeida.api.dto.request.CargoRequest;
 import com.lolmeida.api.dto.response.CargoResponse;
 import com.lolmeida.api.entity.database.Cargo;
-import com.lolmeida.api.entity.database.Client;
-import com.lolmeida.api.entity.database.Size;
 import com.lolmeida.api.openapi.Values;
 import com.lolmeida.api.service.CargoService;
 import com.lolmeida.api.service.ClientService;
+import com.lolmeida.api.service.SizeService;
 
 @Path(Values.Paths.CARGO)
 public class CargoResource implements ResourceApi<CargoRequest> {
@@ -26,9 +26,11 @@ public class CargoResource implements ResourceApi<CargoRequest> {
     CargoService service;
     @Inject
     ClientService clientService;
+    @Inject
+    SizeService sizeService;
 
     public Response getAll() {
-        List<CargoResponse> data = service.findAll("date, cargoNumber")
+        List<CargoResponse> data = service.findAll(Table.Cargo.OrderByColumns)
                                           .stream()
                                           .map(this::objToResponse)
                                           .toList();
@@ -66,7 +68,7 @@ public class CargoResource implements ResourceApi<CargoRequest> {
         //return Response.ok(request).build();
 
         return Response
-                .ok(service.search("cargoNumber", service.save(requestToObj(request))))
+                .ok(service.search(Table.Cargo.SearchId, service.save(requestToObj(request))))
                 .build();
     }
 
@@ -84,31 +86,34 @@ public class CargoResource implements ResourceApi<CargoRequest> {
     }
 
     private CargoResponse objToResponse(Cargo entity) {
-        return CargoResponse.builder()
-                            .id(entity.getId())
-                            .client(entity.getClient())
-                            .recipient(entity.getRecipient())
-                            .total(entity.getTotal())
-                            .sizeList(entity.getSizeList())
-                            .status(entity.getStatus())
-                            .cargoNumber(entity.getCargoNumber())
+        return CargoResponse
+                .builder()
+                .id(entity.getId())
+                .client(entity.getClient())
+                .recipient(entity.getRecipient())
+                .total(entity.getTotal())
+                .sizeList(sizeService.search("cargoId", entity.getId()))
+                .status(entity.getStatus())
+                .cargoNumber(entity.getCargoNumber())
 
-                            // BaseEntity
-                            /*.active(entity.isActive())
-                            .note(entity.getNote())
-                            .description(entity.getDescription())
-                            .attachment(entity.getAttachment())
-                            .image(entity.getImage())
-                            .createdBy(entity.getCreatedBy())
-                            .createdAt(entity.getCreatedAt())
-                            .createdTime(entity.getCreatedTime())
-                            .updatedBy(entity.getUpdatedBy())
-                            .updatedTime(entity.getUpdatedTime())
-                            .updatedAt(entity.getUpdatedAt())
-                            .date(entity.getDate())*/
-                            .receipt(entity.getReceipt())
-                            .recipient(entity.getRecipient())
+                // BASE ENTITY:
+                // Auto generated fields
+                .active(entity.isActive())
+                .createdBy(entity.getCreatedBy())
+                .createdAt(entity.getCreatedAt())
+                .createdTime(entity.getCreatedTime())
+                .updatedTime(entity.getUpdatedTime())
+                .updatedAt(entity.getUpdatedAt())
+                .date(entity.getDate())
+                .receipt(entity.getReceipt())
+                .recipient(entity.getRecipient())
+                .updatedBy(entity.getUpdatedBy())
+                // Other fields
+                .note(entity.getNote())
+                .description(entity.getDescription())
+                .attachment(entity.getAttachment())
+                .image(entity.getImage())
 
-                            .build();
+                .build();
     }
 }

@@ -10,7 +10,7 @@ import com.lolmeida.api.entity.database.Client;
 import com.lolmeida.api.entity.database.Receipt;
 import com.lolmeida.api.entity.database.Size;
 
-@Builder
+@Builder(toBuilder = true)
 public record CargoResponse(
         String cargoNumber,
         Client client,

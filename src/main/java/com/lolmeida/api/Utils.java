@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Random;
 
+import com.lolmeida.api.dto.response.CargoResponse;
+import com.lolmeida.api.entity.database.Cargo;
+
 public class Utils {
 
     public static long currentTime = System.currentTimeMillis(); //Instant.now().toEpochMilli();
@@ -25,4 +28,5 @@ public class Utils {
     public static String activeUser() {
         return "lolmeida@gmail.com";
     }
+
 }

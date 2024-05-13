@@ -40,8 +40,5 @@ public class Size extends BaseEntity {
     @Column(name = "Largura")
     private double width;
 
-
-    @ManyToOne
-    @JoinColumn(name = "cargo_id")
-    private Cargo cargo;
+    String cargoId;
 }

@@ -23,7 +23,7 @@ import com.lolmeida.api.entity.BaseEntity;
 @Getter
 @Setter
 @Slf4j
-@Builder
+@Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
 

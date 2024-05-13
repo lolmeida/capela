@@ -12,16 +12,15 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 import com.lolmeida.api.ResourceApi;
 import com.lolmeida.api.dto.request.SizeRequest;
 import com.lolmeida.api.dto.response.SizeResponse;
-import com.lolmeida.api.entity.database.Cargo;
 import com.lolmeida.api.entity.database.Size;
 import com.lolmeida.api.openapi.Values;
-import com.lolmeida.api.service.DimensionService;
+import com.lolmeida.api.service.SizeService;
 
 @Path(Values.Paths.SIZE)
 public class SizeResource implements ResourceApi<SizeRequest> {
 
     @Inject
-    DimensionService service;
+    SizeService service;
 
     public Response getAll() {
         List<SizeResponse> data = service.findAll("cargo")
@@ -70,18 +69,19 @@ public class SizeResource implements ResourceApi<SizeRequest> {
                    .length(request.length())
                    .width(request.width())
                    .volume(request.volume())
-                   .cargo(new Cargo())
+                   .cargoId(request.cargoId())
+
                    .build();
     }
 
     private SizeResponse objToResponse(Size entity) {
         return SizeResponse.builder()
-                            .id(entity.getId())
+                           .id(entity.getId())
                            .height(entity.getHeight())
                            .length(entity.getLength())
                            .width(entity.getWidth())
                            .volume(entity.getVolume())
-                           .cargo(entity.getCargo())
+                           .cargoId(entity.getCargoId())
 
                            // BaseEntity
                            /*.active(entity.isActive())

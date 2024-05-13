@@ -1,16 +1,24 @@
 package com.lolmeida.api.entity;
 
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
+import jakarta.persistence.Version;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+
+import com.lolmeida.api.Utils;
 
 
 @Getter
@@ -19,75 +27,47 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor
 @AllArgsConstructor
 @MappedSuperclass
+
 public abstract class BaseEntity {
 
     //@Column(name = "Activo", columnDefinition = "BOOLEAN DEFAULT TRUE",nullable = false)
-    protected boolean active;
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
-/*
+
+    // Other auto generated fields
+    protected LocalDateTime date;
+    protected LocalDateTime createdAt;
+    protected LocalDateTime updatedAt;
+    protected String createdBy;
+    protected String updatedBy;
+    protected Long createdTime;
+    protected Long updatedTime;
+    protected boolean active;
+
     @PrePersist
     protected void onCreate() {
-        this.id=Utils.generateRandomString();
-        //this.createdTime = Utils.currentTime;
-        //this.createdAt = Utils.currentDateTime;
-        //this.createdBy = Utils.activeUser();
-        //this.date = Utils.currentDateTime;
-        //this.active = true;
+        this.createdTime = Utils.currentTime;
+        this.createdAt = Utils.currentDateTime;
+        this.createdBy = Utils.activeUser();
+        this.date = Utils.currentDateTime;
+        this.active = true;
     }
-
-    @Column(name = "ModificadoPor")
-    protected String updatedBy;
-
-
-
-    @Column(name = "Nota")
-    protected String note;
-
-    @Column(name = "Anexo")
-    protected String attachment;
-
-    @Column(name = "Utilizador",nullable = false)
-    protected String createdBy;
-
-    @Column(name = "Foto")
-    protected String image;
-
-    @Column(name = "Descricao")
-    protected String description;
-
-    @Column(name = "Observacoes")
-    protected String comments;
-
-    //@Column(name = "Contador", columnDefinition = "INT DEFAULT 0")
-    //protected int Counter;
-    @Column(name = "TempoCriacao",nullable = false)
-    protected Long createdTime;
-
-    @Column(name = "TempoModificacao")
-    protected Long updatedTime;
-
-    @Version
-    @Column(name = "Versao", columnDefinition = "INT DEFAULT 0",nullable = false)
-    protected int version;
-
-    @Column(name = "Data", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP",nullable = false)
-    protected LocalDateTime date;
-
-    @Column(name = "DataCriacao", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP",nullable = false)
-    protected LocalDateTime createdAt;
-
-    @Column(name = "DataModificacao", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    protected LocalDateTime updatedAt;
-
-
-
 
     @PreUpdate
     protected void onUpdate() {
         this.updatedAt = Utils.currentDateTime;
         this.updatedTime = Utils.currentTime;
         this.updatedBy = Utils.activeUser();
-    }*/
+    }
+
+    // Other fields
+    protected String note;
+    protected String attachment;
+    protected String image;
+    protected String description;
+    protected String comments;
+    protected int Counter;
+    @Version
+    protected int version;
 }

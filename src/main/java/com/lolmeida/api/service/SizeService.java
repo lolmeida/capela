@@ -10,7 +10,7 @@ import com.lolmeida.api.entity.database.Size;
 import com.lolmeida.api.repository.DimensionRepositoryApi;
 
 @RequestScoped
-public class DimensionService implements RepositoryApi<Size> {
+public class SizeService implements RepositoryApi<Size> {
 
     @Inject
     DimensionRepositoryApi repository;
