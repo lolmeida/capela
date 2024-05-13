@@ -1,10 +1,9 @@
 package com.lolmeida.resource;
 
-import com.lolmeida.Utils;
 import com.lolmeida.dto.request.SizeRequest;
 import com.lolmeida.dto.response.SizeResponse;
 import com.lolmeida.entity.database.Size;
-import com.lolmeida.service.DimensaoService;
+import com.lolmeida.service.DimensionService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -21,7 +20,7 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class SizeResource {
     @Inject
-    DimensaoService service;
+    DimensionService service;
 
     @GET
     @Path("/")
@@ -72,7 +71,7 @@ public class SizeResource {
 
     private Size requestToObj (SizeRequest request){
         return Size.builder()
-                .id(Utils.generateRandomString())
+                //.id(Utils.generateRandomString())
                 .height(request.height())
                 .length(request.length())
                 .width(request.width())
@@ -90,7 +89,7 @@ public class SizeResource {
                 .cargo(entity.getCargo())
 
                 // BaseEntity
-                .active(entity.isActive())
+                /*.active(entity.isActive())
                 .note(entity.getNote())
                 .description(entity.getDescription())
                 .attachment(entity.getAttachment())
@@ -101,7 +100,7 @@ public class SizeResource {
                 .updatedBy(entity.getUpdatedBy())
                 .updatedTime(entity.getUpdatedTime())
                 .updatedAt(entity.getUpdatedAt())
-                .date(entity.getDate())
+                .date(entity.getDate())*/
 
                 .build();
     }

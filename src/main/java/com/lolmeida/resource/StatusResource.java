@@ -70,7 +70,7 @@ public class StatusResource {
 
     private Status requestToObj (StatusRequest request){
         return Status.builder()
-                .id(Utils.generateRandomString())
+                //.id(Utils.generateRandomString())
                 .status(request.status())
                 .quantity(request.quantity())
                 .formula(request.formula())
@@ -86,7 +86,7 @@ public class StatusResource {
                 .type(entity.getType())
 
                 // BaseEntity
-                .active(entity.isActive())
+                /*.active(entity.isActive())
                 .note(entity.getNote())
                 .description(entity.getDescription())
                 .attachment(entity.getAttachment())
@@ -97,7 +97,7 @@ public class StatusResource {
                 .updatedBy(entity.getUpdatedBy())
                 .updatedTime(entity.getUpdatedTime())
                 .updatedAt(entity.getUpdatedAt())
-                .date(entity.getDate())
+                .date(entity.getDate())*/
 
                 .build();
     }

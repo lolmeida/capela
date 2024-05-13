@@ -69,7 +69,7 @@ public class ConfigurationResource {
 
     private Configuration requestToObj(ConfigurationRequest request) {
         return Configuration.builder()
-                .id(Utils.generateRandomString())
+                //.id(Utils.generateRandomString())
                 .key(request.key())
                 .value(request.value())
                 .description(request.description())
@@ -83,7 +83,7 @@ public class ConfigurationResource {
                 .description(entity.getDescription())
 
                 // BaseEntity
-                .active(entity.isActive())
+                /*.active(entity.isActive())
                 .note(entity.getNote())
                 .description(entity.getDescription())
                 .attachment(entity.getAttachment())
@@ -94,7 +94,7 @@ public class ConfigurationResource {
                 .updatedBy(entity.getUpdatedBy())
                 .updatedTime(entity.getUpdatedTime())
                 .updatedAt(entity.getUpdatedAt())
-                .date(entity.getDate())
+                .date(entity.getDate())*/
 
                 .build();
     }

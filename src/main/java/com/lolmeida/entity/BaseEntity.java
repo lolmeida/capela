@@ -15,10 +15,13 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 public abstract class BaseEntity {
 
-    @Column(name = "ModificadoPor")
+    @Id
+    private String id;
+
+    /*@Column(name = "ModificadoPor")
     protected String updatedBy;
 
-    @Column(name = "Activo")
+    @Column(name = "Activo", columnDefinition = "BOOLEAN DEFAULT TRUE",nullable = false)
     protected boolean active;
 
     @Column(name = "Nota")
@@ -39,8 +42,8 @@ public abstract class BaseEntity {
     @Column(name = "Observacoes")
     protected String comments;
 
-    @Column(name = "Contador", columnDefinition = "INT DEFAULT 0")
-    protected int Counter;
+    //@Column(name = "Contador", columnDefinition = "INT DEFAULT 0")
+    //protected int Counter;
     @Column(name = "TempoCriacao",nullable = false)
     protected Long createdTime;
 
@@ -76,5 +79,5 @@ public abstract class BaseEntity {
         this.updatedAt = Utils.currentDateTime;
         this.updatedTime = Utils.currentTime;
         this.updatedBy = Utils.activeUser();
-    }
+    }*/
 }

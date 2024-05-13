@@ -1,10 +1,9 @@
 package com.lolmeida.resource;
 
-import com.lolmeida.Utils;
-import com.lolmeida.dto.request.ClienteRequest;
-import com.lolmeida.dto.response.ClienteResponse;
+import com.lolmeida.dto.request.ClientRequest;
+import com.lolmeida.dto.response.ClientResponse;
 import com.lolmeida.entity.database.Client;
-import com.lolmeida.service.ClienteService;
+import com.lolmeida.service.ClientService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -21,16 +20,16 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class ClientResource {
     @Inject
-    ClienteService service;
+    ClientService service;
 
     @GET
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
-        List<ClienteResponse> data = service.findAll()
-                .stream()
-                .map(this::objToResponse)
-                .toList();
+        List<ClientResponse> data = service.findAll()
+                                           .stream()
+                                           .map(this::objToResponse)
+                                           .toList();
         return Response.ok(data).build();
     }
 
@@ -39,20 +38,20 @@ public class ClientResource {
     public Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value) {
-        List<ClienteResponse> data = service.search( field, value)
-                .stream()
-                .map(this::objToResponse)
-                .toList();
+        List<ClientResponse> data = service.search(field, value)
+                                           .stream()
+                                           .map(this::objToResponse)
+                                           .toList();
         return Response.ok(data).build();
     }
 
     @GET
     @Path("/{id}")
     public Response findByCustomer(@PathParam("id") final String id){
-        List<ClienteResponse> data = service.findBy(id)
-                .stream()
-                .map(this::objToResponse)
-                .toList();
+        List<ClientResponse> data = service.findBy(id)
+                                           .stream()
+                                           .map(this::objToResponse)
+                                           .toList();
         return Response.ok(data).build();
     }
 
@@ -61,15 +60,15 @@ public class ClientResource {
     @POST
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response save(@RequestBody ClienteRequest request) {
+    public Response save(@RequestBody ClientRequest request) {
         return Response
                 .ok(service.search("id", service.save(requestToObj(request))))
                 .build();
     }
 
-    private Client requestToObj (ClienteRequest request){
+    private Client requestToObj (ClientRequest request){
         return Client.builder()
-                .id(Utils.generateRandomString())
+                //.id(Utils.generateRandomString())
                 .name(request.name())
                 .phoneNumber(request.phoneNumber())
                 .address(request.address())
@@ -78,31 +77,31 @@ public class ClientResource {
                 .build();
     }
 
-    private ClienteResponse objToResponse (Client entity){
-        return ClienteResponse.builder()
-                .name(entity.getName())
-                .phoneNumber(entity.getPhoneNumber())
-                .address(entity.getAddress())
-                .type(entity.getType())
-                .email(entity.getEmail())
-                .cargoList(entity.getCargoList())
-                .receiptList(entity.getReceiptList())
+    private ClientResponse objToResponse (Client entity){
+        return ClientResponse.builder()
+                             .name(entity.getName())
+                             .phoneNumber(entity.getPhoneNumber())
+                             .address(entity.getAddress())
+                             .type(entity.getType())
+                             .email(entity.getEmail())
+                             .cargoList(entity.getCargoList())
+                             .receiptList(entity.getReceiptList())
 
-                .active(entity.isActive())
-                .note(entity.getNote())
-                .description(entity.getDescription())
-                .attachment(entity.getAttachment())
-                .image(entity.getImage())
-                .createdBy(entity.getCreatedBy())
-                .createdAt(entity.getCreatedAt())
-                .createdTime(entity.getCreatedTime())
-                .updatedBy(entity.getUpdatedBy())
-                .updatedTime(entity.getUpdatedTime())
-                .updatedAt(entity.getUpdatedAt())
-                .date(entity.getDate())
-                .cargoList(entity.getCargoList())
-                .receiptList(entity.getReceiptList())
+                             /*.active(entity.isActive())
+                             .note(entity.getNote())
+                             .description(entity.getDescription())
+                             .attachment(entity.getAttachment())
+                             .image(entity.getImage())
+                             .createdBy(entity.getCreatedBy())
+                             .createdAt(entity.getCreatedAt())
+                             .createdTime(entity.getCreatedTime())
+                             .updatedBy(entity.getUpdatedBy())
+                             .updatedTime(entity.getUpdatedTime())
+                             .updatedAt(entity.getUpdatedAt())
+                             .date(entity.getDate())*/
+                             .cargoList(entity.getCargoList())
+                             .receiptList(entity.getReceiptList())
 
-                .build();
+                             .build();
     }
 }

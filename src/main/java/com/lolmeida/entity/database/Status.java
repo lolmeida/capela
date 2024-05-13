@@ -19,10 +19,11 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "tIdStatus") //, schema = "sql7509759")
+//@Table(name = "tIdStatus") //, schema = "sql7509759")
 public class Status extends BaseEntity {
-    @Id
-    private String id;
+    /*@Id
+    @Column(name = "status_id")
+    private String id;*/
 
     @NotEmpty(message = "this is a field is mandatory.")
     @Column(name = "Status",unique = true, nullable = false, length = 255)

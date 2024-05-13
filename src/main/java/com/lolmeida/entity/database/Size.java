@@ -15,12 +15,12 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "tDimensoes") //, schema = "sql7509759")
+//@Table(name = "tDimensoes") //, schema = "sql7509759")
 public class Size extends BaseEntity {
 
-    @Id
-    @Column(name = "IdDimensoes")
-    private String id;
+    /*@Id
+    @Column(name = "dimensao_id")
+    private String id;*/
 
     @Column(name = "Vol")
     private int volume;
@@ -36,6 +36,6 @@ public class Size extends BaseEntity {
 
 
     @ManyToOne
-    @JoinColumn(name = "cargo_guia")
+    @JoinColumn(name = "cargo_id")
     private Cargo cargo;
 }

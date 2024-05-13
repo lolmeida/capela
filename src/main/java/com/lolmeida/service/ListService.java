@@ -1,35 +1,35 @@
 package com.lolmeida.service;
 
 import com.lolmeida.PeahRepository;
-import com.lolmeida.entity.database.Status;
-import com.lolmeida.repository.StatusRepository;
+import com.lolmeida.entity.database.CargoSenderList;
+import com.lolmeida.repository.ListRepository;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
 import java.util.List;
 
 @RequestScoped
-public class StatusService implements PeahRepository<Status> {
+public class ListService implements PeahRepository<CargoSenderList> {
     @Inject
-    StatusRepository repository;
+    ListRepository repository;
 
     @Override
-    public List<Status> findAll(String... orderByColumns){
+    public List<CargoSenderList> findAll(String... orderByColumns){
         return  repository.findAll(orderByColumns);
     }
 
     @Override
-    public List<Status> search(String field, String value) {
+    public List<CargoSenderList> search(String field, String value) {
         return repository.search(field, value);
     }
 
     @Override
-    public List<Status> findBy(String id) {
+    public List<CargoSenderList> findBy(String id) {
         return repository.findBy(id);
     }
 
     @Override
-    public String save(Status entity) {
+    public String save(CargoSenderList entity) {
         return repository.save(entity);
     }
 }

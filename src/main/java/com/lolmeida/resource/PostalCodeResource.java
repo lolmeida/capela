@@ -1,10 +1,9 @@
 package com.lolmeida.resource;
 
-import com.lolmeida.Utils;
-import com.lolmeida.dto.request.CodigoPostalRequest;
+import com.lolmeida.dto.request.PostalCodeRequest;
 import com.lolmeida.dto.response.PostalCodeResponse;
 import com.lolmeida.entity.database.PostalCode;
-import com.lolmeida.service.CodigoPostalService;
+import com.lolmeida.service.PostalCodeService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -21,7 +20,7 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class PostalCodeResource {
     @Inject
-    CodigoPostalService service;
+    PostalCodeService service;
 
     @GET
     @Path("/")
@@ -59,7 +58,7 @@ public class PostalCodeResource {
     @POST
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response save(@RequestBody CodigoPostalRequest request) {
+    public Response save(@RequestBody PostalCodeRequest request) {
         service.save(requestToObj(request));
         //return Response.ok(request).build();
 
@@ -68,9 +67,9 @@ public class PostalCodeResource {
                 .build();
     }
 
-    private PostalCode requestToObj(CodigoPostalRequest request) {
+    private PostalCode requestToObj(PostalCodeRequest request) {
         return PostalCode.builder()
-                .id(Utils.generateRandomString())
+                //.id(Utils.generateRandomString())
                 .code(request.code())
                 .address(request.address())
                 .build();
@@ -82,7 +81,7 @@ public class PostalCodeResource {
                 .code(entity.getCode())
 
                 // BaseEntity
-                .active(entity.isActive())
+                /*.active(entity.isActive())
                 .note(entity.getNote())
                 .description(entity.getDescription())
                 .attachment(entity.getAttachment())
@@ -93,7 +92,7 @@ public class PostalCodeResource {
                 .updatedBy(entity.getUpdatedBy())
                 .updatedTime(entity.getUpdatedTime())
                 .updatedAt(entity.getUpdatedAt())
-                .date(entity.getDate())
+                .date(entity.getDate())*/
 
                 .build();
     }

@@ -18,11 +18,12 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "tArmazem") //, schema = "sql7509759")
+//@Table(name = "tArmazem") //, schema = "sql7509759")
 public class Warehouse extends BaseEntity {
 
-    @Id
-    private String id;
+    /*@Id
+    @Column(name = "armazem_id")
+    private String id;*/
 
     @NotEmpty(message = "this is a field is mandatory.")
     @Column(name = "Armazem",unique = true, nullable = false, length = 25)
@@ -31,7 +32,7 @@ public class Warehouse extends BaseEntity {
     @Column(name = "Morada",unique = false, nullable = false, length = 125)
     private String address;
 
-    @Column(name = "Teletofe",unique = false, length = 25)
+    @Column(name = "Telefone",unique = false, length = 25)
     private String phoneNumber;
 
     @OneToMany

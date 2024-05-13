@@ -18,14 +18,14 @@ import java.util.Set;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "tUtilizadores") //, schema = "sql7509759")
+//@Table(name = "tUtilizadores") //, schema = "sql7509759")
 public class Utilizador extends BaseEntity {
-    @Id
+
     @Column(name = "Mail")
     private String mail;
-
-    @Column(name = "IdUtilizador")
-    private String id;
+    /*@Id
+    @Column(name = "utilizador_id")
+    private String id;*/
     private String Nome;
     private String Telefone;
     private String Morada;

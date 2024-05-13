@@ -1,10 +1,9 @@
 package com.lolmeida.resource;
 
-import com.lolmeida.Utils;
-import com.lolmeida.dto.request.RecebimentoRequest;
+import com.lolmeida.dto.request.ReceiptRequest;
 import com.lolmeida.dto.response.ReceiptResponse;
 import com.lolmeida.entity.database.Receipt;
-import com.lolmeida.service.RecebimentoService;
+import com.lolmeida.service.ReceiptService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -21,7 +20,7 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class ReceiptResource {
     @Inject
-    RecebimentoService service;
+    ReceiptService service;
 
     @GET
     @Path("/")
@@ -59,7 +58,7 @@ public class ReceiptResource {
     @POST
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response save(@RequestBody RecebimentoRequest request) {
+    public Response save(@RequestBody ReceiptRequest request) {
         service.save(requestToObj(request));
         //return Response.ok(request).build();
 
@@ -68,9 +67,9 @@ public class ReceiptResource {
                 .build();
     }
 
-    private Receipt requestToObj (RecebimentoRequest request){
+    private Receipt requestToObj (ReceiptRequest request){
         return Receipt.builder()
-                .id(Utils.generateRandomString())
+                //.id(Utils.generateRandomString())
                 .cargo(request.cargo())
                 .amount(request.amount())
                 .otherAmount(request.otherAmount())
@@ -87,7 +86,7 @@ public class ReceiptResource {
                 .client(entity.getClient())
 
                 // BaseEntity
-                .active(entity.isActive())
+                /*.active(entity.isActive())
                 .note(entity.getNote())
                 .description(entity.getDescription())
                 .attachment(entity.getAttachment())
@@ -98,7 +97,7 @@ public class ReceiptResource {
                 .updatedBy(entity.getUpdatedBy())
                 .updatedTime(entity.getUpdatedTime())
                 .updatedAt(entity.getUpdatedAt())
-                .date(entity.getDate())
+                .date(entity.getDate())*/
 
                 .build();
     }

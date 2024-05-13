@@ -1,10 +1,9 @@
 package com.lolmeida.resource;
 
-import com.lolmeida.Utils;
 import com.lolmeida.dto.request.CargoRequest;
 import com.lolmeida.dto.response.CargoResponse;
 import com.lolmeida.entity.database.Cargo;
-import com.lolmeida.service.CargaService;
+import com.lolmeida.service.CargoService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -21,7 +20,7 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class CargoResource {
     @Inject
-    CargaService service;
+    CargoService service;
 
     @GET
     @Path("/")
@@ -76,7 +75,7 @@ public class CargoResource {
     private Cargo requestToObj(CargoRequest request) {
 
         return Cargo.builder()
-                .id(Utils.generateRandomString())
+                //.id(Utils.generateRandomString())
                 .cargoNumber(request.cargoNumber())
                 .client(request.client())
                 .recipient(request.recipient())
@@ -96,7 +95,7 @@ public class CargoResource {
                 .cargoNumber(entity.getCargoNumber())
 
                 // BaseEntity
-                .active(entity.isActive())
+                /*.active(entity.isActive())
                 .note(entity.getNote())
                 .description(entity.getDescription())
                 .attachment(entity.getAttachment())
@@ -107,7 +106,7 @@ public class CargoResource {
                 .updatedBy(entity.getUpdatedBy())
                 .updatedTime(entity.getUpdatedTime())
                 .updatedAt(entity.getUpdatedAt())
-                .date(entity.getDate())
+                .date(entity.getDate())*/
                 .receipt(entity.getReceipt())
                 .recipient(entity.getRecipient())
 

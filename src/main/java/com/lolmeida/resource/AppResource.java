@@ -71,7 +71,7 @@ public class AppResource {
 
     private App requestToObj(AppRequest request) {
         return App.builder()
-                .id(Utils.generateRandomString())
+                //.id(Utils.generateRandomString())
                 .appLogo(request.appLogo())
                 .appName(request.appName())
                 .build();
@@ -83,18 +83,18 @@ public class AppResource {
                 .appName(entity.getAppName())
 
                 // BaseEntity
-                .active(entity.isActive())
-                .note(entity.getNote())
-                .description(entity.getDescription())
-                .attachment(entity.getAttachment())
-                .image(entity.getImage())
-                .createdBy(entity.getCreatedBy())
-                .createdAt(entity.getCreatedAt())
-                .createdTime(entity.getCreatedTime())
-                .updatedBy(entity.getUpdatedBy())
-                .updatedTime(entity.getUpdatedTime())
-                .updatedAt(entity.getUpdatedAt())
-                .date(entity.getDate())
+//                .active(entity.isActive())
+//                .note(entity.getNote())
+//                .description(entity.getDescription())
+//                .attachment(entity.getAttachment())
+//                .image(entity.getImage())
+//                .createdBy(entity.getCreatedBy())
+//                .createdAt(entity.getCreatedAt())
+//                .createdTime(entity.getCreatedTime())
+//                .updatedBy(entity.getUpdatedBy())
+//                .updatedTime(entity.getUpdatedTime())
+//                .updatedAt(entity.getUpdatedAt())
+//                .date(entity.getDate())
 
                 .build();
     }

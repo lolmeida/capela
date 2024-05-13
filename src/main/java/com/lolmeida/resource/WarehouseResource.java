@@ -1,10 +1,9 @@
 package com.lolmeida.resource;
 
-import com.lolmeida.Utils;
-import com.lolmeida.dto.request.ArmazemRequest;
+import com.lolmeida.dto.request.WarehouseRequest;
 import com.lolmeida.dto.response.WarehouseResponse;
 import com.lolmeida.entity.database.Warehouse;
-import com.lolmeida.service.ArmazemService;
+import com.lolmeida.service.WarehouseService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -21,7 +20,7 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class WarehouseResource {
     @Inject
-    ArmazemService service;
+    WarehouseService service;
 
     @GET
     @Path("/")
@@ -59,7 +58,7 @@ public class WarehouseResource {
     @POST
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response save(@RequestBody ArmazemRequest request) {
+    public Response save(@RequestBody WarehouseRequest request) {
         service.save(requestToObj(request));
         //return Response.ok(request).build();
 
@@ -68,9 +67,9 @@ public class WarehouseResource {
                 .build();
     }
 
-    private Warehouse requestToObj(ArmazemRequest request) {
+    private Warehouse requestToObj(WarehouseRequest request) {
         return Warehouse.builder()
-                .id(Utils.generateRandomString())
+                //.id(Utils.generateRandomString())
                 .name(request.name())
                 .address(request.address())
                 .phoneNumber(request.phoneNumber())
@@ -85,7 +84,7 @@ public class WarehouseResource {
                 .id(entity.getId())
 
                 // BaseEntity
-                .active(entity.isActive())
+                /*.active(entity.isActive())
                 .note(entity.getNote())
                 .description(entity.getDescription())
                 .attachment(entity.getAttachment())
@@ -96,7 +95,7 @@ public class WarehouseResource {
                 .updatedBy(entity.getUpdatedBy())
                 .updatedTime(entity.getUpdatedTime())
                 .updatedAt(entity.getUpdatedAt())
-                .date(entity.getDate())
+                .date(entity.getDate())*/
 
                 .build();
     }

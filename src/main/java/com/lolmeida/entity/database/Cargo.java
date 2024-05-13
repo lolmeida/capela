@@ -18,12 +18,12 @@ import java.util.Set;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "tCargas") //, schema = "sql7509759")
+//@Table(name = "tCargas") //, schema = "sql7509759")
 public class Cargo extends BaseEntity {
 
-    @Column(name = "IdRegisto")
+    /*@Column(name = "carga_id",nullable = false)
     private String id;
-    @Id
+    @Id*/
     @Column(name = "Guia")
     private String cargoNumber;
 
@@ -79,7 +79,7 @@ public class Cargo extends BaseEntity {
     private Warehouse warehouse;
 
     @ManyToOne
-    @JoinColumn(name = "receipt_chave")
+    @JoinColumn(name = "receipt_id")
     private Receipt receipt;
 
     @OneToOne

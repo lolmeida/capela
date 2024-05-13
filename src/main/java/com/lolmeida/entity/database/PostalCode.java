@@ -16,10 +16,11 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "tCodigoPostal") //, schema = "sql7509759")
+//@Table(name = "tCodigoPostal") //, schema = "sql7509759")
 public class PostalCode extends BaseEntity {
-    @Id
-    private String id;
+    /*@Id
+    @Column(name = "codigo_postal_id")
+    private String id;*/
 
     @NotEmpty(message = "this is a field is mandatory.")
     @Column(name = "codigo", unique = true, nullable = false, length = 255)

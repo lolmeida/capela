@@ -4,8 +4,6 @@ package com.lolmeida.entity.database;
 import com.lolmeida.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
@@ -19,17 +17,20 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 
 @Entity
-//@Table(name = "tApps") //, schema = "sql7509759")
-public class App extends BaseEntity {
-
+//@Table(name = "tAnuncios") //, schema = "sql7509759")
+public class Announce extends BaseEntity {
     /*@Id
-    @Column(name = "app_id")
+    @Column(name = "anuncio_id")
     private String id;*/
 
     @NotEmpty(message = "this is a field is mandatory.")
-    @Column(unique = true, length = 255)
-    private String appName;
-    private String appLogo;
+    @Column(name = "Tipo", unique = true, nullable = false, length = 255)
+    private String type;
 
+    @Column(name = "Título", unique = true, nullable = false, length = 255)
+    private String tittle;
+
+    @Column(name = "Url")
+    private String url;
 
 }

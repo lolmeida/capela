@@ -17,11 +17,11 @@ import java.util.List;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "tRecebimentos") //, schema = "sql7509759")
+//@Table(name = "tRecebimentos") //, schema = "sql7509759")
 public class Receipt extends BaseEntity {
-    @Id
-    @Column(name = "Chave")
-    private String id;
+    /*@Id
+    @Column(name = "recibo_id")
+    private String id;*/
 
     @Column(name = "Outros")
     private double otherAmount;
@@ -32,7 +32,7 @@ public class Receipt extends BaseEntity {
 
 
     @ManyToOne
-    @JoinColumn(name = "cargo_guia")
+    @JoinColumn(name = "cargo_id")
     private Cargo cargo;
 
 

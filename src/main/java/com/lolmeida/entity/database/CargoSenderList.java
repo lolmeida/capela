@@ -18,12 +18,12 @@ import java.util.List;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "tListaEnvio") //, schema = "sql7509759")
+//@Table(name = "tListaEnvio") //, schema = "sql7509759")
 public class CargoSenderList extends BaseEntity {
 
-    @Id
-    @Column(name = "IdLista")
-    private String id;
+    /*@Id
+    @Column(name = "cargo_id")
+    private String id;*/
 
     @Column(name = "Qtd", columnDefinition = "INT DEFAULT 1")
     private int quantity;
@@ -37,7 +37,7 @@ public class CargoSenderList extends BaseEntity {
     @Column(name = "ValorFaturaArnaud")
     private double valueInvoiceArnaud;
 
-    @Column(name = "Agente")
+    @Column(name = "Agent")
     private String agent;
 
     @Column(name = "DataChegada")
@@ -47,6 +47,6 @@ public class CargoSenderList extends BaseEntity {
     private String to;
 
 
-    //@OneToMany(fetch = FetchType.LAZY) //, mappedBy = "Client")
-    List<String> cargoList;
+    @OneToMany
+    List<Cargo> cargoList;
 }
