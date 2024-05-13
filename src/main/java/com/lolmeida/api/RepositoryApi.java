@@ -1,8 +1,8 @@
-package com.lolmeida.api.repository;
+package com.lolmeida.api;
 
 import java.util.List;
 
-public interface PeahRepository<T> {
+public interface RepositoryApi<T> {
     public List<T> findAll(String... orderByColumns);
 
     public List<T> search(final String field, final String value);

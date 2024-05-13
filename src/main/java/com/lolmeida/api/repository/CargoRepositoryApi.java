@@ -1,7 +1,8 @@
 package com.lolmeida.api.repository;
 
 
-import com.lolmeida.api.entity.database.CargoSenderList;
+import com.lolmeida.api.RepositoryApi;
+import com.lolmeida.api.entity.database.Cargo;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import io.quarkus.panache.common.Sort;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -11,29 +12,27 @@ import java.util.List;
 import java.util.UUID;
 
 @ApplicationScoped
-public class ListRepository implements PanacheRepositoryBase<CargoSenderList, UUID>,
-        PeahRepository<CargoSenderList> {
-
+public class CargoRepositoryApi implements PanacheRepositoryBase<Cargo, UUID>, RepositoryApi<Cargo> {
     @Override
-    public List<CargoSenderList> findAll(String... orderByColumns) {
+    public List<Cargo> findAll(String... orderByColumns) {
         return listAll(Sort.descending(orderByColumns)).stream().toList();
     }
-
     @Override
-    public List<CargoSenderList> search(String field, String value) {
+    public List<Cargo> search(final String field, final String value) {
         final String searchInput = "%" + value.toLowerCase() + "%";
         return list("LOWER(" + field + ") like ?1", searchInput.toLowerCase());
     }
-
     @Override
-    public List<CargoSenderList> findBy(String id) {
-        return list("idLista like ?1", id);
+    public List<Cargo> findBy(final String id) {
+        return list("Client like ?1", id);
     }
 
     @Override
     @Transactional
-    public String save(CargoSenderList entity) {
+    public String save(Cargo entity) {
         persistAndFlush(entity);
         return entity.getId();
     }
+
+
 }

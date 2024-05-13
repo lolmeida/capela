@@ -1,8 +1,8 @@
 package com.lolmeida.api.service;
 
 import com.lolmeida.api.entity.database.Client;
-import com.lolmeida.api.repository.ClientRepository;
-import com.lolmeida.api.repository.PeahRepository;
+import com.lolmeida.api.repository.ClientRepositoryApi;
+import com.lolmeida.api.RepositoryApi;
 
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -10,9 +10,9 @@ import jakarta.inject.Inject;
 import java.util.List;
 
 @RequestScoped
-public class ClientService implements PeahRepository<Client> {
+public class ClientService implements RepositoryApi<Client> {
     @Inject
-    ClientRepository repository;
+    ClientRepositoryApi repository;
 
     @Override
     public List<Client> findAll(String... orderByColumns){

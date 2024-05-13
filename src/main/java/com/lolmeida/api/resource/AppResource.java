@@ -1,5 +1,6 @@
 package com.lolmeida.api.resource;
 
+import com.lolmeida.api.ApplicationPaths;
 import com.lolmeida.api.dto.request.AppRequest;
 import com.lolmeida.api.dto.response.AppResponse;
 import com.lolmeida.api.entity.database.App;
@@ -23,7 +24,7 @@ public class AppResource {
     AppService service;
 
     @GET
-    @Path("/")
+    @Path(ApplicationPaths.ROOT)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
         List<AppResponse> data = service.findAll()
@@ -34,7 +35,7 @@ public class AppResource {
     }
 
     @GET
-    @Path("/search/{field}/{value}")
+    @Path(ApplicationPaths.SEARCH)
     public Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value) {
@@ -46,7 +47,7 @@ public class AppResource {
     }
 
     @GET
-    @Path("/{id}")
+    @Path(ApplicationPaths.FIND_BY)
     public Response findByCustomer(@PathParam("id") final String id){
         List<AppResponse> data = service.findBy(id)
                 .stream()
@@ -57,7 +58,7 @@ public class AppResource {
     }
 
     @POST
-    @Path("/")
+    @Path(ApplicationPaths.ROOT)
     @Produces(MediaType.APPLICATION_JSON)
     public Response save(@RequestBody AppRequest request) {
         service.save(requestToObj(request));

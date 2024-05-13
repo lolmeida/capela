@@ -1,5 +1,6 @@
 package com.lolmeida.api.resource;
 
+import com.lolmeida.api.ApplicationPaths;
 import com.lolmeida.api.dto.request.ConfigurationRequest;
 import com.lolmeida.api.dto.response.ConfigurationResponse;
 import com.lolmeida.api.entity.database.Configuration;
@@ -24,7 +25,7 @@ public class ConfigurationResource {
     ConfigurationService service;
 
     @GET
-    @Path("/")
+    @Path(ApplicationPaths.ROOT)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
         List<ConfigurationResponse> data = service.findAll()
@@ -35,7 +36,7 @@ public class ConfigurationResource {
     }
 
     @GET
-    @Path("/search/{field}/{value}")
+    @Path(ApplicationPaths.SEARCH)
     public Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value) {
@@ -47,7 +48,7 @@ public class ConfigurationResource {
     }
 
     @GET
-    @Path("/{id}")
+    @Path(ApplicationPaths.FIND_BY)
     public Response findByCustomer(@PathParam("id") final String id) {
         List<ConfigurationResponse> data = service.findBy(id)
                 .stream()
@@ -57,7 +58,7 @@ public class ConfigurationResource {
     }
 
     @POST
-    @Path("/")
+    @Path(ApplicationPaths.ROOT)
     @Produces(MediaType.APPLICATION_JSON)
     public Response save(@RequestBody ConfigurationRequest request) {
         service.save(requestToObj(request));

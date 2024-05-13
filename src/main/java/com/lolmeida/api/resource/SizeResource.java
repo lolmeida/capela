@@ -1,5 +1,6 @@
 package com.lolmeida.resource;
 
+import com.lolmeida.api.ApplicationPaths;
 import com.lolmeida.api.dto.request.SizeRequest;
 import com.lolmeida.api.dto.response.SizeResponse;
 import com.lolmeida.api.entity.database.Size;
@@ -23,7 +24,7 @@ public class SizeResource {
     DimensionService service;
 
     @GET
-    @Path("/")
+    @Path(ApplicationPaths.ROOT)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
         List<SizeResponse> data = service.findAll("cargo")
@@ -34,7 +35,7 @@ public class SizeResource {
     }
 
     @GET
-    @Path("/search/{field}/{value}")
+    @Path(ApplicationPaths.SEARCH)
     public Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value) {
@@ -46,7 +47,7 @@ public class SizeResource {
     }
 
     @GET
-    @Path("/{id}")
+    @Path(ApplicationPaths.FIND_BY)
     public Response findByCustomer(@PathParam("id") final String id){
         List<SizeResponse> data = service.findBy(id)
                 .stream()
@@ -58,7 +59,7 @@ public class SizeResource {
     //--------
 
     @POST
-    @Path("/")
+    @Path(ApplicationPaths.ROOT)
     @Produces(MediaType.APPLICATION_JSON)
     public Response save(@RequestBody SizeRequest request) {
         service.save(requestToObj(request));

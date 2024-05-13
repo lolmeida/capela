@@ -2,8 +2,8 @@ package com.lolmeida.api.service;
 
 
 import com.lolmeida.api.entity.database.Status;
-import com.lolmeida.api.repository.PeahRepository;
-import com.lolmeida.api.repository.StatusRepository;
+import com.lolmeida.api.RepositoryApi;
+import com.lolmeida.api.repository.StatusRepositoryApi;
 
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -11,9 +11,9 @@ import jakarta.inject.Inject;
 import java.util.List;
 
 @RequestScoped
-public class StatusService implements PeahRepository<Status> {
+public class StatusService implements RepositoryApi<Status> {
     @Inject
-    StatusRepository repository;
+    StatusRepositoryApi repository;
 
     @Override
     public List<Status> findAll(String... orderByColumns){

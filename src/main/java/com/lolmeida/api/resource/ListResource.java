@@ -1,5 +1,6 @@
 package com.lolmeida.api.resource;
 
+import com.lolmeida.api.ApplicationPaths;
 import com.lolmeida.api.dto.request.ListRequest;
 import com.lolmeida.api.dto.response.ListResponse;
 import com.lolmeida.api.entity.database.CargoSenderList;
@@ -23,7 +24,7 @@ public class ListResource {
     ListService service;
 
     @GET
-    @Path("/")
+    @Path(ApplicationPaths.ROOT)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
         List<ListResponse> data = service.findAll()
@@ -34,7 +35,7 @@ public class ListResource {
     }
 
     @GET
-    @Path("/search/{field}/{value}")
+    @Path(ApplicationPaths.SEARCH)
     public Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value) {
@@ -46,7 +47,7 @@ public class ListResource {
     }
 
     @GET
-    @Path("/{id}")
+    @Path(ApplicationPaths.FIND_BY)
     public Response findByCustomer(@PathParam("id") final String id){
         List<ListResponse> data = service.findBy(id)
                                          .stream()
@@ -56,7 +57,7 @@ public class ListResource {
     }
 
     @POST
-    @Path("/")
+    @Path(ApplicationPaths.ROOT)
     @Produces(MediaType.APPLICATION_JSON)
     public Response save(@RequestBody ListRequest request) {
         service.save(requestToObj(request));

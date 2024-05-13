@@ -1,6 +1,7 @@
 package com.lolmeida.api.repository;
 
-import com.lolmeida.api.entity.database.Receipt;
+import com.lolmeida.api.RepositoryApi;
+import com.lolmeida.api.entity.database.App;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import io.quarkus.panache.common.Sort;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -10,26 +11,28 @@ import java.util.List;
 import java.util.UUID;
 
 @ApplicationScoped
-public class ReceiptRepository implements PanacheRepositoryBase<Receipt, UUID>, PeahRepository<Receipt> {
-    public List<Receipt> findAll(String... orderByColumns){
+public class AppRepositoryApi implements PanacheRepositoryBase<App, UUID>, RepositoryApi<App> {
+
+    @Override
+    public List<App> findAll(String... orderByColumns) {
         return listAll(Sort.descending(orderByColumns)).stream().toList();
     }
 
-    public List<Receipt> search(final String field, final String value){
+    @Override
+    public List<App> search(String field, String value) {
         final String searchInput = "%" + value.toLowerCase() + "%";
         return list("LOWER(" + field + ") like ?1", searchInput.toLowerCase());
     }
+
     @Override
-    public List<Receipt> findBy(final String id){
-        return list("Client like ?1", id);
+    public List<App> findBy(String nome) {
+        return list("appName like ?1", nome);
     }
 
     @Override
     @Transactional
-    public String save(Receipt entity) {
+    public String  save(App entity) {
         persistAndFlush(entity);
-        return entity.getId();
+        return entity.getAppName();
     }
-
-
 }

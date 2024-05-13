@@ -1,5 +1,6 @@
 package com.lolmeida.api.resource;
 
+import com.lolmeida.api.ApplicationPaths;
 import com.lolmeida.api.dto.request.AgentRequest;
 import com.lolmeida.api.dto.response.AgentResponse;
 import com.lolmeida.api.entity.database.Agent;
@@ -23,7 +24,7 @@ public class AgentResource {
     AgentService service;
 
     @GET
-    @Path("/")
+    @Path(ApplicationPaths.ROOT)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
         List<AgentResponse> data = service.findAll().stream()
@@ -33,7 +34,7 @@ public class AgentResource {
     }
 
     @GET
-    @Path("/search/{field}/{value}")
+    @Path(ApplicationPaths.SEARCH)
     public Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value) {
@@ -44,7 +45,7 @@ public class AgentResource {
     }
 
     @GET
-    @Path("/{id}")
+    @Path(ApplicationPaths.FIND_BY)
 
     public Response findByCustomer(@PathParam("id") final String id){
         List<AgentResponse> data = service.findBy(id).stream()
@@ -54,7 +55,7 @@ public class AgentResource {
     }
 
     @POST
-    @Path("/")
+    @Path(ApplicationPaths.ROOT)
     @Produces(MediaType.APPLICATION_JSON)
     public Response save(@RequestBody AgentRequest request) {
         service.save(requestToObj(request));

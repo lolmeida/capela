@@ -1,5 +1,6 @@
 package com.lolmeida.api.resource;
 
+import com.lolmeida.api.ApplicationPaths;
 import com.lolmeida.api.dto.request.CargoRequest;
 import com.lolmeida.api.dto.response.CargoResponse;
 import com.lolmeida.api.entity.database.Cargo;
@@ -24,7 +25,7 @@ public class CargoResource {
     CargoService service;
 
     @GET
-    @Path("/")
+    @Path(ApplicationPaths.ROOT)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
         List<CargoResponse> data = service.findAll("date, cargoNumber")
@@ -35,7 +36,7 @@ public class CargoResource {
     }
 
     @GET
-    @Path("/search/{field}/{value}")
+    @Path(ApplicationPaths.SEARCH)
     public Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value) {
@@ -47,7 +48,7 @@ public class CargoResource {
     }
 
     @GET
-    @Path("/{id}")
+    @Path(ApplicationPaths.FIND_BY)
     public Response findByCustomer(@PathParam("id") final String id) {
         List<CargoResponse> data = service.findBy(id)
                 .stream()
@@ -59,7 +60,7 @@ public class CargoResource {
     //--------
 
     @POST
-    @Path("/")
+    @Path(ApplicationPaths.ROOT)
     @Produces(MediaType.APPLICATION_JSON)
     public Response save(@RequestBody CargoRequest request) {
 

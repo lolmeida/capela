@@ -1,5 +1,6 @@
 package com.lolmeida.api.resource;
 
+import com.lolmeida.api.ApplicationPaths;
 import com.lolmeida.api.dto.request.ReceiptRequest;
 import com.lolmeida.api.dto.response.ReceiptResponse;
 import com.lolmeida.api.entity.database.Receipt;
@@ -23,7 +24,7 @@ public class ReceiptResource {
     ReceiptService service;
 
     @GET
-    @Path("/")
+    @Path(ApplicationPaths.ROOT)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
         List<ReceiptResponse> data = service.findAll("date, cargo")
@@ -34,7 +35,7 @@ public class ReceiptResource {
     }
 
     @GET
-    @Path("/search/{field}/{value}")
+    @Path(ApplicationPaths.SEARCH)
     public Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value) {
@@ -46,7 +47,7 @@ public class ReceiptResource {
     }
 
     @GET
-    @Path("/{id}")
+    @Path(ApplicationPaths.FIND_BY)
     public Response findByCustomer(@PathParam("id") final String id){
         List<ReceiptResponse> data = service.findBy(id)
                 .stream()
@@ -56,7 +57,7 @@ public class ReceiptResource {
     }
 
     @POST
-    @Path("/")
+    @Path(ApplicationPaths.ROOT)
     @Produces(MediaType.APPLICATION_JSON)
     public Response save(@RequestBody ReceiptRequest request) {
         service.save(requestToObj(request));

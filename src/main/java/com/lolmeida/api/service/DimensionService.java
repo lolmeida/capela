@@ -1,17 +1,17 @@
 package com.lolmeida.api.service;
 
 import com.lolmeida.api.entity.database.Size;
-import com.lolmeida.api.repository.DimensionRepository;
-import com.lolmeida.api.repository.PeahRepository;
+import com.lolmeida.api.repository.DimensionRepositoryApi;
+import com.lolmeida.api.RepositoryApi;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
 import java.util.List;
 
 @RequestScoped
-public class DimensionService implements PeahRepository<Size> {
+public class DimensionService implements RepositoryApi<Size> {
     @Inject
-    DimensionRepository repository;
+    DimensionRepositoryApi repository;
 
     @Override
     public List<Size> findAll(String... orderByColumns){

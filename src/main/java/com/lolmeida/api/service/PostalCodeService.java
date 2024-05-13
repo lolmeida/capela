@@ -1,17 +1,17 @@
 package com.lolmeida.api.service;
 
-import com.lolmeida.api.repository.PeahRepository;
+import com.lolmeida.api.RepositoryApi;
 import com.lolmeida.api.entity.database.PostalCode;
-import com.lolmeida.api.repository.PostalCodeRepository;
+import com.lolmeida.api.repository.PostalCodeRepositoryApi;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
 import java.util.List;
 
 @RequestScoped
-public class PostalCodeService implements PeahRepository<PostalCode> {
+public class PostalCodeService implements RepositoryApi<PostalCode> {
     @Inject
-    PostalCodeRepository repository;
+    PostalCodeRepositoryApi repository;
 
     @Override
     public List<PostalCode> findAll(String... orderByColumns){

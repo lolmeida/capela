@@ -1,5 +1,6 @@
 package com.lolmeida.api.resource;
 
+import com.lolmeida.api.ApplicationPaths;
 import com.lolmeida.api.dto.request.StatusRequest;
 import com.lolmeida.api.dto.response.StatusResponse;
 import com.lolmeida.api.entity.database.Status;
@@ -24,7 +25,7 @@ public class StatusResource {
     StatusService service;
 
     @GET
-    @Path("/")
+    @Path(ApplicationPaths.ROOT)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
         List<StatusResponse> data = service.findAll()
@@ -35,7 +36,7 @@ public class StatusResource {
     }
 
     @GET
-    @Path("/search/{field}/{value}")
+    @Path(ApplicationPaths.SEARCH)
     public Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value) {
@@ -47,7 +48,7 @@ public class StatusResource {
     }
 
     @GET
-    @Path("/{id}")
+    @Path(ApplicationPaths.FIND_BY)
     public Response findByCustomer(@PathParam("id") final String id){
         List<StatusResponse> data = service.findBy(id)
                 .stream()
@@ -57,7 +58,7 @@ public class StatusResource {
     }
 
     @POST
-    @Path("/")
+    @Path(ApplicationPaths.ROOT)
     @Produces(MediaType.APPLICATION_JSON)
     public Response save(@RequestBody StatusRequest request) {
         service.save(requestToObj(request));

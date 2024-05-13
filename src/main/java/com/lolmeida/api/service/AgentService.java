@@ -1,17 +1,17 @@
 package com.lolmeida.api.service;
 
-import com.lolmeida.api.repository.PeahRepository;
+import com.lolmeida.api.RepositoryApi;
 import com.lolmeida.api.entity.database.Agent;
-import com.lolmeida.api.repository.AgentRepository;
+import com.lolmeida.api.repository.AgentRepositoryApi;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
 import java.util.List;
 
 @RequestScoped
-public class AgentService implements PeahRepository<Agent> {
+public class AgentService implements RepositoryApi<Agent> {
     @Inject
-    AgentRepository repository;
+    AgentRepositoryApi repository;
 
     @Override
     public List<Agent> findAll(String... orderByColumns){

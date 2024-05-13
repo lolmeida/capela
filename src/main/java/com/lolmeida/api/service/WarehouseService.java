@@ -1,17 +1,17 @@
 package com.lolmeida.api.service;
 
-import com.lolmeida.api.repository.PeahRepository;
+import com.lolmeida.api.RepositoryApi;
 import com.lolmeida.api.entity.database.Warehouse;
-import com.lolmeida.api.repository.WarehouseRepository;
+import com.lolmeida.api.repository.WarehouseRepositoryApi;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
 import java.util.List;
 
 @RequestScoped
-public class WarehouseService implements PeahRepository<Warehouse> {
+public class WarehouseService implements RepositoryApi<Warehouse> {
     @Inject
-    WarehouseRepository repository;
+    WarehouseRepositoryApi repository;
 
     @Override
     public List<Warehouse> findAll(String... orderByColumns){
