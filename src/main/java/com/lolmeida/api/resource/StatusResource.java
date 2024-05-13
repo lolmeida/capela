@@ -45,7 +45,7 @@ public class StatusResource implements ResourceApi<StatusRequest> {
     public Response findByCustomer(
             @PathParam("id")
             final String id) {
-        List<StatusResponse> data = service.findBy(id)
+        List<StatusResponse> data = service.search("id", id)
                                            .stream()
                                            .map(this::objToResponse)
                                            .toList();

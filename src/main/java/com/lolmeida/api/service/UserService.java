@@ -26,9 +26,10 @@ public class UserService implements RepositoryApi<Utilizador> {
     }
 
     @Override
-    public List<Utilizador> findBy(String id) {
+    public Utilizador findBy(String id) {
         return repository.findBy(id);
     }
+
 
     @Override
     public String save(Utilizador entity) {

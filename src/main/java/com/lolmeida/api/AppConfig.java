@@ -1,6 +1,6 @@
 package com.lolmeida.api;
 
-public final class ApplicationPaths {
+public final class AppConfig {
 
     public static final String ROOT = "/";
     public static final String SEARCH = "/search/{field}/{value}";
@@ -19,4 +19,12 @@ public final class ApplicationPaths {
         public static final String PDF = "application/pdf";
         public static final String DOC = "application/msword";
     }
+
+    public static final class Query {
+
+        public static final String FIND_BY_ID = "id like ?1";
+        public static final String SEARCH = "LOWER( %s ) like ?1";
+        public static final String SEARCH_INPUT = "% %s %";
+    }
+
 }

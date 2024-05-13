@@ -26,9 +26,10 @@ public class DimensionService implements RepositoryApi<Size> {
     }
 
     @Override
-    public List<Size> findBy(String id) {
+    public Size findBy(String id) {
         return repository.findBy(id);
     }
+
 
     public String save(Size entity) {
         return repository.save(entity);

@@ -26,7 +26,7 @@ public class AgentService implements RepositoryApi<Agent> {
     }
 
     @Override
-    public List<Agent> findBy(String id) {
+    public Agent findBy(String id) {
         return repository.findBy(id);
     }
 

@@ -10,6 +10,7 @@ import jakarta.transaction.Transactional;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import io.quarkus.panache.common.Sort;
 
+import com.lolmeida.api.AppConfig.Query;
 import com.lolmeida.api.RepositoryApi;
 import com.lolmeida.api.entity.database.Client;
 
@@ -24,12 +25,12 @@ public class ClientRepositoryApi implements PanacheRepositoryBase<Client, UUID>,
     @Override
     public List<Client> search(final String field, final String value) {
         final String searchInput = "%" + value.toLowerCase() + "%";
-        return list("LOWER(" + field + ") like ?1", searchInput.toLowerCase());
+        return list(String.format(Query.SEARCH, field), searchInput.toLowerCase());
     }
 
     @Override
-    public List<Client> findBy(final String id) {
-        return list("Client like ?1", id);
+    public Client findBy(String id) {
+        return list(Query.FIND_BY_ID, id).stream().findFirst().orElse(null);
     }
 
     @Override

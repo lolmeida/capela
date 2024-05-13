@@ -9,6 +9,7 @@ import jakarta.transaction.Transactional;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import io.quarkus.panache.common.Sort;
 
+import com.lolmeida.api.AppConfig.Query;
 import com.lolmeida.api.RepositoryApi;
 import com.lolmeida.api.entity.database.Agent;
 
@@ -23,12 +24,12 @@ public class AgentRepositoryApi implements PanacheRepositoryBase<Agent, UUID>, R
     @Override
     public List<Agent> search(String field, String value) {
         final String searchInput = "%" + value.toLowerCase() + "%";
-        return list("LOWER(" + field + ") like ?1", searchInput.toLowerCase());
+        return list(String.format(Query.SEARCH, field), searchInput.toLowerCase());
     }
 
     @Override
-    public List<Agent> findBy(String name) {
-        return list("id like ?1", name);
+    public Agent findBy(String id) {
+        return list(Query.FIND_BY_ID, id).stream().findFirst().orElse(null);
     }
 
     @Override

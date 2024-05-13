@@ -43,7 +43,8 @@ public class AgentResource implements ResourceApi<AgentRequest> {
     public Response findByCustomer(
             @PathParam("id")
             final String id) {
-        List<AgentResponse> data = service.findBy(id).stream()
+        List<AgentResponse> data = service.search("id", id)
+                                          .stream()
                                           .map(this::objToResponse)
                                           .toList();
         return Response.ok(data).build();

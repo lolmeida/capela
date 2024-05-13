@@ -45,7 +45,7 @@ public class SizeResource implements ResourceApi<SizeRequest> {
     public Response findByCustomer(
             @PathParam("id")
             final String id) {
-        List<SizeResponse> data = service.findBy(id)
+        List<SizeResponse> data = service.search("id", id)
                                          .stream()
                                          .map(this::objToResponse)
                                          .toList();

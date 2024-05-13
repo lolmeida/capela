@@ -27,9 +27,10 @@ public class ListService implements RepositoryApi<CargoSenderList> {
     }
 
     @Override
-    public List<CargoSenderList> findBy(String id) {
+    public CargoSenderList findBy(String id) {
         return repository.findBy(id);
     }
+
 
     @Override
     public String save(CargoSenderList entity) {

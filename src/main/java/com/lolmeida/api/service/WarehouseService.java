@@ -26,9 +26,10 @@ public class WarehouseService implements RepositoryApi<Warehouse> {
     }
 
     @Override
-    public List<Warehouse> findBy(String id) {
+    public Warehouse findBy(String id) {
         return repository.findBy(id);
     }
+
 
     @Override
     public String save(Warehouse entity) {

@@ -13,14 +13,19 @@ import com.lolmeida.api.ResourceApi;
 import com.lolmeida.api.dto.request.CargoRequest;
 import com.lolmeida.api.dto.response.CargoResponse;
 import com.lolmeida.api.entity.database.Cargo;
+import com.lolmeida.api.entity.database.Client;
+import com.lolmeida.api.entity.database.Size;
 import com.lolmeida.api.openapi.Values;
 import com.lolmeida.api.service.CargoService;
+import com.lolmeida.api.service.ClientService;
 
 @Path(Values.Paths.CARGO)
 public class CargoResource implements ResourceApi<CargoRequest> {
 
     @Inject
     CargoService service;
+    @Inject
+    ClientService clientService;
 
     public Response getAll() {
         List<CargoResponse> data = service.findAll("date, cargoNumber")
@@ -45,7 +50,7 @@ public class CargoResource implements ResourceApi<CargoRequest> {
     public Response findByCustomer(
             @PathParam("id")
             final String id) {
-        List<CargoResponse> data = service.findBy(id)
+        List<CargoResponse> data = service.search("id", id)
                                           .stream()
                                           .map(this::objToResponse)
                                           .toList();
@@ -53,7 +58,10 @@ public class CargoResource implements ResourceApi<CargoRequest> {
     }
 
     public Response save(
-            @RequestBody CargoRequest request) {
+            @RequestBody
+            CargoRequest request
+
+    ) {
         service.save(requestToObj(request));
         //return Response.ok(request).build();
 
@@ -66,12 +74,11 @@ public class CargoResource implements ResourceApi<CargoRequest> {
     private Cargo requestToObj(CargoRequest request) {
 
         return Cargo.builder()
-                    //.id(Utils.generateRandomString())
                     .cargoNumber(request.cargoNumber())
-                    .client(request.client())
-                    .recipient(request.recipient())
+                    .client(new Client())
+                    .recipient(new Client())
                     .total(request.total())
-                    .sizeList(request.sizeList())
+                    .sizeList(List.of(new Size()))
                     .status(request.status())
                     .build();
     }

@@ -45,7 +45,7 @@ public class ReceiptResource implements ResourceApi<ReceiptRequest> {
     public Response findByCustomer(
             @PathParam("id")
             final String id) {
-        List<ReceiptResponse> data = service.findBy(id)
+        List<ReceiptResponse> data = service.search("id", id)
                                             .stream()
                                             .map(this::objToResponse)
                                             .toList();

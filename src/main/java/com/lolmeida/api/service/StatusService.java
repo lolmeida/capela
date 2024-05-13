@@ -27,9 +27,10 @@ public class StatusService implements RepositoryApi<Status> {
     }
 
     @Override
-    public List<Status> findBy(String id) {
+    public Status findBy(String id) {
         return repository.findBy(id);
     }
+
 
     @Override
     public String save(Status entity) {

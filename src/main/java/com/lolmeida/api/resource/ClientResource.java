@@ -45,7 +45,7 @@ public class ClientResource implements ResourceApi<ClientRequest> {
     public Response findByCustomer(
             @PathParam("id")
             final String id) {
-        List<ClientResponse> data = service.findBy(id)
+        List<ClientResponse> data = service.search("id", id)
                                            .stream()
                                            .map(this::objToResponse)
                                            .toList();

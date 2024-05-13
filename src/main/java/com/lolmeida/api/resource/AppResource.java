@@ -45,7 +45,7 @@ public class AppResource implements ResourceApi<AppRequest> {
     public Response findByCustomer(
             @PathParam("id")
             final String id) {
-        List<AppResponse> data = service.findBy(id)
+        List<AppResponse> data = service.search("id", id)
                                         .stream()
                                         .map(this::objToResponse)
                                         .toList();

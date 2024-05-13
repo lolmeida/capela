@@ -27,9 +27,10 @@ public class AnnounceService implements RepositoryApi<Announce> {
     }
 
     @Override
-    public List<Announce> findBy(String id) {
+    public Announce findBy(String id) {
         return repository.findBy(id);
     }
+
 
     @Override
     public String save(Announce entity) {

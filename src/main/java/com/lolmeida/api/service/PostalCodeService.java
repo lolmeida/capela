@@ -26,9 +26,10 @@ public class PostalCodeService implements RepositoryApi<PostalCode> {
     }
 
     @Override
-    public List<PostalCode> findBy(String id) {
+    public PostalCode findBy(String id) {
         return repository.findBy(id);
     }
+
 
     @Override
     public String save(PostalCode entity) {

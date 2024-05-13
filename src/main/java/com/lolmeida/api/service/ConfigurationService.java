@@ -27,9 +27,10 @@ public class ConfigurationService implements RepositoryApi<Configuration> {
     }
 
     @Override
-    public List<Configuration> findBy(String id) {
+    public Configuration findBy(String id) {
         return repository.findBy(id);
     }
+
 
     @Override
     public String save(Configuration entity) {

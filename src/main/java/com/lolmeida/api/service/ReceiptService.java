@@ -23,9 +23,10 @@ public class ReceiptService implements RepositoryApi<Receipt> {
         return repository.search(field, value);
     }
 
-    public List<Receipt> findBy(String id) {
+    public Receipt findBy(String id) {
         return repository.findBy(id);
     }
+
 
     @Override
     public String save(Receipt entity) {

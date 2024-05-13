@@ -45,7 +45,7 @@ public class WarehouseResource implements ResourceApi<WarehouseRequest> {
     public Response findByCustomer(
             @PathParam("id")
             final String id) {
-        List<WarehouseResponse> data = service.findBy(id)
+        List<WarehouseResponse> data = service.search("id", id)
                                               .stream()
                                               .map(this::objToResponse)
                                               .toList();

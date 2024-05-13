@@ -2,6 +2,8 @@ package com.lolmeida.api;
 
 import java.util.List;
 
+import jakarta.transaction.Transactional;
+
 public interface RepositoryApi<T> {
 
     List<T> findAll(String... orderByColumns);
@@ -10,8 +12,9 @@ public interface RepositoryApi<T> {
 
     //public List<T> searchOpt(final Map<String,String>... fieldsAndValues);
 
-    List<T> findBy(final String id);
+    T findBy(final String id);
 
+    @Transactional
     String save(T entity);
 
 }

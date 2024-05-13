@@ -45,7 +45,7 @@ public class UserResource implements ResourceApi<UserRequest> {
     public Response findByCustomer(
             @PathParam("id")
             final String id) {
-        List<UserResponse> data = service.findBy(id)
+        List<UserResponse> data = service.search("id", id)
                                          .stream()
                                          .map(this::objToResponse)
                                          .toList();

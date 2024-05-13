@@ -19,12 +19,12 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 public interface ResourceApi<T> {
 
     @GET
-    @Path(ApplicationPaths.ROOT)
+    @Path(AppConfig.ROOT)
     @Produces(MediaType.APPLICATION_JSON)
     Response getAll();
 
     @GET
-    @Path(ApplicationPaths.SEARCH)
+    @Path(AppConfig.SEARCH)
     Response search(
             @PathParam("field")
             final String field,
@@ -34,14 +34,14 @@ public interface ResourceApi<T> {
     );
 
     @GET
-    @Path(ApplicationPaths.FIND_BY)
+    @Path(AppConfig.FIND_BY)
     Response findByCustomer(
             @PathParam("id")
             final String id
     );
 
     @POST
-    @Path(ApplicationPaths.ROOT)
+    @Path(AppConfig.ROOT)
     @Produces(MediaType.APPLICATION_JSON)
     Response save(
             @RequestBody

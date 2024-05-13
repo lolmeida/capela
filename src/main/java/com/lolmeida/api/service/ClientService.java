@@ -26,9 +26,10 @@ public class ClientService implements RepositoryApi<Client> {
     }
 
     @Override
-    public List<Client> findBy(String id) {
+    public Client findBy(String id) {
         return repository.findBy(id);
     }
+
 
     @Override
     public String save(Client entity) {

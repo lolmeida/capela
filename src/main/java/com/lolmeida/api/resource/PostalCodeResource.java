@@ -45,7 +45,7 @@ public class PostalCodeResource implements ResourceApi<PostalCodeRequest> {
     public Response findByCustomer(
             @PathParam("id")
             final String id) {
-        List<PostalCodeResponse> data = service.findBy(id)
+        List<PostalCodeResponse> data = service.search("id", id)
                                                .stream()
                                                .map(this::objToResponse)
                                                .toList();

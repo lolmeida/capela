@@ -2,15 +2,12 @@ package com.lolmeida.api.dto.request;
 
 import java.util.List;
 
-import com.lolmeida.api.entity.database.Client;
-import com.lolmeida.api.entity.database.Size;
-
 public record CargoRequest(
         String cargoNumber,
-        Client client,
-        Client recipient,
+        String clientId,
+        String recipientId,
         double total,
-        List<Size> sizeList,
+        List<String> sizeIds,
         String status
 
         //String Foto,

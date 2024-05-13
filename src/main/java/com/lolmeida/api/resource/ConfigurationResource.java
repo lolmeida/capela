@@ -45,7 +45,7 @@ public class ConfigurationResource implements ResourceApi<ConfigurationRequest> 
     public Response findByCustomer(
             @PathParam("id")
             final String id) {
-        List<ConfigurationResponse> data = service.findBy(id)
+        List<ConfigurationResponse> data = service.search("id", id)
                                                   .stream()
                                                   .map(this::objToResponse)
                                                   .toList();

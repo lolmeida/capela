@@ -44,7 +44,7 @@ public class AnnounceResource implements ResourceApi<AnnounceRequest> {
     public Response findByCustomer(
             @PathParam("id")
             final String id) {
-        List<AnnounceResponse> data = service.findBy(id).stream()
+        List<AnnounceResponse> data = service.search("id", id).stream()
                                              .map(this::objToResponse)
                                              .toList();
         return Response.ok(data).build();

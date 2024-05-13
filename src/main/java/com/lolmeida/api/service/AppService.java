@@ -27,7 +27,7 @@ public class AppService implements RepositoryApi<App> {
     }
 
     @Override
-    public List<App> findBy(String id) {
+    public App findBy(String id) {
         return repository.findBy(id);
     }
 
