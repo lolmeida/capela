@@ -4,6 +4,7 @@ import com.lolmeida.api.ApplicationPaths;
 import com.lolmeida.api.dto.request.PostalCodeRequest;
 import com.lolmeida.api.dto.response.PostalCodeResponse;
 import com.lolmeida.api.entity.database.PostalCode;
+import com.lolmeida.api.openapi.Values;
 import com.lolmeida.api.service.PostalCodeService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -15,7 +16,7 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import java.util.List;
 
-@Path("/codigo-postal")
+@Path(Values.Paths.POSTAL_CODE)
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

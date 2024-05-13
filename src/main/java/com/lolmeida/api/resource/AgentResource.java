@@ -1,31 +1,26 @@
 package com.lolmeida.api.resource;
 
-import com.lolmeida.api.ApplicationPaths;
-import com.lolmeida.api.dto.request.AgentRequest;
-import com.lolmeida.api.dto.response.AgentResponse;
-import com.lolmeida.api.entity.database.Agent;
-import com.lolmeida.api.service.AgentService;
-import jakarta.enterprise.context.RequestScoped;
+import java.util.List;
+
 import jakarta.inject.Inject;
-import jakarta.ws.rs.*;
-import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.Response;
+
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
-import java.util.List;
+import com.lolmeida.api.ResourceApi;
+import com.lolmeida.api.dto.request.AgentRequest;
+import com.lolmeida.api.dto.response.AgentResponse;
+import com.lolmeida.api.entity.database.Agent;
+import com.lolmeida.api.openapi.Values;
+import com.lolmeida.api.service.AgentService;
 
-@Path("/agente")
-@RequestScoped
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
-public class AgentResource {
+@Path(Values.Paths.AGENT)
+public class AgentResource implements ResourceApi<AgentRequest> {
     @Inject
     AgentService service;
 
-    @GET
-    @Path(ApplicationPaths.ROOT)
-    @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
         List<AgentResponse> data = service.findAll().stream()
                                           .map(this::objToResponse)
@@ -33,8 +28,6 @@ public class AgentResource {
         return Response.ok(data).build();
     }
 
-    @GET
-    @Path(ApplicationPaths.SEARCH)
     public Response search(
             @PathParam("field") final String field,
             @PathParam("value") final String value) {
@@ -44,9 +37,6 @@ public class AgentResource {
         return Response.ok(data).build();
     }
 
-    @GET
-    @Path(ApplicationPaths.FIND_BY)
-
     public Response findByCustomer(@PathParam("id") final String id){
         List<AgentResponse> data = service.findBy(id).stream()
                                           .map(this::objToResponse)
@@ -54,9 +44,6 @@ public class AgentResource {
         return Response.ok(data).build();
     }
 
-    @POST
-    @Path(ApplicationPaths.ROOT)
-    @Produces(MediaType.APPLICATION_JSON)
     public Response save(@RequestBody AgentRequest request) {
         service.save(requestToObj(request));
 

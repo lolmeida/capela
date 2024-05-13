@@ -4,6 +4,7 @@ import com.lolmeida.api.ApplicationPaths;
 import com.lolmeida.api.dto.request.SizeRequest;
 import com.lolmeida.api.dto.response.SizeResponse;
 import com.lolmeida.api.entity.database.Size;
+import com.lolmeida.api.openapi.Values;
 import com.lolmeida.api.service.DimensionService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -15,7 +16,7 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import java.util.List;
 
-@Path("/dimensao")
+@Path(Values.Paths.SIZE)
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

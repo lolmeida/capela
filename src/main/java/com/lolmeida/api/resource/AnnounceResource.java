@@ -4,6 +4,7 @@ import com.lolmeida.api.ApplicationPaths;
 import com.lolmeida.api.dto.request.AnnounceRequest;
 import com.lolmeida.api.dto.response.AnnounceResponse;
 import com.lolmeida.api.entity.database.Announce;
+import com.lolmeida.api.openapi.Values;
 import com.lolmeida.api.service.AnnounceService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -15,7 +16,7 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import java.util.List;
 
-@Path("/anuncio")
+@Path(Values.Paths.ANNOUNCE)
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

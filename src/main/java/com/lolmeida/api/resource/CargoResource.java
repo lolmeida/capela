@@ -4,6 +4,7 @@ import com.lolmeida.api.ApplicationPaths;
 import com.lolmeida.api.dto.request.CargoRequest;
 import com.lolmeida.api.dto.response.CargoResponse;
 import com.lolmeida.api.entity.database.Cargo;
+import com.lolmeida.api.openapi.Values;
 import com.lolmeida.api.service.CargoService;
 
 import jakarta.enterprise.context.RequestScoped;
@@ -16,7 +17,7 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import java.util.List;
 
-@Path("/carga")
+@Path(Values.Paths.CARGO)
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

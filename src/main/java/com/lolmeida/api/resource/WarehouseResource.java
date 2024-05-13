@@ -4,6 +4,7 @@ import com.lolmeida.api.ApplicationPaths;
 import com.lolmeida.api.dto.request.WarehouseRequest;
 import com.lolmeida.api.dto.response.WarehouseResponse;
 import com.lolmeida.api.entity.database.Warehouse;
+import com.lolmeida.api.openapi.Values;
 import com.lolmeida.api.service.WarehouseService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -15,7 +16,7 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import java.util.List;
 
-@Path("/armazem")
+@Path(Values.Paths.WAREHOUSE)
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

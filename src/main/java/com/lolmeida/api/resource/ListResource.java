@@ -4,6 +4,7 @@ import com.lolmeida.api.ApplicationPaths;
 import com.lolmeida.api.dto.request.ListRequest;
 import com.lolmeida.api.dto.response.ListResponse;
 import com.lolmeida.api.entity.database.CargoSenderList;
+import com.lolmeida.api.openapi.Values;
 import com.lolmeida.api.service.ListService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -15,7 +16,7 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import java.util.List;
 
-@Path("/lista")
+@Path(Values.Paths.LIST)
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

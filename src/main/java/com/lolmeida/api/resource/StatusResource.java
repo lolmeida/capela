@@ -4,6 +4,7 @@ import com.lolmeida.api.ApplicationPaths;
 import com.lolmeida.api.dto.request.StatusRequest;
 import com.lolmeida.api.dto.response.StatusResponse;
 import com.lolmeida.api.entity.database.Status;
+import com.lolmeida.api.openapi.Values;
 import com.lolmeida.api.service.StatusService;
 
 import jakarta.enterprise.context.RequestScoped;
@@ -16,7 +17,7 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import java.util.List;
 
-@Path("/status")
+@Path(Values.Paths.STATUS)
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

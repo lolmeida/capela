@@ -4,6 +4,7 @@ import com.lolmeida.api.ApplicationPaths;
 import com.lolmeida.api.dto.request.ConfigurationRequest;
 import com.lolmeida.api.dto.response.ConfigurationResponse;
 import com.lolmeida.api.entity.database.Configuration;
+import com.lolmeida.api.openapi.Values;
 import com.lolmeida.api.service.ConfigurationService;
 
 import jakarta.enterprise.context.RequestScoped;
@@ -16,7 +17,7 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import java.util.List;
 
-@Path("/configuracao")
+@Path(Values.Paths.CONFIG)
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

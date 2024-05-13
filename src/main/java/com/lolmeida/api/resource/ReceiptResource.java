@@ -4,6 +4,7 @@ import com.lolmeida.api.ApplicationPaths;
 import com.lolmeida.api.dto.request.ReceiptRequest;
 import com.lolmeida.api.dto.response.ReceiptResponse;
 import com.lolmeida.api.entity.database.Receipt;
+import com.lolmeida.api.openapi.Values;
 import com.lolmeida.api.service.ReceiptService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -15,7 +16,7 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import java.util.List;
 
-@Path("/recebimento")
+@Path(Values.Paths.RECEIPT)
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

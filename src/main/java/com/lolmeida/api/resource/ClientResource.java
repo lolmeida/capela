@@ -4,6 +4,8 @@ import com.lolmeida.api.ApplicationPaths;
 import com.lolmeida.api.dto.request.ClientRequest;
 import com.lolmeida.api.dto.response.ClientResponse;
 import com.lolmeida.api.entity.database.Client;
+import com.lolmeida.api.openapi.Values;
+import com.lolmeida.api.openapi.Values.Paths;
 import com.lolmeida.api.service.ClientService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -15,7 +17,7 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import java.util.List;
 
-@Path("/cliente")
+@Path(Paths.CUSTOMER)
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
