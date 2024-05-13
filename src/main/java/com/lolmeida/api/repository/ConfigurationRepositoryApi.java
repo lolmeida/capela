@@ -25,7 +25,7 @@ public class ConfigurationRepositoryApi implements PanacheRepositoryBase<Configu
 
     @Override
     public List<Configuration> search(String field, String value) {
-        final String searchInput = "%" + value.toLowerCase() + "%";
+        String searchInput = String.format(Query.SEARCH_INPUT, value.toLowerCase());
         return list(String.format(Query.SEARCH, field), searchInput.toLowerCase());
     }
 

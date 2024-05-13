@@ -24,7 +24,7 @@ public class StatusRepositoryApi implements PanacheRepositoryBase<Status, UUID>,
 
     @Override
     public List<Status> search(String field, String value) {
-        final String searchInput = "%" + value.toLowerCase() + "%";
+        String searchInput = String.format(Query.SEARCH_INPUT, value.toLowerCase());
         return list(String.format(Query.SEARCH, field), searchInput.toLowerCase());
     }
 

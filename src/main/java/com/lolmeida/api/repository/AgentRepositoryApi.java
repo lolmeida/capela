@@ -23,8 +23,8 @@ public class AgentRepositoryApi implements PanacheRepositoryBase<Agent, UUID>, R
 
     @Override
     public List<Agent> search(String field, String value) {
-        final String searchInput = "%" + value.toLowerCase() + "%";
-        return list(String.format(Query.SEARCH, field), searchInput.toLowerCase());
+        String searchInput = String.format(Query.SEARCH_INPUT, value.toLowerCase());
+        return list(String.format(Query.SEARCH, field), searchInput);
     }
 
     @Override

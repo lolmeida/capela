@@ -21,7 +21,7 @@ public class ReceiptRepositoryApi implements PanacheRepositoryBase<Receipt, UUID
     }
 
     public List<Receipt> search(final String field, final String value) {
-        final String searchInput = "%" + value.toLowerCase() + "%";
+        String searchInput = String.format(Query.SEARCH_INPUT, value.toLowerCase());
         return list(String.format(Query.SEARCH, field), searchInput.toLowerCase());
     }
 

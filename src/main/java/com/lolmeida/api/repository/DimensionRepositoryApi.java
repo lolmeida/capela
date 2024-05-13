@@ -23,7 +23,7 @@ public class DimensionRepositoryApi implements PanacheRepositoryBase<Size, UUID>
 
     @Override
     public List<Size> search(final String field, final String value) {
-        final String searchInput = "%" + value.toLowerCase() + "%";
+        String searchInput = String.format(Query.SEARCH_INPUT, value.toLowerCase());
         return list(String.format(Query.SEARCH, field), searchInput.toLowerCase());
     }
 

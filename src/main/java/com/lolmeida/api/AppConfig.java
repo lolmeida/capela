@@ -24,7 +24,7 @@ public final class AppConfig {
 
         public static final String FIND_BY_ID = "id like ?1";
         public static final String SEARCH = "LOWER( %s ) like ?1";
-        public static final String SEARCH_INPUT = "% %s %";
+        public static final String SEARCH_INPUT = "%%%s%%";
     }
 
 }
