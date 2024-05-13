@@ -23,7 +23,7 @@ import com.lolmeida.api.entity.BaseEntity;
 @AllArgsConstructor
 
 @Entity
-//@Table(name = "tApps") //, schema = "sql7509759")
+//@Table(name = "tApps", schema = Schema.DB)
 public class App extends BaseEntity {
 
 

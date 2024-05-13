@@ -26,7 +26,7 @@ import com.lolmeida.api.entity.BaseEntity;
 @AllArgsConstructor
 
 @Entity
-//@Table(name = "tListaEnvio") //, schema = "sql7509759")
+//@Table(name = "tListaEnvio", schema = Schema.DB)
 public class CargoSenderList extends BaseEntity {
 
 

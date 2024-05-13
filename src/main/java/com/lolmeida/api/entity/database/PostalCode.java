@@ -23,7 +23,7 @@ import com.lolmeida.api.entity.BaseEntity;
 @AllArgsConstructor
 
 @Entity
-//@Table(name = "tCodigoPostal") //, schema = "sql7509759")
+//@Table(name = "tCodigoPostal", schema = Schema.DB)
 public class PostalCode extends BaseEntity {
 
 

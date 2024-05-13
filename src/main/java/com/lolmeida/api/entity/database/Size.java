@@ -24,7 +24,7 @@ import com.lolmeida.api.entity.BaseEntity;
 @AllArgsConstructor
 
 @Entity
-//@Table(name = "tDimensoes") //, schema = "sql7509759")
+//@Table(name = "tDimensoes", schema = Schema.DB)
 public class Size extends BaseEntity {
 
 

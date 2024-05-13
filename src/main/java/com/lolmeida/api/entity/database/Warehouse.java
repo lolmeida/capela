@@ -26,7 +26,7 @@ import com.lolmeida.api.entity.BaseEntity;
 @AllArgsConstructor
 
 @Entity
-//@Table(name = "tArmazem") //, schema = "sql7509759")
+//@Table(name = "tArmazem", schema = Schema.DB)
 public class Warehouse extends BaseEntity {
 
     @NotEmpty(message = "this is a field is mandatory.")

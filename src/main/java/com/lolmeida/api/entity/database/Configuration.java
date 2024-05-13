@@ -23,7 +23,7 @@ import com.lolmeida.api.entity.BaseEntity;
 @AllArgsConstructor
 
 @Entity
-//@Table(name = "tConfiguracoes") //, schema = "sql7509759")
+//@Table(name = "tConfiguracoes", schema = Schema.DB)
 public class Configuration extends BaseEntity {
 
     @NotEmpty(message = "this is a field is mandatory.")

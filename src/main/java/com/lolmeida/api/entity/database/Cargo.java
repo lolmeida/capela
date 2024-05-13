@@ -28,7 +28,7 @@ import com.lolmeida.api.entity.BaseEntity;
 @AllArgsConstructor
 
 @Entity
-//@Table(name = "tCargas") //, schema = "sql7509759")
+//@Table(name = "tCargas", schema = Schema.DB)
 
 public class Cargo extends BaseEntity {
 

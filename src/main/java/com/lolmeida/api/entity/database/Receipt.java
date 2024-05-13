@@ -14,6 +14,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
+import com.lolmeida.api.AppConfig;
+import com.lolmeida.api.AppConfig.Schema;
 import com.lolmeida.api.entity.BaseEntity;
 
 
@@ -25,21 +27,17 @@ import com.lolmeida.api.entity.BaseEntity;
 @AllArgsConstructor
 
 @Entity
-//@Table(name = "tRecebimentos") //, schema = "sql7509759")
+//@Table(name = "tRecebimentos", schema = Schema.DB)
 public class Receipt extends BaseEntity {
-
-
     @Column(name = "Outros")
     private double otherAmount;
 
     @Column(name = "ValorPago")
     private double amount;
 
-
     @ManyToOne
     @JoinColumn(name = "cargo_id")
     private Cargo cargo;
-
 
     @ManyToOne
     @JoinColumn(name = "client_id")
