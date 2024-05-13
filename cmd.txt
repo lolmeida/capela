@@ -2,7 +2,7 @@
 quarkus create app capela \
    -DprojectGroupId=com.lolmeida \
    -DprojectArtifactId=quarkus-mysql-service \
-   -DclassName="com.lolmeida.MySqlService" \
+   -DclassName="com.lolmeida.api.MySqlService" \
    -Dpath="/mysql"
 
 ./mvnw quarkus:add-extension -Dextensions="jdbc-mysql,agroal,resteasy"
