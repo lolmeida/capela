@@ -41,9 +41,7 @@ public class Receipt extends BaseEntity {
     private Cargo cargo;
 
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;
-
-
 }

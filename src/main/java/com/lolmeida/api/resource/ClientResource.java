@@ -72,6 +72,7 @@ public class ClientResource implements ResourceApi<ClientRequest> {
 
     private ClientResponse objToResponse(Client entity) {
         return ClientResponse.builder()
+                                .id(entity.getId())
                              .name(entity.getName())
                              .phoneNumber(entity.getPhoneNumber())
                              .address(entity.getAddress())

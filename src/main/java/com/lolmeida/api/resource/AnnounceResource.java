@@ -62,7 +62,6 @@ public class AnnounceResource implements ResourceApi<AnnounceRequest> {
 
     private Announce requestToObj(AnnounceRequest request) {
         return Announce.builder()
-                       //.id(Utils.generateRandomString())
                        .type(request.type())
                        .tittle(request.tittle())
                        .url(request.url())
@@ -72,6 +71,7 @@ public class AnnounceResource implements ResourceApi<AnnounceRequest> {
 
     private AnnounceResponse objToResponse(Announce entity) {
         return AnnounceResponse.builder()
+                                 .id(entity.getId())
                                .type(entity.getType())
                                .tittle(entity.getTittle())
                                .url(entity.getUrl())

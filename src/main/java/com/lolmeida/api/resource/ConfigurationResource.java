@@ -72,6 +72,7 @@ public class ConfigurationResource implements ResourceApi<ConfigurationRequest> 
 
     private ConfigurationResponse objToResponse(Configuration entity) {
         return ConfigurationResponse.builder()
+                                    .id(entity.getId())
                                     .key(entity.getKey())
                                     .value(entity.getValue())
                                     .description(entity.getDescription())

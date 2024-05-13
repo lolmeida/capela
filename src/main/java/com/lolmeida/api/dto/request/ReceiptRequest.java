@@ -7,10 +7,10 @@ import com.lolmeida.api.entity.database.Client;
 
 @Builder
 public record ReceiptRequest(
-        Cargo cargo,
+        String cargoId,
         double amount,
         double otherAmount,
-        Client client
+        String clientId
 ) {
 
 }

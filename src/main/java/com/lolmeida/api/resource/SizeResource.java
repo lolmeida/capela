@@ -12,6 +12,7 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 import com.lolmeida.api.ResourceApi;
 import com.lolmeida.api.dto.request.SizeRequest;
 import com.lolmeida.api.dto.response.SizeResponse;
+import com.lolmeida.api.entity.database.Cargo;
 import com.lolmeida.api.entity.database.Size;
 import com.lolmeida.api.openapi.Values;
 import com.lolmeida.api.service.DimensionService;
@@ -69,12 +70,13 @@ public class SizeResource implements ResourceApi<SizeRequest> {
                    .length(request.length())
                    .width(request.width())
                    .volume(request.volume())
-                   .cargo(request.cargo())
+                   .cargo(new Cargo())
                    .build();
     }
 
     private SizeResponse objToResponse(Size entity) {
         return SizeResponse.builder()
+                            .id(entity.getId())
                            .height(entity.getHeight())
                            .length(entity.getLength())
                            .width(entity.getWidth())

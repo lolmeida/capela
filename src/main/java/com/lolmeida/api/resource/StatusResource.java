@@ -74,6 +74,7 @@ public class StatusResource implements ResourceApi<StatusRequest> {
 
     private StatusResponse objToResponse(Status entity) {
         return StatusResponse.builder()
+                                .id(entity.getId())
                              .status(entity.getStatus())
                              .quantity(entity.getQuantity())
                              .formula(entity.getFormula())

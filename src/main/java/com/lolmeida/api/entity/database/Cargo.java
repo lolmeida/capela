@@ -76,15 +76,15 @@ public class Cargo extends BaseEntity {
             columnDefinition = "INT DEFAULT 1")
     private int quantity;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "recipient_id")
     private Client recipient;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "warehouse_id")
     private Warehouse warehouse;
 
@@ -92,7 +92,7 @@ public class Cargo extends BaseEntity {
     @JoinColumn(name = "receipt_id")
     private Receipt receipt;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "status_id")
     private Status statusId;
 

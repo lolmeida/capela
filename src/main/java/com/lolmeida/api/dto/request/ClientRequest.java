@@ -13,9 +13,7 @@ public record ClientRequest(
         String phoneNumber,
         String address,
         String type,
-        String email,
-        List<Cargo> cargoList,
-        List<Receipt> receiptList
+        String email
 ) {
 
 }

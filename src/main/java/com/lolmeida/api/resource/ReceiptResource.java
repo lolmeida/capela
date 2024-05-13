@@ -12,6 +12,8 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 import com.lolmeida.api.ResourceApi;
 import com.lolmeida.api.dto.request.ReceiptRequest;
 import com.lolmeida.api.dto.response.ReceiptResponse;
+import com.lolmeida.api.entity.database.Cargo;
+import com.lolmeida.api.entity.database.Client;
 import com.lolmeida.api.entity.database.Receipt;
 import com.lolmeida.api.openapi.Values;
 import com.lolmeida.api.service.ReceiptService;
@@ -65,16 +67,17 @@ public class ReceiptResource implements ResourceApi<ReceiptRequest> {
     private Receipt requestToObj(ReceiptRequest request) {
         return Receipt.builder()
                       //.id(Utils.generateRandomString())
-                      .cargo(request.cargo())
+                      .cargo(new Cargo())
                       .amount(request.amount())
                       .otherAmount(request.otherAmount())
-                      .client(request.client())
+                      .client(new Client())
 
                       .build();
     }
 
     private ReceiptResponse objToResponse(Receipt entity) {
         return ReceiptResponse.builder()
+                                .id(entity.getId())
                               .cargo(entity.getCargo())
                               .amount(entity.getAmount())
                               .otherAmount(entity.getOtherAmount())

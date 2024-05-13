@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.transaction.Transactional;
 
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import io.quarkus.panache.common.Sort;
@@ -33,6 +34,7 @@ public class CargoRepositoryApi implements PanacheRepositoryBase<Cargo, UUID>, R
     }
 
     @Override
+    @Transactional
     public String save(Cargo entity) {
         persistAndFlush(entity);
         return entity.getId();

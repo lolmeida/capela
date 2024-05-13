@@ -14,7 +14,5 @@ public interface RepositoryApi<T> {
 
     T findBy(final String id);
 
-    @Transactional
     String save(T entity);
-
 }

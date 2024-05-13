@@ -61,7 +61,6 @@ public class AgentResource implements ResourceApi<AgentRequest> {
 
     private Agent requestToObj(AgentRequest request) {
         return Agent.builder()
-                    //id(Utils.generateRandomString())
                     .name(request.name())
                     .email(request.email())
                     .contact(request.contact())
@@ -70,6 +69,7 @@ public class AgentResource implements ResourceApi<AgentRequest> {
 
     private AgentResponse objToResponse(Agent entity) {
         return AgentResponse.builder()
+                            .id(entity.getId())
                             .name(entity.getName())
                             .email(entity.getEmail())
                             .contact(entity.getContact())

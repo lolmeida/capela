@@ -69,23 +69,12 @@ public class UserResource implements ResourceApi<UserRequest> {
                          .Nome(request.Nome())
                          .Telefone(request.Telefone())
                          .Morada(request.Morada())
-                         .Assinatura(request.Assinatura())
-                         .Previlegio(request.Previlegio())
-                         .Perfil(request.Perfil())
-                         .Clientes(request.Clientes())
-                         .Recebimentos(request.Recebimentos())
-                         .Cargas(request.Cargas())
-                         .DiasEdicaoDocumento(request.DiasEdicaoDocumento())
-                         .PrazoAnularEstadoDias(request.PrazoAnularEstadoDias())
-                         .DiasEliminarDocumento(request.DiasEliminarDocumento())
-                         .QtdMaxFactDivida(request.QtdMaxFactDivida())
-                         .DiasMaxFactDivida(request.DiasMaxFactDivida())
-                         .HojeMenosData(request.HojeMenosData())
                          .build();
     }
 
     private UserResponse objToResponse(Utilizador entity) {
         return UserResponse.builder()
+                            .id(entity.getId())
                            .Mail(entity.getMail())
                            .Nome(entity.getNome())
                            .Telefone(entity.getTelefone())

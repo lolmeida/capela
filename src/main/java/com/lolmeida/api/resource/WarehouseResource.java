@@ -23,10 +23,11 @@ public class WarehouseResource implements ResourceApi<WarehouseRequest> {
     WarehouseService service;
 
     public Response getAll() {
-        List<WarehouseResponse> data = service.findAll()
-                                              .stream()
-                                              .map(this::objToResponse)
-                                              .toList();
+        List<WarehouseResponse> data = service
+                .findAll()
+                .stream()
+                .map(this::objToResponse)
+                .toList();
         return Response.ok(data).build();
     }
 
@@ -35,20 +36,22 @@ public class WarehouseResource implements ResourceApi<WarehouseRequest> {
             final String field,
             @PathParam("value")
             final String value) {
-        List<WarehouseResponse> data = service.search(field, value)
-                                              .stream()
-                                              .map(this::objToResponse)
-                                              .toList();
+        List<WarehouseResponse> data = service
+                .search(field, value)
+                .stream()
+                .map(this::objToResponse)
+                .toList();
         return Response.ok(data).build();
     }
 
     public Response findByCustomer(
             @PathParam("id")
             final String id) {
-        List<WarehouseResponse> data = service.search("id", id)
-                                              .stream()
-                                              .map(this::objToResponse)
-                                              .toList();
+        List<WarehouseResponse> data = service
+                .search("id", id)
+                .stream()
+                .map(this::objToResponse)
+                .toList();
         return Response.ok(data).build();
     }
 
@@ -63,7 +66,8 @@ public class WarehouseResource implements ResourceApi<WarehouseRequest> {
     }
 
     private Warehouse requestToObj(WarehouseRequest request) {
-        return Warehouse.builder()
+        return Warehouse
+                .builder()
                         //.id(Utils.generateRandomString())
                         .name(request.name())
                         .address(request.address())
@@ -72,25 +76,15 @@ public class WarehouseResource implements ResourceApi<WarehouseRequest> {
     }
 
     private WarehouseResponse objToResponse(Warehouse entity) {
-        return WarehouseResponse.builder()
+        return WarehouseResponse
+                .builder()
+                                .id(entity.getId())
                                 .name(entity.getName())
                                 .address(entity.getAddress())
                                 .phoneNumber(entity.getPhoneNumber())
                                 .id(entity.getId())
 
                                 // BaseEntity
-                                /*.active(entity.isActive())
-                                .note(entity.getNote())
-                                .description(entity.getDescription())
-                                .attachment(entity.getAttachment())
-                                .image(entity.getImage())
-                                .createdBy(entity.getCreatedBy())
-                                .createdAt(entity.getCreatedAt())
-                                .createdTime(entity.getCreatedTime())
-                                .updatedBy(entity.getUpdatedBy())
-                                .updatedTime(entity.getUpdatedTime())
-                                .updatedAt(entity.getUpdatedAt())
-                                .date(entity.getDate())*/
 
                                 .build();
     }

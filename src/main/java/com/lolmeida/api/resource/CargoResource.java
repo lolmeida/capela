@@ -75,16 +75,17 @@ public class CargoResource implements ResourceApi<CargoRequest> {
 
         return Cargo.builder()
                     .cargoNumber(request.cargoNumber())
-                    .client(new Client())
-                    .recipient(new Client())
+                    .client(clientService.findBy(request.clientId()))
+                    .recipient(clientService.findBy(request.recipientId()))
                     .total(request.total())
-                    .sizeList(List.of(new Size()))
+                    //.sizeList(List.of(new Size()))
                     .status(request.status())
                     .build();
     }
 
     private CargoResponse objToResponse(Cargo entity) {
         return CargoResponse.builder()
+                            .id(entity.getId())
                             .client(entity.getClient())
                             .recipient(entity.getRecipient())
                             .total(entity.getTotal())
