@@ -1,21 +1,23 @@
 package com.lolmeida.api.service;
 
-import com.lolmeida.api.RepositoryApi;
-import com.lolmeida.api.entity.database.Warehouse;
-import com.lolmeida.api.repository.WarehouseRepositoryApi;
+import java.util.List;
+
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
-import java.util.List;
+import com.lolmeida.api.RepositoryApi;
+import com.lolmeida.api.entity.database.Warehouse;
+import com.lolmeida.api.repository.WarehouseRepositoryApi;
 
 @RequestScoped
 public class WarehouseService implements RepositoryApi<Warehouse> {
+
     @Inject
     WarehouseRepositoryApi repository;
 
     @Override
-    public List<Warehouse> findAll(String... orderByColumns){
-        return  repository.findAll(orderByColumns);
+    public List<Warehouse> findAll(String... orderByColumns) {
+        return repository.findAll(orderByColumns);
     }
 
     @Override

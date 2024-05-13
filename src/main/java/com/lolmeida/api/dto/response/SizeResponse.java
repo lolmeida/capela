@@ -1,9 +1,10 @@
 package com.lolmeida.api.dto.response;
 
-import com.lolmeida.api.entity.database.Cargo;
+import java.time.LocalDateTime;
+
 import lombok.Builder;
 
-import java.time.LocalDateTime;
+import com.lolmeida.api.entity.database.Cargo;
 
 @Builder
 public record SizeResponse(
@@ -12,8 +13,6 @@ public record SizeResponse(
         double height,
         double width,
         Cargo cargo,
-
-
 
         // BaseEntity
         String id,
@@ -30,4 +29,5 @@ public record SizeResponse(
         Long updatedTime,
         LocalDateTime date
 ) {
+
 }

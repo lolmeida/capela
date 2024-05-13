@@ -1,13 +1,23 @@
 package com.lolmeida.api.entity.database;
 
 
-import com.lolmeida.api.entity.BaseEntity;
+import java.util.List;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.List;
+import com.lolmeida.api.entity.BaseEntity;
 
 
 @Getter
@@ -21,7 +31,6 @@ import java.util.List;
 //@Table(name = "tCargas") //, schema = "sql7509759")
 
 public class Cargo extends BaseEntity {
-
 
 
     @Column(name = "Guia")
@@ -63,7 +72,8 @@ public class Cargo extends BaseEntity {
     @Column(name = "Valor")
     private double amount;
 
-    @Column(name = "Quantidade",  columnDefinition = "INT DEFAULT 1")
+    @Column(name = "Quantidade",
+            columnDefinition = "INT DEFAULT 1")
     private int quantity;
 
     @OneToOne

@@ -1,13 +1,18 @@
 package com.lolmeida.api.entity.database;
 
 
-import com.lolmeida.api.entity.BaseEntity;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+
+import com.lolmeida.api.entity.BaseEntity;
 
 
 @Getter
@@ -23,7 +28,10 @@ public class Status extends BaseEntity {
 
 
     @NotEmpty(message = "this is a field is mandatory.")
-    @Column(name = "Status",unique = true, nullable = false, length = 255)
+    @Column(name = "Status",
+            unique = true,
+            nullable = false,
+            length = 255)
     private String status;
 
     @Column(name = "Qtd")

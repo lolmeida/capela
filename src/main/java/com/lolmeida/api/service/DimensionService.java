@@ -1,21 +1,23 @@
 package com.lolmeida.api.service;
 
-import com.lolmeida.api.entity.database.Size;
-import com.lolmeida.api.repository.DimensionRepositoryApi;
-import com.lolmeida.api.RepositoryApi;
+import java.util.List;
+
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
-import java.util.List;
+import com.lolmeida.api.RepositoryApi;
+import com.lolmeida.api.entity.database.Size;
+import com.lolmeida.api.repository.DimensionRepositoryApi;
 
 @RequestScoped
 public class DimensionService implements RepositoryApi<Size> {
+
     @Inject
     DimensionRepositoryApi repository;
 
     @Override
-    public List<Size> findAll(String... orderByColumns){
-        return  repository.findAll(orderByColumns);
+    public List<Size> findAll(String... orderByColumns) {
+        return repository.findAll(orderByColumns);
     }
 
     @Override
@@ -28,5 +30,7 @@ public class DimensionService implements RepositoryApi<Size> {
         return repository.findBy(id);
     }
 
-    public String save(Size entity){return repository.save(entity);}
+    public String save(Size entity) {
+        return repository.save(entity);
+    }
 }

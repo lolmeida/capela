@@ -21,4 +21,5 @@ public record UserRequest(
         String DiasMaxFactDivida,
         String HojeMenosData
 ) {
+
 }

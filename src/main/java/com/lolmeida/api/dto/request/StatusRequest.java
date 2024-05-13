@@ -9,4 +9,5 @@ public record StatusRequest(
         String formula,
         String type
 ) {
+
 }

@@ -1,14 +1,16 @@
 package com.lolmeida.api.repository;
 
-import com.lolmeida.api.RepositoryApi;
-import com.lolmeida.api.entity.database.PostalCode;
-import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
-import io.quarkus.panache.common.Sort;
+import java.util.List;
+import java.util.UUID;
+
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 
-import java.util.List;
-import java.util.UUID;
+import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
+import io.quarkus.panache.common.Sort;
+
+import com.lolmeida.api.RepositoryApi;
+import com.lolmeida.api.entity.database.PostalCode;
 
 @ApplicationScoped
 public class PostalCodeRepositoryApi implements PanacheRepositoryBase<PostalCode, UUID>, RepositoryApi<PostalCode> {

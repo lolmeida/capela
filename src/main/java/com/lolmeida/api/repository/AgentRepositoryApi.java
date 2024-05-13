@@ -1,15 +1,16 @@
 package com.lolmeida.api.repository;
 
-import com.lolmeida.api.RepositoryApi;
-import com.lolmeida.api.entity.database.Agent;
+import java.util.List;
+import java.util.UUID;
 
-import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
-import io.quarkus.panache.common.Sort;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 
-import java.util.List;
-import java.util.UUID;
+import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
+import io.quarkus.panache.common.Sort;
+
+import com.lolmeida.api.RepositoryApi;
+import com.lolmeida.api.entity.database.Agent;
 
 @ApplicationScoped
 public class AgentRepositoryApi implements PanacheRepositoryBase<Agent, UUID>, RepositoryApi<Agent> {

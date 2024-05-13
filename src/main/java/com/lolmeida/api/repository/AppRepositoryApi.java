@@ -1,14 +1,16 @@
 package com.lolmeida.api.repository;
 
-import com.lolmeida.api.RepositoryApi;
-import com.lolmeida.api.entity.database.App;
-import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
-import io.quarkus.panache.common.Sort;
+import java.util.List;
+import java.util.UUID;
+
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 
-import java.util.List;
-import java.util.UUID;
+import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
+import io.quarkus.panache.common.Sort;
+
+import com.lolmeida.api.RepositoryApi;
+import com.lolmeida.api.entity.database.App;
 
 @ApplicationScoped
 public class AppRepositoryApi implements PanacheRepositoryBase<App, UUID>, RepositoryApi<App> {
@@ -31,7 +33,7 @@ public class AppRepositoryApi implements PanacheRepositoryBase<App, UUID>, Repos
 
     @Override
     @Transactional
-    public String  save(App entity) {
+    public String save(App entity) {
         persistAndFlush(entity);
         return entity.getAppName();
     }

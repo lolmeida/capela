@@ -1,23 +1,24 @@
 package com.lolmeida.api.service;
 
 
-import com.lolmeida.api.entity.database.Cargo;
-import com.lolmeida.api.repository.CargoRepositoryApi;
-import com.lolmeida.api.RepositoryApi;
+import java.util.List;
 
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
-import java.util.List;
+import com.lolmeida.api.RepositoryApi;
+import com.lolmeida.api.entity.database.Cargo;
+import com.lolmeida.api.repository.CargoRepositoryApi;
 
 @RequestScoped
 public class CargoService implements RepositoryApi<Cargo> {
+
     @Inject
     CargoRepositoryApi repository;
 
     @Override
-    public List<Cargo> findAll(String... orderByColumns){
-        return  repository.findAll(orderByColumns);
+    public List<Cargo> findAll(String... orderByColumns) {
+        return repository.findAll(orderByColumns);
     }
 
     @Override

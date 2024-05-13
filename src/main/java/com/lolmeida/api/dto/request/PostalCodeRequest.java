@@ -4,7 +4,8 @@ import lombok.Builder;
 
 @Builder
 public record PostalCodeRequest(
-         String code,
-         String address
+        String code,
+        String address
 ) {
+
 }

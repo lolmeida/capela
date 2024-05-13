@@ -1,14 +1,14 @@
 package com.lolmeida.api.dto.response;
 
 
-import com.lolmeida.api.entity.database.Receipt;
-import com.lolmeida.api.entity.database.Size;
-import com.lolmeida.api.entity.database.Client;
+import java.time.LocalDateTime;
+import java.util.List;
 
 import lombok.Builder;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import com.lolmeida.api.entity.database.Client;
+import com.lolmeida.api.entity.database.Receipt;
+import com.lolmeida.api.entity.database.Size;
 
 @Builder
 public record CargoResponse(
@@ -19,7 +19,6 @@ public record CargoResponse(
         List<Size> sizeList,
         String status,
         Receipt receipt,
-
 
         // BaseEntity
         String id,
@@ -36,4 +35,5 @@ public record CargoResponse(
         Long updatedTime,
         LocalDateTime date
 ) {
+
 }

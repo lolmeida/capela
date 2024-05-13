@@ -1,8 +1,8 @@
 package com.lolmeida.api.dto.request;
 
-import lombok.Builder;
-
 import java.time.LocalDateTime;
+
+import lombok.Builder;
 
 @Builder
 public record ListRequest(
@@ -14,4 +14,5 @@ public record ListRequest(
         LocalDateTime arrivedDate,
         String to
 ) {
+
 }

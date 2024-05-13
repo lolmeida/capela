@@ -1,49 +1,49 @@
 {
-  "Cliente":{
-    "Activo": true,
-    "Cliente": "Odete Vaz",
-    "Data": "2023-12-03T10:27:03",
-    "Id": "00314ade",
-    "Morada": "almada",
-    "Nota": "",
-    "Telefone": "926544868",
-    "Tipo": "CLI",
-    "cargas": [],
-    "createdAt": "2023-12-03T10:27:03",
-    "recebimentos": [],
-    "updatedAt": "2023-12-03T10:27:03"
-  },
-  "Destinatario":{
-    "Activo": true,
-    "Cliente": "Odete Vaz",
-    "Data": "2023-12-03T10:27:03",
-    "Id": "00314ade",
-    "Morada": "almada",
-    "Nota": "",
-    "Telefone": "926544868",
-    "Tipo": "CLI",
-    "cargas": [],
-    "createdAt": "2023-12-03T10:27:03",
-    "recebimentos": [],
-    "updatedAt": "2023-12-03T10:27:03"
-  },
-  "IdDimensoes": [
-    {
-      "activo": true,
-      "counter": 0,
-      "createdAt": "2023-12-02T22:51:03",
-      "createdTime": 1701557463206,
-      "data": "2023-12-02T22:51:03",
-      "userEmail": "lolmeida@gmail.com",
-      "utilizador": "lolmeida@gmail.com",
-      "version": 0,
-      "altura": 0.0,
-      "comprimento": 0.0,
-      "idDimensoes": "0vdzkP2xAmiP",
-      "largura": 0.0,
-      "vol": 0
-    }
-  ],
-  "vReceber": 123,
-  "Status": "OK"
+    "Cliente": {
+        "Activo": true,
+        "Cliente": "Odete Vaz",
+        "Data": "2023-12-03T10:27:03",
+        "Id": "00314ade",
+        "Morada": "almada",
+        "Nota": "",
+        "Telefone": "926544868",
+        "Tipo": "CLI",
+        "cargas": [ ],
+        "createdAt": "2023-12-03T10:27:03",
+        "recebimentos": [ ],
+        "updatedAt": "2023-12-03T10:27:03"
+    },
+    "Destinatario": {
+        "Activo": true,
+        "Cliente": "Odete Vaz",
+        "Data": "2023-12-03T10:27:03",
+        "Id": "00314ade",
+        "Morada": "almada",
+        "Nota": "",
+        "Telefone": "926544868",
+        "Tipo": "CLI",
+        "cargas": [ ],
+        "createdAt": "2023-12-03T10:27:03",
+        "recebimentos": [ ],
+        "updatedAt": "2023-12-03T10:27:03"
+    },
+    "IdDimensoes": [
+        {
+            "activo": true,
+            "counter": 0,
+            "createdAt": "2023-12-02T22:51:03",
+            "createdTime": 1701557463206,
+            "data": "2023-12-02T22:51:03",
+            "userEmail": "lolmeida@gmail.com",
+            "utilizador": "lolmeida@gmail.com",
+            "version": 0,
+            "altura": 0.0,
+            "comprimento": 0.0,
+            "idDimensoes": "0vdzkP2xAmiP",
+            "largura": 0.0,
+            "vol": 0
+        }
+    ],
+    "vReceber": 123,
+    "Status": "OK"
 }

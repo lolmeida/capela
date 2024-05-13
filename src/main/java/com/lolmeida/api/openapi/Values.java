@@ -16,6 +16,7 @@ public final class Values {
     }
 
     public static final class Paths {
+
         public static final String POSTAL_CODE = "/postal-code";
         public static final String AGENT = "/agent";
         public static final String AGENT_NEW = "/agent-new";
@@ -45,6 +46,7 @@ public final class Values {
     }
 
     public static final class Codes {
+
         public static final String OK = "200";
         public static final String CREATED = "201";
         public static final String NO_CONTENT = "204";

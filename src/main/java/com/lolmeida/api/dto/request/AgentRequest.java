@@ -5,4 +5,5 @@ public record AgentRequest(
         String email,
         String contact
 ) {
+
 }

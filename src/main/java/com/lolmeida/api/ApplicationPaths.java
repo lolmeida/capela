@@ -1,11 +1,13 @@
 package com.lolmeida.api;
 
 public final class ApplicationPaths {
+
     public static final String ROOT = "/";
     public static final String SEARCH = "/search/{field}/{value}";
     public static final String FIND_BY = "/{id}";
 
     public static final class MediaTypeExtension {
+
         public static final String JSON = "application/json";
         public static final String XML = "application/xml";
         public static final String TAR = "application/x-tar";

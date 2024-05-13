@@ -1,22 +1,23 @@
 package com.lolmeida.api.service;
 
-import com.lolmeida.api.entity.database.Client;
-import com.lolmeida.api.repository.ClientRepositoryApi;
-import com.lolmeida.api.RepositoryApi;
+import java.util.List;
 
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
-import java.util.List;
+import com.lolmeida.api.RepositoryApi;
+import com.lolmeida.api.entity.database.Client;
+import com.lolmeida.api.repository.ClientRepositoryApi;
 
 @RequestScoped
 public class ClientService implements RepositoryApi<Client> {
+
     @Inject
     ClientRepositoryApi repository;
 
     @Override
-    public List<Client> findAll(String... orderByColumns){
-        return  repository.findAll(orderByColumns);
+    public List<Client> findAll(String... orderByColumns) {
+        return repository.findAll(orderByColumns);
     }
 
     @Override
@@ -31,7 +32,7 @@ public class ClientService implements RepositoryApi<Client> {
 
     @Override
     public String save(Client entity) {
-       return repository.save(entity);
+        return repository.save(entity);
     }
 
 

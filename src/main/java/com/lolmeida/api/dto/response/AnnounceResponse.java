@@ -1,8 +1,8 @@
 package com.lolmeida.api.dto.response;
 
-import lombok.Builder;
-
 import java.time.LocalDateTime;
+
+import lombok.Builder;
 
 @Builder
 public record AnnounceResponse(
@@ -24,5 +24,6 @@ public record AnnounceResponse(
         LocalDateTime updatedAt,
         Long updatedTime,
         LocalDateTime date
-        ) {
+) {
+
 }

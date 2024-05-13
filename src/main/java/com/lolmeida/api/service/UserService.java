@@ -1,22 +1,23 @@
 package com.lolmeida.api.service;
 
-import com.lolmeida.api.entity.database.Utilizador;
-import com.lolmeida.api.RepositoryApi;
-import com.lolmeida.api.repository.UserRepositoryApi;
+import java.util.List;
 
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
-import java.util.List;
+import com.lolmeida.api.RepositoryApi;
+import com.lolmeida.api.entity.database.Utilizador;
+import com.lolmeida.api.repository.UserRepositoryApi;
 
 @RequestScoped
 public class UserService implements RepositoryApi<Utilizador> {
+
     @Inject
     UserRepositoryApi repository;
 
     @Override
-    public List<Utilizador> findAll(String... orderByColumns){
-        return  repository.findAll(orderByColumns);
+    public List<Utilizador> findAll(String... orderByColumns) {
+        return repository.findAll(orderByColumns);
     }
 
     @Override

@@ -1,15 +1,18 @@
 package com.lolmeida.api.entity.database;
 
 
-import com.lolmeida.api.entity.BaseEntity;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
-
+import com.lolmeida.api.entity.BaseEntity;
 
 
 @Getter
@@ -25,10 +28,12 @@ import lombok.extern.slf4j.Slf4j;
 public class Agent extends BaseEntity {
 
     @NotEmpty(message = "this is a field is mandatory.")
-    @Column(name = "Nome", nullable = false)
+    @Column(name = "Nome",
+            nullable = false)
     private String name;
 
-    @Column(name = "Email", nullable = false)
+    @Column(name = "Email",
+            nullable = false)
     private String email;
 
     @Column(name = "Contacto")

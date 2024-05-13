@@ -1,12 +1,12 @@
 package com.lolmeida.api.dto.response;
 
-import com.lolmeida.api.entity.database.Receipt;
-import com.lolmeida.api.entity.database.Cargo;
+import java.time.LocalDateTime;
+import java.util.List;
 
 import lombok.Builder;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import com.lolmeida.api.entity.database.Cargo;
+import com.lolmeida.api.entity.database.Receipt;
 
 @Builder
 public record ClientResponse(
@@ -17,9 +17,6 @@ public record ClientResponse(
         String email,
         List<Cargo> cargoList,
         List<Receipt> receiptList,
-
-
-
 
         // BaseEntity
         String id,
@@ -36,4 +33,5 @@ public record ClientResponse(
         Long updatedTime,
         LocalDateTime date
 ) {
+
 }

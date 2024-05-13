@@ -1,9 +1,9 @@
 package com.lolmeida.api.dto.request;
 
-import com.lolmeida.api.entity.database.Size;
-import com.lolmeida.api.entity.database.Client;
-
 import java.util.List;
+
+import com.lolmeida.api.entity.database.Client;
+import com.lolmeida.api.entity.database.Size;
 
 public record CargoRequest(
         String cargoNumber,
@@ -35,4 +35,5 @@ public record CargoRequest(
         //int Counter,
         //boolean Confiavel
 ) {
+
 }

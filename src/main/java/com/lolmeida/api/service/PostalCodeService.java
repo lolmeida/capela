@@ -1,21 +1,23 @@
 package com.lolmeida.api.service;
 
-import com.lolmeida.api.RepositoryApi;
-import com.lolmeida.api.entity.database.PostalCode;
-import com.lolmeida.api.repository.PostalCodeRepositoryApi;
+import java.util.List;
+
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
-import java.util.List;
+import com.lolmeida.api.RepositoryApi;
+import com.lolmeida.api.entity.database.PostalCode;
+import com.lolmeida.api.repository.PostalCodeRepositoryApi;
 
 @RequestScoped
 public class PostalCodeService implements RepositoryApi<PostalCode> {
+
     @Inject
     PostalCodeRepositoryApi repository;
 
     @Override
-    public List<PostalCode> findAll(String... orderByColumns){
-        return  repository.findAll(orderByColumns);
+    public List<PostalCode> findAll(String... orderByColumns) {
+        return repository.findAll(orderByColumns);
     }
 
     @Override

@@ -1,7 +1,8 @@
 package com.lolmeida.api.dto.request;
 
-import com.lolmeida.api.entity.database.Cargo;
 import lombok.Builder;
+
+import com.lolmeida.api.entity.database.Cargo;
 
 @Builder
 public record SizeRequest(
@@ -11,4 +12,5 @@ public record SizeRequest(
         double width,
         Cargo cargo
 ) {
+
 }

@@ -10,4 +10,5 @@ public record WarehouseRequest(
         String address,
         String phoneNumber
 ) {
+
 }

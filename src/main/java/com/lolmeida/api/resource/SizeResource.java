@@ -2,20 +2,13 @@ package com.lolmeida.api.resource;
 
 import java.util.List;
 
-import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
-import com.lolmeida.api.ApplicationPaths;
 import com.lolmeida.api.ResourceApi;
 import com.lolmeida.api.dto.request.SizeRequest;
 import com.lolmeida.api.dto.response.SizeResponse;

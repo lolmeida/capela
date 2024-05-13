@@ -1,8 +1,15 @@
 package com.lolmeida.api.entity;
 
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -14,12 +21,11 @@ import lombok.extern.slf4j.Slf4j;
 @MappedSuperclass
 public abstract class BaseEntity {
 
+    //@Column(name = "Activo", columnDefinition = "BOOLEAN DEFAULT TRUE",nullable = false)
+    protected boolean active;
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
-
-    //@Column(name = "Activo", columnDefinition = "BOOLEAN DEFAULT TRUE",nullable = false)
-    protected boolean active;
 /*
     @PrePersist
     protected void onCreate() {

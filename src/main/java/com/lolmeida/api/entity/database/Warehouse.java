@@ -3,12 +3,19 @@ package com.lolmeida.api.entity.database;
 
 import java.util.List;
 
-import com.lolmeida.api.entity.BaseEntity;
-
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+
+import com.lolmeida.api.entity.BaseEntity;
 
 
 @Getter
@@ -23,13 +30,21 @@ import lombok.extern.slf4j.Slf4j;
 public class Warehouse extends BaseEntity {
 
     @NotEmpty(message = "this is a field is mandatory.")
-    @Column(name = "Armazem",unique = true, nullable = false, length = 25)
+    @Column(name = "Armazem",
+            unique = true,
+            nullable = false,
+            length = 25)
     private String name;
 
-    @Column(name = "Morada",unique = false, nullable = false, length = 125)
+    @Column(name = "Morada",
+            unique = false,
+            nullable = false,
+            length = 125)
     private String address;
 
-    @Column(name = "Telefone",unique = false, length = 25)
+    @Column(name = "Telefone",
+            unique = false,
+            length = 25)
     private String phoneNumber;
 
     @OneToMany

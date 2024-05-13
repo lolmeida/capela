@@ -1,8 +1,9 @@
 package com.lolmeida.api.dto.request;
 
+import lombok.Builder;
+
 import com.lolmeida.api.entity.database.Cargo;
 import com.lolmeida.api.entity.database.Client;
-import lombok.Builder;
 
 @Builder
 public record ReceiptRequest(
@@ -11,4 +12,5 @@ public record ReceiptRequest(
         double otherAmount,
         Client client
 ) {
+
 }

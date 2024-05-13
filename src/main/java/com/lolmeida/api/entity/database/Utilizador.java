@@ -1,13 +1,18 @@
 package com.lolmeida.api.entity.database;
 
 
-import com.lolmeida.api.entity.BaseEntity;
+import java.util.List;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Entity;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.List;
+import com.lolmeida.api.entity.BaseEntity;
 
 
 @Getter
@@ -20,7 +25,6 @@ import java.util.List;
 @Entity
 //@Table(name = "tUtilizadores") //, schema = "sql7509759")
 public class Utilizador extends BaseEntity {
-
 
 
     private String mail;

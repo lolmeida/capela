@@ -1,23 +1,24 @@
 package com.lolmeida.api.service;
 
 
-import com.lolmeida.api.entity.database.App;
-import com.lolmeida.api.repository.AppRepositoryApi;
-import com.lolmeida.api.RepositoryApi;
+import java.util.List;
 
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
-import java.util.List;
+import com.lolmeida.api.RepositoryApi;
+import com.lolmeida.api.entity.database.App;
+import com.lolmeida.api.repository.AppRepositoryApi;
 
 @RequestScoped
 public class AppService implements RepositoryApi<App> {
+
     @Inject
     AppRepositoryApi repository;
 
     @Override
-    public List<App> findAll(String... orderByColumns){
-        return  repository.findAll(orderByColumns);
+    public List<App> findAll(String... orderByColumns) {
+        return repository.findAll(orderByColumns);
     }
 
     @Override

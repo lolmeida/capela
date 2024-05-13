@@ -5,7 +5,8 @@ import lombok.Builder;
 @Builder
 public record ConfigurationRequest(
         String key,
-         String value,
-         String description
+        String value,
+        String description
 ) {
+
 }

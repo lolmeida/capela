@@ -1,14 +1,13 @@
 package com.lolmeida.api.dto.response;
 
-import lombok.Builder;
-
 import java.time.LocalDateTime;
+
+import lombok.Builder;
 
 @Builder
 public record ConfigurationResponse(
         String key,
         String value,
-
 
         // BaseEntity
         String id,
@@ -25,4 +24,5 @@ public record ConfigurationResponse(
         Long updatedTime,
         LocalDateTime date
 ) {
+
 }
