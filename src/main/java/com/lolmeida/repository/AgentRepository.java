@@ -25,11 +25,9 @@ public class AgentRepository implements PanacheRepositoryBase<Agent, UUID>, Peah
         return list("LOWER(" + field + ") like ?1", searchInput.toLowerCase());
     }
 
-
-
     @Override
     public List<Agent> findBy(String name) {
-        return list("Nome like ?1", name);
+        return list("id like ?1", name);
     }
 
     @Override
@@ -38,6 +36,4 @@ public class AgentRepository implements PanacheRepositoryBase<Agent, UUID>, Peah
         persistAndFlush(entity);
         return entity.getId();
     }
-
-
 }

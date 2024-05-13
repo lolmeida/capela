@@ -19,11 +19,11 @@ import java.util.Set;
 
 @Entity
 //@Table(name = "tCargas") //, schema = "sql7509759")
+
 public class Cargo extends BaseEntity {
 
-    /*@Column(name = "carga_id",nullable = false)
-    private String id;
-    @Id*/
+
+
     @Column(name = "Guia")
     private String cargoNumber;
 

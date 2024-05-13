@@ -1,5 +1,6 @@
 package com.lolmeida.resource;
 
+import com.lolmeida.Utils;
 import com.lolmeida.dto.request.AgentRequest;
 import com.lolmeida.dto.response.AgentResponse;
 import com.lolmeida.entity.database.Agent;
@@ -66,7 +67,7 @@ public class AgentResource {
 
     private Agent requestToObj(AgentRequest request) {
         return Agent.builder()
-                    //.Id(Utils.generateRandomString())
+                //id(Utils.generateRandomString())
                     .name(request.name())
                     .email(request.email())
                     .contact(request.contact())

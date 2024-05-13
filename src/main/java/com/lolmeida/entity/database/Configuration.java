@@ -18,9 +18,6 @@ import lombok.extern.slf4j.Slf4j;
 @Entity
 //@Table(name = "tConfiguracoes") //, schema = "sql7509759")
 public class Configuration extends BaseEntity {
-    /*@Id
-    @Column(name = "config_id")
-    private String id;*/
 
     @NotEmpty(message = "this is a field is mandatory.")
     @Column(name = "Parametro", unique = true, nullable = false, length = 255)

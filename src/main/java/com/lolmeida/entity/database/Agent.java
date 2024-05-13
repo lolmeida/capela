@@ -4,6 +4,10 @@ package com.lolmeida.entity.database;
 import com.lolmeida.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
@@ -20,17 +24,14 @@ import lombok.extern.slf4j.Slf4j;
 
 @Entity
 //@Table(name = "tAgente") //, schema = "sql7509759")
+
 public class Agent extends BaseEntity {
 
-    /*@Id
-    @Column(name = "agente_id")
-    private String Id;*/
-
     @NotEmpty(message = "this is a field is mandatory.")
-    @Column(name = "Nome", unique = true, nullable = false)
+    @Column(name = "Nome", nullable = false)
     private String name;
 
-    @Column(name = "Email")
+    @Column(name = "Email", nullable = false)
     private String email;
 
     @Column(name = "Contacto")

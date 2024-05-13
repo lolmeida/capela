@@ -18,9 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 //@Table(name = "tDimensoes") //, schema = "sql7509759")
 public class Size extends BaseEntity {
 
-    /*@Id
-    @Column(name = "dimensao_id")
-    private String id;*/
+
 
     @Column(name = "Vol")
     private int volume;

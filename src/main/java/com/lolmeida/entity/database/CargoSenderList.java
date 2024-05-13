@@ -21,9 +21,7 @@ import java.util.List;
 //@Table(name = "tListaEnvio") //, schema = "sql7509759")
 public class CargoSenderList extends BaseEntity {
 
-    /*@Id
-    @Column(name = "cargo_id")
-    private String id;*/
+
 
     @Column(name = "Qtd", columnDefinition = "INT DEFAULT 1")
     private int quantity;

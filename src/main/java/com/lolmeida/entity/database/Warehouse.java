@@ -21,10 +21,6 @@ import lombok.extern.slf4j.Slf4j;
 //@Table(name = "tArmazem") //, schema = "sql7509759")
 public class Warehouse extends BaseEntity {
 
-    /*@Id
-    @Column(name = "armazem_id")
-    private String id;*/
-
     @NotEmpty(message = "this is a field is mandatory.")
     @Column(name = "Armazem",unique = true, nullable = false, length = 25)
     private String name;

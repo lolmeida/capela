@@ -20,9 +20,7 @@ import java.util.Set;
 @Entity
 //@Table(name = "tClientes") //, schema = "sql7509759")
 public class Client extends BaseEntity {
-    /*@Id
-    @Column(name = "client_id",nullable = false)
-    private String id;*/
+
 
     @Column(name = "Client",nullable = false)
     private String name;

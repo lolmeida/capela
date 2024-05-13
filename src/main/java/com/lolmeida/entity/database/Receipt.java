@@ -19,9 +19,7 @@ import java.util.List;
 @Entity
 //@Table(name = "tRecebimentos") //, schema = "sql7509759")
 public class Receipt extends BaseEntity {
-    /*@Id
-    @Column(name = "recibo_id")
-    private String id;*/
+
 
     @Column(name = "Outros")
     private double otherAmount;

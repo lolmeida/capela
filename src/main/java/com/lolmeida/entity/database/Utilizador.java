@@ -21,11 +21,9 @@ import java.util.Set;
 //@Table(name = "tUtilizadores") //, schema = "sql7509759")
 public class Utilizador extends BaseEntity {
 
-    @Column(name = "Mail")
+
+
     private String mail;
-    /*@Id
-    @Column(name = "utilizador_id")
-    private String id;*/
     private String Nome;
     private String Telefone;
     private String Morada;

@@ -16,13 +16,26 @@ import java.time.LocalDateTime;
 public abstract class BaseEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    /*@Column(name = "ModificadoPor")
+    //@Column(name = "Activo", columnDefinition = "BOOLEAN DEFAULT TRUE",nullable = false)
+    protected boolean active;
+/*
+    @PrePersist
+    protected void onCreate() {
+        this.id=Utils.generateRandomString();
+        //this.createdTime = Utils.currentTime;
+        //this.createdAt = Utils.currentDateTime;
+        //this.createdBy = Utils.activeUser();
+        //this.date = Utils.currentDateTime;
+        //this.active = true;
+    }
+
+    @Column(name = "ModificadoPor")
     protected String updatedBy;
 
-    @Column(name = "Activo", columnDefinition = "BOOLEAN DEFAULT TRUE",nullable = false)
-    protected boolean active;
+
 
     @Column(name = "Nota")
     protected String note;
@@ -64,15 +77,7 @@ public abstract class BaseEntity {
     protected LocalDateTime updatedAt;
 
 
-    @PrePersist
-    protected void onCreate() {
-        this.createdTime = Utils.currentTime;
-        this.createdAt = Utils.currentDateTime;
-        this.createdBy = Utils.activeUser();
 
-        this.date = Utils.currentDateTime;
-        this.active = true;
-    }
 
     @PreUpdate
     protected void onUpdate() {
