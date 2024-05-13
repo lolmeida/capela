@@ -80,7 +80,6 @@ public class CargoResource implements ResourceApi<CargoRequest> {
                     .client(clientService.findBy(request.clientId()))
                     .recipient(clientService.findBy(request.recipientId()))
                     .total(request.total())
-                    //.sizeList(List.of(new Size()))
                     .status(request.status())
                     .build();
     }
