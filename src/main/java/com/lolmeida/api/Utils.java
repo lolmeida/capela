@@ -1,6 +1,5 @@
 package com.lolmeida.api;
 
-
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Random;
