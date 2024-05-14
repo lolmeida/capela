@@ -4,8 +4,6 @@ import java.time.LocalDateTime;
 
 import lombok.Builder;
 
-import com.lolmeida.api.entity.database.Cargo;
-
 @Builder
 public record SizeResponse(
         int volume,

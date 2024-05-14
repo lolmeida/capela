@@ -14,8 +14,9 @@ import lombok.extern.slf4j.Slf4j;
 
 import com.lolmeida.api.entity.BaseEntity;
 
-import static com.lolmeida.api.AppConfig.Schema.Table.Agent.*;
-
+import static com.lolmeida.api.AppConfig.Schema.Table.Agent.Contact;
+import static com.lolmeida.api.AppConfig.Schema.Table.Agent.Email;
+import static com.lolmeida.api.AppConfig.Schema.Table.Agent.Name;
 
 
 @Getter

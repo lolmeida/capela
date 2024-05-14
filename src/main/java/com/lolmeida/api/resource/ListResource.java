@@ -77,7 +77,7 @@ public class ListResource implements ResourceApi<ListRequest> {
 
     private ListResponse objToResponse(CargoSenderList entity) {
         return ListResponse.builder()
-                            .id(entity.getId())
+                           .id(entity.getId())
                            .quantity(entity.getQuantity())
                            .numInvoiceArnaud(entity.getNumInvoiceArnaud())
                            .dateInvoiceArnaud(entity.getDateInvoiceArnaud())

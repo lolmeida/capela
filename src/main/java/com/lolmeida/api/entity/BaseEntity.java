@@ -12,7 +12,6 @@ import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Version;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,11 +29,6 @@ import com.lolmeida.api.Utils;
 
 public abstract class BaseEntity {
 
-    //@Column(name = "Activo", columnDefinition = "BOOLEAN DEFAULT TRUE",nullable = false)
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
-
     // Other auto generated fields
     protected LocalDateTime date;
     protected LocalDateTime createdAt;
@@ -44,6 +38,19 @@ public abstract class BaseEntity {
     protected Long createdTime;
     protected Long updatedTime;
     protected boolean active;
+    // Other fields
+    protected String note;
+    protected String attachment;
+    protected String image;
+    protected String description;
+    protected String comments;
+    protected int Counter;
+    @Version
+    protected int version;
+    //@Column(name = "Activo", columnDefinition = "BOOLEAN DEFAULT TRUE",nullable = false)
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
 
     @PrePersist
     protected void onCreate() {
@@ -60,14 +67,4 @@ public abstract class BaseEntity {
         this.updatedTime = Utils.currentTime;
         this.updatedBy = Utils.activeUser();
     }
-
-    // Other fields
-    protected String note;
-    protected String attachment;
-    protected String image;
-    protected String description;
-    protected String comments;
-    protected int Counter;
-    @Version
-    protected int version;
 }

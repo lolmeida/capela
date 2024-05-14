@@ -77,7 +77,7 @@ public class ReceiptResource implements ResourceApi<ReceiptRequest> {
 
     private ReceiptResponse objToResponse(Receipt entity) {
         return ReceiptResponse.builder()
-                                .id(entity.getId())
+                              .id(entity.getId())
                               .cargo(entity.getCargo())
                               .amount(entity.getAmount())
                               .otherAmount(entity.getOtherAmount())

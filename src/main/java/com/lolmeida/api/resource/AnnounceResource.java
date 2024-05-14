@@ -71,7 +71,7 @@ public class AnnounceResource implements ResourceApi<AnnounceRequest> {
 
     private AnnounceResponse objToResponse(Announce entity) {
         return AnnounceResponse.builder()
-                                 .id(entity.getId())
+                               .id(entity.getId())
                                .type(entity.getType())
                                .tittle(entity.getTittle())
                                .url(entity.getUrl())

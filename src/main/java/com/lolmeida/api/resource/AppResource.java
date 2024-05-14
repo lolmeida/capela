@@ -73,7 +73,7 @@ public class AppResource implements ResourceApi<AppRequest> {
 
     private AppResponse objToResponse(App entity) {
         return AppResponse.builder()
-                            .id(entity.getId())
+                          .id(entity.getId())
                           .appLogo(entity.getAppLogo())
                           .appName(entity.getAppName())
 

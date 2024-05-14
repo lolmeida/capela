@@ -72,7 +72,7 @@ public class PostalCodeResource implements ResourceApi<PostalCodeRequest> {
 
     private PostalCodeResponse objToResponse(PostalCode entity) {
         return PostalCodeResponse.builder()
-                                    .id(entity.getId())
+                                 .id(entity.getId())
                                  .address(entity.getAddress())
                                  .code(entity.getCode())
 

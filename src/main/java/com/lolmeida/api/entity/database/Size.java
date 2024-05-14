@@ -3,8 +3,6 @@ package com.lolmeida.api.entity.database;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,17 +26,13 @@ import com.lolmeida.api.entity.BaseEntity;
 public class Size extends BaseEntity {
 
 
+    String cargoId;
     @Column(name = "Vol")
     private int volume;
-
     @Column(name = "Comprimento")
     private double length;
-
     @Column(name = "Altura")
     private double height;
-
     @Column(name = "Largura")
     private double width;
-
-    String cargoId;
 }

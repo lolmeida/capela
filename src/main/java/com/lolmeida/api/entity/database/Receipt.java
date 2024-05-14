@@ -5,7 +5,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,8 +13,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
-import com.lolmeida.api.AppConfig;
-import com.lolmeida.api.AppConfig.Schema;
 import com.lolmeida.api.entity.BaseEntity;
 
 
@@ -29,6 +26,7 @@ import com.lolmeida.api.entity.BaseEntity;
 @Entity
 //@Table(name = "tRecebimentos", schema = Schema.DB)
 public class Receipt extends BaseEntity {
+
     @Column(name = "Outros")
     private double otherAmount;
 

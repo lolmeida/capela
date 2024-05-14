@@ -74,7 +74,7 @@ public class UserResource implements ResourceApi<UserRequest> {
 
     private UserResponse objToResponse(Utilizador entity) {
         return UserResponse.builder()
-                            .id(entity.getId())
+                           .id(entity.getId())
                            .Mail(entity.getMail())
                            .Nome(entity.getNome())
                            .Telefone(entity.getTelefone())

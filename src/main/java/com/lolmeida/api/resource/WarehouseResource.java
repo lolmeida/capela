@@ -68,24 +68,24 @@ public class WarehouseResource implements ResourceApi<WarehouseRequest> {
     private Warehouse requestToObj(WarehouseRequest request) {
         return Warehouse
                 .builder()
-                        //.id(Utils.generateRandomString())
-                        .name(request.name())
-                        .address(request.address())
-                        .phoneNumber(request.phoneNumber())
-                        .build();
+                //.id(Utils.generateRandomString())
+                .name(request.name())
+                .address(request.address())
+                .phoneNumber(request.phoneNumber())
+                .build();
     }
 
     private WarehouseResponse objToResponse(Warehouse entity) {
         return WarehouseResponse
                 .builder()
-                                .id(entity.getId())
-                                .name(entity.getName())
-                                .address(entity.getAddress())
-                                .phoneNumber(entity.getPhoneNumber())
-                                .id(entity.getId())
+                .id(entity.getId())
+                .name(entity.getName())
+                .address(entity.getAddress())
+                .phoneNumber(entity.getPhoneNumber())
+                .id(entity.getId())
 
-                                // BaseEntity
+                // BaseEntity
 
-                                .build();
+                .build();
     }
 }
