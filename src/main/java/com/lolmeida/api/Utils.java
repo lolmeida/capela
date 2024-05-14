@@ -29,4 +29,27 @@ public class Utils {
         return "lolmeida@gmail.com";
     }
 
+    public static CargoResponse entityToResponse(Cargo entity) {
+        return CargoResponse
+                .builder()
+                // BASE ENTITY:
+                // Auto generated fields
+                .active(entity.isActive())
+                .createdBy(entity.getCreatedBy())
+                .createdAt(entity.getCreatedAt())
+                .createdTime(entity.getCreatedTime())
+                .updatedTime(entity.getUpdatedTime())
+                .updatedAt(entity.getUpdatedAt())
+                .date(entity.getDate())
+                .receipt(entity.getReceipt())
+                .recipient(entity.getRecipient())
+                .updatedBy(entity.getUpdatedBy())
+                // Other fields
+                .note(entity.getNote())
+                .description(entity.getDescription())
+                .attachment(entity.getAttachment())
+                .image(entity.getImage())
+                .build();
+    }
+
 }

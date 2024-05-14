@@ -11,6 +11,7 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import com.lolmeida.api.AppConfig.Schema.Table;
 import com.lolmeida.api.ResourceApi;
+import com.lolmeida.api.Utils;
 import com.lolmeida.api.dto.request.CargoRequest;
 import com.lolmeida.api.dto.response.CargoResponse;
 import com.lolmeida.api.entity.database.Cargo;
@@ -85,8 +86,8 @@ public class CargoResource implements ResourceApi<CargoRequest> {
     }
 
     private CargoResponse objToResponse(Cargo entity) {
-        return CargoResponse
-                .builder()
+        return Utils.entityToResponse(entity)
+                .toBuilder()
                 .id(entity.getId())
                 .client(entity.getClient())
                 .recipient(entity.getRecipient())
@@ -94,25 +95,6 @@ public class CargoResource implements ResourceApi<CargoRequest> {
                 .sizeList(sizeService.search("cargoId", entity.getId()))
                 .status(entity.getStatus())
                 .cargoNumber(entity.getCargoNumber())
-
-                // BASE ENTITY:
-                // Auto generated fields
-                .active(entity.isActive())
-                .createdBy(entity.getCreatedBy())
-                .createdAt(entity.getCreatedAt())
-                .createdTime(entity.getCreatedTime())
-                .updatedTime(entity.getUpdatedTime())
-                .updatedAt(entity.getUpdatedAt())
-                .date(entity.getDate())
-                .receipt(entity.getReceipt())
-                .recipient(entity.getRecipient())
-                .updatedBy(entity.getUpdatedBy())
-                // Other fields
-                .note(entity.getNote())
-                .description(entity.getDescription())
-                .attachment(entity.getAttachment())
-                .image(entity.getImage())
-
                 .build();
     }
 }
